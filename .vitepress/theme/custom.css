@@ -92,7 +92,7 @@ h3 {
 }
 /* content maxWidth*/
 .VPDoc.has-aside .content-container {
-    max-width: 60rem !important;
+    max-width: 40rem !important;
 }
 
 @media (min-width: 960px) {
