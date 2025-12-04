@@ -1,5 +1,5 @@
 :root {
-    --vp-c-brand: #2563eb !important;
+    --vp-c-brand: #3da552;
     --vp-c-brand-light: var(--vp-c-brand);
     --vp-c-brand-lighter: var(--vp-c-brand);
     --vp-c-brand-dark: var(--vp-c-brand);
@@ -14,7 +14,7 @@
     --bt-theme-title: #000;
 }
 .dark {
-    --vp-c-brand: #3b82f6;
+    --vp-c-brand: #6ac67d;
     --bt-theme-title: #fff;
 }
 
@@ -60,7 +60,6 @@ h2 {
     font-weight: 900 !important;
     border-bottom: 1px solid var(--vp-c-divider-light);
     border-top: none !important;
-    margin: inherit !important;
 }
 h3 {
     font-size: 1rem !important;
