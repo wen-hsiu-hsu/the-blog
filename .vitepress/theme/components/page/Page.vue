@@ -186,7 +186,7 @@
                             :text="item"
                             margin="mr-2.5"
                             font-size="text-3"
-                            class="inline-block"
+                            class="inline-block opacity-30 hover:opacity-100"
                         />
                     </template>
                 </div>
