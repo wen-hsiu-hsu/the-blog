@@ -5,6 +5,7 @@
     "main": "index.js",
     "type": "module",
     "devDependencies": {
+        "@types/fs-extra": "^11.0.4",
         "@types/node": "^22.13.17",
         "@unocss/preset-wind4": "66.1.0-beta.8",
         "date-fns": "^4.1.0",

@@ -6,10 +6,15 @@ lastUpdated: false
 home: true
 publish: false
 ---
+
 <script setup>
 import Page from "./../.vitepress/theme/components/page/Page.vue";
 import { useData } from "vitepress";
+
 const { theme } = useData();
-const posts = theme.value.posts.slice(0,10)
+
+const perPage = theme.value.page.size
+const pagesTotal = theme.value.page.pagesTotal;
+const currentPosts = theme.value.posts.slice(0,perPage)
 </script>
-<Page :posts="posts" :pageCurrent="1" :pagesNum="2" />
+<Page :posts="currentPosts" :pageCurrent="1" :pagesNum="pagesTotal" />

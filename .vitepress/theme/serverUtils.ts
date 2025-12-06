@@ -1,17 +1,15 @@
 import { globby } from 'globby';
 import matter from 'gray-matter';
 import fs from 'fs-extra';
-import { resolve } from 'path';
-
 import GLOBAL_CONFIG from './../global-config';
 
-async function getPosts(pageSize: number) {
-    let paths = await globby([GLOBAL_CONFIG.srcDirName + '/posts/**.md']);
+const pageSize = 10; // 每頁顯示的文章數量
 
-    //生成分页页面markdown
-    await generatePaginationPages(paths.length, pageSize);
+async function getPosts() {
+    const paths = await globby([GLOBAL_CONFIG.srcDirName + '/posts/**.md']);
+    const postsTotal = paths.length;
 
-    let posts = await Promise.all(
+    const posts = await Promise.all(
         paths.map(async (item) => {
             const content = await fs.readFile(item, 'utf-8');
             const { data } = matter(content);
@@ -26,40 +24,16 @@ async function getPosts(pageSize: number) {
     );
     posts.sort(_compareDate as any);
     posts.sort(_comparePin as any);
-    return posts;
-}
 
-async function generatePaginationPages(total: number, pageSize: number) {
-    const homePageName = GLOBAL_CONFIG.homePageName;
-    const homePageListName = GLOBAL_CONFIG.homePageListName;
-    //  pagesNum
-    let pagesNum = total % pageSize === 0 ? total / pageSize : Math.floor(total / pageSize) + 1;
-    const paths = resolve('./articles');
-    if (total > 0) {
-        for (let i = 1; i < pagesNum + 1; i++) {
-            const page = `
----
-page: true
-title: ${i === 1 ? homePageName : `${homePageListName} - ${i}`}
-aside: false
-lastUpdated: false
-home: true
-publish: false
----
-<script setup>
-import Page from "./../.vitepress/theme/components/page/Page.vue";
-import { useData } from "vitepress";
-const { theme } = useData();
-const posts = theme.value.posts.slice(${pageSize * (i - 1)},${pageSize * i})
-</script>
-<Page :posts="posts" :pageCurrent="${i}" :pagesNum="${pagesNum}" />
-`.trim();
-            const file = paths + `/page_${i}.md`;
-            await fs.writeFile(file, page);
-        }
-    }
-    // rename page_1 to index for homepage
-    await fs.move(paths + '/page_1.md', paths + '/index.md', { overwrite: true });
+    const pagesTotal =
+        postsTotal % pageSize === 0 ? postsTotal / pageSize : Math.floor(postsTotal / pageSize) + 1;
+
+    return {
+        posts,
+        postsTotal,
+        pagesTotal,
+        pageSize,
+    };
 }
 
 function _convertDate(date = new Date().toString()) {

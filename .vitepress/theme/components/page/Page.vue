@@ -200,7 +200,7 @@
                     ]"
                     v-for="i in pagesNum"
                     :key="i"
-                    :href="withBase(i === 1 ? '/index.html' : `/page_${i}.html`)"
+                    :href="withBase(i === 1 ? '/index.html' : `/page/${i}.html`)"
                 >
                     <span class="relative top-[-2px]">{{ i }}</span>
                 </a>
