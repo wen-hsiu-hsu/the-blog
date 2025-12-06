@@ -3,11 +3,11 @@ title: 俄羅斯方塊謎題 | JS地下城 - 番外篇 - 001
 description: 今天在 Line 的社群上面，有位前輩釋出了公司內部的面試題，蠻有趣的就試做了一下，順便參考看看其他前輩都怎麼寫的，收穫良多 R~
 category: JS地下城
 tags:
-    - JavaScript
+    - javascript
     - JS地下城
 keywords:
     - JS地下城
-    - JavaScript
+    - javascript
 date: 2020-11-19
 ---
 
