@@ -94,6 +94,10 @@ h3 {
     max-width: 40rem !important;
 }
 
+.vp-doc blockquote {
+    border-left: 2px solid var(--vp-c-brand);
+}
+
 @media (min-width: 960px) {
     .VPDoc:not(.has-sidebar) .content {
         max-width: inherit !important;
