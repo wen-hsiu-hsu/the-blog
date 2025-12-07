@@ -71,8 +71,7 @@ h3 {
     max-width: 100% !important;
 }
 .VPNavBarSearch {
-    display: block;
-    max-width: 300px;
+    flex-grow: 0;
 }
 /* for aside start */
 .aside {

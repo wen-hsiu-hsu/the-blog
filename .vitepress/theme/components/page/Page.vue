@@ -38,7 +38,7 @@
                     </li>
                 </ul>
                 <ul class="!p-0 !list-none text-sm flex flex-wrap gap-2 !mt-2 !mb-0">
-                    <li v-for="link in theme.socialLinks" class="!m-0">
+                    <li v-for="link in theme.theSocialLinks" class="!m-0">
                         <a
                             :href="link.link"
                             class="block p-1 opacity-80"
@@ -46,7 +46,8 @@
                             :aria-label="link.ariaLabel"
                         >
                             <template v-if="link.icon">
-                                <BaseIcon :icon="`simple-icons/${link.icon}`" size="size-4" />
+                                <span v-if="link.icon.svg" v-html="link.icon.svg"></span>
+                                <BaseIcon v-else :icon="`${link.icon}`" size="size-4" />
                             </template>
                             <template v-else-if="link.svg">
                                 <span v-html="link.svg"></span>

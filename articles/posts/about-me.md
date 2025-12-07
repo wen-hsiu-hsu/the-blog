@@ -17,7 +17,7 @@ publish: false
 
 平常的休閒娛樂就是打打一些獨立遊戲、大作或話題上的遊戲。買了一堆影音串流平台，每天吃飯一定要配影集，也許哪天我會在這裡分享一些喜歡的作品。
 音樂在我生活中佔有很重要的角色，目前正在學鋼琴中，期許哪天也能在網路上分享自己的演奏片段
-喜歡旅遊，也經常帶著我的相機到處拍照，歡迎去我的 [Flickr](https://www.flickr.com/photos/145658287@N06/) 看看我拙劣的攝影作品。
+喜歡旅遊，也經常帶著我的相機到處拍照，歡迎去我的 [攝影作品網站](https://photography.hsiu.soy/) 看看我拙劣的攝影作品。
 
 ---
 
@@ -28,5 +28,5 @@ publish: false
 如果你喜歡這裡的文章，可以在右上角透過 [RSS](/feed.rss) 訂閱我的部落格，或是從下方前往我的社群媒體，這樣就不會錯過我最新的文章了！
 
 -   [Threads 廢文發展處](https://www.threads.com/@hsiu.soy)
--   [Flickr 攝影作品](https://www.flickr.com/photos/145658287@N06/)
+-   [攝影作品](https://photography.hsiu.soy/)
 -   [GitHub](https://github.com/wen-hsiu-hsu)
