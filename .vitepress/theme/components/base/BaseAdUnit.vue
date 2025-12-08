@@ -14,11 +14,11 @@
 <script setup>
 import { onMounted } from 'vue';
 
-onMounted(() => {
-    try {
-        window.addAds();
-    } catch (e) {
-        console.log('Ad error', e);
-    }
-});
+// onMounted(() => {
+//     try {
+//         window.addAds();
+//     } catch (e) {
+//         console.log('Ad error', e);
+//     }
+// });
 </script>
