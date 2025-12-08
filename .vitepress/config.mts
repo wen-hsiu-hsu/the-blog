@@ -49,7 +49,7 @@ export default async () => {
                 'link',
                 {
                     rel: 'icon',
-                    href: '/favicon.jpg',
+                    href: '/favicon.ico',
                 },
             ],
             [
