@@ -1,35 +1,49 @@
-import { computed, ref, onMounted, onUnmounted } from 'vue';
-import { useWindowSize, useWindowScroll } from '@vueuse/core';
+import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { useWindowSize, useWindowScroll, useElementBounding } from '@vueuse/core';
 
 export default function usePagePercentage() {
     const { height: windowHeight } = useWindowSize();
     const { y: windowScrollY } = useWindowScroll();
 
-    const scrollHeight = ref(0);
+    const contentHeight = ref(0);
+    const contentOffsetTop = ref(0);
 
-    const updateScrollInfo = () => {
-        scrollHeight.value = document.documentElement.scrollHeight;
-    };
+    function updateContentRelated() {
+        const elContent = document.querySelector('.vp-doc') || null;
+        if (elContent === null) {
+            contentHeight.value = 0;
+            contentOffsetTop.value = 0;
+            return;
+        }
+        const rect = elContent.getBoundingClientRect();
+        contentHeight.value = rect.height;
+        contentOffsetTop.value = rect.top + windowScrollY.value;
+    }
 
     onMounted(() => {
-        updateScrollInfo();
-        window.addEventListener('scroll', updateScrollInfo);
-        window.addEventListener('resize', updateScrollInfo);
+        updateContentRelated();
+        window.addEventListener('scroll', updateContentRelated);
+        window.addEventListener('resize', updateContentRelated);
     });
 
     onUnmounted(() => {
-        window.removeEventListener('scroll', updateScrollInfo);
-        window.removeEventListener('resize', updateScrollInfo);
+        window.removeEventListener('scroll', updateContentRelated);
+        window.removeEventListener('resize', updateContentRelated);
     });
 
     const percentage = computed(() => {
-        if (windowHeight.value) {
-            return Math.round(
-                (windowScrollY.value / (scrollHeight.value - windowHeight.value)) * 100,
-            );
-        }
+        return Math.min(
+            Math.round(
+                (windowScrollY.value /
+                    (contentHeight.value + contentOffsetTop.value - windowHeight.value)) *
+                    100,
+            ),
+            100,
+        );
         return 0;
     });
 
-    return { percentage };
+    const hasDone = computed(() => percentage.value === 100);
+
+    return { percentage, hasDone };
 }
