@@ -101,7 +101,7 @@ export default async () => {
                 pagesTotal,
             },
             website: 'https://hsiu.soy', //copyright link
-            logo: '/avatar-pixel-2.jpg',
+            logo: '/avatar-pixel-v2-mini.jpg',
             comment: {
                 repo: 'wen-hsiu-hsu/the-blog',
                 issueTerm: 'pathname',
@@ -165,7 +165,7 @@ export default async () => {
             author: {
                 name: 'Wen-Hsiu Hsu',
                 intro: '程式碼之外，還有生活的藝術\n前端工程師 / 攝影 / 生活紀錄',
-                avatar: '/avatar-pixel-2.jpg',
+                avatar: '/avatar-pixel-v2-mini.jpg',
             },
             text: {
                 suggestPost: '更多文章',
