@@ -27,7 +27,7 @@
                 <ul class="!p-0 !list-none text-sm flex gap-2 items-center line-height-4">
                     <li class="flex items-center gap-2 !m-0">
                         <span>{{ theme.text.archive }}</span>
-                        <span>{{ posts.length }}</span>
+                        <span>{{ theme.page.postsTotal }}</span>
                     </li>
                     <li class="flex items-center !m-0 translate-y-px">
                         <BaseIcon icon="mynaui/dots-vertical" size="size-4" />
