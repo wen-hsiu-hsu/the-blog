@@ -80,7 +80,7 @@
                         </a>
                     </div>
                     <ul class="!p-0 !list-none text-sm flex flex-wrap gap-2 !mb-1">
-                        <li v-for="(_, value) in tags" class="!mt-0 !text-xs">
+                        <li v-for="value in Object.keys(tags).slice(0, 9)" class="!mt-0 !text-xs">
                             <BaseTag
                                 :href="withBase(`/pages/tags.html?tag=${value}`)"
                                 :text="value"
