@@ -41,6 +41,7 @@ export default async () => {
         cacheDir: './node_modules/vitepress_cache',
         srcDir: `./${GLOBAL_CONFIG.srcDirName}`,
         lastUpdated: true,
+        appearance: false,
         sitemap: {
             hostname,
         },
