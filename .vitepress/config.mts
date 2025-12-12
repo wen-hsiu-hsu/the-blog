@@ -112,6 +112,7 @@ export default async () => {
                 provider: 'local',
             },
             outline: {
+                level: [2, 3],
                 label: '文章摘要',
             },
             theSocialLinks: [
