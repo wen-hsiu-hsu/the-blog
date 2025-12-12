@@ -34,6 +34,9 @@
 .vp-doc p {
     font-size: 0.9375rem;
 }
+.vp-doc h5 {
+    margin: 24px 0 0;
+}
 .title {
     font-size: 1.5rem !important;
     letter-spacing: 1px;
