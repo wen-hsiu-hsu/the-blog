@@ -3,12 +3,9 @@ title: gulp-gh-pages deploy 失敗QQ | 程式筆記 - 001
 description: 前陣子修改了一下 JS 地下城的網頁時，發現 gulp-gh-pages deploy 時會出現錯誤，紀錄一下
 category: 程式筆記
 tags:
-    - 程式筆記
     - gulp
-keywords:
-    - 程式筆記
-    - gulp
-    - gulp-gh-pages
+    - JavaScript
+    - Git
 date: 2020-12-08
 ---
 

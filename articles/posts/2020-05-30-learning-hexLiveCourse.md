@@ -3,11 +3,10 @@ title: 線下不能群聚? 那線上總可以吧! 200人六角線上前端切版
 description: 疫情下的多人線上群聚，酒精噴了就上。有點難跟上進度的社畜切版直播課程心路歷程 QQ
 category: 學習經歷
 tags:
-    - 六角
-    - 前端學習
-keywords:
     - 六角學院
-    - 線上直播課程
+    - HTML
+    - CSS
+    - SCSS
 thumbnailImagePosition: left
 thumbnailImage: cover.png
 date: 2020-05-30

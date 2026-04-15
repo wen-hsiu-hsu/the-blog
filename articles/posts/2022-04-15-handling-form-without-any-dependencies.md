@@ -4,13 +4,8 @@ description: 透過 FormData API 處理表單可以很輕鬆!
 date: 2022-04-15
 category: 程式筆記
 tags:
-    - javascript
-    - 程式筆記
-keyword:
-    - javascript
-    - formData
-    - front-end
-    - form
+    - JavaScript
+    - HTML
 ---
 
 # 聰明的處理前端表單 | FormData API | handling-form-without-any-dependencies
@@ -134,8 +129,8 @@ console.log(data); // 回傳整個表單的值
 
 ## 參考
 
--   [How to Convert HTML Form Field Values to a JSON Object](https://www.learnwithjason.dev/blog/get-form-values-as-json)
--   [FormData - MDN](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+- [How to Convert HTML Form Field Values to a JSON Object](https://www.learnwithjason.dev/blog/get-form-values-as-json)
+- [FormData - MDN](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 
 <br>
 

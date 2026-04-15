@@ -4,10 +4,7 @@ description: 那個 Sidebar 甚麼的給我立刻消失 !!!
 category: 程式筆記
 tags:
     - Tampermonkey
-    - 程式筆記
-keyword:
-    - Tampermonkey
-    - Teachable
+    - JavaScript
 date: 2021-04-14
 ---
 
@@ -81,12 +78,12 @@ _PS. 我發現有個寬度畫面會跑版，有空再來調吧~_
 
 ## 最後附上連結，如下
 
--   腳本連結
-    -   [Github Repository](https://github.com/wen-hsiu-hsu/SideBarToggleButtonOnTeachable)
--   個人連結
-    -   [Github @kevinHWS](https://github.com/wen-hsiu-hsu)
-    -   [JS 地下城網站首頁](https://wen-hsiu-hsu.github.io/hex_jsDungeon/)
-        -   歡迎來看看 JS 作品
+- 腳本連結
+    - [Github Repository](https://github.com/wen-hsiu-hsu/SideBarToggleButtonOnTeachable)
+- 個人連結
+    - [Github @kevinHWS](https://github.com/wen-hsiu-hsu)
+    - [JS 地下城網站首頁](https://wen-hsiu-hsu.github.io/hex_jsDungeon/)
+        - 歡迎來看看 JS 作品
 
 <br>
 
