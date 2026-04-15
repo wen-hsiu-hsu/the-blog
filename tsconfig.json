@@ -5,7 +5,9 @@
         "articles/**/*.md",
         "template/example.md",
         "template/template.md",
-        "README.md"
+        "README.md",
+        "CLAUDE.md",
+        "rules/**/*.md"
     ],
     "exclude": ["**/node_modules/**", "**/dist/**"],
     "vueCompilerOptions": {
