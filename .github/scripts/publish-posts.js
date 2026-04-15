@@ -60,6 +60,10 @@ async function publishScheduledPosts() {
     } else {
         console.log(`\n🎉 Successfully published ${publishedCount} post(s)!`);
     }
+
+    if (process.env.GITHUB_OUTPUT) {
+        fs.appendFileSync(process.env.GITHUB_OUTPUT, `published_count=${publishedCount}\n`);
+    }
 }
 
 publishScheduledPosts().catch((error) => {
