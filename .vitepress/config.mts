@@ -179,7 +179,7 @@ export default async () => {
             },
             copyrightFrom: '2025',
         } as any,
-        srcExclude: ['README.md'],
+        srcExclude: ['README.md', 'drafts/**'],
         ignoreDeadLinks: [`/${rssFileName}`],
         vite: {
             plugins: [UnoCSS(), RssPlugin(rssOptions)],
