@@ -30,6 +30,16 @@ const rssOptions: RSSOptions = {
 // https://vitepress.dev/reference/site-config
 export default async () => {
     const { posts, postsTotal, pagesTotal, pageSize } = await getPosts();
+    const {
+        posts: devPosts,
+        postsTotal: devPostsTotal,
+        pagesTotal: devPagesTotal,
+    } = await getPosts({ section: 'dev' });
+    const {
+        posts: lifePosts,
+        postsTotal: lifePostsTotal,
+        pagesTotal: lifePagesTotal,
+    } = await getPosts({ section: 'life' });
 
     return defineConfig({
         title,
@@ -41,7 +51,7 @@ export default async () => {
         cacheDir: './node_modules/vitepress_cache',
         srcDir: `./${GLOBAL_CONFIG.srcDirName}`,
         lastUpdated: true,
-        appearance: false,
+        appearance: 'dark',
         sitemap: {
             hostname,
         },
@@ -101,13 +111,29 @@ export default async () => {
                 postsTotal,
                 pagesTotal,
             },
+            devPosts,
+            devPage: {
+                size: pageSize,
+                postsTotal: devPostsTotal,
+                pagesTotal: devPagesTotal,
+            },
+            lifePosts,
+            lifePage: {
+                size: pageSize,
+                postsTotal: lifePostsTotal,
+                pagesTotal: lifePagesTotal,
+            },
             website: 'https://hsiu.soy', //copyright link
             logo: '/avatar-pixel-v2-mini.jpg',
             comment: {
                 repo: 'wen-hsiu-hsu/the-blog',
                 issueTerm: 'pathname',
             },
-            nav: [{ text: '關於我', link: '/pages/about' }],
+            nav: [
+                { text: 'Dev', link: '/dev/' },
+                { text: 'Life', link: '/life/' },
+                { text: '關於我', link: '/pages/about' },
+            ],
             search: {
                 provider: 'local',
             },

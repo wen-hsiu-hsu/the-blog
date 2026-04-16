@@ -8,7 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DRAFTS_DIR = path.join(__dirname, '../../articles/drafts');
-const POSTS_DIR = path.join(__dirname, '../../articles/posts');
+const DEV_DIR = path.join(__dirname, '../../articles/dev');
+const LIFE_DIR = path.join(__dirname, '../../articles/life');
 
 async function publishScheduledPosts() {
     console.log('🔍 Checking for scheduled posts...');
@@ -47,7 +48,10 @@ async function publishScheduledPosts() {
         // 如果文章日期 <= 今天，則發布
         if (postDate <= today) {
             const fileName = path.basename(draftPath);
-            const destPath = path.join(POSTS_DIR, fileName);
+            const section = frontMatter.section ||
+                (frontMatter.category === '生活亂談' ? 'life' : 'dev');
+            const destDir = section === 'life' ? LIFE_DIR : DEV_DIR;
+            const destPath = path.join(destDir, fileName);
 
             await fs.move(draftPath, destPath);
             console.log(`✅ Published: ${fileName}`);

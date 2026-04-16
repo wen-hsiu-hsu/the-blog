@@ -16,6 +16,6 @@ const { theme, params } = useData();
 const perPage = theme.value.page.size
 const currentPage = Number(params.value.page)
 const pagesTotal = theme.value.page.pagesTotal;
-const currentPosts = theme.value.posts.slice((currentPage - 1) * perPage - 1,(currentPage) * perPage - 1)
+const currentPosts = theme.value.posts.slice((currentPage - 1) * perPage, currentPage * perPage)
 </script>
 <Page :posts="currentPosts" :pageCurrent="currentPage" :pagesNum="pagesTotal" />

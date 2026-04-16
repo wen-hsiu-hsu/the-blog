@@ -5,11 +5,20 @@ import GLOBAL_CONFIG from './../global-config';
 
 const pageSize = 10; // 每頁顯示的文章數量
 
-async function getPosts() {
-    const paths = await globby([GLOBAL_CONFIG.srcDirName + '/posts/**.md']);
-    const postsTotal = paths.length;
+type Section = 'dev' | 'life';
 
-    const posts = await Promise.all(
+interface GetPostsOptions {
+    section?: Section;
+}
+
+async function getPosts(options: GetPostsOptions = {}) {
+    const paths = await globby([
+        `${GLOBAL_CONFIG.srcDirName}/dev/*.md`,
+        `${GLOBAL_CONFIG.srcDirName}/life/*.md`,
+        `!**/index.md`,
+    ]);
+
+    const allPosts = await Promise.all(
         paths.map(async (item) => {
             const content = await fs.readFile(item, 'utf-8');
             const { data } = matter(content);
@@ -22,9 +31,14 @@ async function getPosts() {
             };
         }),
     );
-    posts.sort(_compareDate as any);
-    posts.sort(_comparePin as any);
+    allPosts.sort(_compareDate as any);
+    allPosts.sort(_comparePin as any);
 
+    const posts = options.section
+        ? allPosts.filter((p) => p.frontMatter.section === options.section)
+        : allPosts;
+
+    const postsTotal = posts.length;
     const pagesTotal =
         postsTotal % pageSize === 0 ? postsTotal / pageSize : Math.floor(postsTotal / pageSize) + 1;
 

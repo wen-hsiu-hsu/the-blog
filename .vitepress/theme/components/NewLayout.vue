@@ -1,5 +1,5 @@
 <template>
-    <Layout>
+    <Layout :class="{ 'section-life': isLifeSection }">
         <template #doc-before>
             <PostMeta />
         </template>
@@ -36,8 +36,15 @@ import PostSupports from './layout/PostSupports.vue';
 import NotFoundPage from './page/NotFoundPage.vue';
 import BaseAdUnit from './base/BaseAdUnit.vue';
 import { useRoute, useData } from 'vitepress';
+import { computed, watchEffect } from 'vue';
 
 const { Layout } = DefaultTheme;
 const route = useRoute();
-const { frontmatter, theme } = useData();
+const { frontmatter, theme, isDark } = useData();
+
+const isLifeSection = computed(() => route.path.startsWith('/life'));
+
+watchEffect(() => {
+    isDark.value = !isLifeSection.value;
+});
 </script>
