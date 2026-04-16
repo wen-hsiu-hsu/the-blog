@@ -13,9 +13,10 @@ interface GetPostsOptions {
 
 async function getPosts(options: GetPostsOptions = {}) {
     const paths = await globby([
-        `${GLOBAL_CONFIG.srcDirName}/dev/*.md`,
-        `${GLOBAL_CONFIG.srcDirName}/life/*.md`,
+        `${GLOBAL_CONFIG.srcDirName}/dev/**/*.md`,
+        `${GLOBAL_CONFIG.srcDirName}/life/**/*.md`,
         `!**/index.md`,
+        `!**/page/**`,
     ]);
 
     const allPosts = await Promise.all(

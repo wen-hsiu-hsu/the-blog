@@ -19,8 +19,8 @@ async function publishScheduledPosts() {
     const today = now.toISOString().split('T')[0];
     console.log(`📅 Current date: ${today} (${now.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })})`);
 
-    // 找到所有 drafts 中的 markdown 檔案
-    const draftPaths = await globby([`${DRAFTS_DIR}/*.md`]);
+    // 找到所有 drafts 中的 markdown 檔案（包含子目錄）
+    const draftPaths = await globby([`${DRAFTS_DIR}/**/*.md`]);
 
     if (draftPaths.length === 0) {
         console.log('📭 No draft posts found.');
@@ -47,14 +47,16 @@ async function publishScheduledPosts() {
 
         // 如果文章日期 <= 今天，則發布
         if (postDate <= today) {
-            const fileName = path.basename(draftPath);
+            // 保留相對於 drafts 目錄的子路徑（支援系列子目錄）
+            const relPath = path.relative(DRAFTS_DIR, draftPath);
             const section = frontMatter.section ||
                 (frontMatter.category === '生活亂談' ? 'life' : 'dev');
             const destDir = section === 'life' ? LIFE_DIR : DEV_DIR;
-            const destPath = path.join(destDir, fileName);
+            const destPath = path.join(destDir, relPath);
 
+            await fs.ensureDir(path.dirname(destPath));
             await fs.move(draftPath, destPath);
-            console.log(`✅ Published: ${fileName}`);
+            console.log(`✅ Published: ${relPath}`);
             publishedCount++;
         }
     }

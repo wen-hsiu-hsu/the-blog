@@ -139,9 +139,9 @@
                         withBase(
                             i === 1
                                 ? pageBase === '/page/'
-                                    ? '/index.html'
+                                    ? '/'
                                     : pageBase.replace('/page/', '/')
-                                : `${pageBase}${i}.html`,
+                                : `${pageBase}${i}`,
                         )
                     "
                 >

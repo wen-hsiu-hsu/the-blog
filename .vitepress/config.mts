@@ -205,7 +205,7 @@ export default async () => {
             },
             copyrightFrom: '2025',
         } as any,
-        srcExclude: ['README.md', 'CLAUDE.md', 'rules/**', 'drafts/**'],
+        srcExclude: ['README.md', 'CLAUDE.md', 'rules/**', 'docs/**', 'drafts/**'],
         ignoreDeadLinks: [`/${rssFileName}`],
         vite: {
             plugins: [UnoCSS(), RssPlugin(rssOptions)],
