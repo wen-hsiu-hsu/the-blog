@@ -135,3 +135,12 @@ articles/drafts/flat-post.md                   → 發布後: dev/flat-post.md
 | `.vitepress/theme/components/page/Page.vue` | 文章列表 + 分頁元件 |
 | `articles/dev/page/[page].paths.ts` | 動態分頁路由產生 |
 | `.github/scripts/publish-posts.js` | 草稿自動發布腳本 |
+| `.github/workflows/deploy.yml` | 測試 + 部署 workflow |
+| `.github/workflows/auto-publish.yml` | 定時草稿發布 workflow |
+
+---
+
+## 相關文件
+
+- [ci-cd.md](./ci-cd.md) — 部署流程、Secrets 設定、Cloudflare Pages 注意事項
+- [testing.md](./testing.md) — 測試工具與執行方式
