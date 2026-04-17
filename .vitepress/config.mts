@@ -132,7 +132,7 @@ export default async () => {
             nav: [
                 { text: 'Dev', link: '/dev/' },
                 { text: 'Life', link: '/life/' },
-                { text: '關於我', link: '/pages/about' },
+                { text: '關於我', link: 'https://resume.hsiu.soy/', target: '_blank' },
             ],
             search: {
                 provider: 'local',

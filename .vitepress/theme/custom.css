@@ -52,8 +52,8 @@
 .title a {
     color: var(--bt-theme-title) !important;
 }
-.content a[rel~='noreferrer']:link,
-a[rel~='noreferrer']:visited {
+.content a[rel~='noreferrer']:not(.VPNavBarMenuLink):link,
+a[rel~='noreferrer']:not(.VPNavBarMenuLink):visited {
     color: var(--vp-c-brand);
     font-weight: 500 !important;
     border-bottom: 1px solid var(--vp-c-brand);
