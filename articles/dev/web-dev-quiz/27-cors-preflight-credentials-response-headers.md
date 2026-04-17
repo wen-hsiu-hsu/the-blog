@@ -29,12 +29,12 @@ Access-Control-Expose-Headers: X-Custom-Header
 Access-Control-Max-Age: 600
 ```
 
-[1] A preflight request is required
-[2] Only requests from https://www.website.com are allowed
-[3] Requests with cookies are allowed
-[4] The actual response is cached for 600ms
-[5] X-Custom-Header will be the only included response header
-[6] GET, POST, PATCH and PUT methods are allowed, but not DELETE
+- [1] A preflight request is required
+- [2] Only requests from https://www.website.com are allowed
+- [3] Requests with cookies are allowed
+- [4] The actual response is cached for 600ms
+- [5] X-Custom-Header will be the only included response header
+- [6] GET, POST, PATCH and PUT methods are allowed, but not DELETE
 
 ## CORS
 
