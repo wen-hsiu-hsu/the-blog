@@ -13,10 +13,9 @@ date: 2021-02-22
 
 # 不負責任的 JavaScript 計算機 | JS 地下城 - 003
 
-> -   BOSS 弱點【特定技術】數字位數過多時，不能因此而破版，計算機功能皆須齊全
-> -   【自我學習】請在此關卡中「自學一個你原本不太會的技巧」，投稿時分享你透過哪些資源學習，並寫範例程式碼講解該技巧，以及你如何應用在此關卡上。
->
-> -   UI 設計稿
+> - BOSS 弱點【特定技術】數字位數過多時，不能因此而破版，計算機功能皆須齊全
+> - 【自我學習】請在此關卡中「自學一個你原本不太會的技巧」，投稿時分享你透過哪些資源學習，並寫範例程式碼講解該技巧，以及你如何應用在此關卡上。
+> - UI 設計稿
 
 <img src="https://i.imgur.com/xhyJDR7.png" alt="UI 設計稿" />
 
@@ -54,14 +53,14 @@ date: 2021-02-22
 當使用者按數字的時候會將按下的數字依序放入代表加值區的陣列，其中包含邏輯的運算，例如小數點是否已經存在、目前陣列可以再加上數字零嗎。當使用者按下運算符號(加減乘除甚至等於)進入下一階段。
 <br>
 
--   加值區的陣列裡面每一個值只能是一個數字或是小數點。
+- 加值區的陣列裡面每一個值只能是一個數字或是小數點。
 
 ```javascript
 let number = [1, 2, 3, 4, '.', 5, 6];
 // 上面這樣實際上就是 1234.56
 ```
 
--   實際寫法會像下面這樣 - 這邊只是示範監聽一個按鈕，實際上使用會用事件代理的方式監聽整個區塊 - function 的地方建議還是要拉出來寫喔~
+- 實際寫法會像下面這樣 - 這邊只是示範監聽一個按鈕，實際上使用會用事件代理的方式監聽整個區塊 - function 的地方建議還是要拉出來寫喔~
 
 HTML
 
@@ -132,8 +131,8 @@ let formula = [
 不細講我的程式了，反正這麼難看不看也罷 XD，前後兩個版本時間相差了半年左右，中間補了不少知識，應該是有進步不少(吧
 總之這個題目學到了
 
--   物件導向的基礎運用
--   一點點點點的 Function Programing
+- 物件導向的基礎運用
+- 一點點點點的 Function Programing
 
 <br>
 <hr>
@@ -141,15 +140,14 @@ let formula = [
 
 ## 最後附上連結，如下
 
--   計算機
+- 計算機
+    - [Github Source code](https://github.com/wen-hsiu-hsu/hex_jsDungeon/blob/master/app/assets/js/js003.js)
+    - [Github Page](https://wen-hsiu-hsu.github.io/hex_jsDungeon/jsDun-003.html)
 
-    -   [Github Source code](https://github.com/wen-hsiu-hsu/hex_jsDungeon/blob/master/app/assets/js/js003.js)
-    -   [Github Page](https://wen-hsiu-hsu.github.io/hex_jsDungeon/jsDun-003.html)
-
--   個人連結
-    -   [Github @kevinHWS](https://github.com/wen-hsiu-hsu)
-    -   [JS 地下城網站首頁](https://wen-hsiu-hsu.github.io/hex_jsDungeon/)
-        -   歡迎來看看其他的 JS 作品
+- 個人連結
+    - [Github @kevinHWS](https://github.com/wen-hsiu-hsu)
+    - [JS 地下城網站首頁](https://wen-hsiu-hsu.github.io/hex_jsDungeon/)
+        - 歡迎來看看其他的 JS 作品
 
 <br>
 

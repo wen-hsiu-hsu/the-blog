@@ -1,5 +1,11 @@
 <template>
-    <Layout :class="{ 'section-life': isLifeSection, 'section-dev': isDevSection, 'section-other': isOtherSection }">
+    <Layout
+        :class="{
+            'section-life': isLifeSection,
+            'section-dev': isDevSection,
+            'section-other': isOtherSection,
+        }"
+    >
         <template #doc-before>
             <PostMeta />
         </template>
@@ -48,10 +54,13 @@ const isLifeSection = computed(() => route.path.startsWith('/life'));
 const isDevSection = computed(() => route.path.startsWith('/dev'));
 const isOtherSection = computed(() => !isLifeSection.value && !isDevSection.value);
 
-const devCredit = 'Photo by <a href="https://unsplash.com/@fedechanw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Federica Galli</a> on <a href="https://unsplash.com/photos/crt-monitor-turned-off-aiqKc07b5PA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
-const lifeCredit = 'Photo by <a href="https://unsplash.com/@rirri01?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rirri</a> on <a href="https://unsplash.com/photos/white-and-blue-book-on-white-table-fOyNfubusxE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
+const devCredit =
+    'Photo by <a href="https://unsplash.com/@fedechanw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Federica Galli</a> on <a href="https://unsplash.com/photos/crt-monitor-turned-off-aiqKc07b5PA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
+const lifeCredit =
+    'Photo by <a href="https://unsplash.com/@rirri01?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rirri</a> on <a href="https://unsplash.com/photos/white-and-blue-book-on-white-table-fOyNfubusxE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
 
-const otherCredit = 'Photo by <a href="https://unsplash.com/@aramgrg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Aram</a> on <a href="https://unsplash.com/photos/leafless-tree-on-snow-covered-ground-2TzpDe_-j6o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
+const otherCredit =
+    'Photo by <a href="https://unsplash.com/@aramgrg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Aram</a> on <a href="https://unsplash.com/photos/leafless-tree-on-snow-covered-ground-2TzpDe_-j6o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
 
 const bgCredit = computed(() => {
     if (isDevSection.value) return devCredit;

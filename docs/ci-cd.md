@@ -12,6 +12,7 @@
 ### `deploy.yml`（測試 + 部署）
 
 觸發條件：
+
 - push 到 `master`
 - PR 針對 `master`（只跑測試，不部署）
 
@@ -52,11 +53,11 @@ push to master
 
 在 repo Settings > Secrets and variables > Actions 設定：
 
-| Secret | 說明 |
-|--------|------|
-| `CLOUDFLARE_API_TOKEN` | CF My Profile > API Tokens，需要 Cloudflare Pages: Edit 權限 |
-| `CLOUDFLARE_ACCOUNT_ID` | CF Dashboard 右側邊欄 Account ID |
-| `CF_PAGES_PROJECT_NAME` | Cloudflare Pages 的 project 名稱 |
+| Secret                  | 說明                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| `CLOUDFLARE_API_TOKEN`  | CF My Profile > API Tokens，需要 Cloudflare Pages: Edit 權限 |
+| `CLOUDFLARE_ACCOUNT_ID` | CF Dashboard 右側邊欄 Account ID                             |
+| `CF_PAGES_PROJECT_NAME` | Cloudflare Pages 的 project 名稱                             |
 
 ---
 

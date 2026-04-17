@@ -73,6 +73,7 @@ articles/life/**/*.md
 `[page].paths.ts` 呼叫 `getPosts()` 取得 `pagesTotal`，產生 `{ page: 2 }、{ page: 3 } ...` 的 params 清單。
 
 分頁連結由 `Page.vue` 產生，格式：
+
 - 第 1 頁 → `/`（根）或 `/dev/`（section）
 - 第 N 頁 → `${pageBase}${N}`，如 `/dev/page/3`
 
@@ -97,6 +98,7 @@ lifePosts / lifePage   → life 文章，給 /life/ 分頁用
 草稿放在 `articles/drafts/`，被 `srcExclude` 排除，不會出現在網站。
 
 GitHub Actions（`.github/workflows/auto-publish.yml`）每天台北時間 08:00 執行：
+
 1. 掃描 `drafts/**/*.md`
 2. 讀取每篇的 `date` frontmatter
 3. 若 `date <= today`，依 `section` frontmatter（預設 `dev`）移動到對應目錄
@@ -128,15 +130,15 @@ articles/drafts/flat-post.md                   → 發布後: dev/flat-post.md
 
 ## 關鍵檔案
 
-| 檔案 | 用途 |
-|------|------|
-| `.vitepress/config.mts` | VitePress 設定、build 時注入文章資料 |
-| `.vitepress/theme/serverUtils.ts` | `getPosts()` 文章掃描與排序 |
-| `.vitepress/theme/components/page/Page.vue` | 文章列表 + 分頁元件 |
-| `articles/dev/page/[page].paths.ts` | 動態分頁路由產生 |
-| `.github/scripts/publish-posts.js` | 草稿自動發布腳本 |
-| `.github/workflows/deploy.yml` | 測試 + 部署 workflow |
-| `.github/workflows/auto-publish.yml` | 定時草稿發布 workflow |
+| 檔案                                        | 用途                                 |
+| ------------------------------------------- | ------------------------------------ |
+| `.vitepress/config.mts`                     | VitePress 設定、build 時注入文章資料 |
+| `.vitepress/theme/serverUtils.ts`           | `getPosts()` 文章掃描與排序          |
+| `.vitepress/theme/components/page/Page.vue` | 文章列表 + 分頁元件                  |
+| `articles/dev/page/[page].paths.ts`         | 動態分頁路由產生                     |
+| `.github/scripts/publish-posts.js`          | 草稿自動發布腳本                     |
+| `.github/workflows/deploy.yml`              | 測試 + 部署 workflow                 |
+| `.github/workflows/auto-publish.yml`        | 定時草稿發布 workflow                |
 
 ---
 

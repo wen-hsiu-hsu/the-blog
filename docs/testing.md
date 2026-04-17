@@ -14,10 +14,10 @@ npm test
 
 ## 測試範圍
 
-| 測試檔 | 測試對象 |
-|--------|----------|
-| `.vitepress/theme/serverUtils.test.ts` | 分頁計算、section 篩選、`convertDate()`、pin 排序 |
-| `.github/scripts/publish-posts.test.ts` | `deriveSection()`：草稿發布時 section 推導邏輯 |
+| 測試檔                                  | 測試對象                                          |
+| --------------------------------------- | ------------------------------------------------- |
+| `.vitepress/theme/serverUtils.test.ts`  | 分頁計算、section 篩選、`convertDate()`、pin 排序 |
+| `.github/scripts/publish-posts.test.ts` | `deriveSection()`：草稿發布時 section 推導邏輯    |
 
 ---
 

@@ -6,19 +6,19 @@
 
 ## 必填欄位
 
-| 欄位 | 型別 | 說明 |
-|------|------|------|
-| `title` | string | 文章標題，用於列表、og:title、schema.org |
-| `description` | string | 文章摘要，用於 meta description、og:description |
-| `date` | `YYYY-MM-DD` | 發布日期，用於排序、草稿自動發布判斷、og:published_time |
-| `category` | string | 文章分類（如 `JavaScript`、`Life`），用於 article:section meta |
-| `section` | `dev` \| `life` | 所屬頻道，決定文章出現在哪個列表；**必須明確填寫**，否則文章不會出現在任何列表中（見注意事項） |
-| `tags` | string[] | 標籤列表，參見 `rules/tags.md` |
+| 欄位          | 型別            | 說明                                                                                           |
+| ------------- | --------------- | ---------------------------------------------------------------------------------------------- |
+| `title`       | string          | 文章標題，用於列表、og:title、schema.org                                                       |
+| `description` | string          | 文章摘要，用於 meta description、og:description                                                |
+| `date`        | `YYYY-MM-DD`    | 發布日期，用於排序、草稿自動發布判斷、og:published_time                                        |
+| `category`    | string          | 文章分類（如 `JavaScript`、`Life`），用於 article:section meta                                 |
+| `section`     | `dev` \| `life` | 所屬頻道，決定文章出現在哪個列表；**必須明確填寫**，否則文章不會出現在任何列表中（見注意事項） |
+| `tags`        | string[]        | 標籤列表，參見 `rules/tags.md`                                                                 |
 
 ## 選填欄位
 
-| 欄位 | 型別 | 說明 |
-|------|------|------|
+| 欄位  | 型別   | 說明                                           |
+| ----- | ------ | ---------------------------------------------- |
 | `pin` | number | 置頂權重，數值越高越靠前（在日期排序之前生效） |
 
 ---
@@ -33,8 +33,8 @@ date: 2025-03-10
 category: CSS
 section: dev
 tags:
-  - css
-  - layout
+    - css
+    - layout
 ---
 ```
 

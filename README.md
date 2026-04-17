@@ -15,43 +15,43 @@
 
 ## ✨ 特色功能
 
--   🎨 **自定義主題設計** - 基於 VitePress 的完全客製化主題
--   📄 **自動分頁系統** - 智能分頁，每頁展示 10 篇文章
--   🏷️ **標籤與分類** - 完整的文章分類和標籤系統
--   📅 **時間線歸檔** - 按年份組織的文章歸檔
--   📊 **閱讀進度** - 實時閱讀進度指示器
--   💬 **留言系統** - 整合 Giscus 評論功能
--   🔍 **本地搜索** - 快速的站內搜索引擎
--   📡 **RSS 訂閱** - 支援 RSS feed 訂閱
--   🌙 **深色模式** - 完整支援深色主題切換
--   📈 **數據分析** - Google Analytics + Cloudflare Analytics
--   🎯 **SEO 優化** - Open Graph + JSON-LD 結構化數據
--   ⚡ **響應式設計** - 完美適配各種螢幕尺寸
+- 🎨 **自定義主題設計** - 基於 VitePress 的完全客製化主題
+- 📄 **自動分頁系統** - 智能分頁，每頁展示 10 篇文章
+- 🏷️ **標籤與分類** - 完整的文章分類和標籤系統
+- 📅 **時間線歸檔** - 按年份組織的文章歸檔
+- 📊 **閱讀進度** - 實時閱讀進度指示器
+- 💬 **留言系統** - 整合 Giscus 評論功能
+- 🔍 **本地搜索** - 快速的站內搜索引擎
+- 📡 **RSS 訂閱** - 支援 RSS feed 訂閱
+- 🌙 **深色模式** - 完整支援深色主題切換
+- 📈 **數據分析** - Google Analytics + Cloudflare Analytics
+- 🎯 **SEO 優化** - Open Graph + JSON-LD 結構化數據
+- ⚡ **響應式設計** - 完美適配各種螢幕尺寸
 
 ## 🛠️ 技術棧
 
 ### 核心框架
 
--   **[VitePress](https://vitepress.dev/)** `1.6.3` - 靜態站點生成器
--   **[Vue 3](https://vuejs.org/)** `3.5.13` - 漸進式 JavaScript 框架
--   **[Vite](https://vitejs.dev/)** - 下一代前端構建工具
+- **[VitePress](https://vitepress.dev/)** `1.6.3` - 靜態站點生成器
+- **[Vue 3](https://vuejs.org/)** `3.5.13` - 漸進式 JavaScript 框架
+- **[Vite](https://vitejs.dev/)** - 下一代前端構建工具
 
 ### 樣式與 UI
 
--   **[UnoCSS](https://unocss.dev/)** `66.1.0-beta.8` - 原子化 CSS 引擎（Tailwind v4 預設）
--   **Noto Serif TC** - 中文字型
+- **[UnoCSS](https://unocss.dev/)** `66.1.0-beta.8` - 原子化 CSS 引擎（Tailwind v4 預設）
+- **Noto Serif TC** - 中文字型
 
 ### 工具庫
 
--   **[@vueuse/core](https://vueuse.org/)** `13.0.0` - Vue 組合式 API 工具集
--   **[date-fns](https://date-fns.org/)** `4.1.0` - 現代化日期處理函式庫
--   **[gray-matter](https://github.com/jonschlinkert/gray-matter)** `4.0.3` - Markdown Frontmatter 解析器
--   **[globby](https://github.com/sindresorhus/globby)** `14.1.0` - 檔案路徑匹配工具
+- **[@vueuse/core](https://vueuse.org/)** `13.0.0` - Vue 組合式 API 工具集
+- **[date-fns](https://date-fns.org/)** `4.1.0` - 現代化日期處理函式庫
+- **[gray-matter](https://github.com/jonschlinkert/gray-matter)** `4.0.3` - Markdown Frontmatter 解析器
+- **[globby](https://github.com/sindresorhus/globby)** `14.1.0` - 檔案路徑匹配工具
 
 ### 插件與增強
 
--   **vitepress-plugin-rss** `0.3.1` - RSS feed 生成
--   **Giscus** - GitHub Issues 驅動的留言系統
+- **vitepress-plugin-rss** `0.3.1` - RSS feed 生成
+- **Giscus** - GitHub Issues 驅動的留言系統
 
 ## 📁 專案結構
 
@@ -83,8 +83,8 @@ the-blog/
 
 ### 環境需求
 
--   Node.js 21.5.0 或更高版本
--   npm 或 yarn 或 pnpm
+- Node.js 21.5.0 或更高版本
+- npm 或 yarn 或 pnpm
 
 ### 安裝依賴
 
@@ -253,10 +253,10 @@ export default defineConfig({
 
 ### 建議部署平台
 
--   **[Vercel](https://vercel.com/)** - 零配置部署（推薦）
--   **[Netlify](https://www.netlify.com/)** - 自動化部署
--   **[GitHub Pages](https://pages.github.com/)** - 免費靜態託管
--   **[Cloudflare Pages](https://pages.cloudflare.com/)** - 全球 CDN
+- **[Vercel](https://vercel.com/)** - 零配置部署（推薦）
+- **[Netlify](https://www.netlify.com/)** - 自動化部署
+- **[GitHub Pages](https://pages.github.com/)** - 免費靜態託管
+- **[Cloudflare Pages](https://pages.cloudflare.com/)** - 全球 CDN
 
 ### Vercel 部署設定
 
@@ -272,8 +272,8 @@ export default defineConfig({
 
 如需使用分析工具，設定以下環境變數：
 
--   `VITE_GA_ID` - Google Analytics 追蹤 ID
--   其他自定義環境變數...
+- `VITE_GA_ID` - Google Analytics 追蹤 ID
+- 其他自定義環境變數...
 
 ## 📊 主要組件說明
 
@@ -281,49 +281,49 @@ export default defineConfig({
 
 ### 佈局組件
 
--   `NewLayout.vue` - 自定義頁面佈局
+- `NewLayout.vue` - 自定義頁面佈局
 
 ### 基礎組件
 
--   `BaseTag` - 標籤按鈕
--   `BaseIcon` - 圖標組件
--   `BaseButton` - 按鈕組件
--   `BaseFlipCard` - 翻轉卡片（作者頭像）
--   `BaseSidebar` - 側邊欄容器
--   `BaseTreeview` - 樹形結構展示
+- `BaseTag` - 標籤按鈕
+- `BaseIcon` - 圖標組件
+- `BaseButton` - 按鈕組件
+- `BaseFlipCard` - 翻轉卡片（作者頭像）
+- `BaseSidebar` - 側邊欄容器
+- `BaseTreeview` - 樹形結構展示
 
 ### 文章相關組件
 
--   `PostMeta` - 文章元資料（日期、標籤、閱讀時間）
--   `PostSupports` - 點讚/收藏按鈕
--   `PostComment` - Giscus 留言系統
--   `PostNextPrevLinks` - 上下篇文章導航
--   `PostSuggestions` - 相關文章推薦
--   `PostReadingProgressIndicator` - 閱讀進度條
+- `PostMeta` - 文章元資料（日期、標籤、閱讀時間）
+- `PostSupports` - 點讚/收藏按鈕
+- `PostComment` - Giscus 留言系統
+- `PostNextPrevLinks` - 上下篇文章導航
+- `PostSuggestions` - 相關文章推薦
+- `PostReadingProgressIndicator` - 閱讀進度條
 
 ### 頁面組件
 
--   `Page` - 主文章列表頁
--   `Tags` - 標籤頁面
--   `Category` - 分類頁面
--   `Archives` - 歸檔頁面
--   `NotFoundPage` - 404 頁面
+- `Page` - 主文章列表頁
+- `Tags` - 標籤頁面
+- `Category` - 分類頁面
+- `Archives` - 歸檔頁面
+- `NotFoundPage` - 404 頁面
 
 ## 🤝 作者資訊
 
 **許文修 (Wen-Hsiu Hsu)**
 
--   🎯 職位：前端工程師 / 攝影 / 生活紀錄
--   💡 座右銘：「程式碼之外，還有生活的藝術」
--   🔗 個人網站：[resume.hsiu.soy](https://resume.hsiu.soy)
+- 🎯 職位：前端工程師 / 攝影 / 生活紀錄
+- 💡 座右銘：「程式碼之外，還有生活的藝術」
+- 🔗 個人網站：[resume.hsiu.soy](https://resume.hsiu.soy)
 
 ### 社群連結
 
--   [GitHub](https://github.com/kevinshu1995)
--   [LinkedIn](https://www.linkedin.com/in/kevin-hws/)
--   [Threads](https://www.threads.net/@kevinshu1995)
--   [Photography Gallery](https://photography.hsiu.soy/)
--   [Email](mailto:kevin.hsu.hws@gmail.com)
+- [GitHub](https://github.com/kevinshu1995)
+- [LinkedIn](https://www.linkedin.com/in/kevin-hws/)
+- [Threads](https://www.threads.net/@kevinshu1995)
+- [Photography Gallery](https://photography.hsiu.soy/)
+- [Email](mailto:kevin.hsu.hws@gmail.com)
 
 ## 📄 授權
 
@@ -333,9 +333,9 @@ export default defineConfig({
 
 ## 🙏 致謝
 
--   [VitePress](https://vitepress.dev/) - 強大的靜態站點生成器
--   [Vue.js](https://vuejs.org/) - 漸進式 JavaScript 框架
--   [UnoCSS](https://unocss.dev/) - 即時原子化 CSS 引擎
+- [VitePress](https://vitepress.dev/) - 強大的靜態站點生成器
+- [Vue.js](https://vuejs.org/) - 漸進式 JavaScript 框架
+- [UnoCSS](https://unocss.dev/) - 即時原子化 CSS 引擎
 
 ---
 

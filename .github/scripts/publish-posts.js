@@ -21,7 +21,9 @@ async function publishScheduledPosts() {
     // 取得當前日期（YYYY-MM-DD 格式）
     const now = new Date();
     const today = now.toISOString().split('T')[0];
-    console.log(`📅 Current date: ${today} (${now.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })})`);
+    console.log(
+        `📅 Current date: ${today} (${now.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })})`,
+    );
 
     // 找到所有 drafts 中的 markdown 檔案（包含子目錄）
     const draftPaths = await globby([`${DRAFTS_DIR}/**/*.md`]);
