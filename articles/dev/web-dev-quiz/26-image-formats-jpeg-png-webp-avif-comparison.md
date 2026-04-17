@@ -3,6 +3,7 @@ title: 圖片格式完整比較：JPEG、PNG、WebP、AVIF 的壓縮、透明與
 description: 比較 JPEG、PNG、WebP、AVIF 四種圖片格式的壓縮方式、透明支援與色域能力，涵蓋有損／無損壓縮、Progressive Rendering、HDR、WCG 等特性，釐清各格式的適用場景與限制。
 date: 2026-04-16
 category: 程式筆記
+section: dev
 tags:
     - frontendMasters
     - advancedWebDevelopmentQuiz
