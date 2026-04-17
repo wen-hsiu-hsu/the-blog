@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { convertDate } from './serverUtils'
 
 const pageSize = 10
 
@@ -57,6 +58,77 @@ describe('section filtering', () => {
 
     it('no filter returns all posts', () => {
         expect(posts).toHaveLength(4)
+    })
+})
+
+describe('convertDate', () => {
+    it('already-formatted YYYY-MM-DD string → unchanged', () => {
+        expect(convertDate('2025-03-10')).toBe('2025-03-10')
+    })
+
+    it('ISO UTC string → YYYY-MM-DD', () => {
+        expect(convertDate('2025-03-10T12:00:00.000Z')).toBe('2025-03-10')
+    })
+
+    it('ISO string with time component → date portion only', () => {
+        expect(convertDate('2025-06-15T00:00:00.000Z')).toBe('2025-06-15')
+    })
+})
+
+describe('pin sort order', () => {
+    type Post = { frontMatter: { date: string; pin?: number } }
+
+    function sortPosts(posts: Post[]): Post[] {
+        const sorted = [...posts]
+        sorted.sort((a, b) => (a.frontMatter.date < b.frontMatter.date ? 1 : -1))
+        sorted.sort((a, b) => {
+            const p1 = a.frontMatter?.pin ?? 0
+            const p2 = b.frontMatter?.pin ?? 0
+            if (p1 === p2) return 0
+            return p1 < p2 ? 1 : -1
+        })
+        return sorted
+    }
+
+    it('pinned post appears before newer unpinned post', () => {
+        const posts: Post[] = [
+            { frontMatter: { date: '2025-05-01' } },           // newer, no pin
+            { frontMatter: { date: '2024-01-01', pin: 1 } },   // older, pinned
+        ]
+        const result = sortPosts(posts)
+        expect(result[0].frontMatter.pin).toBe(1)
+    })
+
+    it('higher pin value wins over lower pin value', () => {
+        const posts: Post[] = [
+            { frontMatter: { date: '2025-01-01', pin: 1 } },
+            { frontMatter: { date: '2025-01-02', pin: 2 } },
+        ]
+        const result = sortPosts(posts)
+        expect(result[0].frontMatter.pin).toBe(2)
+    })
+
+    it('posts without pin sort by date descending', () => {
+        const posts: Post[] = [
+            { frontMatter: { date: '2024-01-01' } },
+            { frontMatter: { date: '2025-06-01' } },
+            { frontMatter: { date: '2023-12-31' } },
+        ]
+        const result = sortPosts(posts)
+        expect(result.map((p) => p.frontMatter.date)).toEqual([
+            '2025-06-01',
+            '2024-01-01',
+            '2023-12-31',
+        ])
+    })
+
+    it('same pin value → sorted by date descending', () => {
+        const posts: Post[] = [
+            { frontMatter: { date: '2024-03-01', pin: 2 } },
+            { frontMatter: { date: '2024-06-01', pin: 2 } },
+        ]
+        const result = sortPosts(posts)
+        expect(result[0].frontMatter.date).toBe('2024-06-01')
     })
 })
 

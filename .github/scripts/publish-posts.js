@@ -8,6 +8,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DRAFTS_DIR = path.join(__dirname, '../../articles/drafts');
+
+export function deriveSection({ section, category } = {}) {
+    return section || (category === '生活亂談' ? 'life' : 'dev');
+}
 const DEV_DIR = path.join(__dirname, '../../articles/dev');
 const LIFE_DIR = path.join(__dirname, '../../articles/life');
 
@@ -49,8 +53,7 @@ async function publishScheduledPosts() {
         if (postDate <= today) {
             // 保留相對於 drafts 目錄的子路徑（支援系列子目錄）
             const relPath = path.relative(DRAFTS_DIR, draftPath);
-            const section = frontMatter.section ||
-                (frontMatter.category === '生活亂談' ? 'life' : 'dev');
+            const section = deriveSection(frontMatter);
             const destDir = section === 'life' ? LIFE_DIR : DEV_DIR;
             const destPath = path.join(destDir, relPath);
 

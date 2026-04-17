@@ -14,11 +14,10 @@ npm test
 
 ## 測試範圍
 
-目前測試涵蓋分頁邏輯（`serverUtils.ts`）：
-
 | 測試檔 | 測試對象 |
 |--------|----------|
-| `__tests__/pagination.test.ts` | `getPaginationRange()`：分頁範圍計算 |
+| `.vitepress/theme/serverUtils.test.ts` | 分頁計算、section 篩選、`convertDate()`、pin 排序 |
+| `.github/scripts/publish-posts.test.ts` | `deriveSection()`：草稿發布時 section 推導邏輯 |
 
 ---
 
@@ -33,5 +32,7 @@ npm test
 
 ## 新增測試
 
-測試檔放在 `__tests__/` 目錄，命名為 `*.test.ts`。
-Vitest 會自動掃描，不需要額外設定。
+測試檔與被測模組放在同一目錄（co-located），命名為 `*.test.ts`。
+Vitest 設定 `include: ['**/*.test.ts']` 會自動掃描，不需要額外設定。
+
+> 注意：`.js` 測試檔不會被掃描，請一律使用 `.test.ts`。

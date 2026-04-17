@@ -144,3 +144,4 @@ articles/drafts/flat-post.md                   → 發布後: dev/flat-post.md
 
 - [ci-cd.md](./ci-cd.md) — 部署流程、Secrets 設定、Cloudflare Pages 注意事項
 - [testing.md](./testing.md) — 測試工具與執行方式
+- [../rules/frontmatter.md](../rules/frontmatter.md) — 文章 front matter 必填／選填欄位規格

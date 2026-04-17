@@ -23,7 +23,7 @@ async function getPosts(options: GetPostsOptions = {}) {
         paths.map(async (item) => {
             const content = await fs.readFile(item, 'utf-8');
             const { data } = matter(content);
-            data.date = _convertDate(data.date);
+            data.date = convertDate(data.date);
             return {
                 frontMatter: data,
                 regularPath: `/${item
@@ -51,7 +51,7 @@ async function getPosts(options: GetPostsOptions = {}) {
     };
 }
 
-function _convertDate(date = new Date().toString()) {
+export function convertDate(date = new Date().toString()) {
     const json_date = new Date(date).toJSON();
     return json_date.split('T')[0];
 }
