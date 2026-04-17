@@ -58,7 +58,7 @@ watchThrottled(
     position: fixed;
     bottom: 0;
     z-index: 30;
-    background-color: var(--vp-c-bg);
+    background-color: transparent;
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
