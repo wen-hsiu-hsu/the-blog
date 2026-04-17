@@ -1,5 +1,5 @@
 <template>
-    <Layout :class="{ 'section-life': isLifeSection }">
+    <Layout :class="{ 'section-life': isLifeSection, 'section-dev': isDevSection, 'section-other': isOtherSection }">
         <template #doc-before>
             <PostMeta />
         </template>
@@ -22,6 +22,8 @@
 
     <PostReadingProgressIndicator v-if="!frontmatter.page" />
     <Copyright v-if="!frontmatter.home" />
+
+    <div v-if="bgCredit" class="bg-credit" v-html="bgCredit" />
 </template>
 
 <script setup lang="ts">
@@ -36,15 +38,24 @@ import PostSupports from './layout/PostSupports.vue';
 import NotFoundPage from './page/NotFoundPage.vue';
 import BaseAdUnit from './base/BaseAdUnit.vue';
 import { useRoute, useData } from 'vitepress';
-import { computed, watchEffect } from 'vue';
+import { computed } from 'vue';
 
 const { Layout } = DefaultTheme;
 const route = useRoute();
-const { frontmatter, theme, isDark } = useData();
+const { frontmatter } = useData();
 
 const isLifeSection = computed(() => route.path.startsWith('/life'));
+const isDevSection = computed(() => route.path.startsWith('/dev'));
+const isOtherSection = computed(() => !isLifeSection.value && !isDevSection.value);
 
-watchEffect(() => {
-    isDark.value = !isLifeSection.value;
+const devCredit = 'Photo by <a href="https://unsplash.com/@fedechanw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Federica Galli</a> on <a href="https://unsplash.com/photos/crt-monitor-turned-off-aiqKc07b5PA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
+const lifeCredit = 'Photo by <a href="https://unsplash.com/@rirri01?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rirri</a> on <a href="https://unsplash.com/photos/white-and-blue-book-on-white-table-fOyNfubusxE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
+
+const otherCredit = 'Photo by <a href="https://unsplash.com/@aramgrg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Aram</a> on <a href="https://unsplash.com/photos/leafless-tree-on-snow-covered-ground-2TzpDe_-j6o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
+
+const bgCredit = computed(() => {
+    if (isDevSection.value) return devCredit;
+    if (isLifeSection.value) return lifeCredit;
+    return otherCredit;
 });
 </script>
