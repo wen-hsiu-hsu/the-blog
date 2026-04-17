@@ -135,15 +135,7 @@
                     ]"
                     v-for="i in pagesNum"
                     :key="i"
-                    :href="
-                        withBase(
-                            i === 1
-                                ? pageBase === '/page/'
-                                    ? '/'
-                                    : pageBase.replace('/page/', '/')
-                                : `${pageBase}${i}`,
-                        )
-                    "
+                    :href="withBase(getPaginationLink(i, pageBase))"
                 >
                     <span class="relative top-[-2px]">{{ i }}</span>
                 </a>
@@ -156,6 +148,7 @@
 
 <script lang="ts" setup>
 import { withBase, useData } from 'vitepress';
+import { getPaginationLink } from '../../utils/pagination';
 import { PropType, computed } from 'vue';
 import { initTags, initCategory } from '../../functions';
 import BaseSidebar from './../base/BaseSidebar.vue';
