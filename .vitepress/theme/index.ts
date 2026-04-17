@@ -9,6 +9,7 @@ import Archives from './components/page/Archives.vue';
 import Category from './components/page/Category.vue';
 import Tags from './components/page/Tags.vue';
 import Page from './components/page/Page.vue';
+import BlogSection from './components/page/BlogSection.vue';
 
 // 可重複使用的
 import BaseTag from './components/base/BaseTag.vue';
@@ -32,5 +33,6 @@ export default {
         app.component('Category', Category);
         app.component('Archives', Archives);
         app.component('Page', Page);
+        app.component('BlogSection', BlogSection);
     },
 } satisfies Theme;
