@@ -2,7 +2,7 @@
 title: CSS font-display 五種策略（auto/block/swap/fallback/optional）
 description: 整理 @font-face 的 font-display 五種值，說明 FOIT/FOUT、swap period 差異
 date: 2026-02-17
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - CSS

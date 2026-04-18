@@ -2,7 +2,7 @@
 title: bfcache 是什麼？為什麼 unload 會讓頁面失去 bfcache 資格
 description: 整理 bfcache 的運作概念與事件影響，說明為何 unload 會導致頁面無法使用 bfcache，並提供 pagehide/pageshow 的替代寫法。
 date: 2025-02-15
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - Performance

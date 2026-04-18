@@ -2,7 +2,7 @@
 title: 瀏覽器的呼叫堆疊與事件循環 | Call Stack & Event Loop
 description: 解析 JavaScript 的 Call Stack 與 Event Loop 機制，透過實際程式碼範例說明 Microtask 和 Macrotask 的執行順序，掌握非同步任務的處理邏輯。
 date: 2025-12-04
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - JavaScript

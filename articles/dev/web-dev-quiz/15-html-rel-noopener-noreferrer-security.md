@@ -2,7 +2,7 @@
 title: HTML rel 屬性：noopener 與 noreferrer 的差異及安全性應用
 description: 說明 HTML a 標籤 rel 屬性的各種值，重點探討 noopener 和 noreferrer 在防止 tabnabbing 攻擊和保護用戶隱私中的作用，並說明 Referrer-Policy 預設值的變更及其安全含義。
 date: 2026-01-07
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - HTML

@@ -2,7 +2,7 @@
 title: 渲染流程與合成 | Rendering Pipeline & Compositing
 description: 瀏覽器是如何渲染的呢？聊解了瀏覽器渲染過程可以更明白如何為突破網站效能的瓶頸
 date: 2025-12-02
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - CSS

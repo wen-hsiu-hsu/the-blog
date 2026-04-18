@@ -2,7 +2,7 @@
 title: CSS 選擇器：如何只選中第一個 <li> 元素
 description: 如何使用 CSS 的各種 (pseudo) 選擇器，例如 first-child、first-of-type、> 與 +，並透過程式範例解析如何正確鎖定網頁結構中的第一個 <li> 元素
 date: 2026-02-25
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - CSS

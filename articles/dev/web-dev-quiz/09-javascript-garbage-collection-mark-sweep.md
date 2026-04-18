@@ -2,7 +2,7 @@
 title: JavaScript 垃圾回收機制：理解 Mark and Sweep 演算法與記憶體管理
 description: 了解 JavaScript 的垃圾回收機制（Garbage Collection），說明 Mark and Sweep 演算法的運作原理，開發者在記憶體管理上應該注意的細節，避免記憶體洩漏問題
 date: 2025-12-12
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - JavaScript

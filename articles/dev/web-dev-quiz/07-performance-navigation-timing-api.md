@@ -2,7 +2,7 @@
 title: 從輸入網址到頁面載入：PerformanceNavigationTiming
 description: 解析 PerformanceNavigationTiming API 的各個階段，從文件卸載、DNS 查詢、TCP 連線到 DOM 處理與渲染，說明瀏覽器載入網頁的時間線。適合準備前端面試或想了解 Web 效能監控的開發者。
 date: 2025-12-10
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - JavaScript

@@ -2,7 +2,7 @@
 title: JavaScript 事件傳遞機制：Capturing 與 Bubbling 的執行順序
 description: 說明 JavaScript 的事件傳遞機制，包含事件捕獲 (Capturing) 與事件冒泡 (Bubbling) 的執行順序，以及 stopPropagation 如何阻止事件傳播。透過 Frontend Masters 課程實例，完整理解 addEventListener 的第三個參數與事件傳遞三階段。
 date: 2025-12-15
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - JavaScript

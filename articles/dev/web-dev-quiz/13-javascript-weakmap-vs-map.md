@@ -2,7 +2,7 @@
 title: JavaScript WeakMap 與 Map 的差異及實際應用
 description: 探討 JavaScript WeakMap 的特性與使用場景，包含與 Map 的關鍵差異、垃圾回收機制，以及如何利用 WeakMap 實作 DOM 元素資料儲存和 Class 私有變數的實用範例
 date: 2025-12-17
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - JavaScript

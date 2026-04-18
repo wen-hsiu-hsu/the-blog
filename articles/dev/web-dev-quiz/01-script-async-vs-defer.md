@@ -2,7 +2,7 @@
 title: async vs. defer
 description: HTML 的 script 標籤上 async 與 defer 的差別是什麼
 date: 2025-12-01
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - JavaScript

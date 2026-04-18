@@ -2,7 +2,7 @@
 title: 前端資源預加載：dns-prefetch、preconnect、prefetch、preload
 description: 前端資源預加載的四種技術：dns-prefetch、preconnect、prefetch 與 preload。如何使用這些 Resource Hints 優化網頁效能，提升資源載入速度與使用者體驗。
 date: 2025-12-08
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - HTML

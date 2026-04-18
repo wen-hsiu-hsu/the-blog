@@ -2,7 +2,7 @@
 title: CSS Render Layer
 description: 說明瀏覽器在繪製畫面時 Render Layer 的概念，何種 CSS 屬性會導致元素被「提升」為自己的 Render Layer，以及這樣做對效能的影響與應用場景。
 date: 2026-02-27
-category: 程式筆記
+category: Advanced Web Dev Quiz
 section: dev
 tags:
     - frontendMasters
