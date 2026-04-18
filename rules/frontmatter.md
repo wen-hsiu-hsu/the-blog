@@ -33,8 +33,8 @@ date: 2025-03-10
 category: CSS
 section: dev
 tags:
-    - css
-    - layout
+    - CSS
+    - Layout
 ---
 ```
 
