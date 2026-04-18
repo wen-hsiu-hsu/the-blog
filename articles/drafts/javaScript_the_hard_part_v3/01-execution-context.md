@@ -3,7 +3,7 @@ title: JavaScript 執行原理：執行緒、記憶體與執行環境（Executio
 description: 深入解析 JavaScript 執行時的兩個核心機制：執行緒（Thread of Execution）與記憶體（Memory）。透過程式碼範例，說明全域與函式執行環境的運作方式、parameter 與 argument 的差異，以及區域記憶體的生命週期。
 date: 2026-04-19
 section: dev
-category: 程式筆記
+category: JavaScript Hard Parts v3
 tags:
     - javaScriptTheHardPartsV3
     - frontendMasters
