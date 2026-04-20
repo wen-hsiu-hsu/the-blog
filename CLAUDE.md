@@ -20,6 +20,7 @@
 | `docs/how-this-blog-works.md` | 目錄結構、URL 規則、分頁機制、文章列表產生方式（getPosts）、草稿自動發布          | 修改文章路由、分頁邏輯、新增 section、需要了解整體架構時 |
 | `docs/ci-cd.md`               | GitHub Actions workflows、部署流程、Cloudflare Pages 設定、所需 Secrets、已知限制 | 修改 CI/CD、排查部署問題、設定新環境時                   |
 | `docs/testing.md`             | 測試工具（Vitest）、目前測試涵蓋範圍、如何新增測試                                | 新增或修改測試、排查測試失敗時                           |
+| `docs/obsidian-wikilinks.md`  | Obsidian wikilink 支援說明、語法對照、publish 前檢查機制                          | 使用或修改 wikilink 功能時                               |
 
 ## 程式碼格式化
 

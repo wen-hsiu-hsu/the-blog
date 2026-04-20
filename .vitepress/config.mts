@@ -4,6 +4,13 @@ import GLOBAL_CONFIG from './global-config';
 import UnoCSS from 'unocss/vite';
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss';
 import transformHead from './theme/utils/transformHead';
+import fs from 'fs';
+import path from 'path';
+import {
+    buildWikilinkMap,
+    obsidianWikilinks,
+    type BrokenWikilink,
+} from './plugins/obsidian-wikilinks';
 
 const hostname = 'https://hsiu.soy';
 const title = "Wen-Hsiu's Blog";
@@ -29,6 +36,10 @@ const rssOptions: RSSOptions = {
 
 // https://vitepress.dev/reference/site-config
 export default async () => {
+    const srcDir = path.resolve(__dirname, '../articles');
+    const wikilinkMap = await buildWikilinkMap(srcDir);
+    const brokenWikilinks: BrokenWikilink[] = [];
+
     const { posts, postsTotal, pagesTotal, pageSize } = await getPosts();
     const {
         posts: devPosts,
@@ -205,6 +216,26 @@ export default async () => {
             },
             copyrightFrom: '2025',
         } as any,
+        markdown: {
+            config(md) {
+                md.use(obsidianWikilinks(wikilinkMap, brokenWikilinks));
+            },
+        },
+        buildEnd() {
+            if (brokenWikilinks.length > 0) {
+                console.warn(`\n[wikilink] ⚠ ${brokenWikilinks.length} broken wikilink(s) found:`);
+                brokenWikilinks.forEach(({ slug, file }) => {
+                    console.warn(`  - [[${slug}]] in ${file}`);
+                });
+            }
+            const distDir = path.resolve(__dirname, 'dist');
+            if (fs.existsSync(distDir)) {
+                fs.writeFileSync(
+                    path.join(distDir, 'wikilink-report.json'),
+                    JSON.stringify(brokenWikilinks, null, 2),
+                );
+            }
+        },
         srcExclude: ['README.md', 'CLAUDE.md', 'rules/**', 'docs/**', 'drafts/**'],
         ignoreDeadLinks: [`/${rssFileName}`],
         vite: {

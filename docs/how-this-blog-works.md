@@ -105,6 +105,8 @@ GitHub Actions（`.github/workflows/auto-publish.yml`）每天台北時間 08:00
 4. **保留相對子路徑**：`drafts/web-dev-quiz/26-xxx.md` → `dev/web-dev-quiz/26-xxx.md`
 5. commit & push，觸發重新 deploy
 
+發布前會檢查草稿中的 `[[wikilink]]` 是否都指向已存在的文章。若有 broken wikilink，該草稿會被跳過（不阻擋其他文章）。詳見 [obsidian-wikilinks.md](./obsidian-wikilinks.md)。
+
 ### 新增系列草稿
 
 在 drafts 裡使用與發布目標相同的子目錄結構：
@@ -139,6 +141,7 @@ articles/drafts/flat-post.md                   → 發布後: dev/flat-post.md
 | `.github/scripts/publish-posts.js`          | 草稿自動發布腳本                     |
 | `.github/workflows/deploy.yml`              | 測試 + 部署 workflow                 |
 | `.github/workflows/auto-publish.yml`        | 定時草稿發布 workflow                |
+| `.vitepress/plugins/obsidian-wikilinks.ts`  | Obsidian wikilink 轉換 plugin        |
 
 ---
 
