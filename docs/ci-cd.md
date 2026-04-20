@@ -15,13 +15,12 @@
 
 - push 到 `master`
 - PR 針對 `master`（只跑測試，不部署）
+- `workflow_run`：當 `Auto Publish Scheduled Posts` workflow 完成時觸發
 
 #### test job
 
-1. checkout 程式碼
-2. 安裝 Node.js 24 + npm cache
-3. `npm install`
-4. `npm test`（Vitest 單元測試）
+- **條件**：只在 `push` 或 `pull_request` 事件時執行（`workflow_run` 不執行）
+- 步驟：checkout → Node.js 24 → `npm install` → `npm test`（Vitest 單元測試）
 
 #### deploy job
 
@@ -29,11 +28,22 @@
 - **條件**：只在 push 到 `master` 時執行（PR 不觸發）
 - 步驟：`npm install` → `npm run build` → wrangler 部署到 Cloudflare Pages
 
+#### deploy-after-publish job
+
+- **條件**：`workflow_run` 事件且 auto-publish 以 `success` 結束
+- **用途**：解決 `GITHUB_TOKEN` push 無法觸發其他 workflow 的限制（見下方說明）
+- 步驟：`checkout ref: master` → `npm install` → `npm run build` → wrangler 部署
+
 ```
+# 一般 push 到 master
 push to master
   └─ test job
        ├─ PASS → deploy job → Cloudflare Pages 更新
        └─ FAIL → deploy job skipped，CF Pages 維持舊版
+
+# 定時 auto-publish
+auto-publish.yml (completes with success)
+  └─ deploy-after-publish job → Cloudflare Pages 更新
 ```
 
 ---
@@ -43,7 +53,13 @@ push to master
 每天台北時間 08:00 自動執行，把到期草稿從 `articles/drafts/` 移到對應 section，
 並 commit & push 到 `master`。
 
-這個 push 同樣會觸發 `deploy.yml`（先測試再部署）。
+**重要**：auto-publish 使用 `GITHUB_TOKEN` push，這種 push **無法觸發其他 workflow**
+（GitHub 的防循環保護機制）。因此 `deploy.yml` 不會在 auto-publish push 後自動觸發。
+
+解法：`deploy.yml` 加入 `workflow_run` 觸發器，在 auto-publish workflow 本身完成時觸發，
+繞過 GITHUB_TOKEN push 的限制。
+
+**不要**在 `auto-publish.yml` 裡直接加 build/deploy 步驟——那會跳過測試且重複部署邏輯。
 
 詳細說明見 [how-this-blog-works.md](./how-this-blog-works.md)「草稿與自動發布」章節。
 
@@ -74,3 +90,4 @@ CF Pages Dashboard > project > Settings > Builds & deployments > **Pause deploym
 - `npm install` 而非 `npm ci`：因為 macOS 產生的 `package-lock.json` 不含 Linux 平台的 optional deps，
   在 Ubuntu runner 上 `npm ci` 會報錯（missing `@emnapi/core`、`@emnapi/runtime`）。
 - build 產出在 `.vitepress/dist`（VitePress 預設路徑）。
+- `deploy-after-publish` checkout 時需明確指定 `ref: master`，因為 `workflow_run` 事件預設 checkout 的是觸發 workflow 的 ref，不一定是最新的 master。

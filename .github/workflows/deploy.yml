@@ -5,9 +5,13 @@ on:
         branches: [master]
     pull_request:
         branches: [master]
+    workflow_run:
+        workflows: ['Auto Publish Scheduled Posts']
+        types: [completed]
 
 jobs:
     test:
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -21,9 +25,28 @@ jobs:
     deploy:
         needs: test
         runs-on: ubuntu-latest
-        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         steps:
             - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '24'
+                  cache: 'npm'
+            - run: npm install
+            - run: npm run build
+            - uses: cloudflare/wrangler-action@v3
+              with:
+                  apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                  accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+                  command: pages deploy .vitepress/dist --project-name=${{ secrets.CF_PAGES_PROJECT_NAME }}
+
+    deploy-after-publish:
+        if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  ref: master
             - uses: actions/setup-node@v4
               with:
                   node-version: '24'
