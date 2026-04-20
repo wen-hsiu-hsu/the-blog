@@ -48,6 +48,23 @@ auto-publish.yml (completes with success)
 
 ---
 
+### `validate-drafts.yml`（草稿驗證）
+
+觸發條件：
+
+- push 含有 `articles/drafts/**` 變更的 commit
+- PR 修改草稿時
+
+執行 `npm run validate:drafts`（`.github/scripts/validate-drafts.js`）。
+
+**設計決策：**
+
+- frontmatter 錯誤（缺少必填欄位、格式錯誤）：非零退出，**block PR**（防止明顯錯誤進入 drafts）
+- broken wikilink：零退出，**不 block**（草稿階段連結目標可能尚未發布）
+- 在 GitHub Actions Annotations 以 `::error` / `::warning` 格式顯示，可在 PR 的 Files 頁面看到標記
+
+---
+
 ### `auto-publish.yml`（定時草稿發布）
 
 每天台北時間 08:00 自動執行，把到期草稿從 `articles/drafts/` 移到對應 section，

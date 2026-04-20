@@ -29,7 +29,9 @@
         "build": "vitepress build",
         "preview": "vitepress preview",
         "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format:check": "prettier --check .",
+        "validate:drafts": "node .github/scripts/validate-drafts.js",
+        "dev:with-drafts": "VITE_INCLUDE_DRAFTS=true vitepress dev"
     },
     "author": "",
     "license": "ISC",

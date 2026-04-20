@@ -119,6 +119,44 @@ articles/drafts/flat-post.md                   → 發布後: dev/flat-post.md
 
 ---
 
+## 草稿驗證（validate:drafts）
+
+在草稿階段主動發現潛在問題，避免等到自動發布當天才知道有錯誤。
+
+### 執行方式
+
+```bash
+npm run validate:drafts
+```
+
+### 驗證項目
+
+| 類型    | 檢查內容                                                                      | 行為                      |
+| ------- | ----------------------------------------------------------------------------- | ------------------------- |
+| ERROR   | frontmatter 必填欄位缺少（title、description、date、category、section、tags） | 非零退出，validation 失敗 |
+| ERROR   | tags 不是陣列                                                                 | 非零退出                  |
+| ERROR   | date 格式非 YYYY-MM-DD                                                        | 非零退出                  |
+| ERROR   | section 值非 dev / life                                                       | 非零退出                  |
+| WARNING | broken wikilink（在已發布文章及其他草稿中均找不到）                           | 零退出，不阻擋            |
+
+### 與 publish-posts.js 的差異
+
+`validate:drafts` 的 wikilink 檢查**允許指向其他草稿**（因為兩篇文章可能一起發布），
+而 `publish-posts.js` 在發布當下只允許指向已發布文章。
+
+### 預覽草稿（dev:with-drafts）
+
+```bash
+npm run dev:with-drafts
+```
+
+以 dev server 預覽草稿內容。設定 `VITE_INCLUDE_DRAFTS=true` 會讓 VitePress 移除 `drafts/**` 的 srcExclude，
+讓草稿出現在本地 dev server 中（不影響 build 與 production）。
+
+**注意：** 草稿的 wikilink 若找不到對應文章，會在頁面上以 broken link 樣式顯示（`data-wikilink-broken`）。
+
+---
+
 ## 新增系列的方式
 
 要新增一個系列（如 `css-notes`）：

@@ -58,6 +58,41 @@ Build 過程中，plugin 會收集所有 wikilink 轉換資訊，寫入 `wikilin
 
 ---
 
+## 草稿中的 Wikilink 驗證
+
+草稿可透過 `npm run validate:drafts` 在本地主動驗證 wikilink。
+
+**驗證規則（草稿階段）：**
+
+- wikilink 可指向**已發布文章** 或 **其他草稿**（因為多篇文章可能同天發布）
+- 若兩者都找不到，視為 broken wikilink → 顯示 WARNING，**不阻擋**（退出碼 0）
+
+**發布當天規則（publish-posts.js）：**
+
+- wikilink 只能指向**已發布文章**（因為發布當下其他草稿還沒被移動）
+- broken wikilink → 該草稿跳過本次發布，等連結目標發布後下次自動補發
+
+### 本地執行驗證
+
+```bash
+npm run validate:drafts
+```
+
+輸出範例：
+
+```
+🔍 Validating 2 draft(s)...
+
+📄 some-draft.md
+   ⚠️  WARN:  broken wikilink：[[non-existent-slug]]（在已發布文章及草稿中均找不到）
+
+📊 Results: 0 error(s), 1 warning(s)
+
+⚠️  Validation passed with warnings.
+```
+
+---
+
 ## 相關檔案
 
 | 檔案                                       | 用途                          |

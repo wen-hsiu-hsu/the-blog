@@ -50,4 +50,3 @@ jobs:
                     git commit -m "chore: auto-publish scheduled posts"
                     git push
                   fi
-

@@ -236,7 +236,13 @@ export default async () => {
                 );
             }
         },
-        srcExclude: ['README.md', 'CLAUDE.md', 'rules/**', 'docs/**', 'drafts/**'],
+        srcExclude: [
+            'README.md',
+            'CLAUDE.md',
+            'rules/**',
+            'docs/**',
+            ...(process.env.VITE_INCLUDE_DRAFTS ? [] : ['drafts/**']),
+        ],
         ignoreDeadLinks: [`/${rssFileName}`],
         vite: {
             plugins: [UnoCSS(), RssPlugin(rssOptions)],

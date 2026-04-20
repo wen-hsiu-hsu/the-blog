@@ -1,0 +1,27 @@
+name: Validate Drafts
+
+on:
+    push:
+        paths:
+            - 'articles/drafts/**'
+    pull_request:
+        paths:
+            - 'articles/drafts/**'
+
+jobs:
+    validate:
+        name: Validate Draft Posts
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '24'
+
+            - run: npm install
+
+            - name: Run draft validation
+              run: npm run validate:drafts
+              # errors exit non-zero (blocks), warnings exit 0 (non-blocking)
+              # broken wikilinks are warnings; missing frontmatter fields are errors
