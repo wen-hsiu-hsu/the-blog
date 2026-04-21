@@ -49,22 +49,28 @@ const newOutput = multiplyBy2(10);
 ```
 
 1. 程式開始執行
-   Call Stack: `[ global ]`
+
+Call Stack: `[ global ]`
 
 2. 呼叫 multiplyBy2(3)
-   Call Stack: `[ global, multiplyBy2(3) ]`
+
+Call Stack: `[ global, multiplyBy2(3) ]`
 
 3. 執行完畢，遇到 return，離開 multiplyBy2(3)
-   Call Stack: `[ global ]`
+
+Call Stack: `[ global ]`
 
 4. 呼叫 multiplyBy2(10)
-   Call Stack: `[ global, multiplyBy2(10) ]`
+
+Call Stack: `[ global, multiplyBy2(10) ]`
 
 5. 執行完畢，遇到 return，離開 multiplyBy2(10)
-   Call Stack: `[ global ]`
+
+Call Stack: `[ global ]`
 
 6. 程式碼全部執行完畢
-   Call Stack: `[ (空) ]`
+
+Call Stack: `[ (空) ]`
 
 ## 重要觀念補充
 
