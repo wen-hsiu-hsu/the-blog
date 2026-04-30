@@ -31,9 +31,11 @@ async function buildDraftSlugs() {
 
 /** 從內容中提取所有 wikilink slug */
 function extractWikilinks(content) {
+    // 先移除 inline code（backtick）內容，避免誤判 `[[Scope]]` 等程式碼文字
+    const stripped = content.replace(/`[^`]*`/g, '``');
     const regex = /(?<!!)\[\[([^\]|#]+?)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]/g;
     const slugs = [];
-    for (const match of content.matchAll(regex)) {
+    for (const match of stripped.matchAll(regex)) {
         const rawSlug = match[1].trim();
         const slug = rawSlug.includes('/') ? rawSlug.split('/').pop() : rawSlug;
         if (slug) slugs.push(slug);
