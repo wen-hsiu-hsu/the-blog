@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 11
 title: JavaScript Closure 的核心問題：變數存取由定義位置還是呼叫位置決定？
 description: 透過兩個範例觀察 JavaScript 函式的 Call Stack 執行流程，比較函式存取外層變數的依據究竟是「定義位置」還是「呼叫位置」，為理解 Closure（閉包）與 Lexical Scope 建立基礎。
 date: 2026-04-30

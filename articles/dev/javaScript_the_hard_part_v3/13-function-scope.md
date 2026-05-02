@@ -2,6 +2,9 @@
 title: JavaScript Closure 背包機制：私有狀態如何被保留
 description: 剖析 JavaScript Closure（閉包）的背包機制:為什麼只打包被參照的變數、資料如何保持私有,以及它在 Module Pattern 與非同步程式中扮演的關鍵角色。
 date: 2026-05-02
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 13
 section: dev
 category: JavaScript Hard Parts v3
 tags:

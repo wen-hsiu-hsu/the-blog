@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 16
 title: 理解 JavaScript Generator 函式與 yield 運作原理
 description: 探討 JavaScript Generator 函式的運作原理與應用。透過實際範例解析 Generator 的基本語法、yield 關鍵字的使用、以及如何搭配 try-catch-finally 進行錯誤處理。文章從一個實務問題出發，詳細說明 Generator 如何透過 next() 方法控制執行流程，並介紹其在 ID 生成器等實際場景的應用。
 date: 2026-01-09

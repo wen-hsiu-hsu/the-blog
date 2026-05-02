@@ -7,11 +7,12 @@
         }"
     >
         <template #doc-before>
-            <PostMeta />
+            <PostHeadMeta />
         </template>
 
         <template #doc-after>
             <div v-if="!frontmatter.page" class="space-y-20 pt-10">
+                <PostFooterMeta />
                 <PostSupports />
                 <div class="space-y-10">
                     <BaseAdUnit />
@@ -39,7 +40,8 @@ import PostReadingProgressIndicator from './layout/PostReadingProgressIndicator.
 import PostNextPrevLinks from './layout/PostNextPrevLinks.vue';
 import PostComment from './layout/PostComment.vue';
 import PostSuggestions from './layout/PostSuggestions.vue';
-import PostMeta from './layout/PostMeta.vue';
+import PostHeadMeta from './layout/PostHeadMeta.vue';
+import PostFooterMeta from './layout/PostFooterMeta.vue';
 import PostSupports from './layout/PostSupports.vue';
 import NotFoundPage from './page/NotFoundPage.vue';
 import BaseAdUnit from './base/BaseAdUnit.vue';

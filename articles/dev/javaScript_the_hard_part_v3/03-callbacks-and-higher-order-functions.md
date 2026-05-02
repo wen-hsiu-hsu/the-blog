@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 3
 title: JavaScript 的 Higher-Order Functions：從 DRY 到函式作為參數
 description: 從 DRY 原則出發，說明 parameter 如何讓函式通用化，再延伸到 Higher-Order Functions：以函式作為 callback 傳入，讓行為在呼叫時才決定——`map`、`filter`、`reduce` 背後的核心機制。
 date: 2026-04-22

@@ -11,6 +11,15 @@ interface GetPostsOptions {
     section?: Section;
 }
 
+type Post = {
+    frontMatter: Record<string, any>;
+    regularPath: string;
+};
+
+type SeriesMap = {
+    [seriesSlug: string]: Post[];
+};
+
 async function getPosts(options: GetPostsOptions = {}) {
     const paths = await globby([
         `${GLOBAL_CONFIG.srcDirName}/dev/**/*.md`,
@@ -35,6 +44,8 @@ async function getPosts(options: GetPostsOptions = {}) {
     allPosts.sort(_compareDate as any);
     allPosts.sort(_comparePin as any);
 
+    const seriesMap = _buildSeriesMap(allPosts);
+
     const posts = options.section
         ? allPosts.filter((p) => p.frontMatter.section === options.section)
         : allPosts;
@@ -48,6 +59,7 @@ async function getPosts(options: GetPostsOptions = {}) {
         postsTotal,
         pagesTotal,
         pageSize,
+        seriesMap,
     };
 }
 
@@ -71,6 +83,24 @@ function _comparePin(
     const pin2 = obj2.frontMatter?.pin ?? 0;
     if (pin1 === pin2) return 0;
     return pin1 < pin2 ? 1 : -1;
+}
+
+function _buildSeriesMap(posts: Post[]): SeriesMap {
+    const map: Record<string, Post[]> = {};
+    for (const post of posts) {
+        const series = post.frontMatter.series;
+        if (series) {
+            map[series] = [...(map[series] ?? []), post];
+        }
+    }
+    return Object.fromEntries(
+        Object.entries(map).map(([series, seriesPosts]) => [
+            series,
+            [...seriesPosts].sort(
+                (a, b) => (a.frontMatter.order ?? 999) - (b.frontMatter.order ?? 999),
+            ),
+        ]),
+    );
 }
 
 export { getPosts };

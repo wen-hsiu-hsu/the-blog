@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 5
 title: 以 copyArrayAndManipulate 拆解高階函式 (Higher-Order Function) 的執行原理
 description: 透過手動實作 copyArrayAndManipulate，拆解 JavaScript 高階函式（Higher-Order Function）將函式作為引數傳遞的機制，並追蹤每次迭代中 Execution Context 與 Call Stack 的完整變化過程。
 date: 2026-04-24

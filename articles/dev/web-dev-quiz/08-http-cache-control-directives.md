@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 8
 title: HTTP Cache：快取指令與應用
 description: 解析 HTTP Cache 的運作原理，說明 Cache-Control 各項指令 (no-cache、no-store、must-revalidate、stale-while-revalidate、private) 的差異與使用情境，幫助前端開發者掌握瀏覽器快取機制，提升網站效能與使用者體驗
 date: 2025-12-11

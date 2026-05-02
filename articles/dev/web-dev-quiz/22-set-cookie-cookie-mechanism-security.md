@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 22
 title: 理解 Set-Cookie 與 Cookie 的運作機制
 description: 介紹 HTTP Header 中的 Set-Cookie 如何影響瀏覽器與伺服器間的資訊傳遞，說明 Cookie 的生命週期、Domain 與 Path 的作用，以及 Secure、HttpOnly、SameSite 等屬性的安全意涵
 date: 2026-02-20

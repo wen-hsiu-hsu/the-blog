@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 10
 title: CSS 動畫的渲染成本（Layout、Paint、Composite）
 description: 整理 CSS 動畫會觸發的瀏覽器渲染階段（Layout / Paint / Composite），說明哪些屬性較適合做動畫以提升效能，並附上常見屬性分類、優化原則與參考資料。
 date: 2025-12-13

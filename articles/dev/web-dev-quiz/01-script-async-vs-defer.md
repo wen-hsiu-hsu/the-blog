@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 1
 title: async vs. defer
 description: HTML 的 script 標籤上 async 與 defer 的差別是什麼
 date: 2025-12-01

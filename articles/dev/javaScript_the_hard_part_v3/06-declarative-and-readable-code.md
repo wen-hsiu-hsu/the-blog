@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 6
 title: JavaScript 一級函式與高階函式（Higher-Order Function）入門
 description: 說明 JavaScript 為何能將函式作為值傳遞，介紹一級物件（first-class objects）特性，以及 Higher-Order Function 與 Callback Function 的定義與差異。並以命令式與宣告式風格的對比，說明這些概念為何是理解 Promise 與非同步 JavaScript 的基礎。
 date: 2026-04-25

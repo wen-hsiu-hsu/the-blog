@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 3
 title: DNS 解析流程 | Resolving Domain Requests
 description: 瀏覽器發起請求前是怎麼透過網站的 Domain Name 來獲取該網站的伺服器 IP 位址的？
 date: 2025-12-04

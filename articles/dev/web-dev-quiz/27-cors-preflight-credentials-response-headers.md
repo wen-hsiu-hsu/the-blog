@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 27
 title: CORS Config 解析：Preflight、Credentials 與 Response Headers
 description: 解析一道 CORS 設定題，涵蓋 Same-Origin Policy、Simple Request 與 Preflighted Request 的判斷條件，以及各 CORS Response Header 的作用與限制。
 date: 2026-04-17

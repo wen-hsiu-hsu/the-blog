@@ -1,7 +1,10 @@
 ---
+series: JS-Dungeon
+seriesTitle: 'JS地下城'
+order: 2
 title: CSS、JS切個時鐘吧 | JS地下城 - 002
 description: 這次的目標是時鐘，這次的挑戰其實比較麻煩的是刻 CSS (XD，JS 的部分反而一下就完成了，相信大家應該也覺得這關不會太難。
-category: 程式筆記
+category: JS地下城
 section: dev
 tags:
     - HTML

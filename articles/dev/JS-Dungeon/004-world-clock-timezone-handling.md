@@ -1,7 +1,10 @@
 ---
+series: JS-Dungeon
+seriesTitle: 'JS地下城'
+order: 4
 title: 幹嘛不自己上網查就好的 JavaScript 世界時鐘 | JS地下城 - 004
 description: 這一關使用的 Date 一直到現在還是覺得這是個有點麻煩的語法，但我還是想要擁抱處理時間的套件(奔
-category: 程式筆記
+category: JS地下城
 section: dev
 tags:
     - HTML

@@ -2,6 +2,9 @@
 title: Closure 獨立性與變數查找順序：同一函式的多個閉包互不干擾
 description: 每次呼叫外層函式都會產生獨立的 closure，彼此狀態互不影響。本文透過程式碼範例，說明變數定義在本地、背包或全域時的不同行為，以及 JavaScript 查找變數的完整優先順序。
 date: 2026-05-04
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 15
 section: dev
 category: JavaScript Hard Parts v3
 tags:

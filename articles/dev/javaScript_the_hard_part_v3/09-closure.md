@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 9
 title: JavaScript Closure（閉包）：原理與核心應用
 description: 說明 JavaScript Closure（閉包）的運作原理：函式執行後本地記憶體為何清空、回傳函式如何讓資料得以持久保存，以及 Closure 如何成為 once、memoize、Module Pattern 與非同步回呼的基礎機制。
 date: 2026-04-28

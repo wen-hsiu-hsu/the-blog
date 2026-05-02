@@ -40,7 +40,7 @@ export default async () => {
     const wikilinkMap = await buildWikilinkMap(srcDir);
     const brokenWikilinks: BrokenWikilink[] = [];
 
-    const { posts, postsTotal, pagesTotal, pageSize } = await getPosts();
+    const { posts, postsTotal, pagesTotal, pageSize, seriesMap } = await getPosts();
     const {
         posts: devPosts,
         postsTotal: devPostsTotal,
@@ -117,6 +117,7 @@ export default async () => {
                 },
             },
             posts,
+            seriesMap,
             page: {
                 size: pageSize,
                 postsTotal,

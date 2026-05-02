@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 7
 title: 箭頭函式（Arrow Function）、匿名函式與 map 方法
 description: 比較四種 JavaScript 函式定義語法，說明箭頭函式的簡寫規則與 this 行為差異，介紹匿名函式的使用時機，以及內建 Array.prototype.map 的運作原理與原型鏈基礎。
 date: 2026-04-26

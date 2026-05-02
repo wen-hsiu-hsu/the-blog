@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 17
 title: 理解 JavaScript Promise 方法：all、race、any、allSettled
 description: 探討 JavaScript 中四種 Promise 組合方法的差異與使用時機。透過 FrontendMaster 課程的實作範例，詳細解析 Promise.all、Promise.race、Promise.any、Promise.allSettled 的執行邏輯、回傳值特性，以及各自適合的應用場景，幫助開發者在處理多個非同步操作時選擇最適合的方法。
 date: 2026-02-10

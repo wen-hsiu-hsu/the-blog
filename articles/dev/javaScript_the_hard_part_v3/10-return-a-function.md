@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 10
 title: JavaScript 函式回傳函式：執行環境 (Execution Context) 與 Call Stack 運作解析
 description: 詳解 JavaScript 函式回傳函式時的執行流程，包含執行環境 (Execution Context) 的建立與銷毀、Call Stack 的 push/pop、本地記憶體隔離機制，並釐清函式被回傳後與外層函式「再無任何連結」的核心觀念，為理解 Closure 奠定基礎。
 date: 2026-04-29

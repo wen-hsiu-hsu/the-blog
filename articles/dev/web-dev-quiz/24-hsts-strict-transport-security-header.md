@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 24
 title: 從 HSTS 看網站安全：理解 Strict-Transport-Security Header
 description: 本文介紹 HTTP 安全性標頭 Strict-Transport-Security (HSTS) 的作用與設定方式，說明它如何強制使用 HTTPS 連線並保護網站免於中間人攻擊
 date: 2026-02-26

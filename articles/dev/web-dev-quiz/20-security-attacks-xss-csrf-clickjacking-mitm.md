@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 20
 title: XSS／CSRF／Clickjacking／MITM 名詞整理
 description: XSS、CSRF、UI Redressing（Clickjacking）、MITM 的定義、常見攻擊手法與防範方式
 date: 2026-02-16

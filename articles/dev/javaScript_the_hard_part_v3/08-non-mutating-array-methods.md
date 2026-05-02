@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 8
 title: JavaScript 陣列變異方法與 ES2023 非變異替代方案（Pure Function、Side Effect）
 description: 說明 JavaScript 陣列中會直接修改原始資料的變異方法（reverse、splice、sort），以及 ES2023 新增的非變異替代版本（toReversed、toSpliced、toSorted）。並介紹 Side Effect 概念，補充 flat()、findLastIndex()、Object.groupBy() 等高階函式（Higher-Order Function）的用法。
 date: 2026-04-27

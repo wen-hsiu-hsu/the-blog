@@ -1,7 +1,10 @@
 ---
+series: JS-Dungeon
+seriesTitle: 'JS地下城'
+order: 3
 title: 不負責任的 JavaScript 計算機 | JS地下城 - 003
 description: 拖延症發作之下好不容易寫成文章的一關，來來回回 JS 的部分也改了幾次，整個時程也有好幾個月。
-category: 程式筆記
+category: JS地下城
 section: dev
 tags:
     - HTML

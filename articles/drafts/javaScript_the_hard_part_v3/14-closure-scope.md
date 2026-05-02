@@ -2,6 +2,9 @@
 title: JavaScript Closure 的真實樣貌：Scope、COVE 與詞彙作用域
 description: 拆解 JavaScript Closure 的底層實作：隱藏屬性 Scope 如何儲存背包、Closed Over Variable Environment(COVE)的正式定義，以及 Lexical Scoping 為什麼是 Closure 能夠存在的根本原因。
 date: 2026-05-03
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 14
 section: dev
 category: JavaScript Hard Parts v3
 tags:

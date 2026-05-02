@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 2
 title: Call Stack 是什麼？理解 JavaScript 的呼叫堆疊機制
 description: 介紹 JavaScript Call Stack（呼叫堆疊）的運作原理，包含 Global Execution Context 的建立、函式呼叫與 return 時堆疊的變化，以及與 Thread of Execution、Memory 的關係。
 date: 2026-04-21

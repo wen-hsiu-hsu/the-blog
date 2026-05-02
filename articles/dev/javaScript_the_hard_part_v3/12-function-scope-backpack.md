@@ -2,6 +2,9 @@
 title: JavaScript Closure 與背包（Backpack）的運作機制
 description: 函式被定義時，會與周圍的資料產生隱藏連結。即使父執行環境已關閉，函式仍能透過這份附加的資料——也就是「背包（Backpack）」——持續存取原本的狀態。
 date: 2026-05-01
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 12
 section: dev
 category: JavaScript Hard Parts v3
 tags:

@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 14
 title: 理解 Web Vitals | 提升網站效能與使用者體驗的關鍵指標
 description: 本篇文章介紹 Google 提出的 Web Vitals 指標，解釋各個效能衡量方式（TTFB、FID、TTI、TBT、CLS、INP）的意義與差異，幫助前端開發者提升網站的互動性、穩定性與載入速度，並理解它們對 SEO 的影響
 date: 2025-12-18

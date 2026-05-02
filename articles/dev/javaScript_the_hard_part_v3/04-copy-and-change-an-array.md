@@ -1,4 +1,7 @@
 ---
+series: javaScript_the_hard_part_v3
+seriesTitle: 'JavaScript Hard Parts v3'
+order: 4
 title: JavaScript 執行上下文與高階函式：從重複程式碼到通用化設計
 description: 說明 JavaScript 函式呼叫時建立執行上下文與區域記憶體的機制，並透過違反 DRY 原則的範例，引出高階函式（Higher-Order Function）的設計動機，同時介紹 Side Effect 的概念。
 date: 2026-04-23

@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 12
 title: CSS 選擇器權重 | Specificity
 description: 解析 CSS Specificity 權重計算機制，說明 ID、CLASS、TYPE 等選擇器的權重規則，寫出更易維護的 CSS 程式碼
 date: 2025-12-16

@@ -1,4 +1,7 @@
 ---
+series: web-dev-quiz
+seriesTitle: 'Advanced Web Dev Quiz'
+order: 6
 title: JavaScript 展開運算子的淺拷貝陷阱：物件參考問題解析
 description: 探討 JavaScript 展開運算子（spread operator）的淺拷貝特性，透過實際範例說明物件參考問題，並比較 structuredClone()、JSON 方法等多種深拷貝解決方案，幫助開發者避免常見的物件複製陷阱。
 date: 2025-12-09
