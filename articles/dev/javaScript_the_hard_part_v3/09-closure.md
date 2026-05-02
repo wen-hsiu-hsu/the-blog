@@ -7,6 +7,7 @@ description: 說明 JavaScript Closure（閉包）的運作原理：函式執行
 date: 2026-04-28
 section: dev
 category: JavaScript Hard Parts v3
+chapter: Closure
 tags:
     - JavaScript
     - Closure

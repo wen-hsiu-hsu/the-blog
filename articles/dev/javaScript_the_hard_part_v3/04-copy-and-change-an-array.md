@@ -7,6 +7,7 @@ description: 說明 JavaScript 函式呼叫時建立執行上下文與區域記�
 date: 2026-04-23
 section: dev
 category: JavaScript Hard Parts v3
+chapter: Callbacks & Higher Order functions
 tags:
     - JavaScript
     - HigherOrderFunction

@@ -7,6 +7,7 @@ seriesTitle: 'JavaScript Hard Parts v3'
 order: 12
 section: dev
 category: JavaScript Hard Parts v3
+chapter: Closure
 tags:
     - JavaScript
     - Closure

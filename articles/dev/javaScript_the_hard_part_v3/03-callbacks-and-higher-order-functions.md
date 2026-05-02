@@ -7,6 +7,7 @@ description: 從 DRY 原則出發，說明 parameter 如何讓函式通用化，
 date: 2026-04-22
 section: dev
 category: JavaScript Hard Parts v3
+chapter: Callbacks & Higher Order functions
 tags:
     - JavaScript
     - HigherOrderFunction

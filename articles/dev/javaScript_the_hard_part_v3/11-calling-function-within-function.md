@@ -7,6 +7,7 @@ description: 透過兩個範例觀察 JavaScript 函式的 Call Stack 執行流�
 date: 2026-04-30
 section: dev
 category: JavaScript Hard Parts v3
+chapter: Closure
 tags:
     - JavaScript
     - Closure

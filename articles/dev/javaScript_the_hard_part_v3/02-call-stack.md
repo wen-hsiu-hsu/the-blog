@@ -7,6 +7,7 @@ description: 介紹 JavaScript Call Stack（呼叫堆疊）的運作原理，包
 date: 2026-04-21
 section: dev
 category: JavaScript Hard Parts v3
+chapter: Principles of JavaScript
 tags:
     - JavaScript
     - CallStack
