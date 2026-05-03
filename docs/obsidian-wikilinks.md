@@ -93,9 +93,26 @@ npm run validate:drafts
 
 ---
 
+## 共用工具模組
+
+wikilink 相關邏輯集中在 `.github/scripts/wikilink-utils.js`，供多個腳本共用：
+
+| 函式                               | 說明                                   |
+| ---------------------------------- | -------------------------------------- |
+| `buildPublishedSlugs(articlesDir)` | 建立已發布文章的 slug set              |
+| `buildDraftSlugs(draftsDir)`       | 建立草稿的 slug set                    |
+| `extractWikilinks(content)`        | 從 markdown 內容提取所有 wikilink slug |
+
+**重要**：`extractWikilinks` 在掃描前會先移除 inline code（反引號包覆的內容），
+避免將 `` `[[Scope]]` `` 這類程式碼文字誤判為 broken wikilink。
+
+---
+
 ## 相關檔案
 
-| 檔案                                       | 用途                          |
-| ------------------------------------------ | ----------------------------- |
-| `.vitepress/plugins/obsidian-wikilinks.ts` | Build 時 wikilink 轉換 plugin |
-| `.github/scripts/publish-posts.js`         | 發布前 broken wikilink 檢查   |
+| 檔案                                       | 用途                               |
+| ------------------------------------------ | ---------------------------------- |
+| `.vitepress/plugins/obsidian-wikilinks.ts` | Build 時 wikilink 轉換 plugin      |
+| `.github/scripts/wikilink-utils.js`        | 共用工具：slug 建立、wikilink 提取 |
+| `.github/scripts/publish-posts.js`         | 發布前 broken wikilink 檢查        |
+| `.github/scripts/validate-drafts.js`       | 草稿驗證（wikilink + frontmatter） |

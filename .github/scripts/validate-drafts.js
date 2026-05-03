@@ -1,8 +1,9 @@
-import { globby } from 'globby';
 import matter from 'gray-matter';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { globby } from 'globby';
+import { buildPublishedSlugs, buildDraftSlugs, extractWikilinks } from './wikilink-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,35 +14,6 @@ const ARTICLES_DIR = path.join(__dirname, '../../articles');
 const REQUIRED_FIELDS = ['title', 'description', 'date', 'category', 'section', 'tags'];
 const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 const VALID_SECTIONS = ['dev', 'life'];
-
-/** 建立已發布文章的 slug set */
-async function buildPublishedSlugs() {
-    const files = await globby('**/*.md', {
-        cwd: ARTICLES_DIR,
-        ignore: ['drafts/**', '**/index.md', 'page/**'],
-    });
-    return new Set(files.map((f) => path.basename(f, '.md')));
-}
-
-/** 建立草稿的 slug set */
-async function buildDraftSlugs() {
-    const files = await globby('**/*.md', { cwd: DRAFTS_DIR });
-    return new Set(files.map((f) => path.basename(f, '.md')));
-}
-
-/** 從內容中提取所有 wikilink slug */
-function extractWikilinks(content) {
-    // 先移除 inline code（backtick）內容，避免誤判 `[[Scope]]` 等程式碼文字
-    const stripped = content.replace(/`[^`]*`/g, '``');
-    const regex = /(?<!!)\[\[([^\]|#]+?)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]/g;
-    const slugs = [];
-    for (const match of stripped.matchAll(regex)) {
-        const rawSlug = match[1].trim();
-        const slug = rawSlug.includes('/') ? rawSlug.split('/').pop() : rawSlug;
-        if (slug) slugs.push(slug);
-    }
-    return slugs;
-}
 
 /** 驗證單一草稿，回傳 { errors, warnings } */
 function validateDraft(filePath, content, frontMatter, publishedSlugs, draftSlugs) {
@@ -103,8 +75,8 @@ async function validateDrafts() {
     console.log(`🔍 Validating ${draftPaths.length} draft(s)...\n`);
 
     const [publishedSlugs, draftSlugs] = await Promise.all([
-        buildPublishedSlugs(),
-        buildDraftSlugs(),
+        buildPublishedSlugs(ARTICLES_DIR),
+        buildDraftSlugs(DRAFTS_DIR),
     ]);
 
     let totalErrors = 0;

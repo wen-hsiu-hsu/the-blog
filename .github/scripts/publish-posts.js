@@ -3,33 +3,13 @@ import matter from 'gray-matter';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildPublishedSlugs, extractWikilinks } from './wikilink-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DRAFTS_DIR = path.join(__dirname, '../../articles/drafts');
 const ARTICLES_DIR = path.join(__dirname, '../../articles');
-
-/** 建立已發布文章的 slug set（排除 drafts/） */
-async function buildPublishedSlugs() {
-    const files = await globby('**/*.md', {
-        cwd: ARTICLES_DIR,
-        ignore: ['drafts/**', '**/index.md', 'page/**'],
-    });
-    return new Set(files.map((f) => path.basename(f, '.md')));
-}
-
-/** 掃描草稿中的 wikilink，回傳 broken slug 清單 */
-function findBrokenWikilinks(content, publishedSlugs) {
-    const regex = /(?<!!)\[\[([^\]|#]+?)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]/g;
-    const broken = [];
-    for (const match of content.matchAll(regex)) {
-        const rawSlug = match[1].trim();
-        const slug = rawSlug.includes('/') ? rawSlug.split('/').pop() : rawSlug;
-        if (slug && !publishedSlugs.has(slug)) broken.push(slug);
-    }
-    return broken;
-}
 
 export function deriveSection({ section, category } = {}) {
     return section || (category === '生活亂談' ? 'life' : 'dev');
@@ -86,7 +66,7 @@ async function publishScheduledPosts() {
     const published = [];
     const skipped = [];
 
-    const publishedSlugs = await buildPublishedSlugs();
+    const publishedSlugs = await buildPublishedSlugs(ARTICLES_DIR);
 
     for (const draftPath of draftPaths) {
         const content = await fs.readFile(draftPath, 'utf-8');
@@ -107,7 +87,9 @@ async function publishScheduledPosts() {
         // 如果文章日期 <= 今天，則發布
         if (postDate <= today) {
             // 檢查 wikilink 是否都存在
-            const brokenWikilinks = findBrokenWikilinks(content, publishedSlugs);
+            const brokenWikilinks = extractWikilinks(content).filter(
+                (slug) => !publishedSlugs.has(slug),
+            );
             if (brokenWikilinks.length > 0) {
                 const reason = `broken wikilinks: ${brokenWikilinks.map((s) => `[[${s}]]`).join(', ')}`;
                 console.warn(
