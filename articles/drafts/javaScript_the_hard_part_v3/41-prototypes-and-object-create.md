@@ -10,12 +10,15 @@ order: 41
 chapter: 'Classes & Prototypes (OOP)'
 tags:
     - JavaScript
+    - Prototype
     - OOP
     - frontendMasters
     - javaScriptTheHardPartsV3
 ---
 
 # 原型鏈的運作機制與 `this`
+
+> 本章節建議從 [[37-object-oriented-javascript]] 開始閱讀
 
 ## 執行流程逐步拆解
 

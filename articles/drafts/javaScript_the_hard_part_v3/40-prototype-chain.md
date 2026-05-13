@@ -10,12 +10,15 @@ order: 40
 chapter: 'Classes & Prototypes (OOP)'
 tags:
     - JavaScript
+    - Prototype
     - OOP
     - frontendMasters
     - javaScriptTheHardPartsV3
 ---
 
 # 解法二：用原型鏈共享方法，避免記憶體浪費
+
+> 本章節建議從 [[37-object-oriented-javascript]] 開始閱讀
 
 > 前情提要：在[[38-creat-javascript-objects]]中，我們示範了三種建立物件的方式，但每種都需要手動逐一設定屬性，違反了 DRY 原則。
 

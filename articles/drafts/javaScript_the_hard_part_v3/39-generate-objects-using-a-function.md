@@ -10,12 +10,15 @@ order: 39
 chapter: 'Classes & Prototypes (OOP)'
 tags:
     - JavaScript
+    - Prototype
     - OOP
     - frontendMasters
     - javaScriptTheHardPartsV3
 ---
 
 # 工廠函式：解決手動建立物件的第一種方法
+
+> 本章節建議從 [[37-object-oriented-javascript]] 開始閱讀
 
 > 前情提要：在[[38-creat-javascript-objects]]中，我們示範了三種建立物件的方式，但每種都需要手動逐一設定屬性，違反了 DRY 原則。
 

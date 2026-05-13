@@ -10,12 +10,15 @@ order: 38
 chapter: 'Classes & Prototypes (OOP)'
 tags:
     - JavaScript
+    - Prototype
     - OOP
     - frontendMasters
     - javaScriptTheHardPartsV3
 ---
 
 # Object Literal、Dot Notation、Object.create：三種建立物件的方式
+
+> 本章節建議從 [[37-object-oriented-javascript]] 開始閱讀
 
 ## 封裝（Encapsulation）：把資料與功能放在一起
 
