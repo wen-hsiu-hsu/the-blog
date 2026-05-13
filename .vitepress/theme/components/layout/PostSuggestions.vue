@@ -12,6 +12,12 @@
                             <BaseIcon icon="mynaui/book-open" size="size-5" />
                             系列章節
                         </span>
+                        <span
+                            v-if="currentSeriesIndex > 0"
+                            class="text-sm font-normal opacity-50 ml-2"
+                        >
+                            第 {{ currentSeriesIndex }} 篇 / 共 {{ seriesTotalPosts }} 篇
+                        </span>
                     </h2>
 
                     <!-- Grouped by chapter -->
@@ -54,13 +60,13 @@
                                                 v-else
                                                 class="text-xs opacity-50 shrink-0 w-4 text-center"
                                             >
-                                                {{ post.frontMatter.order }}
+                                                {{ seriesPostIndexMap.get(post.regularPath) }}
                                             </span>
-                                            <span class="line-clamp-2 md:line-clamp-1">
+                                            <span class="line-clamp-1">
                                                 {{ post.frontMatter.title }}
                                             </span>
                                         </span>
-                                        <span class="text-nowrap opacity-70 md:ml-4">
+                                        <span class="text-nowrap opacity-70 md:ml-4 pl-6 md:pl-0">
                                             {{ post.frontMatter.date }}
                                         </span>
                                     </a>
@@ -99,7 +105,7 @@
                                             v-else
                                             class="text-xs opacity-50 shrink-0 w-4 text-center"
                                         >
-                                            {{ post.frontMatter.order }}
+                                            {{ seriesPostIndexMap.get(post.regularPath) }}
                                         </span>
                                         <span class="line-clamp-2 md:line-clamp-1">
                                             {{ post.frontMatter.title }}
@@ -164,25 +170,31 @@ const isCurrentPost = (path: string) => path === route.path;
 
 const hasChapters = computed(() => seriesPosts.value.some((p) => p.frontMatter.chapter));
 
+const seriesPostIndexMap = computed(() => {
+    const map = new Map<string, number>();
+    seriesPosts.value.forEach((p, i) => map.set(p.regularPath, i + 1));
+    return map;
+});
+
+const currentSeriesIndex = computed(() => seriesPostIndexMap.value.get(route.path) ?? 0);
+const seriesTotalPosts = computed(() => seriesPosts.value.length);
+
 const groupedSeriesPosts = computed(() => {
-    const groups: { chapter: string; minOrder: number; posts: typeof seriesPosts.value }[] = [];
+    const groups: { chapter: string; firstIndex: number; posts: typeof seriesPosts.value }[] = [];
     const chapterMap = new Map<string, (typeof groups)[0]>();
 
-    for (const post of seriesPosts.value) {
+    for (const [index, post] of seriesPosts.value.entries()) {
         const chapter = (post.frontMatter.chapter as string | undefined) ?? '其他';
-        const order = (post.frontMatter.order as number | undefined) ?? 0;
         if (!chapterMap.has(chapter)) {
-            const group = { chapter, minOrder: order, posts: [post] };
+            const group = { chapter, firstIndex: index, posts: [post] };
             chapterMap.set(chapter, group);
             groups.push(group);
         } else {
-            const group = chapterMap.get(chapter)!;
-            group.posts.push(post);
-            if (order < group.minOrder) group.minOrder = order;
+            chapterMap.get(chapter)!.posts.push(post);
         }
     }
 
-    return groups.sort((a, b) => a.minOrder - b.minOrder);
+    return groups.sort((a, b) => a.firstIndex - b.firstIndex);
 });
 
 // Regular suggestions (non-series)

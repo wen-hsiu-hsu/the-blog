@@ -12,20 +12,20 @@
             <div v-if="currentSeries" class="mb-1">
                 <a
                     href="#series-toc"
-                    class="inline-flex items-center gap-1.5 text-md py-1 font-italic hover:underline hover:opacity-80 transition-opacity"
+                    class="flex flex-col gap-0.5 text-sm py-1 font-italic hover:underline hover:opacity-80 transition-opacity"
                 >
-                    {{ seriesTitle }}
+                    <!-- Line 1: Series title (left) + chevron (right) -->
+                    <span class="flex items-center justify-between gap-1.5 text-sm">
+                        <span>{{ seriesTitle }}</span>
+                        <BaseIcon icon="mynaui/chevron-down" size="size-3.5" class="opacity-50" />
+                    </span>
+                    <!-- Line 2 (with chapter): indented sub-level showing currentChapter -->
                     <template v-if="currentChapter">
-                        <span class="opacity-60">·</span>
-                        {{ currentChapter }}
-                        <span class="opacity-60">·</span>
-                        <span>第 {{ frontmatter.order }} 節 / 共 {{ seriesTotalChapters }} 節</span>
+                        <span class="flex items-center gap-1 text-xs">
+                            <BaseIcon icon="mynaui/dots-vertical" size="size-6 -mx-2" />
+                            <span>{{ currentChapter }}</span>
+                        </span>
                     </template>
-                    <template v-else>
-                        <span class="opacity-60">·</span>
-                        <span>第 {{ frontmatter.order }} 章 / 共 {{ seriesTotalChapters }} 章</span>
-                    </template>
-                    <BaseIcon icon="mynaui/chevron-down" size="size-3.5" class="opacity-50" />
                 </a>
             </div>
         </div>
@@ -35,7 +35,7 @@
 <script setup lang="ts">
 import { data as readingTimeData } from '../../utils/reading-time.data.ts';
 import { computed } from 'vue';
-import { withBase, useRoute, useData } from 'vitepress';
+import { useRoute, useData } from 'vitepress';
 
 const route = useRoute();
 const { frontmatter, theme } = useData();
@@ -53,8 +53,6 @@ const seriesPosts = computed(() => {
     if (!currentSeries.value) return [];
     return theme.value.seriesMap?.[currentSeries.value] ?? [];
 });
-
-const seriesTotalChapters = computed(() => seriesPosts.value.length);
 
 const seriesTitle = computed(() => {
     if (!currentSeries.value) return '';
