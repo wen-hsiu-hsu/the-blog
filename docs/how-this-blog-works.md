@@ -165,7 +165,7 @@ npm run dev:with-drafts
 2. 文章命名：`01-{描述性slug}.md`
 3. frontmatter 填寫系列必要欄位：
     - `series: css-notes` — 識別 slug，對應 seriesMap key
-    - `order: 1` — 章節排序
+    - `order: 1` — 章節排序鍵（顯示的「第 X 節」序號由陣列 index 計算，非 `order` 值，故 `order` 可跳號）
     - `seriesTitle: "CSS Notes"` — badge 顯示名稱（省略時 fallback 為 `category → slug`）
     - `section: dev`
 4. 不需要改任何設定，glob 自動掃到

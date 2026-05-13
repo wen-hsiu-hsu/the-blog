@@ -21,9 +21,7 @@ export async function buildDraftSlugs(draftsDir) {
  * 先移除 inline code（backtick）內容，避免誤判 `[[Scope]]` 等程式碼文字。
  */
 export function extractWikilinks(content) {
-    const stripped = content
-        .replace(/```[\s\S]*?```/g, '')
-        .replace(/`[^`]*`/g, '``');
+    const stripped = content.replace(/```[\s\S]*?```/g, '').replace(/`[^`]*`/g, '``');
     const regex = /(?<!!)\[\[([^\]|#]+?)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]/g;
     const slugs = [];
     for (const match of stripped.matchAll(regex)) {
