@@ -108,6 +108,7 @@ async function publishScheduledPosts() {
             await fs.move(draftPath, destPath);
             console.log(`✅ Published: ${relPath}`);
             published.push(relPath);
+            publishedSlugs.add(path.basename(draftPath, '.md'));
         } else {
             skipped.push({ file: fileName, reason: `not due yet (${postDate})` });
         }
