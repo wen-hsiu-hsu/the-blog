@@ -7,7 +7,7 @@ category: Deep JavaScript Foundations v3
 series: deep_javascript_foundations_v3
 seriesTitle: 'Deep JS Foundations v3'
 order: 21
-chapter: 'Coercion'
+chapter: 'Equality'
 tags:
     - JavaScript
     - frontendMasters
