@@ -1,20 +1,21 @@
 ---
-title: ''
-description: ''
-date: 2026-07-
+title: 'Vanilla JS 在現代開發中的位置'
+description: '回顧課程涵蓋的技術範圍，逐一對照課程開始時列出的開發者疑慮，並說明微型函式庫作為框架與純 Vanilla JS 之間的合理中間地帶。'
+date: 2026-07-15
 section: dev
 category: You Might Not Need a Framework
 series: you_might_not_need_a_framework
 seriesTitle: 'You Might Not Need a Framework'
-order: 
-chapter: 'Reactive Programming with Proxies'
+order: 32
+chapter: 'Wrapping Up'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - ReactiveProgramming
 ---
 
-# 總結：回顧以及 Vanilla JS 在現代開發中的位置
+# Vanilla JS 在現代開發中的位置
 
 > 這是「Vanilla JS: You Might Not Need a Framework」課程的最後一篇筆記。從 DOM API 的基礎、ES 模組組織、Fetch API、SPA 路由、Web Components，到 Proxy 與響應式程式設計，課程在這一節做了全面的回顧與收尾。
 
