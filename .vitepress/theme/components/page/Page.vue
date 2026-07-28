@@ -9,6 +9,7 @@
                             <img
                                 :src="theme.author.avatar"
                                 :alt="`${theme.author.name}'s Avatar Image`"
+                                fetchpriority="high"
                                 class="size-26 rounded-full object-cover"
                             />
                         </template>
@@ -16,6 +17,7 @@
                             <img
                                 src="https://c.tenor.com/wfdSCMP3BVEAAAAC/tenor.gif"
                                 :alt="`${theme.author.name}'s Avatar Image`"
+                                loading="lazy"
                                 class="size-26 rounded-full object-cover"
                             />
                         </template>
@@ -60,6 +62,7 @@
                         <img
                             src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
                             alt="Buy Me A Coffee"
+                            loading="lazy"
                             style="height: 40px !important; width: 144.7px !important"
                         />
                     </a>
