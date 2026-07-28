@@ -1,6 +1,6 @@
 ---
 title: '設定效能目標：三個決定「夠快」的力量'
-description: '介紹決定網站「夠快」的三個力量：使用者體驗與商業指標的關聯、Weber's Law 的 20% 競爭門檻，以及 Core Web Vitals 的 SEO 排名影響。'
+description: "介紹決定網站「夠快」的三個力量：使用者體驗與商業指標的關聯、Weber's Law 的 20% 競爭門檻，以及 Core Web Vitals 的 SEO 排名影響。"
 date: 2026-07-28
 section: dev
 category: Web Performance Fundamentals
