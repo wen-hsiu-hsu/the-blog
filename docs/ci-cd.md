@@ -5,6 +5,41 @@
 部署由 GitHub Actions 全程控制，**Cloudflare Pages 的自動 Git 部署已暫停**。
 所有 push 到 `master` 都必須先通過測試，才會觸發部署。
 
+在 push 之前，本機的 git hooks（見下方「本機 Git Hooks」）會先擋掉明顯會在 CI 失敗的問題，
+避免每次都要等 GitHub Actions 跑完才發現格式或草稿驗證錯誤。
+
+---
+
+## 本機 Git Hooks（husky + lint-staged）
+
+用 [husky](https://typicode.github.io/husky/) 管理 git hooks，設定隨 repo 一起 clone，
+`npm install` 時會透過 `prepare` script 自動掛上，不需要額外手動設定。
+
+### pre-commit
+
+執行 `npx lint-staged`，只對本次 commit **staged 的檔案**跑 `prettier --write`
+（設定於 `package.json` 的 `lint-staged` 欄位，範圍：`*.{js,ts,vue,md,json,yml,yaml}`）。
+格式化後的結果會自動重新 staged，commit 內容永遠是已格式化的版本。
+
+### pre-push
+
+依序執行，任一步驟失敗就擋下 push：
+
+```bash
+npm run format:check   # 確認整個專案沒有未格式化的檔案（pre-commit 只處理 staged 檔案，這裡做全域把關）
+npm run validate:drafts # 草稿 frontmatter / wikilink 驗證，邏輯與 validate-drafts.yml 相同
+npm test                # Vitest 單元測試，邏輯與 deploy.yml 的 test job 相同
+```
+
+**設計理由**：這三項檢查最終都會在 GitHub Actions 上再跑一次（`deploy.yml`、`validate-drafts.yml`），
+在本機 push 前先擋，是為了更快拿到回饋、減少「push 後才發現壞掉」的往返。CI 端的檢查**仍然保留**，
+不因為有本機 hook 就移除——本機 hook 可能被 `--no-verify` 跳過，CI 才是真正的把關。
+
+### Hook 腳本位置
+
+- `.husky/pre-commit`
+- `.husky/pre-push`
+
 ---
 
 ## Workflows
