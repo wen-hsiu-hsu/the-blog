@@ -9,9 +9,9 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 24
 chapter: 'Setting Performance Goals'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - UserExperience
+    - frontendMasters
+    - webPerformanceFundamentals
+    - UserExperience
 ---
 
 # 設定效能目標：速度的心理學

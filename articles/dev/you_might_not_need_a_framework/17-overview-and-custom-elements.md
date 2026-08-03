@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 17
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
 ---
 
 # Web Components 與 Custom Elements：瀏覽器原生的元件化方式
@@ -41,13 +41,13 @@ Custom Element 是讓你用 JavaScript 定義一個新的、可重用的 HTML �
 
 ```javascript
 class MyElement extends HTMLElement {
-  constructor() {
-    super();
-    // 設定初始狀態、事件監聽器等
-  }
+    constructor() {
+        super();
+        // 設定初始狀態、事件監聽器等
+    }
 }
 
-customElements.define("my-element", MyElement);
+customElements.define('my-element', MyElement);
 ```
 
 註冊後，你可以直接在 HTML 中使用這個標籤，或是透過 DOM API 建立：
@@ -55,8 +55,9 @@ customElements.define("my-element", MyElement);
 ```html
 <my-element></my-element>
 ```
+
 ```javascript
-document.createElement("my-element");
+document.createElement('my-element');
 ```
 
 你也可以繼承自更具體的介面，例如 `HTMLHeadingElement`，而不只是 `HTMLElement`，但這取決於你的需求。
@@ -90,26 +91,26 @@ Custom Elements 提供幾個可以覆寫的生命週期方法：
 
 ```javascript
 class MyElement extends HTMLElement {
-  constructor() {
-    super();
-    // 設定初始狀態與事件監聽器
-  }
+    constructor() {
+        super();
+        // 設定初始狀態與事件監聽器
+    }
 
-  connectedCallback() {
-    // 元素被加入到文件中時觸發
-  }
+    connectedCallback() {
+        // 元素被加入到文件中時觸發
+    }
 
-  disconnectedCallback() {
-    // 元素被從文件中移除時觸發
-  }
+    disconnectedCallback() {
+        // 元素被從文件中移除時觸發
+    }
 
-  adoptedCallback() {
-    // 元素被移動到另一個 document 時觸發（不常見）
-  }
+    adoptedCallback() {
+        // 元素被移動到另一個 document 時觸發（不常見）
+    }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    // 元素的屬性發生變化時觸發
-  }
+    attributeChangedCallback(name, oldValue, newValue) {
+        // 元素的屬性發生變化時觸發
+    }
 }
 ```
 
@@ -125,9 +126,9 @@ Slot 是讓元件使用者能夠傳入子元素的機制，類似其他框架的
 
 ```html
 <my-element>
-  <div>
-    <h2>Slot of My Element</h2>
-  </div>
+    <div>
+        <h2>Slot of My Element</h2>
+    </div>
 </my-element>
 ```
 

@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 36
 chapter: 'Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - LexicalScope
 ---
 
 # 執行階段：變數查找與目標/來源位置
@@ -28,9 +28,9 @@ tags:
 - **來源（Source）**：提供值的一側，俗稱 RHS（Right-Hand Side）
 
 ```javascript
-var teacher = "Kyle";   // teacher 是目標（接收 "Kyle"）
+var teacher = 'Kyle'; // teacher 是目標（接收 "Kyle"）
 
-console.log(question);  // question 是來源（提供它持有的值）
+console.log(question); // question 是來源（提供它持有的值）
 ```
 
 這不只是語義區分，編譯器在建立抽象語法樹時，就記錄了每個識別字的角色，執行期的行為會因角色不同而有所差異。
@@ -48,17 +48,19 @@ console.log(question);  // question 是來源（提供它持有的值）
 使用上一篇的程式碼繼續：
 
 ```javascript
-var teacher = "Kyle";           // 第 1 行
-function otherClass() {          // 第 3 行
-    var teacher = "Suzy";       // 第 4 行
-    console.log("Welcome!");    // 第 5 行
+var teacher = 'Kyle'; // 第 1 行
+function otherClass() {
+    // 第 3 行
+    var teacher = 'Suzy'; // 第 4 行
+    console.log('Welcome!'); // 第 5 行
 }
-function ask() {                 // 第 8 行
-    var question = "Why?";      // 第 9 行
-    console.log(question);      // 第 10 行
+function ask() {
+    // 第 8 行
+    var question = 'Why?'; // 第 9 行
+    console.log(question); // 第 10 行
 }
-otherClass();                    // 第 13 行
-ask();                           // 第 14 行
+otherClass(); // 第 13 行
+ask(); // 第 14 行
 ```
 
 ### 第 1 行：`teacher = "Kyle"`

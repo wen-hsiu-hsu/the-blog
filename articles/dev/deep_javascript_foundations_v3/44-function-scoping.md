@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 44
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
 ---
 
 # 函式範疇的實際用途：最小暴露原則
@@ -22,16 +22,16 @@ tags:
 ## 名稱衝突：一個真實的問題
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 // .. 某些程式碼 ..
 
-var teacher = "Suzy";      // 後來插入的程式碼
-console.log(teacher);      // Suzy
+var teacher = 'Suzy'; // 後來插入的程式碼
+console.log(teacher); // Suzy
 
 // .. 更多程式碼 ..
 
-console.log(teacher);      // Suzy -- 壞掉了！
+console.log(teacher); // Suzy -- 壞掉了！
 ```
 
 這是一個在真實專案中極為常見的場景。原本第 1 行的 `teacher` 預期在第 10 行仍然有效，但後來插入的程式碼（可能來自不熟悉整個程式碼庫的開發者）使用了相同的變數名稱，覆蓋了原本的值。
@@ -41,16 +41,16 @@ console.log(teacher);      // Suzy -- 壞掉了！
 ## 用函式建立新範疇
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 function anotherTeacher() {
-    var teacher = "Suzy";      // 藍色彈珠，不影響外層
-    console.log(teacher);      // Suzy
+    var teacher = 'Suzy'; // 藍色彈珠，不影響外層
+    console.log(teacher); // Suzy
 }
 
 anotherTeacher();
 
-console.log(teacher);          // Kyle，正確！
+console.log(teacher); // Kyle，正確！
 ```
 
 把程式碼包在函式裡，就建立了一個新的範疇桶子。內層的 `teacher` 是藍色彈珠，外層的是紅色彈珠，兩者互不干擾。
@@ -83,7 +83,7 @@ anotherTeacher();
 // 步驟二：用 () 執行它
 
 // 用括號明確分開兩個步驟：
-(anotherTeacher)();    // 完全合法，結果相同
+anotherTeacher(); // 完全合法，結果相同
 ```
 
 把函式本身用括號包起來，在語法上仍然有效，第一組括號取出函式的值，第二組括號執行它。這個思路是後續章節要介紹的 IIFE 模式（立即調用函式表達式）的推導起點。

@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 2
 chapter: 'Vanilla JavaScript'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebAPI
-  - Performance
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebAPI
+    - Performance
 ---
 
 # Vanilla JS 的優勢與開發者的常見疑慮

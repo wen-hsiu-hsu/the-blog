@@ -9,14 +9,14 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 5
 chapter: 'Command Line'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - CLI
-  - Terminal
-  - Shell
-  - Zsh
-  - Bash
-  - EnvironmentVariables
+    - frontendMasters
+    - fullStackFundamentals
+    - CLI
+    - Terminal
+    - Shell
+    - Zsh
+    - Bash
+    - EnvironmentVariables
 ---
 
 # Shell 是什麼：從 bash 到 zsh，設定開啟終端機時的問候語

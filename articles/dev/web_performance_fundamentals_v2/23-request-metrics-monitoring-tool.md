@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 23
 chapter: 'Testing & Tools'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - RealUserMonitoring
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - RealUserMonitoring
+    - CoreWebVitals
 ---
 
 # 效能測試工具：Real User Monitoring（RUM）

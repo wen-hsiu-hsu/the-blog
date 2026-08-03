@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 39
 chapter: 'Scope & Function Expressions'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - FunctionExpression
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - FunctionExpression
 ---
 
 # 函式宣告 vs 函式表達式：識別字屬於哪個範疇
@@ -23,7 +23,9 @@ tags:
 ## 函式宣告（Function Declaration）
 
 ```javascript
-function teacher() { /* .. */ }
+function teacher() {
+    /* .. */
+}
 ```
 
 判斷方式：`function` 關鍵字是整個陳述式的**第一個詞**。
@@ -55,10 +57,14 @@ var myTeacher = function anotherTeacher() {
 
 ```javascript
 // 匿名函式表達式（更常見）
-var myTeacher = function() { /* .. */ };
+var myTeacher = function () {
+    /* .. */
+};
 
 // 命名函式表達式（Kyle Simpson 強烈推薦）
-var myTeacher = function myTeacher() { /* .. */ };
+var myTeacher = function myTeacher() {
+    /* .. */
+};
 ```
 
 匿名函式表達式在現代程式碼中極為普遍，但 Kyle Simpson 的立場非常明確：**無論任何情況，都應該優先使用命名函式表達式。** 這個建議的理由會在後續章節詳細展開。

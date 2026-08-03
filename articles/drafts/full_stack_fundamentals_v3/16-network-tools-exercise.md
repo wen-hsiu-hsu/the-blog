@@ -9,14 +9,14 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 16
 chapter: 'The Internet'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - Networking
-  - Ping
-  - Traceroute
-  - Netstat
-  - ISP
-  - Backbone
+    - frontendMasters
+    - fullStackFundamentals
+    - Networking
+    - Ping
+    - Traceroute
+    - Netstat
+    - ISP
+    - Backbone
 ---
 
 # 用 ping、traceroute、netstat 揭開網路請求背後的隱藏層：實際動手驗證架構怎麼運作

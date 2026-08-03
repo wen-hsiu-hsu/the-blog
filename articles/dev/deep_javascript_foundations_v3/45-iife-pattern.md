@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 45
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - IIFE
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - IIFE
 ---
 
 # IIFE：立即調用函式表達式
@@ -25,20 +25,20 @@ tags:
 上一篇展示了把函式呼叫拆成兩步驟的概念：
 
 ```javascript
-(anotherTeacher)();   // 括號取值，再執行
+anotherTeacher(); // 括號取值，再執行
 ```
 
 既然括號內可以放任何表達式，為什麼要先宣告一個具名函式再放進去？直接把函式表達式放進括號就好：
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 (function anotherTeacher() {
-    var teacher = "Suzy";
-    console.log(teacher);   // Suzy
+    var teacher = 'Suzy';
+    console.log(teacher); // Suzy
 })();
 
-console.log(teacher);       // Kyle
+console.log(teacher); // Kyle
 ```
 
 這就是 **IIFE（Immediately Invoked Function Expression，立即調用函式表達式）**，2010 年由社群正式命名。
@@ -50,9 +50,15 @@ console.log(teacher);       // Kyle
 讓 `function` 關鍵字不是陳述式第一個詞的方式不只有括號，任何一元運算子都能達到同樣效果：
 
 ```javascript
-!function() { /* .. */ }();
-+function() { /* .. */ }();
-void function() { /* .. */ }();
+!(function () {
+    /* .. */
+})();
++(function () {
+    /* .. */
+})();
+void (function () {
+    /* .. */
+})();
 ```
 
 這些都能把函式轉為表達式並執行。括號只是最常見、可讀性最好的形式。
@@ -63,9 +69,9 @@ void function() { /* .. */ }();
 
 ```javascript
 // 常見但不好
-(function(teacher) {
-    console.log(teacher);   // Suzy
-})("Suzy");
+(function (teacher) {
+    console.log(teacher); // Suzy
+})('Suzy');
 ```
 
 Kyle Simpson 的立場與前一篇完全一致：IIFE 也是函式，函式就應該有名字。如果你能描述這個範疇的用途，就用描述性名稱；如果真的想不出名稱，至少寫 `IIFE`，這樣在 stack trace 中還能知道它是從哪裡來的。
@@ -82,9 +88,8 @@ IIFE 還有一個較少人知道的應用：把只能是陳述式的語法放進
 var teacher;
 try {
     teacher = fetchTeacher(1);
-}
-catch (err) {
-    teacher = "Kyle";
+} catch (err) {
+    teacher = 'Kyle';
 }
 ```
 
@@ -94,9 +99,8 @@ catch (err) {
 var teacher = (function getTeacher() {
     try {
         return fetchTeacher(1);
-    }
-    catch (err) {
-        return "Kyle";
+    } catch (err) {
+        return 'Kyle';
     }
 })();
 ```

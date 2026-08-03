@@ -9,11 +9,11 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 25
 chapter: 'Setting Performance Goals'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CoreWebVitals
-  - SEO
-  - UserExperience
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CoreWebVitals
+    - SEO
+    - UserExperience
 ---
 
 # 設定效能目標：三個決定網站「夠快」的指標

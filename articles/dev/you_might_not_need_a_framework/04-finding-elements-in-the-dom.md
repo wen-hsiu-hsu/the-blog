@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 4
 chapter: 'Vanilla JavaScript'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - WebAPI
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - WebAPI
 ---
 
 # 選取 DOM 元素：方法、回傳型別與操作能力
@@ -55,10 +55,10 @@ DOM API 提供五種選取元素的基本方式：
 傳入 ID 字串，回傳唯一一個對應的元素，或 `null`。這個方法從 1990 年代就存在了。
 
 ```javascript
-const element = document.getElementById("one-item");
+const element = document.getElementById('one-item');
 
 if (element !== null) {
-  // element found
+    // element found
 }
 ```
 
@@ -67,10 +67,10 @@ if (element !== null) {
 傳入 CSS 選擇器，回傳第一個符合的元素，或 `null`。比 `getElementById` 更現代，約有 15 年歷史，彈性也更高。
 
 ```javascript
-const element = document.querySelector("section>header a");
+const element = document.querySelector('section>header a');
 
 if (element !== null) {
-  // element found
+    // element found
 }
 ```
 
@@ -82,26 +82,26 @@ if (element !== null) {
 | ------------------------ | --------------------- |
 | `getElementsByTagName`   | 動態 `HTMLCollection` |
 | `getElementsByClassName` | 動態 `HTMLCollection` |
-| `getElementsByName`      | 動態 `NodeList` |
+| `getElementsByName`      | 動態 `NodeList`       |
 | `querySelectorAll`       | 靜態 `NodeList`       |
 
 當沒有找到任何符合條件的元素時，這些方法不會回傳 `null`，而是回傳一個空的集合。
 
 ```javascript
 // elements 是靜態 NodeList，有完整的陣列介面
-const elements = document.querySelectorAll("#nav-menu li");
+const elements = document.querySelectorAll('#nav-menu li');
 
 if (elements.length > 0) {
-  const firstElement = elements[0];
+    const firstElement = elements[0];
 }
 ```
 
 ```javascript
 // elements 是動態 HTMLCollection，只有基本的迭代能力
-const elements = document.getElementsByClassName("important");
+const elements = document.getElementsByClassName('important');
 
 for (let currentElement of elements) {
-  // 可以用 for...of 迭代，但不能用 filter、map 等
+    // 可以用 for...of 迭代，但不能用 filter、map 等
 }
 ```
 
@@ -115,9 +115,9 @@ for (let currentElement of elements) {
 
 ```javascript
 // 將 HTMLCollection 轉換為陣列，之後就能使用所有陣列方法
-const elements = Array.from(document.getElementsByClassName("important"));
+const elements = Array.from(document.getElementsByClassName('important'));
 
-elements.filter(e => e.tagName === "p");
+elements.filter((e) => e.tagName === 'p');
 ```
 
 `querySelectorAll` 回傳的 `NodeList` 支援 `forEach`，但仍不支援 `filter`、`map` 等方法。若需要完整的陣列介面，同樣建議用 `Array.from()` 轉換。

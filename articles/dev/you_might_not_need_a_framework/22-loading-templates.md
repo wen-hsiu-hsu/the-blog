@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 22
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
 ---
 
 # 在 Custom Element 中載入 Template：connectedCallback 與 Shadow DOM 的必要性

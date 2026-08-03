@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 38
 chapter: 'Improving Largest Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - LCP
-  - ImageOptimization
+    - frontendMasters
+    - webPerformanceFundamentals
+    - LCP
+    - ImageOptimization
 ---
 
 # 改善 LCP：圖片壓縮、格式轉換與響應式圖片實作

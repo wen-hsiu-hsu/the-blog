@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 42
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - LexicalScope
 ---
 
 # 詞彙範疇：正式定義與動態範疇的對比

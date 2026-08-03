@@ -9,11 +9,11 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 7
 chapter: 'Core Web Vitals & Others Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CoreWebVitals
-  - LCP
-  - ImageOptimization
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CoreWebVitals
+    - LCP
+    - ImageOptimization
 ---
 
 # Core Web Vitals 與 LCP（最大內容繪製）
@@ -74,13 +74,13 @@ entropy = 圖片未壓縮大小（bytes）/ 渲染像素數
 
 ```javascript
 console.table(
-  [...document.images].map((img) => {
-    const entry = performance.getEntriesByName(img.currentSrc)[0];
-    const bytes = (entry?.encodedBodySize * 8);
-    const pixels = (img.width * img.height);
-    return { src: img.currentSrc, bytes, pixels, entropy: (bytes / pixels) };
-  })
-)
+    [...document.images].map((img) => {
+        const entry = performance.getEntriesByName(img.currentSrc)[0];
+        const bytes = entry?.encodedBodySize * 8;
+        const pixels = img.width * img.height;
+        return { src: img.currentSrc, bytes, pixels, entropy: bytes / pixels };
+    }),
+);
 ```
 
 這段程式碼可以列出頁面上所有圖片的 entropy 值。

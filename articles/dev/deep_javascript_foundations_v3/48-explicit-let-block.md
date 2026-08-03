@@ -27,7 +27,7 @@ tags:
 
 ```javascript
 function formatStr(str) {
-    let prefix, rest;       // 宣告在頂層
+    let prefix, rest; // 宣告在頂層
 
     prefix = str.slice(0, 3);
     rest = str.slice(3);
@@ -47,7 +47,8 @@ function formatStr(str) {
 
 ```javascript
 function formatStr(str) {
-    { let prefix, rest;         // 宣告和開括號放在同一行，意圖一目了然
+    {
+        let prefix, rest; // 宣告和開括號放在同一行，意圖一目了然
         prefix = str.slice(0, 3);
         rest = str.slice(3);
         str = prefix.toUpperCase() + rest;

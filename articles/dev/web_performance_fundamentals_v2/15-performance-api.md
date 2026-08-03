@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 15
 chapter: 'Capturing Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - PerformanceAPI
-  - WebAPI
+    - frontendMasters
+    - webPerformanceFundamentals
+    - PerformanceAPI
+    - WebAPI
 ---
 
 # 以程式碼收集效能指標：Performance API 概覽

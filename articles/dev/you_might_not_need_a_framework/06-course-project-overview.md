@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 6
 chapter: 'The DOM'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - PWA
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - PWA
 ---
 
 # DOM 與 HTML 原始碼的差異：瀏覽器如何解析與補全結構
@@ -51,7 +51,9 @@ HTML 和 CSS 已經事先準備好，課程會專注在 JavaScript 的實作，�
 <title>My First HTML Test</title>
 <h1>Quick HTML</h1>
 <style>
-  body { background-color: red; }
+    body {
+        background-color: red;
+    }
 </style>
 ```
 

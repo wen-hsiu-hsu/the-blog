@@ -9,12 +9,12 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 4
 chapter: 'Command Line'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - CLI
-  - Vim
-  - Terminal
-  - VimModes
+    - frontendMasters
+    - fullStackFundamentals
+    - CLI
+    - Vim
+    - Terminal
+    - VimModes
 ---
 
 # 命令列迷路指南與 Vim 三種模式入門

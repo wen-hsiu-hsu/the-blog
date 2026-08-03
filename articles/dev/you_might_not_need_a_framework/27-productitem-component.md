@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 27
 chapter: 'Reactive Programming with Proxies'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - EventListener
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - EventListener
 ---
 
 # ProductItem 元件與事件目標判斷：event.target 與 event.currentTarget
@@ -26,31 +26,31 @@ tags:
 
 ```javascript
 export default class ProductItem extends HTMLElement {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  connectedCallback() {
-    const template = document.getElementById("product-item-template");
-    const content = template.content.cloneNode(true);
-    this.appendChild(content);
+    connectedCallback() {
+        const template = document.getElementById('product-item-template');
+        const content = template.content.cloneNode(true);
+        this.appendChild(content);
 
-    const product = JSON.parse(this.dataset.product);
-    this.querySelector("h4").textContent = product.name;
-    this.querySelector("p.price").textContent = `$${product.price.toFixed(2)}`;
-    this.querySelector("img").src = `data/images/${product.image}`;
-    this.querySelector("a").addEventListener("click", event => {
-      if (event.target.tagName.toLowerCase() == "button") {
-        // TODO 加入購物車
-      } else {
-        app.router.go(`/product-${product.id}`);
-      }
-      event.preventDefault();
-    });
-  }
+        const product = JSON.parse(this.dataset.product);
+        this.querySelector('h4').textContent = product.name;
+        this.querySelector('p.price').textContent = `$${product.price.toFixed(2)}`;
+        this.querySelector('img').src = `data/images/${product.image}`;
+        this.querySelector('a').addEventListener('click', (event) => {
+            if (event.target.tagName.toLowerCase() == 'button') {
+                // TODO 加入購物車
+            } else {
+                app.router.go(`/product-${product.id}`);
+            }
+            event.preventDefault();
+        });
+    }
 }
 
-customElements.define("product-item", ProductItem);
+customElements.define('product-item', ProductItem);
 ```
 
 這個元件沒有建立 Shadow DOM，這是有意為之，元件直接附加到自己本身（`this`），共用父層頁面元件的樣式表。
@@ -75,14 +75,14 @@ template 的結構中，整個商品列其實是一個 `<a>` 連結，圖片和�
 利用這個差異，可以判斷使用者實際點到了什麼，再決定要執行哪個行為：
 
 ```javascript
-this.querySelector("a").addEventListener("click", event => {
-  if (event.target.tagName.toLowerCase() == "button") {
-    // 點到按鈕，加入購物車邏輯（後面章節會補上）
-  } else {
-    // 點到其他地方，導向商品詳細頁
-    app.router.go(`/product-${product.id}`);
-  }
-  event.preventDefault();
+this.querySelector('a').addEventListener('click', (event) => {
+    if (event.target.tagName.toLowerCase() == 'button') {
+        // 點到按鈕，加入購物車邏輯（後面章節會補上）
+    } else {
+        // 點到其他地方，導向商品詳細頁
+        app.router.go(`/product-${product.id}`);
+    }
+    event.preventDefault();
 });
 ```
 
@@ -94,17 +94,17 @@ this.querySelector("a").addEventListener("click", event => {
 
 ```javascript
 export async function getProductById(id) {
-  if (app.store.menu == null) {
-    await loadData();
-  }
-
-  for (let c of app.store.menu) {
-    for (let p of c.products) {
-      if (p.id == id) {
-        return p;
-      }
+    if (app.store.menu == null) {
+        await loadData();
     }
-  }
+
+    for (let c of app.store.menu) {
+        for (let p of c.products) {
+            if (p.id == id) {
+                return p;
+            }
+        }
+    }
 }
 ```
 

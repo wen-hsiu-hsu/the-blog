@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 25
 chapter: 'Reactive Programming with Proxies'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Proxy
-  - ReactiveProgramming
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Proxy
+    - ReactiveProgramming
 ---
 
 # Proxy 與響應式程式設計：讓資料變動驅動 UI 更新
@@ -28,17 +28,17 @@ Proxy 是 JavaScript 的一個物件包裝機制。你用它包住一個原始�
 
 ```javascript
 const original = {
-  name: 'John Doe',
-  age: 30
+    name: 'John Doe',
+    age: 30,
 };
 
 const handler = {
-  get: function(target, prop) {
-    if (prop === 'age') {
-      return target[prop] + ' years old';
-    }
-    return target[prop];
-  }
+    get: function (target, prop) {
+        if (prop === 'age') {
+            return target[prop] + ' years old';
+        }
+        return target[prop];
+    },
 };
 
 const s = new Proxy(original, handler);
@@ -68,17 +68,17 @@ Proxy 只能包裝物件，不能直接用於數字、字串、布林值這類�
 
 ```javascript
 const handler = {
-  set: function(target, property, value) {
-    if (property === 'age' && typeof value !== 'number') {
-      throw new TypeError('Age not a number');
-    }
-    target[property] = value;
-  }
+    set: function (target, property, value) {
+        if (property === 'age' && typeof value !== 'number') {
+            throw new TypeError('Age not a number');
+        }
+        target[property] = value;
+    },
 };
 
 const s = new Proxy(original, handler);
-s.age = 40;      // OK
-s.age = "hey!";  // 拋出 TypeError
+s.age = 40; // OK
+s.age = 'hey!'; // 拋出 TypeError
 ```
 
 ## 用 Proxy 包裝 Store 實現響應式更新
@@ -89,18 +89,18 @@ s.age = "hey!";  // 拋出 TypeError
 
 ```javascript
 const proxyStore = new Proxy(Store, {
-  set(target, property, value) {
-    target[property] = value; // 實際執行修改
+    set(target, property, value) {
+        target[property] = value; // 實際執行修改
 
-    if (property === 'menu') {
-      window.dispatchEvent(new Event("appmenuchange"));
-    }
-    if (property === 'cart') {
-      window.dispatchEvent(new Event("appcartchange"));
-    }
+        if (property === 'menu') {
+            window.dispatchEvent(new Event('appmenuchange'));
+        }
+        if (property === 'cart') {
+            window.dispatchEvent(new Event('appcartchange'));
+        }
 
-    return true; // set trap 必須回傳 true 表示接受此次修改
-  }
+        return true; // set trap 必須回傳 true 表示接受此次修改
+    },
 });
 
 export default proxyStore;

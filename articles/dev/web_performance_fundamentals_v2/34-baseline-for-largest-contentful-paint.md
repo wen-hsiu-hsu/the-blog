@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 34
 chapter: 'Improving Largest Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - LCP
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - LCP
+    - CoreWebVitals
 ---
 
 # 改善 LCP：問題分析與三個策略

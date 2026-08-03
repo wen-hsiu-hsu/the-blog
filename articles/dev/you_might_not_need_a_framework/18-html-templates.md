@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 18
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
 ---
 
 # HTML Templates：在 DOM 中定義惰性的 HTML 片段
@@ -26,10 +26,10 @@ tags:
 
 ```html
 <template id="template1">
-  <header>
-    <h1>This is a template</h1>
-    <p>This content is not rendered initially</p>
-  </header>
+    <header>
+        <h1>This is a template</h1>
+        <p>This content is not rendered initially</p>
+    </header>
 </template>
 ```
 
@@ -64,13 +64,15 @@ connectedCallback() {
 
 ```html
 <template id="template1">
-  <style>
-    /* 這個宣告會影響頁面上所有的 h1，不只是這個元件內的 */
-    h1 { color: red }
-  </style>
-  <header>
-    <h1>This is a template</h1>
-  </header>
+    <style>
+        /* 這個宣告會影響頁面上所有的 h1，不只是這個元件內的 */
+        h1 {
+            color: red;
+        }
+    </style>
+    <header>
+        <h1>This is a template</h1>
+    </header>
 </template>
 ```
 

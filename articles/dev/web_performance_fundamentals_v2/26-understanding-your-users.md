@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 26
 chapter: 'Setting Performance Goals'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - RealUserMonitoring
-  - DevTools
+    - frontendMasters
+    - webPerformanceFundamentals
+    - RealUserMonitoring
+    - DevTools
 ---
 
 # 設定效能目標：認識你的真實使用者

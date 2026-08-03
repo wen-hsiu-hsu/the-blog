@@ -9,12 +9,12 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 6
 chapter: 'Server'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - Server
-  - NodeJs
-  - CloudComputing
-  - VPS
+    - frontendMasters
+    - fullStackFundamentals
+    - Server
+    - NodeJs
+    - CloudComputing
+    - VPS
 ---
 
 # 伺服器到底是什麼：從概念定義到寫一個最陽春的 Node.js Server
@@ -42,12 +42,12 @@ tags:
 接下來的練習會用 Node.js 寫一個名為 simple server 的陽春伺服器，監聽 3000 這個 port。practice 的程式碼如下：
 
 ```js
-const http = require("http");
+const http = require('http');
 const fs = require('fs');
 const PORT = 3000;
 
 const server = http.createServer(function (req, res) {
-    res.writeHead(200, { 'content-type': 'text/html'});
+    res.writeHead(200, { 'content-type': 'text/html' });
     fs.createReadStream('index.html').pipe(res);
 });
 server.listen(PORT);

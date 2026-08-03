@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 24
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
-  - Performance
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
+    - Performance
 ---
 
 # 為 Web Component 載入外部 CSS：Fetch API 與效能優化
@@ -27,27 +27,27 @@ tags:
 
 ```javascript
 class MenuPage extends HTMLElement {
-  constructor() {
-    super();
-    this.root = this.attachShadow({ mode: "open" });
+    constructor() {
+        super();
+        this.root = this.attachShadow({ mode: 'open' });
 
-    const loadCSS = async () => {
-      const request = await fetch("components/MenuPage.css");
-      const css = await request.text();
+        const loadCSS = async () => {
+            const request = await fetch('components/MenuPage.css');
+            const css = await request.text();
 
-      const styles = document.createElement("style");
-      styles.textContent = css;
-      this.root.appendChild(styles);
-    };
+            const styles = document.createElement('style');
+            styles.textContent = css;
+            this.root.appendChild(styles);
+        };
 
-    loadCSS();
-  }
+        loadCSS();
+    }
 
-  connectedCallback() {
-    const template = document.getElementById("menu-page-template");
-    const content = template.content.cloneNode(true);
-    this.root.appendChild(content);
-  }
+    connectedCallback() {
+        const template = document.getElementById('menu-page-template');
+        const content = template.content.cloneNode(true);
+        this.root.appendChild(content);
+    }
 }
 ```
 
@@ -70,7 +70,7 @@ class MenuPage extends HTMLElement {
 如果想提前讓瀏覽器開始下載，可以在 HTML 的 `<head>` 中加入 prefetch 或 preload 提示：
 
 ```html
-<link rel="prefetch" href="components/DetailsPage.css" as="style">
+<link rel="prefetch" href="components/DetailsPage.css" as="style" />
 ```
 
 這告訴瀏覽器：「這個檔案之後會用到，有空的時候先下載。」等到 Web Component 真的透過 Fetch 請求它時，檔案已經在快取裡了。這個步驟不是必須的，但在意效能的情況下可以考慮加入。

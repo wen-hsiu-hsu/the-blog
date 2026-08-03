@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 9
 chapter: 'Core Web Vitals & Others Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CLS
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CLS
+    - CoreWebVitals
 ---
 
 # CLS 的邊界情況：哪些元素計入、viewport 範圍與 iframe 的處理
@@ -69,6 +69,7 @@ Google 使用從不同使用者、裝置與網路環境收集到的所有 CLS �
 ### 開發者如何防止版面位移？
 
 開發者可以透過以下方式防止版面位移：
+
 1. 為動態載入的內容使用 skeleton 或 placeholder 預留空間
 2. 為圖片與 iframe 指定初始尺寸
 3. 確保使用者開始互動前，相關內容已載入完成

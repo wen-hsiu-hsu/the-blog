@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 15
 chapter: 'Routing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Router
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Router
+    - DOM
 ---
 
 # 實作 Router 的頁面渲染邏輯：切換路由與清除容器
@@ -26,30 +26,30 @@ tags:
 
 ```javascript
 go: (route, addToHistory = true) => {
-  if (addToHistory) {
-    history.pushState({ route }, '', route);
-  }
+    if (addToHistory) {
+        history.pushState({ route }, '', route);
+    }
 
-  let pageElement = null;
+    let pageElement = null;
 
-  switch (route) {
-    case "/":
-      pageElement = document.createElement("h1");
-      pageElement.textContent = "Menu";
-      break;
-    case "/order":
-      pageElement = document.createElement("h1");
-      pageElement.textContent = "Your Order";
-      break;
-  }
+    switch (route) {
+        case '/':
+            pageElement = document.createElement('h1');
+            pageElement.textContent = 'Menu';
+            break;
+        case '/order':
+            pageElement = document.createElement('h1');
+            pageElement.textContent = 'Your Order';
+            break;
+    }
 
-  if (pageElement) {
-    const cache = document.querySelector("main");
-    cache.innerHTML = "";
-    cache.appendChild(pageElement);
-    window.scrollTo(0, 0);
-  }
-}
+    if (pageElement) {
+        const cache = document.querySelector('main');
+        cache.innerHTML = '';
+        cache.appendChild(pageElement);
+        window.scrollTo(0, 0);
+    }
+};
 ```
 
 `document.createElement` 建立的元素一開始只存在於記憶體中，不在 DOM 裡。呼叫 `appendChild` 之後，它才被插入 DOM，瀏覽器在執行緒釋放後會更新畫面。
@@ -63,7 +63,7 @@ go: (route, addToHistory = true) => {
 **方式一：直接清空 innerHTML（快速簡便）**
 
 ```javascript
-cache.innerHTML = "";
+cache.innerHTML = '';
 ```
 
 這是最直接的方式，把 `innerHTML` 設為空字串會移除容器內的所有子元素。缺點是這個操作不區分內容是什麼，如果容器內的元素有附掛事件監聽器，這些監聽器不會被主動移除，只是元素從 DOM 中消失了。對於這個應用程式的規模，這個方式可以接受。
@@ -71,7 +71,7 @@ cache.innerHTML = "";
 **方式二：移除第一個子元素**
 
 ```javascript
-document.querySelector("main").children[0].remove();
+document.querySelector('main').children[0].remove();
 ```
 
 這個方式透過 `children` 屬性取得第一個 DOM 元素並移除它。這裡有一個值得注意的細節：`children` 和 `childNodes` 看起來很像，但行為不同：
@@ -84,8 +84,8 @@ document.querySelector("main").children[0].remove();
 如果這個判斷需要執行多次，可以將查詢結果快取到變數中，避免重複查詢 DOM：
 
 ```javascript
-const cache = document.querySelector("main");
-cache.innerHTML = "";
+const cache = document.querySelector('main');
+cache.innerHTML = '';
 cache.appendChild(pageElement);
 ```
 

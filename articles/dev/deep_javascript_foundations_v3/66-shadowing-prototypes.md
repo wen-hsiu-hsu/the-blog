@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 66
 chapter: 'Prototypes'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - PrototypeChain
-  - OOP
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - PrototypeChain
+    - OOP
 ---
 
 # 原型遮蔽（Shadowing）與顯式偽多型
@@ -26,19 +26,19 @@ tags:
 
 ```javascript
 function Workshop(teacher) {
-  this.teacher = teacher;
+    this.teacher = teacher;
 }
-Workshop.prototype.ask = function(question) {
-  console.log(this.teacher, question);
+Workshop.prototype.ask = function (question) {
+    console.log(this.teacher, question);
 };
 
-var deepJS = new Workshop("Kyle");
+var deepJS = new Workshop('Kyle');
 
-deepJS.ask = function(question) {
-  this.ask(question.toUpperCase());
+deepJS.ask = function (question) {
+    this.ask(question.toUpperCase());
 };
 
-deepJS.ask("Oops, is this infinite recursion?");
+deepJS.ask('Oops, is this infinite recursion?');
 ```
 
 第 10 行直接在 `deepJS` 物件上新增了一個 `ask` 方法，與 `Workshop.prototype` 上的 `ask` 同名。此時 `deepJS` 本身有 `ask`，原型上也有 `ask`，形成遮蔽。
@@ -56,11 +56,11 @@ deepJS.ask("Oops, is this infinite recursion?");
 要從 `deepJS` 往上走一層原型鏈，可以使用 dunderproto：
 
 ```javascript
-deepJS.ask = function(question) {
-  this.__proto__.ask.call(this, question.toUpperCase());
+deepJS.ask = function (question) {
+    this.__proto__.ask.call(this, question.toUpperCase());
 };
 
-deepJS.ask("Is this fake polymorphism?");
+deepJS.ask('Is this fake polymorphism?');
 // Kyle IS THIS FAKE POLYMORPHISM?
 ```
 

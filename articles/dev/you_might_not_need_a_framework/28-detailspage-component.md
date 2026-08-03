@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 28
 chapter: 'Reactive Programming with Proxies'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
 ---
 
 # DetailsPage 元件：複用既有模式與調試 dataset 命名
@@ -26,46 +26,46 @@ tags:
 
 ```javascript
 export default class DetailsPage extends HTMLElement {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.root = this.attachShadow({ mode: "open" });
+        this.root = this.attachShadow({ mode: 'open' });
 
-    const template = document.getElementById("details-page-template");
-    const content = template.content.cloneNode(true);
-    const styles = document.createElement("style");
-    this.root.appendChild(content);
-    this.root.appendChild(styles);
+        const template = document.getElementById('details-page-template');
+        const content = template.content.cloneNode(true);
+        const styles = document.createElement('style');
+        this.root.appendChild(content);
+        this.root.appendChild(styles);
 
-    async function loadCSS() {
-      const request = await fetch("/components/DetailsPage.css");
-      styles.textContent = await request.text();
+        async function loadCSS() {
+            const request = await fetch('/components/DetailsPage.css');
+            styles.textContent = await request.text();
+        }
+        loadCSS();
     }
-    loadCSS();
-  }
 
-  async renderData() {
-    if (this.dataset.productId) {
-      this.product = await getProductById(this.dataset.productId);
-      this.root.querySelector("h2").textContent = this.product.name;
-      this.root.querySelector("img").src = `/data/images/${this.product.image}`;
-      this.root.querySelector(".description").textContent = this.product.description;
-      this.root.querySelector(".price").textContent = `$ ${this.product.price.toFixed(2)} ea`;
-      this.root.querySelector("button").addEventListener("click", () => {
-        // TODO addToCart(this.product.id);
-        app.router.go('/order');
-      });
-    } else {
-      alert("Invalid Product ID");
+    async renderData() {
+        if (this.dataset.productId) {
+            this.product = await getProductById(this.dataset.productId);
+            this.root.querySelector('h2').textContent = this.product.name;
+            this.root.querySelector('img').src = `/data/images/${this.product.image}`;
+            this.root.querySelector('.description').textContent = this.product.description;
+            this.root.querySelector('.price').textContent = `$ ${this.product.price.toFixed(2)} ea`;
+            this.root.querySelector('button').addEventListener('click', () => {
+                // TODO addToCart(this.product.id);
+                app.router.go('/order');
+            });
+        } else {
+            alert('Invalid Product ID');
+        }
     }
-  }
 
-  connectedCallback() {
-    this.renderData();
-  }
+    connectedCallback() {
+        this.renderData();
+    }
 }
 
-customElements.define("details-page", DetailsPage);
+customElements.define('details-page', DetailsPage);
 ```
 
 constructor 的內容和之前的頁面元件幾乎一致：建立 Shadow DOM、克隆 template、用 Fetch 載入外部 CSS 並注入。`connectedCallback` 中只呼叫了 `renderData`，把渲染邏輯獨立成一個方法，便於閱讀。

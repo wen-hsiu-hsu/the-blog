@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 40
 chapter: 'Scope & Function Expressions'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - FunctionExpression
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - FunctionExpression
 ---
 
 # 為什麼要命名函式表達式：三個不可迴避的理由
@@ -25,9 +25,13 @@ tags:
 
 ```javascript
 // 匿名函式表達式（極為常見，但有問題）
-arr.map(function(x) { return x * 2; });
+arr.map(function (x) {
+    return x * 2;
+});
 
-promise.then(function() { doSomething(); });
+promise.then(function () {
+    doSomething();
+});
 ```
 
 這種寫法的唯一優點是打字省力。Kyle Simpson 主張，這不是一個足以成立的理由。
@@ -38,13 +42,13 @@ promise.then(function() { doSomething(); });
 
 ```javascript
 // 匿名版本：若需要自我參考，只能依賴外層變數（不可靠）
-var doSomething = function() {
-    doSomething();   // 依賴外層 doSomething，但它可被重新賦值
+var doSomething = function () {
+    doSomething(); // 依賴外層 doSomething，但它可被重新賦值
 };
 
 // 命名版本：名稱在自身範疇內，唯讀且可靠
 var doSomething = function doSomething() {
-    doSomething();   // 引用自身範疇的唯讀識別字
+    doSomething(); // 引用自身範疇的唯讀識別字
 };
 ```
 
@@ -74,7 +78,7 @@ at validateInputs (app.min.js:1:5421)
 
 ```javascript
 // 讀者必須閱讀函式體才能理解它在做什麼
-setTimeout(function() {
+setTimeout(function () {
     // 幾行程式碼...
 }, 1000);
 

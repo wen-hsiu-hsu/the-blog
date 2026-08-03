@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 9
 chapter: 'The DOM'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - EventListener
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - EventListener
 ---
 
 # DOMContentLoaded：初始化應用程式的正確時機
@@ -29,11 +29,11 @@ tags:
 因此，正確的做法是監聽 `DOMContentLoaded` 事件，等到瀏覽器明確通知「DOM 已準備好可以操作」之後，再執行初始化邏輯。
 
 ```javascript
-window.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector("nav");
-  console.log(nav);
+window.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('nav');
+    console.log(nav);
 
-  nav.innerHTML = `
+    nav.innerHTML = `
     <h2>Hello DOM</h2>
     <p>This is HTML within a JavaScript string</p>
   `;

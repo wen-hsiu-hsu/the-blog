@@ -9,16 +9,16 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 8
 chapter: 'Server'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - Server
-  - CloudComputing
-  - Virtualization
-  - VPS
-  - Redundancy
-  - FailOver
-  - BlueGreenDeployment
-  - DevOps
+    - frontendMasters
+    - fullStackFundamentals
+    - Server
+    - CloudComputing
+    - Virtualization
+    - VPS
+    - Redundancy
+    - FailOver
+    - BlueGreenDeployment
+    - DevOps
 ---
 
 # 為什麼不能用自己的筆電當伺服器：雲端運算、虛擬化與 VPS 的關係

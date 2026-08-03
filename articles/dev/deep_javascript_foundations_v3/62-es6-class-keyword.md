@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 62
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
-  - class
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
+    - class
 ---
 
 # ES6 `class` 語法：繼承、`super` 與 `this` 綁定的陷阱
@@ -24,21 +24,21 @@ tags:
 
 ```javascript
 class Workshop {
-  constructor(teacher) {
-    this.teacher = teacher;
-  }
-  ask(question) {
-    console.log(this.teacher, question);
-  }
+    constructor(teacher) {
+        this.teacher = teacher;
+    }
+    ask(question) {
+        console.log(this.teacher, question);
+    }
 }
 
-var deepJS = new Workshop("Kyle");
-var reactJS = new Workshop("Suzy");
+var deepJS = new Workshop('Kyle');
+var reactJS = new Workshop('Suzy');
 
 deepJS.ask("Is 'class' a class?");
 // Kyle Is 'class' a class?
 
-reactJS.ask("Is this class OK?");
+reactJS.ask('Is this class OK?');
 // Suzy Is this class OK?
 ```
 
@@ -55,22 +55,22 @@ reactJS.ask("Is this class OK?");
 
 ```javascript
 class Workshop {
-  constructor(teacher) {
-    this.teacher = teacher;
-  }
-  ask(question) {
-    console.log(this.teacher, question);
-  }
+    constructor(teacher) {
+        this.teacher = teacher;
+    }
+    ask(question) {
+        console.log(this.teacher, question);
+    }
 }
 
 class AnotherWorkshop extends Workshop {
-  speakUp(msg) {
-    this.ask(msg);
-  }
+    speakUp(msg) {
+        this.ask(msg);
+    }
 }
 
-var JSRecentParts = new AnotherWorkshop("Kyle");
-JSRecentParts.speakUp("Are classes getting better?");
+var JSRecentParts = new AnotherWorkshop('Kyle');
+JSRecentParts.speakUp('Are classes getting better?');
 // Kyle Are classes getting better?
 ```
 
@@ -80,13 +80,13 @@ JSRecentParts.speakUp("Are classes getting better?");
 
 ```javascript
 class AnotherWorkshop extends Workshop {
-  ask(msg) {
-    super.ask(msg.toUpperCase());
-  }
+    ask(msg) {
+        super.ask(msg.toUpperCase());
+    }
 }
 
-var JSRecentParts = new AnotherWorkshop("Kyle");
-JSRecentParts.ask("Are classes super?");
+var JSRecentParts = new AnotherWorkshop('Kyle');
+JSRecentParts.ask('Are classes super?');
 // Kyle ARE CLASSES SUPER?
 ```
 
@@ -100,15 +100,15 @@ Kyle Simpson 指出，這是 `class` 語法超越「純粹語法糖」的地方�
 
 ```javascript
 class Workshop {
-  constructor(teacher) {
-    this.teacher = teacher;
-  }
-  ask(question) {
-    console.log(this.teacher, question);
-  }
+    constructor(teacher) {
+        this.teacher = teacher;
+    }
+    ask(question) {
+        console.log(this.teacher, question);
+    }
 }
 
-var deepJS = new Workshop("Kyle");
+var deepJS = new Workshop('Kyle');
 
 setTimeout(deepJS.ask, 100, "Still losing 'this'?");
 // undefined Still losing 'this'?
@@ -122,15 +122,15 @@ setTimeout(deepJS.ask, 100, "Still losing 'this'?");
 
 ```javascript
 class Workshop {
-  constructor(teacher) {
-    this.teacher = teacher;
-    this.ask = question => {
-      console.log(this.teacher, question);
-    };
-  }
+    constructor(teacher) {
+        this.teacher = teacher;
+        this.ask = (question) => {
+            console.log(this.teacher, question);
+        };
+    }
 }
 
-var deepJS = new Workshop("Kyle");
+var deepJS = new Workshop('Kyle');
 
 setTimeout(deepJS.ask, 100, "Is 'this' fixed?");
 // Kyle Is 'this' fixed?

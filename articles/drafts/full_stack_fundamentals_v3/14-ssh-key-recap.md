@@ -9,15 +9,15 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 14
 chapter: 'Operating Systems'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - Security
-  - SSH
-  - KnownHosts
-  - SSHConfig
-  - SSHAgent
-  - Keychain
-  - DigitalOcean
+    - frontendMasters
+    - fullStackFundamentals
+    - Security
+    - SSH
+    - KnownHosts
+    - SSHConfig
+    - SSHAgent
+    - Keychain
+    - DigitalOcean
 ---
 
 # SSH 金鑰流程總複習：known_hosts 是什麼，以及用 SSH config 省去每次打 -i 的麻煩

@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 46
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - BlockScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - BlockScope
 ---
 
 # 區塊範疇：`let`、`const` 與 `var` 的適當使用場景
@@ -24,24 +24,24 @@ tags:
 
 ```javascript
 // IIFE 版本
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 (function anotherTeacher() {
-    var teacher = "Suzy";
-    console.log(teacher);   // Suzy
+    var teacher = 'Suzy';
+    console.log(teacher); // Suzy
 })();
 
-console.log(teacher);       // Kyle
+console.log(teacher); // Kyle
 
 // 區塊範疇版本（更輕量）
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 {
-    let teacher = "Suzy";
-    console.log(teacher);   // Suzy
+    let teacher = 'Suzy';
+    console.log(teacher); // Suzy
 }
 
-console.log(teacher);       // Kyle
+console.log(teacher); // Kyle
 ```
 
 兩者達到相同的效果：在不污染外層範疇的前提下，建立一個私有的識別字空間。但區塊版本更輕量，不重新定義 `return`、`break` 等行為，也不需要額外的函式呼叫開銷。
@@ -55,7 +55,7 @@ console.log(teacher);       // Kyle
 ```javascript
 function diff(x, y) {
     if (x > y) {
-        var tmp = x;   // 用 var，但放在 if 裡，語意上暗示「這只是臨時用的」
+        var tmp = x; // 用 var，但放在 if 裡，語意上暗示「這只是臨時用的」
         x = y;
         y = tmp;
     }
@@ -70,7 +70,7 @@ function diff(x, y) {
 ```javascript
 function diff(x, y) {
     if (x > y) {
-        let tmp = x;   // 真正的區塊範疇，tmp 不存在於 if 之外
+        let tmp = x; // 真正的區塊範疇，tmp 不存在於 if 之外
         x = y;
         y = tmp;
     }

@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 31
 chapter: 'Reactive Programming with Proxies'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Proxy
-  - ReactiveProgramming
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Proxy
+    - ReactiveProgramming
+    - DOM
 ---
 
 # 用 Proxy 實現雙向資料綁定，以及完成應用程式的最後修正
@@ -82,12 +82,12 @@ setFormBindings(form) {
 送出表單時，應監聽 `form` 的 `submit` 事件，而不是按鈕的 `click`：
 
 ```javascript
-form.addEventListener("submit", event => {
-  event.preventDefault();
-  alert(`Thanks for your order ${this.#user.name}. ...`);
-  this.#user.name = "";
-  this.#user.email = "";
-  this.#user.phone = "";
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    alert(`Thanks for your order ${this.#user.name}. ...`);
+    this.#user.name = '';
+    this.#user.email = '';
+    this.#user.phone = '';
 });
 ```
 

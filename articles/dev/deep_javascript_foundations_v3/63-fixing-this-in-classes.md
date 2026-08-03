@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 63
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
-  - class
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
+    - class
 ---
 
 # 自動綁定方法的代價：一個不應該存在的 hack
@@ -32,30 +32,30 @@ tags:
 
 ```javascript
 var method = (function defineMethod() {
-  var instances = new WeakMap();
+    var instances = new WeakMap();
 
-  return function method(obj, methodName, fn) {
-    Object.defineProperty(obj, methodName, {
-      get() {
-        if (!instances.has(this)) {
-          instances.set(this, {});
-        }
-        var methods = instances.get(this);
-        if (!(methodName in methods)) {
-          methods[methodName] = fn.bind(this);
-        }
-        return methods[methodName];
-      }
-    });
-  };
+    return function method(obj, methodName, fn) {
+        Object.defineProperty(obj, methodName, {
+            get() {
+                if (!instances.has(this)) {
+                    instances.set(this, {});
+                }
+                var methods = instances.get(this);
+                if (!(methodName in methods)) {
+                    methods[methodName] = fn.bind(this);
+                }
+                return methods[methodName];
+            },
+        });
+    };
 })();
 
 function bindMethods(obj) {
-  for (let ownProp of Object.getOwnPropertyNames(obj)) {
-    if (typeof obj[ownProp] == "function") {
-      method(obj, ownProp, obj[ownProp]);
+    for (let ownProp of Object.getOwnPropertyNames(obj)) {
+        if (typeof obj[ownProp] == 'function') {
+            method(obj, ownProp, obj[ownProp]);
+        }
     }
-  }
 }
 ```
 

@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 22
 chapter: 'Testing & Tools'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CoreWebVitals
-  - DevTools
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CoreWebVitals
+    - DevTools
 ---
 
 # 效能測試工具：Web Vitals Chrome 擴充功能

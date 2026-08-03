@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 8
 chapter: 'The DOM'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Performance
-  - ESModule
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Performance
+    - ESModule
 ---
 
 # JavaScript 入口點與 script 載入策略

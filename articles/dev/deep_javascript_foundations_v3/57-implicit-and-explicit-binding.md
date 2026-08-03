@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 57
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
 ---
 
 # 隱式綁定與明確綁定：`this` 的前兩種規則
@@ -27,13 +27,13 @@ tags:
 
 ```javascript
 var workshop = {
-  teacher: "Kyle",
-  ask(question) {
-    console.log(this.teacher, question);
-  },
+    teacher: 'Kyle',
+    ask(question) {
+        console.log(this.teacher, question);
+    },
 };
 
-workshop.ask("What is implicit binding?");
+workshop.ask('What is implicit binding?');
 // Kyle What is implicit binding?
 ```
 
@@ -47,16 +47,16 @@ workshop.ask("What is implicit binding?");
 
 ```javascript
 function ask(question) {
-  console.log(this.teacher, question);
+    console.log(this.teacher, question);
 }
 
-var workshop1 = { teacher: "Kyle", ask: ask };
-var workshop2 = { teacher: "Suzy", ask: ask };
+var workshop1 = { teacher: 'Kyle', ask: ask };
+var workshop2 = { teacher: 'Suzy', ask: ask };
 
-workshop1.ask("How do I share a method?");
+workshop1.ask('How do I share a method?');
 // Kyle How do I share a method?
 
-workshop2.ask("How do I share a method?");
+workshop2.ask('How do I share a method?');
 // Suzy How do I share a method?
 ```
 
@@ -68,16 +68,16 @@ workshop2.ask("How do I share a method?");
 
 ```javascript
 function ask(question) {
-  console.log(this.teacher, question);
+    console.log(this.teacher, question);
 }
 
-var workshop1 = { teacher: "Kyle" };
-var workshop2 = { teacher: "Suzy" };
+var workshop1 = { teacher: 'Kyle' };
+var workshop2 = { teacher: 'Suzy' };
 
-ask.call(workshop1, "Can I explicitly set context?");
+ask.call(workshop1, 'Can I explicitly set context?');
 // Kyle Can I explicitly set context?
 
-ask.call(workshop2, "Can I explicitly set context?");
+ask.call(workshop2, 'Can I explicitly set context?');
 // Suzy Can I explicitly set context?
 ```
 
@@ -89,13 +89,13 @@ ask.call(workshop2, "Can I explicitly set context?");
 
 ```javascript
 var workshop = {
-  teacher: "Kyle",
-  ask(question) {
-    console.log(this.teacher, question);
-  },
+    teacher: 'Kyle',
+    ask(question) {
+        console.log(this.teacher, question);
+    },
 };
 
-setTimeout(workshop.ask, 10, "Lost this?");
+setTimeout(workshop.ask, 10, 'Lost this?');
 // undefined Lost this?
 ```
 
@@ -108,7 +108,7 @@ setTimeout(workshop.ask, 10, "Lost this?");
 解決 `this` 遺失的常見方案是 `.bind()`：
 
 ```javascript
-setTimeout(workshop.ask.bind(workshop), 10, "Hard bound this?");
+setTimeout(workshop.ask.bind(workshop), 10, 'Hard bound this?');
 // Kyle Hard bound this?
 ```
 

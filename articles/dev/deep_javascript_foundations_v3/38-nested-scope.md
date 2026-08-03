@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 38
 chapter: 'Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - LexicalScope
 ---
 
 # 巢狀範疇 (Nested Scope)：向外查找的完整鏈
@@ -23,20 +23,20 @@ tags:
 ## 範例程式碼
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 function otherClass() {
-    var teacher = "Suzy";
+    var teacher = 'Suzy';
 
     function ask(question) {
         console.log(teacher, question);
     }
 
-    ask("Why?");
+    ask('Why?');
 }
 
 otherClass();
-ask("???");   // ReferenceError
+ask('???'); // ReferenceError
 ```
 
 ## 編譯階段：三層巢狀範疇
@@ -74,7 +74,7 @@ ask("???");   // ReferenceError
 ## 第 14 行：來源查找失敗
 
 ```javascript
-ask("???");   // ReferenceError: ask is not defined
+ask('???'); // ReferenceError: ask is not defined
 ```
 
 `ask` 雖然存在於程式中，但它是藍色彈珠，屬於 `otherClass` 的範疇。從全域範疇無法存取到它。

@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 34
 chapter: 'Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - LexicalScope
 ---
 
 # 範疇（Scope）：JavaScript 的兩階段處理模型

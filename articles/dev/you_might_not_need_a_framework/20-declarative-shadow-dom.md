@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 20
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
 ---
 
 # Web Components 的 CSS 策略與常見問題釐清

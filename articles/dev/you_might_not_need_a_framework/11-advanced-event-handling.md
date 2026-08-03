@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 11
 chapter: 'The DOM'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - EventListener
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - EventListener
 ---
 
 # addEventListener 選項、移除事件與自訂事件
@@ -26,10 +26,10 @@ tags:
 
 ```javascript
 const options = {
-  once: true,
-  passive: true
+    once: true,
+    passive: true,
 };
-element.addEventListener("load", eventHandler, options);
+element.addEventListener('load', eventHandler, options);
 ```
 
 ### once
@@ -61,7 +61,7 @@ element.addEventListener("load", eventHandler, options);
 DOM API 允許你建立並派送自訂事件，這是一個常被忽略但非常實用的功能。
 
 ```javascript
-const event = new Event("mycustomname");
+const event = new Event('mycustomname');
 element.dispatchEvent(event);
 ```
 

@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 68
 chapter: 'Prototypes'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - PrototypeChain
-  - OOP
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - PrototypeChain
+    - OOP
 ---
 
 # OLOO：物件連結物件的設計模式
@@ -28,34 +28,44 @@ tags:
 
 ```javascript
 class Workshop {
-  constructor(teacher) { this.teacher = teacher; }
-  ask(question) { console.log(this.teacher, question); }
+    constructor(teacher) {
+        this.teacher = teacher;
+    }
+    ask(question) {
+        console.log(this.teacher, question);
+    }
 }
 
 class AnotherWorkshop extends Workshop {
-  speakUp(msg) { this.ask(msg); }
+    speakUp(msg) {
+        this.ask(msg);
+    }
 }
 
-var JSRecentParts = new AnotherWorkshop("Kyle");
-JSRecentParts.speakUp("Are classes getting better?");
+var JSRecentParts = new AnotherWorkshop('Kyle');
+JSRecentParts.speakUp('Are classes getting better?');
 // Kyle Are classes getting better?
 ```
 
 **原型風格（class 底層的配管）：**
 
 ```javascript
-function Workshop(teacher) { this.teacher = teacher; }
-Workshop.prototype.ask = function(question) {
-  console.log(this.teacher, question);
+function Workshop(teacher) {
+    this.teacher = teacher;
+}
+Workshop.prototype.ask = function (question) {
+    console.log(this.teacher, question);
 };
 
-function AnotherWorkshop(teacher) { Workshop.call(this, teacher); }
+function AnotherWorkshop(teacher) {
+    Workshop.call(this, teacher);
+}
 AnotherWorkshop.prototype = Object.create(Workshop.prototype);
-AnotherWorkshop.prototype.speakUp = function(msg) {
-  this.ask(msg.toUpperCase());
+AnotherWorkshop.prototype.speakUp = function (msg) {
+    this.ask(msg.toUpperCase());
 };
 
-var JSRecentParts = new AnotherWorkshop("Kyle");
+var JSRecentParts = new AnotherWorkshop('Kyle');
 JSRecentParts.speakUp("Isn't this ugly?");
 // Kyle ISN'T THIS UGLY?
 ```
@@ -68,25 +78,22 @@ OLOO 的核心想法是：既然原型系統的真正力量來自「物件之間
 
 ```javascript
 var Workshop = {
-  setTeacher(teacher) {
-    this.teacher = teacher;
-  },
-  ask(question) {
-    console.log(this.teacher, question);
-  }
+    setTeacher(teacher) {
+        this.teacher = teacher;
+    },
+    ask(question) {
+        console.log(this.teacher, question);
+    },
 };
 
-var AnotherWorkshop = Object.assign(
-  Object.create(Workshop),
-  {
+var AnotherWorkshop = Object.assign(Object.create(Workshop), {
     speakUp(msg) {
-      this.ask(msg.toUpperCase());
-    }
-  }
-);
+        this.ask(msg.toUpperCase());
+    },
+});
 
 var JSRecentParts = Object.create(AnotherWorkshop);
-JSRecentParts.setTeacher("Kyle");
+JSRecentParts.setTeacher('Kyle');
 JSRecentParts.speakUp("But isn't this cleaner?");
 // Kyle BUT ISN'T THIS CLEANER?
 ```
@@ -107,11 +114,11 @@ JSRecentParts.speakUp("But isn't this cleaner?");
 
 ```javascript
 if (!Object.create) {
-  Object.create = function(o) {
-    function F() {}
-    F.prototype = o;
-    return new F();
-  };
+    Object.create = function (o) {
+        function F() {}
+        F.prototype = o;
+        return new F();
+    };
 }
 ```
 

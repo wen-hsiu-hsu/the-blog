@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 19
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
 ---
 
 # Shadow DOM：Web Components 的樣式封裝機制

@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 53
 chapter: 'Closure'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Closure
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Closure
 ---
 
 # 閉包關閉的是變數，不是值：迴圈閉包的常見陷阱
@@ -28,13 +28,13 @@ tags:
 以下面這個例子說明：
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
-var myTeacher = function() {
-  console.log(teacher);
+var myTeacher = function () {
+    console.log(teacher);
 };
 
-teacher = "Suzy";
+teacher = 'Suzy';
 
 myTeacher(); // Suzy
 ```
@@ -51,9 +51,9 @@ myTeacher(); // Suzy
 
 ```javascript
 for (var i = 1; i <= 3; i++) {
-  setTimeout(function() {
-    console.log(`i: ${i}`);
-  }, i * 1000);
+    setTimeout(function () {
+        console.log(`i: ${i}`);
+    }, i * 1000);
 }
 // i: 4
 // i: 4
@@ -70,10 +70,10 @@ for (var i = 1; i <= 3; i++) {
 
 ```javascript
 for (var i = 1; i <= 3; i++) {
-  let j = i;
-  setTimeout(function() {
-    console.log(`j: ${j}`);
-  }, j * 1000);
+    let j = i;
+    setTimeout(function () {
+        console.log(`j: ${j}`);
+    }, j * 1000);
 }
 // j: 1
 // j: 2
@@ -86,9 +86,9 @@ for (var i = 1; i <= 3; i++) {
 
 ```javascript
 for (let i = 1; i <= 3; i++) {
-  setTimeout(function() {
-    console.log(`i: ${i}`);
-  }, i * 1000);
+    setTimeout(function () {
+        console.log(`i: ${i}`);
+    }, i * 1000);
 }
 // i: 1
 // i: 2

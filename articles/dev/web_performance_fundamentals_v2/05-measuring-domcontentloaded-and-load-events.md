@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 5
 chapter: 'Importance of Web Performance'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - DOMContentLoaded
-  - EventListener
+    - frontendMasters
+    - webPerformanceFundamentals
+    - DOMContentLoaded
+    - EventListener
 ---
 
 # 傳統效能指標：DOMContentLoaded 與 Load 事件
@@ -30,8 +30,8 @@ tags:
 **使用時機：** 適合用來確認頁面的 DOM 結構已就緒，可以開始操作元素。
 
 ```javascript
-window.addEventListener("DOMContentLoaded", (evt) => {
-  console.log(`DOMContentLoaded at ${evt.timeStamp} ms`);
+window.addEventListener('DOMContentLoaded', (evt) => {
+    console.log(`DOMContentLoaded at ${evt.timeStamp} ms`);
 });
 ```
 
@@ -50,8 +50,8 @@ window.addEventListener("DOMContentLoaded", (evt) => {
 **使用時機：** 適合用來作為頁面初始化結束後的啟動點，確保所有資源都已就緒再執行後續任務。
 
 ```javascript
-window.addEventListener("load", (evt) => {
-  console.log(`Load at ${evt.timeStamp} ms`);
+window.addEventListener('load', (evt) => {
+    console.log(`Load at ${evt.timeStamp} ms`);
 });
 ```
 

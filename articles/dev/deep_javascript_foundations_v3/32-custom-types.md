@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 32
 chapter: 'Static Typing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - TypeScript
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - TypeScript
 ---
 
 # 自訂型別與函式參數的型別標註

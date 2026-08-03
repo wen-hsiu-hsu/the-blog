@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 31
 chapter: 'Static Typing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - TypeScript
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - TypeScript
 ---
 
 # TypeScript 與 Flow 的型別推斷與型別標註
@@ -24,11 +24,11 @@ tags:
 當你沒有明確標註型別時，TypeScript 和 Flow 會根據變數的初始值推斷其型別：
 
 ```javascript
-var teacher = "Kyle";   // 推斷 teacher 的型別為 string
+var teacher = 'Kyle'; // 推斷 teacher 的型別為 string
 
 // ...
 
-teacher = { name: "Kyle" };
+teacher = { name: 'Kyle' };
 // Error: can't assign object to string
 ```
 
@@ -41,11 +41,11 @@ teacher = { name: "Kyle" };
 與其讓工具猜測，你可以直接告訴工具你的意圖：
 
 ```typescript
-var teacher: string = "Kyle";   // 明確標註為 string
+var teacher: string = 'Kyle'; // 明確標註為 string
 
 // ...
 
-teacher = { name: "Kyle" };
+teacher = { name: 'Kyle' };
 // Error: can't assign object to string
 ```
 

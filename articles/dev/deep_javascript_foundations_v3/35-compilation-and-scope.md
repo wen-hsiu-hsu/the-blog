@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 35
 chapter: 'Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - LexicalScope
 ---
 
 # 編譯階段與範疇管理：彈珠桶子對話模型
@@ -23,20 +23,20 @@ tags:
 ## 示範程式碼
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 function otherClass() {
-    var teacher = "Suzy";
-    console.log("Welcome!");
+    var teacher = 'Suzy';
+    console.log('Welcome!');
 }
 
 function ask() {
-    var question = "Why?";
+    var question = 'Why?';
     console.log(question);
 }
 
-otherClass();   // Welcome!
-ask();          // Why?
+otherClass(); // Welcome!
+ask(); // Why?
 ```
 
 ## 兩個角色：編譯器與範疇管理器

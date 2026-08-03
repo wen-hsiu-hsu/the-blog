@@ -9,9 +9,9 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 27
 chapter: 'Improving Time to First Byte'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - WebPerformance
+    - frontendMasters
+    - webPerformanceFundamentals
+    - WebPerformance
 ---
 
 # 改善效能的核心思維

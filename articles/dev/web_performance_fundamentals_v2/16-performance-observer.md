@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 16
 chapter: 'Capturing Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - PerformanceAPI
-  - WebAPI
+    - frontendMasters
+    - webPerformanceFundamentals
+    - PerformanceAPI
+    - WebAPI
 ---
 
 # 以程式碼收集效能指標：PerformanceObserver 與 web-vitals 套件
@@ -31,12 +31,12 @@ PerformanceObserver 的設計就是為了解決這個問題。它讓瀏覽器在
 
 ```javascript
 const performanceObserver = new PerformanceObserver((list, observer) => {
-  list.getEntries().forEach((entry) => {
-    console.log(`Layout shifted by ${entry.value}`);
-  })
+    list.getEntries().forEach((entry) => {
+        console.log(`Layout shifted by ${entry.value}`);
+    });
 });
 
-performanceObserver.observe({ type: "layout-shift", buffered: true });
+performanceObserver.observe({ type: 'layout-shift', buffered: true });
 ```
 
 每種效能事件類型（layout-shift、largest-contentful-paint、longtask 等）需要各自建立一個 observer。回呼函式收到的 `entry` 物件包含該事件的詳細計時資料，具體屬性依事件類型而異，需自行實驗確認。
@@ -52,7 +52,7 @@ performanceObserver.observe({ type: "layout-shift", buffered: true });
 如果你只關心 Core Web Vitals，Google 提供了一個開源套件 `web-vitals`，封裝了所有收集細節：
 
 ```javascript
-import { onLCP, onCLS, onINP } from "web-vitals";
+import { onLCP, onCLS, onINP } from 'web-vitals';
 
 onLCP(console.log);
 onCLS(console.log);

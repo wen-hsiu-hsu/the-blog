@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 55
 chapter: 'Closure'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ModulePattern
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ModulePattern
 ---
 
 # ES6 模組語法：原生模組支援與 Node.js 的相容之路
@@ -41,11 +41,11 @@ Node.js 採用的妥協方案之一，是要求使用 `.mjs` 副檔名來標示 
 
 ```javascript
 // workshop.mjs
-var teacher = "Kyle";           // 私有，外部無法存取
+var teacher = 'Kyle'; // 私有，外部無法存取
 
 export default function ask(question) {
-  console.log(teacher, question);
-};
+    console.log(teacher, question);
+}
 ```
 
 沒有 `export` 的宣告永遠不會被外部看到。
@@ -57,7 +57,7 @@ ES6 模組提供兩種主要的 import 語法，背後代表兩種不同的思�
 #### 具名匯入（named import）
 
 ```javascript
-import ask from "workshop.mjs";
+import ask from 'workshop.mjs';
 ask("It's a default import, right?");
 // Kyle It's a default import, right?
 ```
@@ -67,7 +67,7 @@ ask("It's a default import, right?");
 #### 命名空間匯入（namespace import）
 
 ```javascript
-import * as workshop from "workshop.mjs";
+import * as workshop from 'workshop.mjs';
 workshop.ask("It's a namespace import, right?");
 // Kyle It's a namespace import, right?
 ```

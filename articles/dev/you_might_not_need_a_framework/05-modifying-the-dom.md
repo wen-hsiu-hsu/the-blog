@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 5
 chapter: 'Vanilla JavaScript'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - WebAPI
-  - EventListener
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - WebAPI
+    - EventListener
 ---
 
 # 操作 DOM 元素：屬性、樣式、事件與內容
@@ -27,8 +27,8 @@ tags:
 
 ```javascript
 element.hidden = false;
-element.src = "logo.png";
-element.className = "myClass";  // 對應 HTML 的 class 屬性
+element.src = 'logo.png';
+element.className = 'myClass'; // 對應 HTML 的 class 屬性
 ```
 
 有一個重要的前提需要說明：JavaScript 屬性名稱與 HTML 屬性名稱有 99% 是相同的，但有兩個例外：
@@ -45,9 +45,9 @@ element.className = "myClass";  // 對應 HTML 的 class 屬性
 CSS 使用連字號（kebab-case）命名屬性，JavaScript 則需要改成駝峰式（camelCase）：
 
 ```javascript
-element.style.color = "blue";
-element.style.fontSize = "1.2em";        // 對應 font-size
-element.style.borderRightColor = "#FCFCFC"; // 對應 border-right-color
+element.style.color = 'blue';
+element.style.fontSize = '1.2em'; // 對應 font-size
+element.style.borderRightColor = '#FCFCFC'; // 對應 border-right-color
 ```
 
 這個轉換規則和大多數框架的做法一致，因為 JavaScript 屬性名稱不能包含連字號。
@@ -59,23 +59,23 @@ element.style.borderRightColor = "#FCFCFC"; // 對應 border-right-color
 ```javascript
 // 方式一：先宣告函式，再傳入
 function eventHandler(event) {
-  // do something
+    // do something
 }
-element.addEventListener("click", eventHandler);
+element.addEventListener('click', eventHandler);
 
 // 方式二：直接傳入匿名函式
-element.addEventListener("click", function(event) {
-  // do something
+element.addEventListener('click', function (event) {
+    // do something
 });
 
 // 方式三：使用箭頭函式（目前最常見的寫法）
-element.addEventListener("click", (event) => {
-  // do something
+element.addEventListener('click', (event) => {
+    // do something
 });
 
 // 若不需要使用 event 物件，參數可以省略
-element.addEventListener("click", () => {
-  // do something
+element.addEventListener('click', () => {
+    // do something
 });
 ```
 
@@ -90,13 +90,13 @@ element.addEventListener("click", () => {
 純文字內容的讀寫。如果你寫入包含 HTML 標籤的字串，標籤不會被解析，而是直接顯示成文字（`<` 和 `>` 會被轉換為 Unicode 表示）。
 
 ```javascript
-const element = document.querySelector("#message");
+const element = document.querySelector('#message');
 
 // 讀取
 const contents = element.textContent;
 
 // 寫入（純文字）
-element.textContent = "The text has been changed";
+element.textContent = 'The text has been changed';
 ```
 
 ### 2. `innerHTML`
@@ -104,7 +104,7 @@ element.textContent = "The text has been changed";
 允許寫入 HTML 字串，瀏覽器會解析並建立對應的 DOM 節點。搭配 JavaScript 的模板字串（template literals），可以用接近 HTML 的方式撰寫多行內容：
 
 ```javascript
-const element = document.querySelector("#section-6 header");
+const element = document.querySelector('#section-6 header');
 
 // 讀取
 const contents = element.innerHTML;
@@ -123,14 +123,14 @@ element.innerHTML = `
 透過 `document.createElement` 建立新元素，再用 `appendChild` 掛入 DOM：
 
 ```javascript
-const element = document.querySelector("#section-6 header");
+const element = document.querySelector('#section-6 header');
 
-const h1 = document.createElement("h1");
-h1.textContent = "My App";
+const h1 = document.createElement('h1');
+h1.textContent = 'My App';
 element.appendChild(h1);
 
-const p = document.createElement("p");
-p.textContent = "The best platform for learning frontend";
+const p = document.createElement('p');
+p.textContent = 'The best platform for learning frontend';
 element.appendChild(p);
 ```
 

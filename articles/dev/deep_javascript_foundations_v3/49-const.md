@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 49
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - BlockScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - BlockScope
 ---
 
 # `const`：被高估的宣告關鍵字
@@ -26,10 +26,10 @@ tags:
 
 ```javascript
 const myTeacher = teacher;
-myTeacher = "Suzy";       // TypeError：不能重新賦值
+myTeacher = 'Suzy'; // TypeError：不能重新賦值
 
-const teachers = ["Kyle", "Suzy"];
-teachers[1] = "Brian";    // OK：允許！陣列內容被修改了
+const teachers = ['Kyle', 'Suzy'];
+teachers[1] = 'Brian'; // OK：允許！陣列內容被修改了
 ```
 
 `const` 只承諾這個**變數不會被重新賦值**，它完全無法阻止值本身被修改（mutation）。對一個新讀者來說，看到 `const teachers = [...]` 很可能誤以為「這個陣列不會改變」，但事實並非如此。
@@ -48,7 +48,7 @@ Kyle Simpson 認為 `const` 真正有意義的使用場景，是作為**具有�
 
 ```javascript
 const MAX_RETRIES = 3;
-const API_BASE_URL = "https://api.example.com";
+const API_BASE_URL = 'https://api.example.com';
 const IS_PRODUCTION = true;
 ```
 

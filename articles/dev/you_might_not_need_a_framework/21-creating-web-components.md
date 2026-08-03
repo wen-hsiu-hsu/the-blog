@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 21
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
-  - Router
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
+    - Router
 ---
 
 # 建立第一個 Web Component：頁面元件的實作起點
@@ -27,12 +27,12 @@ tags:
 
 ```javascript
 class MenuPage extends HTMLElement {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 }
 
-customElements.define("menu-page", MenuPage);
+customElements.define('menu-page', MenuPage);
 
 export default MenuPage;
 ```
@@ -53,9 +53,9 @@ export default MenuPage;
 要讓瀏覽器認識這個元素，必須讓對應的 JavaScript 模組被載入並執行。方法很簡單：在 `app.js` 中 import 這些元件：
 
 ```javascript
-import MenuPage from "./components/MenuPage.js";
-import DetailsPage from "./components/DetailsPage.js";
-import OrderPage from "./components/OrderPage.js";
+import MenuPage from './components/MenuPage.js';
+import DetailsPage from './components/DetailsPage.js';
+import OrderPage from './components/OrderPage.js';
 ```
 
 當瀏覽器載入並執行 `app.js` 時，它會循著 import 鏈依序載入並執行這些模組。每個模組執行時，`customElements.define` 就會被呼叫，瀏覽器從此認識這些新標籤。

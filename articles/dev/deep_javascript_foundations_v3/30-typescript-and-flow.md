@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 30
 chapter: 'Static Typing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - TypeScript
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - TypeScript
 ---
 
 # TypeScript 與 Flow：靜態型別工具的優點與侷限

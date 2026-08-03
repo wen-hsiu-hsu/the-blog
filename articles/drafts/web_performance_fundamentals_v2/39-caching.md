@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 39
 chapter: 'Improving Largest Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - HTTP
-  - Caching
+    - frontendMasters
+    - webPerformanceFundamentals
+    - HTTP
+    - Caching
 ---
 
 # 改善回訪使用者體驗：瀏覽器快取策略

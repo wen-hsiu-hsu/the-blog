@@ -9,11 +9,11 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 41
 chapter: 'Improving CLS & INP'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - INP
-  - CoreWebVitals
-  - JavaScript
+    - frontendMasters
+    - webPerformanceFundamentals
+    - INP
+    - CoreWebVitals
+    - JavaScript
 ---
 
 # 改善 INP：把工作切開，讓出主執行緒

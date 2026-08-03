@@ -9,18 +9,18 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 12
 chapter: 'Operating Systems'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - Security
-  - Hashing
-  - Salt
-  - SHA1
-  - SHA256
-  - RainbowTable
-  - HashCollision
-  - Bcrypt
-  - Cryptocurrency
-  - Ransomware
+    - frontendMasters
+    - fullStackFundamentals
+    - Security
+    - Hashing
+    - Salt
+    - SHA1
+    - SHA256
+    - RainbowTable
+    - HashCollision
+    - Bcrypt
+    - Cryptocurrency
+    - Ransomware
 ---
 
 # SHA256 與 Salt：為什麼密碼雜湊一定要加鹽，以及雜湊在勒索軟體與加密貨幣的應用

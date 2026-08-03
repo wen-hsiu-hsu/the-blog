@@ -9,9 +9,9 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 12
 chapter: 'Core Web Vitals & Others Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CoreWebVitals
 ---
 
 # 已退役的指標：First Input Delay（FID）

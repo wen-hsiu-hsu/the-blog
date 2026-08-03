@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 41
 chapter: 'Scope & Function Expressions'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ArrowFunction
-  - FunctionExpression
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ArrowFunction
+    - FunctionExpression
 ---
 
 # 箭頭函式：不是萬能替代品
@@ -24,7 +24,7 @@ tags:
 
 ```javascript
 // 箭頭函式
-var ids = people.map(person => person.id);
+var ids = people.map((person) => person.id);
 
 // 命名函式表達式（等效但有名稱）
 var ids = people.map(function getId(person) {
@@ -42,7 +42,7 @@ var ids = people.map(function getId(person) {
 
 ```javascript
 // 賦值給變數，得到「名稱」
-var getId = person => person.id;
+var getId = (person) => person.id;
 var ids = people.map(getId);
 ```
 
@@ -50,10 +50,12 @@ var ids = people.map(getId);
 
 ```javascript
 // 變數 + 箭頭函式（使用 const 更多字元）
-const getId = person => person.id;
+const getId = (person) => person.id;
 
 // 函式宣告（更少字元，且更語意清楚）
-function getId(person) { return person.id; }
+function getId(person) {
+    return person.id;
+}
 ```
 
 而且，**大多數箭頭函式的使用場景是作為 callback 直接傳入**（如 `.map`、`.then`），在這種情況下根本無法觸發名稱推斷，只能顯示 anonymous。
@@ -63,7 +65,7 @@ function getId(person) { return person.id; }
 ```javascript
 // 箭頭函式版本（常見但有問題）
 getPerson()
-    .then(person => getData(person.id))
+    .then((person) => getData(person.id))
     .then(renderData);
 
 // 命名函式表達式（改善可讀性）
@@ -74,9 +76,7 @@ getPerson()
     .then(renderData);
 
 // 更好：拉出來成為函式宣告，鏈本身只引用名稱
-getPerson()
-    .then(getDataFrom)
-    .then(renderData);
+getPerson().then(getDataFrom).then(renderData);
 ```
 
 Kyle Simpson 坦承他個人不喜歡 Promise 鏈的可讀性，認為它很像早年 jQuery 的風格問題。他傾向把函式拉出來作為命名宣告，讓鏈本身只是名稱的序列，不在鏈中寫任何函式定義。

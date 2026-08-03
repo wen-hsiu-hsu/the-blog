@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 60
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
-  - ArrowFunction
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
+    - ArrowFunction
 ---
 
 # 箭頭函式與詞彙 `this`：沒有自己的 `this` 的函式
@@ -40,12 +40,12 @@ Kyle Simpson 明確指出，這個說法是錯的，規格書也不是這樣描�
 
 ```javascript
 var workshop = {
-  teacher: "Kyle",
-  ask(question) {
-    setTimeout(() => {
-      console.log(this.teacher, question);
-    }, 100);
-  },
+    teacher: 'Kyle',
+    ask(question) {
+        setTimeout(() => {
+            console.log(this.teacher, question);
+        }, 100);
+    },
 };
 
 workshop.ask("Is this lexical 'this'?");

@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 20
 chapter: 'Testing & Tools'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - DevTools
-  - Lighthouse
+    - frontendMasters
+    - webPerformanceFundamentals
+    - DevTools
+    - Lighthouse
 ---
 
 # 效能測試工具：Chrome Lighthouse

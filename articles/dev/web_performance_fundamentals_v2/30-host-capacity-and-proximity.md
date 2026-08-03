@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 30
 chapter: 'Improving Time to First Byte'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - HTTP
-  - NetworkPanel
+    - frontendMasters
+    - webPerformanceFundamentals
+    - HTTP
+    - NetworkPanel
 ---
 
 # 改善 TTFB：伺服器容量、地理位置與 CDN

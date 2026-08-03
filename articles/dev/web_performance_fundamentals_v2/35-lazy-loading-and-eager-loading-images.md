@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 35
 chapter: 'Improving Largest Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - LCP
-  - ImageOptimization
+    - frontendMasters
+    - webPerformanceFundamentals
+    - LCP
+    - ImageOptimization
 ---
 
 # 改善 LCP：Lazy Loading 與 Eager Loading
@@ -30,7 +30,7 @@ tags:
 HTML 的 `loading="lazy"` 屬性可以套用在 `<img>` 和 `<iframe>` 上，告訴瀏覽器：「這個資源不急，等有空再載入。」
 
 ```html
-<img src="sticker.jpg" loading="lazy" alt="...">
+<img src="sticker.jpg" loading="lazy" alt="..." />
 ```
 
 這樣做的效果是把整個瀑布圖「壓平」，讓所有非關鍵圖片在更後面才開始，LCP 圖片不再需要和它們競爭頻寬。
@@ -52,7 +52,7 @@ HTML 的 `loading="lazy"` 屬性可以套用在 `<img>` 和 `<iframe>` 上，告
 `fetchpriority="high"` 可以加在 `<img>`、`<script>` 和 `<link>` 上，明確告訴瀏覽器這個資源是高優先級，優先處理：
 
 ```html
-<img src="hero-mobile.jpg" fetchpriority="high" alt="...">
+<img src="hero-mobile.jpg" fetchpriority="high" alt="..." />
 ```
 
 這和 lazy loading 是互補的概念，一個是告訴瀏覽器「這不重要，晚點再說」，另一個是告訴它「這很重要，快點去拿」。
@@ -62,7 +62,7 @@ HTML 的 `loading="lazy"` 屬性可以套用在 `<img>` 和 `<iframe>` 上，告
 若需要跨瀏覽器支援，可以改用前面介紹過的 `link preload`：
 
 ```html
-<link rel="preload" href="/images/hero-mobile.jpg" as="image">
+<link rel="preload" href="/images/hero-mobile.jpg" as="image" />
 ```
 
 這樣瀏覽器在解析到 HTML 文件的圖片標籤之前，就已經開始下載圖片了，等於把 LCP 圖片的開始時間提前到頁面解析初期。圖片不需要加上 `crossorigin` 屬性（字型需要，圖片不用）。

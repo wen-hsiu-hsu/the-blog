@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 67
 chapter: 'Prototypes'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - PrototypeChain
-  - OOP
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - PrototypeChain
+    - OOP
 ---
 
 # 原型繼承：`Object.create()` 與跨鏈方法查找
@@ -24,23 +24,23 @@ tags:
 
 ```javascript
 function Workshop(teacher) {
-  this.teacher = teacher;
+    this.teacher = teacher;
 }
-Workshop.prototype.ask = function(question) {
-  console.log(this.teacher, question);
+Workshop.prototype.ask = function (question) {
+    console.log(this.teacher, question);
 };
 
 function AnotherWorkshop(teacher) {
-  Workshop.call(this, teacher);
+    Workshop.call(this, teacher);
 }
 AnotherWorkshop.prototype = Object.create(Workshop.prototype);
-AnotherWorkshop.prototype.speakUp = function(msg) {
-  this.ask(msg.toUpperCase());
+AnotherWorkshop.prototype.speakUp = function (msg) {
+    this.ask(msg.toUpperCase());
 };
 
-var JSRecentParts = new AnotherWorkshop("Kyle");
+var JSRecentParts = new AnotherWorkshop('Kyle');
 
-JSRecentParts.speakUp("Is this inheritance?");
+JSRecentParts.speakUp('Is this inheritance?');
 // Kyle IS THIS INHERITANCE?
 ```
 

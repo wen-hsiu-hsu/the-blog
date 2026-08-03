@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 7
 chapter: 'The DOM'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - WebAPI
-  - Performance
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - WebAPI
+    - Performance
 ---
 
 # 在實際專案中操作 DOM：查詢範圍與效能意識
@@ -42,16 +42,16 @@ tags:
 
 ```javascript
 // 只拿到第一個 .navlink
-document.querySelector(".navlink");
+document.querySelector('.navlink');
 
 // 拿到所有 .navlink，以 NodeList 回傳
-document.querySelectorAll(".navlink");
+document.querySelectorAll('.navlink');
 
 // 不存在的 class，querySelector 回傳 null
-document.querySelector(".important");
+document.querySelector('.important');
 
 // 不存在的 class，querySelectorAll 回傳空 NodeList
-document.querySelectorAll(".important");
+document.querySelectorAll('.important');
 ```
 
 ## DOM API 不只屬於 document
@@ -62,10 +62,10 @@ document.querySelectorAll(".important");
 
 ```javascript
 // 先取得 nav 元素的參考並存入變數
-const nav = document.querySelector("nav");
+const nav = document.querySelector('nav');
 
 // 之後的查詢都在 nav 的範圍內進行，不需要再搜尋整個 document
-const badge = nav.querySelector("#badge");
+const badge = nav.querySelector('#badge');
 ```
 
 ## 縮小查詢範圍與快取參考
@@ -78,8 +78,8 @@ const badge = nav.querySelector("#badge");
 
 ```javascript
 // 初始化時一次查詢，之後重複使用
-const nav = document.querySelector("nav");
-const mainContent = document.querySelector("main");
+const nav = document.querySelector('nav');
+const mainContent = document.querySelector('main');
 ```
 
 講師提到，不同瀏覽器對 DOM 查詢的實作方式不同，這也是各家瀏覽器速度有差異的原因之一。這門課的目標是先建立正確的基本概念，效能優化可以之後再深入。

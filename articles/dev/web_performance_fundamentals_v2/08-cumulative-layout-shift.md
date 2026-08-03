@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 8
 chapter: 'Core Web Vitals & Others Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CLS
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CLS
+    - CoreWebVitals
 ---
 
 # Core Web Vitals：CLS（累積版面位移）

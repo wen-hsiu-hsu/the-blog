@@ -9,16 +9,16 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 1
 chapter: 'Vanilla JavaScript'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
 ---
 
 # 什麼是 Vanilla JavaScript？
 
 > 本篇是「Vanilla JS: You Might Not Need a Framework」課程的第一篇筆記，涵蓋講師 Maximiliano Firtman 的開場說明，包含課程核心主張、Vanilla JS 的定義，以及這個概念的歷史背景。
 
-## 課程的核心主張 
+## 課程的核心主張
 
 這門課的用意不是要你完全放棄框架。而是很多開發者在還不了解瀏覽器原生能力的情況下，就直接選用框架，這才是問題所在。
 
@@ -113,6 +113,5 @@ Vanilla JavaScript 通常較快，因為所有函式庫都建立在瀏覽器核�
 <summary>現代 Web 應用程式開發中出現了什麼新趨勢？</summary>
 建立可快速部署到雲端的微型應用程式
 </details>
-
 
 > 此文章是 [FrontendMasters](https://frontendmasters.com/) 上的 [Vanilla JS: You Might Not Need a Framework](https://frontendmasters.com/courses/vanilla-js-apps/) 課程筆記

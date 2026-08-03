@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 37
 chapter: 'Improving Largest Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - LCP
-  - ImageOptimization
+    - frontendMasters
+    - webPerformanceFundamentals
+    - LCP
+    - ImageOptimization
 ---
 
 # 改善 LCP：使用 picture 元素實作響應式圖片
@@ -23,17 +23,25 @@ HTML 原生支援響應式圖片，主要透過 `<picture>` 元素搭配 `<sourc
 
 ```html
 <picture class="illustration">
-  <source media="(max-width: 720px)"
-          srcset="/hero-mobile.png?width=720 720w,
-                  /hero-mobile.png?width=1440 1440w" />
-  <source media="(min-width: 721px)"
-          srcset="/hero-desktop.png?width=720 720w,
-                  /hero-desktop.png?width=1440 1440w,
-                  /hero-desktop.png?width=2800 2800w">
-  <img src="/hero-desktop.png?width=2800"
-       alt="Developer Stickers Online"
-       fetchpriority="high"
-       height="1200" width="2800" />
+    <source
+        media="(max-width: 720px)"
+        srcset="/hero-mobile.png?width=720 720w, /hero-mobile.png?width=1440 1440w"
+    />
+    <source
+        media="(min-width: 721px)"
+        srcset="
+            /hero-desktop.png?width=720   720w,
+            /hero-desktop.png?width=1440 1440w,
+            /hero-desktop.png?width=2800 2800w
+        "
+    />
+    <img
+        src="/hero-desktop.png?width=2800"
+        alt="Developer Stickers Online"
+        fetchpriority="high"
+        height="1200"
+        width="2800"
+    />
 </picture>
 ```
 

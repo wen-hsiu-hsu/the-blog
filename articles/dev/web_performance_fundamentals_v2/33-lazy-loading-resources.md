@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 33
 chapter: 'Improving First Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - FCP
-  - JavaScript
+    - frontendMasters
+    - webPerformanceFundamentals
+    - FCP
+    - JavaScript
 ---
 
 # 改善 FCP：延遲載入非關鍵 JavaScript

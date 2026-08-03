@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 52
 chapter: 'Closure'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Closure
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Closure
+    - LexicalScope
 ---
 
 # 閉包（Closure）：函式記憶自身範疇的能力
@@ -51,12 +51,12 @@ Kyle Simpson 認為，這是一種「意外的天才之舉」：用親切的語�
 
 ```javascript
 function ask(question) {
-  setTimeout(function waitASec() {
-    console.log(question);
-  }, 100);
+    setTimeout(function waitASec() {
+        console.log(question);
+    }, 100);
 }
 
-ask("什麼是閉包？");
+ask('什麼是閉包？');
 ```
 
 `ask` 函式執行完畢後，`question` 這個變數理論上應該消失。但 `waitASec` 函式持有對 `question` 的參考，使得該範疇被保留下來。這就是閉包：`waitASec` 對 `question` 形成了閉包。
@@ -82,12 +82,12 @@ Kyle Simpson 提出一個思考角度：如果一個語言同時具備以下兩�
 
 ```javascript
 function outer() {
-  const bigData = new Array(1000000).fill("大量資料");
-  const small = 42;
+    const bigData = new Array(1000000).fill('大量資料');
+    const small = 42;
 
-  return function inner() {
-    console.log(small); // 只用到 small
-  };
+    return function inner() {
+        console.log(small); // 只用到 small
+    };
 }
 
 const fn = outer();

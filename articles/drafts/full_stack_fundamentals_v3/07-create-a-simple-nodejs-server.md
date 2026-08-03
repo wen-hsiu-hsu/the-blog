@@ -9,15 +9,15 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 7
 chapter: 'Server'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - NodeJs
-  - Server
-  - HTTP
-  - FileSystem
-  - Streams
-  - Homebrew
-  - NVM
+    - frontendMasters
+    - fullStackFundamentals
+    - NodeJs
+    - Server
+    - HTTP
+    - FileSystem
+    - Streams
+    - Homebrew
+    - NVM
 ---
 
 # 從零把 Node.js 伺服器跑起來：Homebrew、NVM 與最陽春的 HTML 檔案
@@ -29,7 +29,7 @@ tags:
 延續上一篇寫好的 `simple-server.js`：
 
 ```js
-const http = require("http");
+const http = require('http');
 const fs = require('fs');
 const PORT = 3000;
 ```
@@ -46,7 +46,7 @@ const PORT = 3000;
 
 ```js
 const server = http.createServer(function (req, res) {
-    res.writeHead(200, { 'content-type': 'text/html'});
+    res.writeHead(200, { 'content-type': 'text/html' });
     fs.createReadStream('index.html').pipe(res);
 });
 ```

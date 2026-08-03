@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 12
 chapter: 'The DOM'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - ESModule
-  - WebAPI
-  - Promise
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - ESModule
+    - WebAPI
+    - Promise
 ---
 
 # 建立 Services 層：API、Store 與 ES 模組系統
@@ -33,8 +33,8 @@ Store 是一個單純的物件，用來保存整個應用程式共用的狀態�
 
 ```javascript
 const Store = {
-  menu: null,   // null 表示尚未載入
-  cart: []      // 購物車，初始為空陣列
+    menu: null, // null 表示尚未載入
+    cart: [], // 購物車，初始為空陣列
 };
 
 export default Store;
@@ -50,12 +50,12 @@ js
 
 ```javascript
 const API = {
-  url: "data/menu.json",
+    url: 'data/menu.json',
 
-  fetchMenu: async function() {
-    const result = await fetch(API.url);
-    return await result.json();
-  }
+    fetchMenu: async function () {
+        const result = await fetch(API.url);
+        return await result.json();
+    },
 };
 
 export default API;
@@ -84,9 +84,9 @@ JavaScript 在沒有模組機制的情況下，所有變數都是全域的，不
 在瀏覽器環境中直接使用 ES 模組時，`import` 路徑必須包含完整的副檔名 `.js`：
 
 ```javascript
-import Store from "./services/Store.js";
-import API from "./services/API.js";
-import { loadData } from "./services/menu.js";
+import Store from './services/Store.js';
+import API from './services/API.js';
+import { loadData } from './services/menu.js';
 ```
 
 如果使用 Babel 或 TypeScript 這類編譯工具，可以省略副檔名，工具會自動處理。但在不經過編譯直接跑在瀏覽器的 Vanilla JS 專案中，這個 `.js` 是必要的。
@@ -96,13 +96,13 @@ import { loadData } from "./services/menu.js";
 `API.js` 和 `Store.js` 使用 `export default`，引入時不需要花括號：
 
 ```javascript
-import Store from "./services/Store.js";
+import Store from './services/Store.js';
 ```
 
 如果使用具名 export（例如 `export function loadData`），引入時則需要花括號：
 
 ```javascript
-import { loadData } from "./services/menu.js";
+import { loadData } from './services/menu.js';
 ```
 
 ## 建立 Menu Service 並串接資料流
@@ -110,11 +110,11 @@ import { loadData } from "./services/menu.js";
 為了讓關注點分離，資料載入的邏輯不直接寫在 `DOMContentLoaded` 的事件處理函式中，而是另外建立一個 `menu.js`：
 
 ```javascript
-import API from "./API.js";
+import API from './API.js';
 
 export async function loadData() {
-  const menu = await API.fetchMenu();
-  app.store.menu = menu;
+    const menu = await API.fetchMenu();
+    app.store.menu = menu;
 }
 ```
 

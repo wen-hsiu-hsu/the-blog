@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 51
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Hoisting
-  - TDZ
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Hoisting
+    - TDZ
 ---
 
 # `let` 不提升？這個說法是錯的
@@ -26,13 +26,13 @@ tags:
 
 ```javascript
 // var 提升：通常是壞的
-teacher = "Kyle";
-var teacher;        // 先賦值後宣告，不好的寫法，但不會報錯
+teacher = 'Kyle';
+var teacher; // 先賦值後宣告，不好的寫法，但不會報錯
 ```
 
 ```javascript
 // 函式宣告提升：通常很有用
-getTeacher();       // Kyle（正常執行）
+getTeacher(); // Kyle（正常執行）
 
 function getTeacher() {
     return teacher;
@@ -46,16 +46,16 @@ function getTeacher() {
 ```javascript
 // 情境一
 {
-    teacher = "Kyle";   // TDZ error！
+    teacher = 'Kyle'; // TDZ error！
     let teacher;
 }
 
 // 情境二
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 {
-    console.log(teacher);   // TDZ error！（不是印出 "Kyle"）
-    let teacher = "Suzy";
+    console.log(teacher); // TDZ error！（不是印出 "Kyle"）
+    let teacher = 'Suzy';
 }
 ```
 
@@ -83,13 +83,13 @@ var teacher = "Kyle";
 ## 另一個提升案例：`var` 在函式內部的變數遮蔽
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
-otherTeacher();   // 印出什麼？
+otherTeacher(); // 印出什麼？
 
 function otherTeacher() {
-    console.log(teacher);   // undefined（不是 "Kyle"）
-    var teacher = "Suzy";
+    console.log(teacher); // undefined（不是 "Kyle"）
+    var teacher = 'Suzy';
 }
 ```
 

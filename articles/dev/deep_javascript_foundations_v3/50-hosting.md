@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 50
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Hoisting
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Hoisting
 ---
 
 # 提升（Hoisting）：一個有用但不精確的比喻
@@ -28,10 +28,10 @@ tags:
 ## 真正發生的事：兩個階段
 
 ```javascript
-student;        // ??
-teacher;        // ??
-var student = "you";
-var teacher = "Kyle";
+student; // ??
+teacher; // ??
+var student = 'you';
+var teacher = 'Kyle';
 ```
 
 用提升的說法解釋：「`var` 宣告被提升到頂部，所以 `student` 和 `teacher` 在第一行就已存在，值是 `undefined`。」
@@ -45,12 +45,12 @@ var teacher = "Kyle";
 等價的「提升後」寫法只是幫助理解的視覺化工具：
 
 ```javascript
-var student;           // 編譯期建立彈珠
+var student; // 編譯期建立彈珠
 var teacher;
-student;               // undefined
-teacher;               // undefined
-student = "you";
-teacher = "Kyle";
+student; // undefined
+teacher; // undefined
+student = 'you';
+teacher = 'Kyle';
 ```
 
 ## 為什麼說「移動程式碼」是不可能的
@@ -60,15 +60,15 @@ teacher = "Kyle";
 ## 函式宣告 vs 函式表達式：提升的關鍵差異
 
 ```javascript
-teacher();         // Kyle（正常執行）
-otherTeacher();    // TypeError（！）
+teacher(); // Kyle（正常執行）
+otherTeacher(); // TypeError（！）
 
 function teacher() {
-    return "Kyle";
+    return 'Kyle';
 }
 
-var otherTeacher = function() {
-    return "Suzy";
+var otherTeacher = function () {
+    return 'Suzy';
 };
 ```
 
@@ -81,13 +81,17 @@ var otherTeacher = function() {
 等價的「提升後」寫法：
 
 ```javascript
-function teacher() { return "Kyle"; }   // 完整函式在編譯期就準備好
-var otherTeacher;                        // 只建立彈珠，值 undefined
+function teacher() {
+    return 'Kyle';
+} // 完整函式在編譯期就準備好
+var otherTeacher; // 只建立彈珠，值 undefined
 
-teacher();        // Kyle
-otherTeacher();   // TypeError：undefined 不是函式
+teacher(); // Kyle
+otherTeacher(); // TypeError：undefined 不是函式
 
-otherTeacher = function() { return "Suzy"; };
+otherTeacher = function () {
+    return 'Suzy';
+};
 ```
 
 ## 函式宣告提升的實用價值

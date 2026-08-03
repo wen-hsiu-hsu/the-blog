@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 61
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
-  - ArrowFunction
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
+    - ArrowFunction
 ---
 
 # 箭頭函式的詞彙 `this`：物件不是 Scope，以及何時該用箭頭函式
@@ -26,10 +26,10 @@ tags:
 
 ```javascript
 var workshop = {
-  teacher: "Kyle",
-  ask: (question) => {
-    console.log(this.teacher, question);
-  },
+    teacher: 'Kyle',
+    ask: (question) => {
+        console.log(this.teacher, question);
+    },
 };
 
 workshop.ask("What happened to 'this'?");
@@ -53,8 +53,8 @@ workshop.ask.call(workshop, "Still no 'this'?");
 
 ```javascript
 var self = this;
-setTimeout(function() {
-  console.log(self.teacher);
+setTimeout(function () {
+    console.log(self.teacher);
 }, 100);
 ```
 

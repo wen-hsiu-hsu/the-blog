@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 26
 chapter: 'Reactive Programming with Proxies'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Proxy
-  - ReactiveProgramming
-  - WebComponents
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Proxy
+    - ReactiveProgramming
+    - WebComponents
 ---
 
 # 響應式渲染：監聽 Store 變動並動態產生選單 DOM
@@ -62,7 +62,7 @@ render() {
         item.dataset.product = JSON.stringify(product);
         liCategory.querySelector("ul").appendChild(item);
       });
-    } 
+    }
   } else {
     this.root.querySelector("#menu").innerHTML = "Loading...";
   }
@@ -86,7 +86,7 @@ render() {
 在開始 `appendChild` 之前，先把容器的 `innerHTML` 設為空字串：
 
 ```javascript
-this.root.querySelector("#menu").innerHTML = "";
+this.root.querySelector('#menu').innerHTML = '';
 ```
 
 這樣就能確保每次渲染都從乾淨的狀態開始，不保留前一次的「Loading...」或任何舊節點。
@@ -112,6 +112,7 @@ item.dataset.product = JSON.stringify(product);
 ### 在 Vanilla JavaScript 中，可以用哪些技術來動態建立 DOM 元素？
 
 兩種主要技術是：
+
 1. 使用 innerHTML 建立 HTML 字串並設定內容
 2. 使用 document.createElement() 以程式方式建立個別元素並設定其屬性
 

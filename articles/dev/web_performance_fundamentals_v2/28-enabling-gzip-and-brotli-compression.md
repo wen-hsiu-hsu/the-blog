@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 28
 chapter: 'Improving Time to First Byte'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - HTTP
-  - NetworkPanel
+    - frontendMasters
+    - webPerformanceFundamentals
+    - HTTP
+    - NetworkPanel
 ---
 
 # 改善 TTFB：HTTP 壓縮

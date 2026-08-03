@@ -9,14 +9,14 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 21
 chapter: 'Testing & Tools'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - DevTools
-  - WaterfallChart
-  - FlameChart
+    - frontendMasters
+    - webPerformanceFundamentals
+    - DevTools
+    - WaterfallChart
+    - FlameChart
 ---
 
-# 效能測試工具：Chrome Performance 
+# 效能測試工具：Chrome Performance
 
 ## Performance 面板的整體結構
 

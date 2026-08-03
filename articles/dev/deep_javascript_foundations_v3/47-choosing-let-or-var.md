@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 47
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - BlockScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - BlockScope
 ---
 
 # `var` 與 `let` 的語意分工：各自有其適當的位置
@@ -24,9 +24,10 @@ tags:
 
 ```javascript
 function repeat(fn, n) {
-    var result;          // 屬於整個函式，用 var 表達這個意圖
+    var result; // 屬於整個函式，用 var 表達這個意圖
 
-    for (let i = 0; i < n; i++) {   // i 只屬於迴圈，用 let
+    for (let i = 0; i < n; i++) {
+        // i 只屬於迴圈，用 let
         result = fn(result, i);
     }
 
@@ -46,12 +47,11 @@ function repeat(fn, n) {
 function lookupRecord(searchStr) {
     try {
         var id = getRecord(searchStr);
-    }
-    catch (err) {
-        var id = -1;        // 重複宣告，編譯期視為 no-op，只是一顆彈珠
+    } catch (err) {
+        var id = -1; // 重複宣告，編譯期視為 no-op，只是一顆彈珠
     }
 
-    return id;              // 可以存取，因為 var 附著在函式範疇
+    return id; // 可以存取，因為 var 附著在函式範疇
 }
 ```
 
@@ -73,7 +73,7 @@ function processData() {
 
     // ... 200 行程式碼 ...
 
-    var id = recalculate();    // 明確告訴讀者：id 屬於這個函式範疇
+    var id = recalculate(); // 明確告訴讀者：id 屬於這個函式範疇
     return id;
 }
 ```

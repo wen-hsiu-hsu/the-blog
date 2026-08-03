@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 59
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
 ---
 
 # 預設綁定：`this` 的第四種做法與總覽
@@ -26,15 +26,15 @@ tags:
 最常見的情境是單純的函式呼叫，沒有任何物件、沒有 `.call`、沒有 `.bind`、也沒有 `new`：
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 function ask(question) {
-  console.log(this.teacher, question);
+    console.log(this.teacher, question);
 }
 
 function askAgain(question) {
-  "use strict";
-  console.log(this.teacher, question);
+    'use strict';
+    console.log(this.teacher, question);
 }
 
 ask("What's the non-strict-mode default?");

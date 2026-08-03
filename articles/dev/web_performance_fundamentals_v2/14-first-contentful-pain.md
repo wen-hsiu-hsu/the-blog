@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 14
 chapter: 'Core Web Vitals & Others Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - FCP
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - FCP
+    - CoreWebVitals
 ---
 
 # 其他效能指標：FCP（首次內容繪製）

@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 29
 chapter: 'Equality'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - EqualityComparison
-  - TypeCoercion
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - EqualityComparison
+    - TypeCoercion
 ---
 
 # 相等性練習解析：`findAll` 的實作邏輯
@@ -26,7 +26,6 @@ tags:
 function findAll(match, arr) {
     var ret = [];
     for (let v of arr) {
-
         // 規則一：完全相同（處理 NaN、-0 的正確比較）
         if (Object.is(match, v)) {
             ret.push(v);
@@ -38,7 +37,7 @@ function findAll(match, arr) {
         }
 
         // 規則三：boolean 只匹配 boolean，且必須完全相同
-        else if (typeof match == "boolean") {
+        else if (typeof match == 'boolean') {
             if (match === v) {
                 ret.push(v);
             }
@@ -46,9 +45,9 @@ function findAll(match, arr) {
 
         // 規則四：非空字串可以匹配數字（排除 -0）
         else if (
-            typeof match == "string" &&
-            match.trim() != "" &&
-            typeof v == "number" &&
+            typeof match == 'string' &&
+            match.trim() != '' &&
+            typeof v == 'number' &&
             !Object.is(-0, v)
         ) {
             if (match == v) {
@@ -58,13 +57,13 @@ function findAll(match, arr) {
 
         // 規則五：非特殊數字可以匹配非空字串（排除 -0、NaN、Infinity）
         else if (
-            typeof match == "number" &&
+            typeof match == 'number' &&
             !Object.is(match, -0) &&
             !Object.is(match, NaN) &&
             !Object.is(match, Infinity) &&
             !Object.is(match, -Infinity) &&
-            typeof v == "string" &&
-            v.trim() != ""
+            typeof v == 'string' &&
+            v.trim() != ''
         ) {
             if (match == v) {
                 ret.push(v);

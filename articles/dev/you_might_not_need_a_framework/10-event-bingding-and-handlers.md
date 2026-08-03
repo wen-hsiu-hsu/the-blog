@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 10
 chapter: 'The DOM'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - EventListener
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - EventListener
 ---
 
 # DOM 事件綁定：事件種類、命名規則與兩種綁定方式比較
@@ -56,8 +56,8 @@ webkitcurrentplaybacktargetiswirelesschanged
 這是 DOM 最早期的事件綁定方式，每個事件對應一個屬性，例如 `onclick`、`onload`，全部小寫。
 
 ```javascript
-element.onclick = function() {
-  // 處理點擊
+element.onclick = function () {
+    // 處理點擊
 };
 ```
 
@@ -70,8 +70,8 @@ element.onclick = function() {
 `addEventListener` 採用觀察者模式（Observer Pattern，也稱為 pub/subscribe），可以對同一個事件註冊多個監聽函式，所有函式都會被執行，不會互相覆蓋。
 
 ```javascript
-element.addEventListener("click", handlerA);
-element.addEventListener("click", handlerB);
+element.addEventListener('click', handlerA);
+element.addEventListener('click', handlerB);
 // 點擊時，handlerA 和 handlerB 都會執行
 ```
 
@@ -79,10 +79,10 @@ element.addEventListener("click", handlerB);
 
 ```javascript
 // 模組 A
-window.addEventListener("DOMContentLoaded", initDatabase);
+window.addEventListener('DOMContentLoaded', initDatabase);
 
 // 模組 B（不同檔案）
-window.addEventListener("DOMContentLoaded", initWebSocket);
+window.addEventListener('DOMContentLoaded', initWebSocket);
 ```
 
 兩者都會在 `DOMContentLoaded` 觸發時執行，彼此獨立。

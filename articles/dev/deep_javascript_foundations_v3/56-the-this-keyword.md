@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 56
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
 ---
 
 # `this` 關鍵字：由呼叫方式決定的動態上下文
@@ -44,13 +44,13 @@ Kyle Simpson 特意使用「objects oriented」而非「object oriented」，強
 
 ```javascript
 function ask(question) {
-  console.log(this.teacher, question);
+    console.log(this.teacher, question);
 }
 
 function otherClass() {
-  var myContext = { teacher: "Suzy" };
-  ask.call(myContext, "Why?");
-  // Suzy Why?
+    var myContext = { teacher: 'Suzy' };
+    ask.call(myContext, 'Why?');
+    // Suzy Why?
 }
 
 otherClass();

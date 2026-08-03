@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 13
 chapter: 'Routing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Router
-  - HistoryAPI
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Router
+    - HistoryAPI
 ---
 
 # SPA 路由原理：History API 與頁面切換的兩種策略
@@ -54,7 +54,8 @@ Coffee Masters 需要三個頁面（Page、Route、View，叫什麼名字都可�
 
 ```html
 <section id="section1" hidden></section>
-<section id="section2"></section>  <!-- 目前顯示的頁面 -->
+<section id="section2"></section>
+<!-- 目前顯示的頁面 -->
 <section id="section3" hidden></section>
 ```
 
@@ -69,7 +70,7 @@ SPA 只有一個 HTML 檔案，但使用者應該能看到有意義的 URL（例
 ### 推送新的 URL
 
 ```javascript
-history.pushState(optional_state, null, "/new-url");
+history.pushState(optional_state, null, '/new-url');
 ```
 
 `pushState` 接受三個參數：
@@ -83,9 +84,9 @@ history.pushState(optional_state, null, "/new-url");
 ### 監聽 URL 變化
 
 ```javascript
-window.addEventListener("popstate", event => {
-  let url = location.href;
-  // 根據 url 決定要顯示哪個頁面
+window.addEventListener('popstate', (event) => {
+    let url = location.href;
+    // 根據 url 決定要顯示哪個頁面
 });
 ```
 

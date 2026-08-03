@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 31
 chapter: 'Improving First Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - FCP
-  - WaterfallChart
+    - frontendMasters
+    - webPerformanceFundamentals
+    - FCP
+    - WaterfallChart
 ---
 
 # 改善 FCP：移除依賴鏈

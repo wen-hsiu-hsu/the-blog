@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 40
 chapter: 'Improving CLS & INP'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CLS
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CLS
+    - CoreWebVitals
 ---
 
 # 改善 CLS：版面尺寸提示
@@ -34,7 +34,7 @@ tags:
 對所有可能造成 layout shift 的圖片，加上 `height` 和 `width` 屬性：
 
 ```html
-<img src="logo.png" width="500" height="500" loading="lazy" alt="...">
+<img src="logo.png" width="500" height="500" loading="lazy" alt="..." />
 ```
 
 幾個重要細節：

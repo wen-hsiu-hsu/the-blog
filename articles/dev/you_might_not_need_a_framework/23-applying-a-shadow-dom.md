@@ -9,11 +9,11 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 23
 chapter: 'Web Components'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
 ---
 
 # 為 Custom Element 啟用 Shadow DOM：樣式封裝的實際效果
@@ -26,16 +26,16 @@ tags:
 
 ```javascript
 class MenuPage extends HTMLElement {
-  constructor() {
-    super();
-    this.root = this.attachShadow({ mode: "open" });
-  }
+    constructor() {
+        super();
+        this.root = this.attachShadow({ mode: 'open' });
+    }
 
-  connectedCallback() {
-    const template = document.getElementById("menu-page-template");
-    const content = template.content.cloneNode(true);
-    this.root.appendChild(content);
-  }
+    connectedCallback() {
+        const template = document.getElementById('menu-page-template');
+        const content = template.content.cloneNode(true);
+        this.root.appendChild(content);
+    }
 }
 ```
 

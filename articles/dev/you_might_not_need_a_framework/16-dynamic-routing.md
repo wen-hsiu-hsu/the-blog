@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 16
 chapter: 'Routing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Router
-  - DOM
-  - HistoryAPI
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Router
+    - DOM
+    - HistoryAPI
 ---
 
 # 完成 Router：動態路由參數、popstate 監聽與瀏覽器歷史導覽
@@ -62,8 +62,8 @@ pageElement.dataset.productId = paramId;
 解決方式是在 `init` 中加上 `popstate` 事件的監聽：
 
 ```javascript
-window.addEventListener("popstate", event => {
-  Router.go(event.state.route, false);
+window.addEventListener('popstate', (event) => {
+    Router.go(event.state.route, false);
 });
 ```
 
@@ -83,35 +83,35 @@ window.addEventListener("popstate", event => {
 最後 `Router.go` 會長這樣子
 
 ```javascript
-go: (route, addToHistory=true) => {
+go: (route, addToHistory = true) => {
     if (addToHistory) {
         history.pushState({ route }, '', route);
     }
     let pageElement = null;
     switch (route) {
-        case "/":
-            pageElement = document.createElement("h1");
-            pageElement.textContent = "Menu";
+        case '/':
+            pageElement = document.createElement('h1');
+            pageElement.textContent = 'Menu';
             break;
-        case "/order":
-            pageElement = document.createElement("h1");
-            pageElement.textContent = "Menu";
+        case '/order':
+            pageElement = document.createElement('h1');
+            pageElement.textContent = 'Menu';
             break;
         default:
-            if (route.startsWith("/product-")) {                
-                pageElement = document.createElement("h1");
-                pageElement.textContent = "Details";
-                pageElement.dataset.productId = route.substring(route.lastIndexOf("-")+1);
+            if (route.startsWith('/product-')) {
+                pageElement = document.createElement('h1');
+                pageElement.textContent = 'Details';
+                pageElement.dataset.productId = route.substring(route.lastIndexOf('-') + 1);
             }
-            break;   
+            break;
     }
     if (pageElement) {
-        document.querySelector("main").innerHTML = "";
-        document.querySelector("main").appendChild(pageElement);
+        document.querySelector('main').innerHTML = '';
+        document.querySelector('main').appendChild(pageElement);
     }
 
     window.scrollTo(0, 0);
-}
+};
 ```
 
 ## 未來可以擴充的方向

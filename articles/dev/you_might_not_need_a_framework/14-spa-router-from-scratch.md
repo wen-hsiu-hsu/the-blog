@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 14
 chapter: 'Routing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Router
-  - HistoryAPI
-  - EventListener
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Router
+    - HistoryAPI
+    - EventListener
 ---
 
 # 實作客戶端 Router：攔截連結、歷史紀錄與深度連結
@@ -27,15 +27,15 @@ tags:
 
 ```javascript
 const Router = {
-  init: () => {
-    // 初始化：攔截導覽連結、檢查初始 URL
-  },
-  go: (route, addToHistory = true) => {
-    console.log(`Going to ${route}`);
-    if (addToHistory) {
-      history.pushState({ route }, '', route);
-    }
-  }
+    init: () => {
+        // 初始化：攔截導覽連結、檢查初始 URL
+    },
+    go: (route, addToHistory = true) => {
+        console.log(`Going to ${route}`);
+        if (addToHistory) {
+            history.pushState({ route }, '', route);
+        }
+    },
 };
 
 export default Router;
@@ -52,8 +52,8 @@ Router 和 Store 一樣，在 `DOMContentLoaded` 時初始化，並掛載到全�
 ```javascript
 window.app.router = Router;
 
-window.addEventListener("DOMContentLoaded", () => {
-  Router.init();
+window.addEventListener('DOMContentLoaded', () => {
+    Router.init();
 });
 ```
 
@@ -66,17 +66,17 @@ HTML 中的導覽連結被標記了 `navlink` class。預設情況下點擊這�
 ```javascript
 // ...
 init: () => {
-  document.querySelectorAll("a.navlink").forEach(a => {
-    a.addEventListener("click", event => {
-      event.preventDefault();
-      const url = event.target.getAttribute("href");
-      Router.go(url);
+    document.querySelectorAll('a.navlink').forEach((a) => {
+        a.addEventListener('click', (event) => {
+            event.preventDefault();
+            const url = event.target.getAttribute('href');
+            Router.go(url);
+        });
     });
-  });
 
-  // 檢查初始 URL
-  Router.go(location.pathname);
-}
+    // 檢查初始 URL
+    Router.go(location.pathname);
+};
 // ...
 ```
 
@@ -87,9 +87,9 @@ init: () => {
 在點擊事件的處理函式中，有三種方式可以取得連結的目標 URL，結果大致相同：
 
 ```javascript
-const url1 = a.href;                      // 透過閉包取得外層變數
-const url2 = a.getAttribute("href");      // 同上，但讀取的是 HTML attribute
-const url3 = event.target.getAttribute("href"); // 透過事件物件取得目標元素
+const url1 = a.href; // 透過閉包取得外層變數
+const url2 = a.getAttribute('href'); // 同上，但讀取的是 HTML attribute
+const url3 = event.target.getAttribute('href'); // 透過事件物件取得目標元素
 ```
 
 `a.href` 和 `a.getAttribute("href")` 在這個情境下行為類似，但兩者在底層有微妙的差異：前者是 JavaScript property，後者是 HTML attribute，這個差異在某些情況下會有影響（課程後面會提到）。`event.target` 是觸發事件的元素本身，在這個場景中和 `a` 指向同一個物件。

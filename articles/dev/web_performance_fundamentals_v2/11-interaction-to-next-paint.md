@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 11
 chapter: 'Core Web Vitals & Others Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - INP
-  - CoreWebVitals
+    - frontendMasters
+    - webPerformanceFundamentals
+    - INP
+    - CoreWebVitals
 ---
 
 # Core Web Vitals：INP（互動到下一幀繪製）

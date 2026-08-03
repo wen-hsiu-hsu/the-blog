@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 33
 chapter: 'Static Typing'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - TypeScript
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - TypeScript
 ---
 
 # TypeScript 的運算元型別驗證：被低估的功能
@@ -22,7 +22,7 @@ tags:
 ## 不只是賦值，還有運算的有效性
 
 ```typescript
-var studentName: string = "Frank";
+var studentName: string = 'Frank';
 
 var studentCount: number = 16 - studentName;
 // error: can't subtract string

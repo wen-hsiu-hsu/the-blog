@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 6
 chapter: 'Importance of Web Performance'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CoreWebVitals
-  - DOMContentLoaded
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CoreWebVitals
+    - DOMContentLoaded
 ---
 
 # 傳統指標的局限與 Core Web Vitals 的誕生
@@ -27,7 +27,7 @@ tags:
 
 ```javascript
 $(document).ready(function () {
-  $.ajax("/cart").then(updateCartIcon);
+    $.ajax('/cart').then(updateCartIcon);
 });
 ```
 
@@ -45,7 +45,7 @@ HTML 本身幾乎是空的，真正的內容由 JavaScript 在執行後動態產
 
 ```javascript
 $(document).ready(function () {
-  App.start();
+    App.start();
 });
 ```
 

@@ -9,13 +9,13 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 65
 chapter: 'Prototypes'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - PrototypeChain
-  - OOP
-  - ClassSyntax
-  - ThisKeyword
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - PrototypeChain
+    - OOP
+    - ClassSyntax
+    - ThisKeyword
 ---
 
 # 原型鏈：物件之間的連結機制
@@ -39,10 +39,10 @@ tags:
 
 ```javascript
 function Workshop(teacher) {
-  this.teacher = teacher;
+    this.teacher = teacher;
 }
-Workshop.prototype.ask = function(question) {
-  console.log(this.teacher, question);
+Workshop.prototype.ask = function (question) {
+    console.log(this.teacher, question);
 };
 ```
 
@@ -65,8 +65,8 @@ Workshop.prototype.ask = function(question) {
 接著我們執行以下程式碼：
 
 ```javascript
-var deepJS = new Workshop("Kyle");
-var reactJS = new Workshop("Suzy");
+var deepJS = new Workshop('Kyle');
+var reactJS = new Workshop('Suzy');
 ```
 
 以 `new Workshop("Kyle")` 為例，`new` 依序執行四件事：

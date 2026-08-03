@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 37
 chapter: 'Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - LexicalScope
 ---
 
 # 詞彙範疇的邊界案例：遮蔽缺失與自動全域變數
@@ -23,17 +23,17 @@ tags:
 ## 示範程式碼
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 function otherClass() {
-    teacher = "Suzy";       // 注意：沒有 var
-    topic = "React";        // 注意：沒有 var，也不在任何範疇中宣告
-    console.log("Welcome!");
+    teacher = 'Suzy'; // 注意：沒有 var
+    topic = 'React'; // 注意：沒有 var，也不在任何範疇中宣告
+    console.log('Welcome!');
 }
 
 otherClass();
-console.log(teacher);   // Suzy
-console.log(topic);     // React
+console.log(teacher); // Suzy
+console.log(topic); // React
 ```
 
 ## 編譯階段：`otherClass` 內部沒有任何宣告
@@ -72,7 +72,7 @@ console.log(topic);     // React
 
 ```javascript
 // 執行後，全域範疇多了一個沒有被宣告的變數
-console.log(topic);   // "React"
+console.log(topic); // "React"
 ```
 
 這就是**自動全域（auto global）**，在執行期動態創建於全域範疇，不是編譯期的正式宣告。Kyle Simpson 認為這是 JavaScript 早期為了「盡量寬容」而做出的糟糕設計，至今成為許多難以追蹤的 bug 來源。
@@ -82,10 +82,10 @@ console.log(topic);   // "React"
 在程式頂端加上 `"use strict"` 後，行為會改變：
 
 ```javascript
-"use strict";
+'use strict';
 
 function otherClass() {
-    topic = "React";   // ReferenceError: topic is not defined
+    topic = 'React'; // ReferenceError: topic is not defined
 }
 ```
 

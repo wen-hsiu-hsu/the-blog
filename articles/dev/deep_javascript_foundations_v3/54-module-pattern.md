@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 54
 chapter: 'Closure'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Closure
-  - ModulePattern
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Closure
+    - ModulePattern
 ---
 
 # 模組模式（Module Pattern）：用閉包實現封裝
@@ -26,13 +26,13 @@ tags:
 
 ```javascript
 var workshop = {
-  teacher: "Kyle",
-  ask(question) {
-    console.log(this.teacher, question);
-  },
+    teacher: 'Kyle',
+    ask(question) {
+        console.log(this.teacher, question);
+    },
 };
 
-workshop.ask("Is this a module?");
+workshop.ask('Is this a module?');
 // Kyle Is this a module?
 ```
 
@@ -63,15 +63,15 @@ ES6 的原生模組語法在概念上也應視為閉包的運作。閉包是模�
 
 ```javascript
 var workshop = (function Module(teacher) {
-  var publicAPI = { ask };
-  return publicAPI;
+    var publicAPI = { ask };
+    return publicAPI;
 
-  // **********
+    // **********
 
-  function ask(question) {
-    console.log(teacher, question);
-  }
-})("Kyle");
+    function ask(question) {
+        console.log(teacher, question);
+    }
+})('Kyle');
 
 workshop.ask("It's a module, right?");
 // Kyle It's a module, right?
@@ -91,17 +91,17 @@ IIFE 版本只能產生一個實例。如果需要多個獨立的模組實例，
 
 ```javascript
 function WorkshopModule(teacher) {
-  var publicAPI = { ask };
-  return publicAPI;
+    var publicAPI = { ask };
+    return publicAPI;
 
-  // **********
+    // **********
 
-  function ask(question) {
-    console.log(teacher, question);
-  }
+    function ask(question) {
+        console.log(teacher, question);
+    }
 }
 
-var workshop = WorkshopModule("Kyle");
+var workshop = WorkshopModule('Kyle');
 
 workshop.ask("It's a module, right?");
 // Kyle It's a module, right?

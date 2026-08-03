@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 30
 chapter: 'Reactive Programming with Proxies'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - WebComponents
-  - DOM
-  - ReactiveProgramming
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - WebComponents
+    - DOM
+    - ReactiveProgramming
 ---
 
 # 完成購物車頁面：CartItem 與 OrderPage 元件，以及元件註冊的關鍵機制
@@ -26,31 +26,31 @@ tags:
 `CartItem` 負責渲染購物車中的單筆商品，不使用 Shadow DOM，原因和 `ProductItem` 一樣：讓它共用父層容器的 CSS，不需要獨立的樣式封裝。
 
 ```javascript
-import { removeFromCart } from "../services/Order.js";
+import { removeFromCart } from '../services/Order.js';
 
 export default class CartItem extends HTMLElement {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  connectedCallback() {
-    const item = JSON.parse(this.dataset.item);
-    this.innerHTML = "";
+    connectedCallback() {
+        const item = JSON.parse(this.dataset.item);
+        this.innerHTML = '';
 
-    const template = document.getElementById("cart-item-template");
-    const content = template.content.cloneNode(true);
-    this.appendChild(content);
+        const template = document.getElementById('cart-item-template');
+        const content = template.content.cloneNode(true);
+        this.appendChild(content);
 
-    this.querySelector(".qty").textContent = `${item.quantity}x`;
-    this.querySelector(".name").textContent = item.product.name;
-    this.querySelector(".price").textContent = `$${item.product.price.toFixed(2)}`;
-    this.querySelector("a.delete-button").addEventListener("click", event => {
-      removeFromCart(item.product.id);
-    });
-  }
+        this.querySelector('.qty').textContent = `${item.quantity}x`;
+        this.querySelector('.name').textContent = item.product.name;
+        this.querySelector('.price').textContent = `$${item.product.price.toFixed(2)}`;
+        this.querySelector('a.delete-button').addEventListener('click', (event) => {
+            removeFromCart(item.product.id);
+        });
+    }
 }
 
-customElements.define("cart-item", CartItem);
+customElements.define('cart-item', CartItem);
 ```
 
 資料從 `dataset.item` 讀入並用 `JSON.parse` 還原成物件，再逐一填入對應欄位。刪除按鈕直接呼叫 `removeFromCart`，這個函式建立新陣列並賦值給 `app.store.cart`，觸發 Proxy 廣播 `appcartchange` 事件。
@@ -90,9 +90,9 @@ connectedCallback() {
 `render` 方法根據 `app.store.cart` 的狀態決定顯示內容：空購物車顯示提示文字，否則渲染商品清單和表單。每筆商品對應一個 `cart-item` 自訂元素，用 `dataset.item` 傳入序列化的商品資料：
 
 ```javascript
-const item = document.createElement("cart-item");
+const item = document.createElement('cart-item');
 item.dataset.item = JSON.stringify(prodInCart);
-this.root.querySelector("ul").appendChild(item);
+this.root.querySelector('ul').appendChild(item);
 ```
 
 總金額用迴圈累加後直接寫入 HTML 字串。
@@ -106,7 +106,7 @@ this.root.querySelector("ul").appendChild(item);
 所以只要在 `app.js`（或任何已在 import 鏈上的檔案）中加一行：
 
 ```javascript
-import CartItem from "./components/CartItem.js";
+import CartItem from './components/CartItem.js';
 ```
 
 這個 import 就算看起來沒有在用 `CartItem` 這個名稱，它的「副作用」是讓瀏覽器執行這個模組，從而執行 `customElements.define("cart-item", CartItem)`，瀏覽器才知道這個標籤的存在。

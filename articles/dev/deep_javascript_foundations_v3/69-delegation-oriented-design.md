@@ -9,12 +9,12 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 69
 chapter: 'Prototypes'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - PrototypeChain
-  - OOP
-  - ThisKeyword
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - PrototypeChain
+    - OOP
+    - ThisKeyword
 ---
 
 # 委派導向設計：從父子繼承到平行協作
@@ -51,30 +51,24 @@ tags:
 
 ```javascript
 var AuthController = {
-  authenticate() {
-    server.authenticate(
-      [this.username, this.password],
-      this.handleResponse.bind(this)
-    );
-  },
-  handleResponse(resp) {
-    if (!resp.ok) this.displayError(resp.msg);
-  }
+    authenticate() {
+        server.authenticate([this.username, this.password], this.handleResponse.bind(this));
+    },
+    handleResponse(resp) {
+        if (!resp.ok) this.displayError(resp.msg);
+    },
 };
 
-var LoginFormController = Object.assign(
-  Object.create(AuthController),
-  {
+var LoginFormController = Object.assign(Object.create(AuthController), {
     onSubmit() {
-      this.username = this.$username.val();
-      this.password = this.$password.val();
-      this.authenticate();
+        this.username = this.$username.val();
+        this.password = this.$password.val();
+        this.authenticate();
     },
     displayError(msg) {
-      alert(msg);
-    }
-  }
-);
+        alert(msg);
+    },
+});
 ```
 
 這裡有兩個獨立的具體物件，`LoginFormController` 透過原型鏈連結到 `AuthController`。

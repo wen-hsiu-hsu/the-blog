@@ -9,12 +9,12 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 64
 chapter: 'Prototypes'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - PrototypeChain
-  - OOP
-  - ClassSyntax
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - PrototypeChain
+    - OOP
+    - ClassSyntax
 ---
 
 # 原型系統：連結而非複製

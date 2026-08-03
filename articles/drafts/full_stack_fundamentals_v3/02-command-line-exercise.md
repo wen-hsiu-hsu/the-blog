@@ -9,11 +9,11 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 2
 chapter: 'Command Line'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - CLI
-  - Terminal
-  - FileSystem
+    - frontendMasters
+    - fullStackFundamentals
+    - CLI
+    - Terminal
+    - FileSystem
 ---
 
 # 命令列入門：為什麼要學它，以及基本檔案操作指令
@@ -38,18 +38,18 @@ Windows 使用者若想執行這些指令，可以安裝 Linux 子系統（Linux
 
 ## 基本指令列表
 
-| 指令 | 作用 |
-| --- | --- |
-| `ls` | 列出目前所在位置與當前目錄下的檔案 |
-| `cd` | 切換目錄（change directory） |
-| `mkdir` | 建立目錄 |
-| `rmdir` | 移除目錄 |
-| `cat` | 顯示檔案內容 |
-| `man` | 顯示程式的手冊頁 |
-| `less` | 分頁顯示檔案內容 |
-| `touch` | 建立空檔案 |
-| `rm` | 移除檔案 |
-| `echo` | 重複輸出輸入的內容 |
+| 指令    | 作用                               |
+| ------- | ---------------------------------- |
+| `ls`    | 列出目前所在位置與當前目錄下的檔案 |
+| `cd`    | 切換目錄（change directory）       |
+| `mkdir` | 建立目錄                           |
+| `rmdir` | 移除目錄                           |
+| `cat`   | 顯示檔案內容                       |
+| `man`   | 顯示程式的手冊頁                   |
+| `less`  | 分頁顯示檔案內容                   |
+| `touch` | 建立空檔案                         |
+| `rm`    | 移除檔案                           |
+| `echo`  | 重複輸出輸入的內容                 |
 
 其中 `rmdir` 平常較少使用，因為如果目錄不是空的，`rmdir` 就無法刪除，這時必須改用 `rm`。
 

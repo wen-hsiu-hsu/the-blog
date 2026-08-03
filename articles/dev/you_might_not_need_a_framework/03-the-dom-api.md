@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 3
 chapter: 'Vanilla JavaScript'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - DOM
-  - WebAPI
-  - VirtualDOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - DOM
+    - WebAPI
+    - VirtualDOM
 ---
 
 # DOM 與 DOM API 基礎概念
@@ -55,13 +55,13 @@ DOM API 分布在三個層級的物件上：
 
 ```html
 <html>
-  <body>
-    <header>
-      <h1>The DOM</h1>
-      <p class="tagline">Document Object Model</p>
-      <img hidden src="dom.png">
-    </header>
-  </body>
+    <body>
+        <header>
+            <h1>The DOM</h1>
+            <p class="tagline">Document Object Model</p>
+            <img hidden src="dom.png" />
+        </header>
+    </body>
 </html>
 ```
 

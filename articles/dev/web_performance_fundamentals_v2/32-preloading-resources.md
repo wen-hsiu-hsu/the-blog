@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 32
 chapter: 'Improving First Contentful Paint'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - FCP
-  - ResourceHints
+    - frontendMasters
+    - webPerformanceFundamentals
+    - FCP
+    - ResourceHints
 ---
 
 # 改善 FCP：資源預載（Preconnect 與 Preload）
@@ -26,8 +26,8 @@ tags:
 以 Google Fonts 為例，這是大多數人使用網路字型的方式。Google Fonts 提供的嵌入程式碼中，包含兩個 `link preconnect`：
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 ```
 
 `preconnect` 告訴瀏覽器：「我之後會需要這個網域上的資源，請現在就開始進行 DNS 查詢、建立 TCP 連線、完成 TLS 握手。」這樣等到真正需要資源時，連線已經準備好，可以直接發出請求。
@@ -39,7 +39,7 @@ tags:
 若你已經知道某個資源是必要的，而且它目前要等到某個 CSS 或 JS 執行完才會被發現，可以用 `link preload` 直接告訴瀏覽器提前去取得它：
 
 ```html
-<link rel="preload" href="/fonts/example.woff2" as="font" crossorigin>
+<link rel="preload" href="/fonts/example.woff2" as="font" crossorigin />
 ```
 
 `as` 屬性必須指定資源類型（font、style、script、image 等），讓瀏覽器知道如何優先排序這個請求。

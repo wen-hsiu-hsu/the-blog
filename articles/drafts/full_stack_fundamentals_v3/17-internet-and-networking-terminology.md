@@ -9,16 +9,16 @@ seriesTitle: 'Full Stack Fundamentals'
 order: 17
 chapter: 'The Internet'
 tags:
-  - frontendMasters
-  - fullStackFundamentals
-  - Networking
-  - TCP
-  - UDP
-  - ICMP
-  - Packet
-  - DDoS
-  - ThreeWayHandshake
-  - PingOfDeath
+    - frontendMasters
+    - fullStackFundamentals
+    - Networking
+    - TCP
+    - UDP
+    - ICMP
+    - Packet
+    - DDoS
+    - ThreeWayHandshake
+    - PingOfDeath
 ---
 
 # TCP 與 UDP 差在哪：三向交握、封包、ICMP，以及 ping of death 攻擊的原理

@@ -9,11 +9,11 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 43
 chapter: 'Advanced Scope'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - Scope
-  - LexicalScope
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - Scope
+    - LexicalScope
 ---
 
 # 詞彙範疇的視覺化：氣泡模型與編譯期優化
@@ -23,16 +23,16 @@ tags:
 ## 彈珠顏色在編譯期就已確定
 
 ```javascript
-var teacher = "Kyle";
+var teacher = 'Kyle';
 
 function otherClass() {
-    var teacher = "Suzy";
+    var teacher = 'Suzy';
 
     function ask(question) {
         console.log(teacher, question);
     }
 
-    ask("Why?");
+    ask('Why?');
 }
 ```
 

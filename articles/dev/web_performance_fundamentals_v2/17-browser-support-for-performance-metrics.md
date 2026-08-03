@@ -9,10 +9,10 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 17
 chapter: 'Capturing Performance Metrics'
 tags:
-  - frontendMasters
-  - webPerformanceFundamentals
-  - CoreWebVitals
-  - BrowserCompatibility
+    - frontendMasters
+    - webPerformanceFundamentals
+    - CoreWebVitals
+    - BrowserCompatibility
 ---
 
 # 效能指標的瀏覽器支援：Blink、WebKit 與 Gecko

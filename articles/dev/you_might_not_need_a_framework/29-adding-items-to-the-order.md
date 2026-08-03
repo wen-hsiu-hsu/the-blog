@@ -9,12 +9,12 @@ seriesTitle: 'You Might Not Need a Framework'
 order: 29
 chapter: 'Reactive Programming with Proxies'
 tags:
-  - JavaScript
-  - frontendMasters
-  - youMightNotNeedAFramework
-  - Proxy
-  - ReactiveProgramming
-  - DOM
+    - JavaScript
+    - frontendMasters
+    - youMightNotNeedAFramework
+    - Proxy
+    - ReactiveProgramming
+    - DOM
 ---
 
 # 購物車邏輯與響應式徽章更新：Proxy、陣列不可變性與全域事件
@@ -27,28 +27,22 @@ tags:
 
 ```javascript
 export async function addToCart(id) {
-  const product = await getProductById(id);
-  const results = app.store.cart.filter(
-    prodInCart => prodInCart.product.id == id
-  );
+    const product = await getProductById(id);
+    const results = app.store.cart.filter((prodInCart) => prodInCart.product.id == id);
 
-  if (results.length == 1) {
-    // 商品已在購物車中，更新數量
-    app.store.cart = app.store.cart.map(
-      p => p.product.id == id
-        ? { ...p, quantity: p.quantity + 1 }
-        : p
-    );
-  } else {
-    // 新增商品到購物車
-    app.store.cart = [...app.store.cart, { product, quantity: 1 }];
-  }
+    if (results.length == 1) {
+        // 商品已在購物車中，更新數量
+        app.store.cart = app.store.cart.map((p) =>
+            p.product.id == id ? { ...p, quantity: p.quantity + 1 } : p,
+        );
+    } else {
+        // 新增商品到購物車
+        app.store.cart = [...app.store.cart, { product, quantity: 1 }];
+    }
 }
 
 export function removeFromCart(id) {
-  app.store.cart = app.store.cart.filter(
-    p => p.product.id !== id
-  );
+    app.store.cart = app.store.cart.filter((p) => p.product.id !== id);
 }
 ```
 
@@ -78,10 +72,8 @@ app.store.cart = app.store.cart.filter(...);
 如果商品已在購物車中，用 `filter` 找到它確認存在後，用 `map` 建立新陣列，對符合的那一筆用展開語法建立新物件並遞增 `quantity`，其餘的原樣保留：
 
 ```javascript
-app.store.cart = app.store.cart.map(
-  p => p.product.id == id
-    ? { ...p, quantity: p.quantity + 1 }
-    : p
+app.store.cart = app.store.cart.map((p) =>
+    p.product.id == id ? { ...p, quantity: p.quantity + 1 } : p,
 );
 ```
 
@@ -99,13 +91,11 @@ app.store.cart = app.store.cart.map(
 在 `app.js` 中監聽 `appcartchange` 事件，每次購物車變動就更新徽章的數字和顯示狀態：
 
 ```javascript
-window.addEventListener("appcartchange", event => {
-  const badge = document.getElementById("badge");
-  const qty = app.store.cart.reduce(
-    (acc, item) => acc + item.quantity, 0
-  );
-  badge.textContent = qty;
-  badge.hidden = qty == 0;
+window.addEventListener('appcartchange', (event) => {
+    const badge = document.getElementById('badge');
+    const qty = app.store.cart.reduce((acc, item) => acc + item.quantity, 0);
+    badge.textContent = qty;
+    badge.hidden = qty == 0;
 });
 ```
 

@@ -9,10 +9,10 @@ seriesTitle: 'Deep JS Foundations v3'
 order: 58
 chapter: 'Objects'
 tags:
-  - JavaScript
-  - frontendMasters
-  - deepJavaScriptFoundationsV3
-  - ThisKeyword
+    - JavaScript
+    - frontendMasters
+    - deepJavaScriptFoundationsV3
+    - ThisKeyword
 ---
 
 # `new` 關鍵字：第三種 `this` 綁定規則
@@ -49,7 +49,7 @@ tags:
 
 ```javascript
 function ask(question) {
-  console.log(this.teacher, question);
+    console.log(this.teacher, question);
 }
 
 var newEmptyObject = new ask("What is 'new' doing here?");
