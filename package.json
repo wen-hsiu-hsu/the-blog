@@ -31,6 +31,7 @@
         "format": "prettier --write .",
         "format:check": "prettier --check .",
         "validate:drafts": "node .github/scripts/validate-drafts.js",
+        "new:series": "node scripts/new-series.js",
         "dev:with-drafts": "VITE_INCLUDE_DRAFTS=true vitepress dev"
     },
     "author": "",

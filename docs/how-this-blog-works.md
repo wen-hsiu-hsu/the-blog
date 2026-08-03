@@ -161,7 +161,7 @@ npm run dev:with-drafts
 
 要新增一個系列（如 `css-notes`）：
 
-1. 建立目錄 `articles/dev/css-notes/`
+1. 建立目錄 `articles/dev/css-notes/` 與 `articles/drafts/css-notes/`（兩邊都要有，各放一個 `.gitkeep` 才能 commit 空資料夾）。可用 `npm run new:series -- css-notes` 自動完成，見下方「建立系列資料夾（new:series）」。
 2. 文章命名：`01-{描述性slug}.md`
 3. frontmatter 填寫系列必要欄位：
     - `series: css-notes` — 識別 slug，對應 seriesMap key
@@ -169,6 +169,33 @@ npm run dev:with-drafts
     - `seriesTitle: "CSS Notes"` — badge 顯示名稱（省略時 fallback 為 `category → slug`）
     - `section: dev`
 4. 不需要改任何設定，glob 自動掃到
+
+---
+
+## 建立系列資料夾（new:series）
+
+本機用的輔助腳本，一次建立系列在 `dev` 與 `drafts` 兩邊對稱的空資料夾（各含 `.gitkeep`），避免手動建立時漏建其中一邊或打錯字。**純本地操作，不屬於 CI/CD 流程**，因此放在專案根目錄的 `scripts/`，而非 `.github/scripts/`。
+
+### 執行方式
+
+```bash
+npm run new:series -- <slug>
+```
+
+例如：`npm run new:series -- css-notes` 會建立：
+
+```
+articles/dev/css-notes/.gitkeep
+articles/drafts/css-notes/.gitkeep
+```
+
+### 行為
+
+- slug 僅允許英數字、底線、連字號（`[a-zA-Z0-9_-]+`），拒絕 `/`、`..`、空白等字元，避免建到非預期路徑。
+- 若某一邊的資料夾已存在，只補建缺的那一邊（不視為錯誤）；兩邊都存在則兩邊都印出「已存在，略過」。
+- 不會產生任何 `.md` 文章骨架或 frontmatter 模板，只建立空資料夾。
+
+實作見 `scripts/new-series.js`。
 
 ---
 
@@ -184,6 +211,7 @@ npm run dev:with-drafts
 | `.github/workflows/deploy.yml`              | 測試 + 部署 workflow                 |
 | `.github/workflows/auto-publish.yml`        | 定時草稿發布 workflow                |
 | `.vitepress/plugins/obsidian-wikilinks.ts`  | Obsidian wikilink 轉換 plugin        |
+| `scripts/new-series.js`                     | 本機建立系列資料夾（dev + drafts）   |
 
 ---
 
