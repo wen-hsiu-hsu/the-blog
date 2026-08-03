@@ -14,6 +14,8 @@
         "fs-extra": "^11.3.0",
         "globby": "^14.1.0",
         "gray-matter": "^4.0.3",
+        "husky": "^9.1.7",
+        "lint-staged": "^17.3.0",
         "markdown-it": "^14.1.1",
         "prettier": "^3.8.3",
         "unocss": "^66.1.0-beta.8",
@@ -32,11 +34,15 @@
         "format:check": "prettier --check .",
         "validate:drafts": "node .github/scripts/validate-drafts.js",
         "new:series": "node scripts/new-series.js",
-        "dev:with-drafts": "VITE_INCLUDE_DRAFTS=true vitepress dev"
+        "dev:with-drafts": "VITE_INCLUDE_DRAFTS=true vitepress dev",
+        "prepare": "husky"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "@vueuse/core": "^13.0.0"
+    },
+    "lint-staged": {
+        "*.{js,ts,vue,md,json,yml,yaml}": "prettier --write"
     }
 }
