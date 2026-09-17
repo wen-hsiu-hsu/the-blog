@@ -129,20 +129,8 @@
             >
                 <ArticleRow :article="article" />
             </div>
-            <div class="mt-4 flex justify-center gap-2">
-                <a
-                    :class="[
-                        'link inline-block size-6 text-center rounded-full',
-                        pageCurrent === i &&
-                            '!bg-[var(--vp-c-text-1)] !text-[var(--vp-c-neutral-inverse)]',
-                    ]"
-                    v-for="i in pagesNum"
-                    :key="i"
-                    :href="withBase(getPaginationLink(i, pageBase))"
-                >
-                    <span class="relative top-[-2px]">{{ i }}</span>
-                </a>
-            </div>
+
+            <BasePagination :pageCurrent="pageCurrent" :pagesNum="pagesNum" :pageBase="pageBase" />
 
             <Copyright class="mt-12" />
         </div>
@@ -151,12 +139,12 @@
 
 <script lang="ts" setup>
 import { withBase, useData } from 'vitepress';
-import { getPaginationLink } from '../../utils/pagination';
 import { PropType, computed } from 'vue';
 import { initTags, initCategory } from '../../functions';
 import BaseSidebar from './../base/BaseSidebar.vue';
 import BaseTreeview from './../base/BaseTreeview.vue';
 import BaseFlipCard from './../base/BaseFlipCard.vue';
+import BasePagination from './../base/BasePagination.vue';
 import Copyright from './../layout/Copyright.vue';
 import ArticleRow from './ArticleRow.vue';
 import SectionHero from './SectionHero.vue';
