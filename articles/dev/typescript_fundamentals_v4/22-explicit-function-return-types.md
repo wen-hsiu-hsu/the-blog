@@ -109,7 +109,7 @@ export async function getData(url: string): Promise<{ properties: string[] }> {
 
 <details>
 <summary>要標註一個函式回傳「會解析成特定型別的 Promise」，該用什麼語法？</summary>
-`Promise<Type>`
+<code>Promise&lt;Type&gt;</code>
 </details>
 
 > 此文章是 [FrontendMasters](https://frontendmasters.com/) 上的 [TypeScript Fundamentals](https://master.dev/courses/typescript-v4/) 課程筆記

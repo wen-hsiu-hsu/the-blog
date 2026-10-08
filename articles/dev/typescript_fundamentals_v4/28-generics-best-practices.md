@@ -98,7 +98,7 @@ const mixedPair = makeTuple('hello', window); // T 被推斷為 string，U 被�
 ## 小測驗
 
 <details>
-<summary>給定函式 `makeTuple<T, U>(a: T, b: U): [T, U]`，用到了幾個型別參數？</summary>
+<summary>給定函式 <code>makeTuple&lt;T, U&gt;(a: T, b: U): [T, U]</code>，用到了幾個型別參數？</summary>
 兩個型別參數（T 和 U）
 </details>
 
