@@ -110,9 +110,9 @@ wikilink 相關邏輯集中在 `.github/scripts/wikilink-utils.js`，供多個�
 
 ## 相關檔案
 
-| 檔案                                       | 用途                               |
-| ------------------------------------------ | ---------------------------------- |
-| `.vitepress/plugins/obsidian-wikilinks.ts` | Build 時 wikilink 轉換 plugin      |
-| `.github/scripts/wikilink-utils.js`        | 共用工具：slug 建立、wikilink 提取 |
-| `.github/scripts/publish-posts.js`         | 發布前 broken wikilink 檢查        |
-| `.github/scripts/validate-drafts.js`       | 草稿驗證（wikilink + frontmatter） |
+| 檔案                                       | 用途                                           |
+| ------------------------------------------ | ---------------------------------------------- |
+| `.vitepress/plugins/obsidian-wikilinks.ts` | Build 時 wikilink 轉換 plugin                  |
+| `.github/scripts/wikilink-utils.js`        | 共用工具：slug 建立、wikilink 提取             |
+| `.github/scripts/publish-posts.js`         | 發布前 broken wikilink 檢查                    |
+| `.github/scripts/validate-drafts.js`       | 草稿驗證（wikilink + frontmatter + HTML 標籤） |

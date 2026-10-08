@@ -4,19 +4,29 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { globby } from 'globby';
 import { buildPublishedSlugs, buildDraftSlugs, extractWikilinks } from './wikilink-utils.js';
+import { findInvalidHtmlTags, loadRegisteredComponents } from './html-tag-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DRAFTS_DIR = path.join(__dirname, '../../articles/drafts');
 const ARTICLES_DIR = path.join(__dirname, '../../articles');
+const THEME_INDEX = path.join(__dirname, '../../.vitepress/theme/index.ts');
 
 const REQUIRED_FIELDS = ['title', 'description', 'date', 'category', 'section', 'tags'];
 const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 const VALID_SECTIONS = ['dev', 'life'];
 
 /** 驗證單一草稿，回傳 { errors, warnings } */
-function validateDraft(filePath, content, frontMatter, publishedSlugs, draftSlugs) {
+function validateDraft(
+    filePath,
+    raw,
+    content,
+    frontMatter,
+    publishedSlugs,
+    draftSlugs,
+    components,
+) {
     const errors = [];
     const warnings = [];
 
@@ -61,6 +71,15 @@ function validateDraft(filePath, content, frontMatter, publishedSlugs, draftSlug
         }
     }
 
+    // 未跳脫的 `<`：raw HTML（如 <details>/<summary>）裡的泛型會被 Vue 當成標籤，導致 build 失敗
+    const frontMatterLines = raw.slice(0, raw.length - content.length).split('\n').length - 1;
+    for (const { line, tag } of findInvalidHtmlTags(content, components)) {
+        errors.push(
+            `第 ${frontMatterLines + line} 行 HTML 中的 \`${tag}\` 會被 Vue 當成標籤而 build 失敗：` +
+                `HTML 區塊內請用 <code>…</code> 並把 < > 寫成 &lt; &gt;`,
+        );
+    }
+
     return { errors, warnings };
 }
 
@@ -74,9 +93,10 @@ async function validateDrafts() {
 
     console.log(`🔍 Validating ${draftPaths.length} draft(s)...\n`);
 
-    const [publishedSlugs, draftSlugs] = await Promise.all([
+    const [publishedSlugs, draftSlugs, components] = await Promise.all([
         buildPublishedSlugs(ARTICLES_DIR),
         buildDraftSlugs(DRAFTS_DIR),
+        loadRegisteredComponents(THEME_INDEX),
     ]);
 
     let totalErrors = 0;
@@ -89,10 +109,12 @@ async function validateDrafts() {
 
         const { errors, warnings } = validateDraft(
             relPath,
+            raw,
             content,
             frontMatter,
             publishedSlugs,
             draftSlugs,
+            components,
         );
 
         if (errors.length > 0 || warnings.length > 0) {

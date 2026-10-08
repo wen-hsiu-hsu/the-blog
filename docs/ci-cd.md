@@ -27,7 +27,7 @@
 
 ```bash
 npm run format:check   # 確認整個專案沒有未格式化的檔案（pre-commit 只處理 staged 檔案，這裡做全域把關）
-npm run validate:drafts # 草稿 frontmatter / wikilink 驗證，邏輯與 validate-drafts.yml 相同
+npm run validate:drafts # 草稿 frontmatter / wikilink / 未跳脫 HTML 標籤驗證，邏輯與 validate-drafts.yml 相同
 npm test                # Vitest 單元測試，邏輯與 deploy.yml 的 test job 相同
 ```
 
@@ -96,6 +96,12 @@ auto-publish.yml (completes with success)
 
 - frontmatter 錯誤（缺少必填欄位、格式錯誤）：非零退出，**block PR**（防止明顯錯誤進入 drafts）
 - broken wikilink：零退出，**不 block**（草稿階段連結目標可能尚未發布）
+- 未跳脫的 HTML 標籤：非零退出，**block PR**。`<details>` / `<summary>` 等 raw HTML 區塊不會被 markdown-it 跳脫，
+  裡面的反引號也不會變成 inline code，所以 `Promise<Type>` 會原樣交給 Vue 編譯，被當成沒有結尾的 `<Type>` 標籤，
+  build 報 `Element is missing end tag`（錯誤行號是轉換後 Vue 元件的行號，對不上 `.md` 原始檔）。
+  檢查邏輯在 `.github/scripts/html-tag-utils.js` 的 `findInvalidHtmlTags()`：用 markdown-it 找出 `html_block` / `html_inline`，
+  標籤名稱不是 HTML/SVG/MathML 標籤、VitePress 內建元件或 `.vitepress/theme/index.ts` 註冊的全域元件時視為錯誤。
+  正確寫法：`<code>Promise&lt;Type&gt;</code>`
 - 在 GitHub Actions Annotations 以 `::error` / `::warning` 格式顯示，可在 PR 的 Files 頁面看到標記
 
 ---
