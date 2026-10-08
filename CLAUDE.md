@@ -21,6 +21,7 @@
 | `docs/ci-cd.md`               | GitHub Actions workflows、部署流程、Cloudflare Pages 設定、所需 Secrets、已知限制 | 修改 CI/CD、排查部署問題、設定新環境時                   |
 | `docs/testing.md`             | 測試工具（Vitest）、目前測試涵蓋範圍、如何新增測試                                | 新增或修改測試、排查測試失敗時                           |
 | `docs/obsidian-wikilinks.md`  | Obsidian wikilink 支援說明、語法對照、publish 前檢查機制                          | 使用或修改 wikilink 功能時                               |
+| `docs/seo-diagnosis.md`       | SEO 與競爭力診斷報告（2026-10-08）：各問題的證據、修法與 TODO 進度追蹤            | 處理 SEO、head／結構化資料、效能、內容策略相關任務時     |
 
 ## 程式碼格式化
 
