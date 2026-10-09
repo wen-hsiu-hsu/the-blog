@@ -226,7 +226,7 @@ TODO
 - [x] build 時用 satori＋resvg 產生 1200×630 OG 圖，並輸出 `og:image`（做法見 [seo.md](./seo.md#og-分享圖vitepresspluginsog-image)，效能記錄 [perf-log/2026-10-10-1144057](./perf-log/2026-10-10-1144057.md)）
 - [x] JSON-LD `Article` 改為 `BlogPosting`，補 `image`、`description`、`author: { name, url, sameAs }`、`publisher`
 - [x] `WebSite` 補 `name`；完成 `Person`（`sameAs` 連到 GitHub、Threads、履歷站）
-- [x] 文章加 `BreadcrumbList`（不含系列層，做法見 [seo.md](./seo.md#結構化資料utilsstructureddatats)）
+- [x] 文章加 `BreadcrumbList`（不含系列層，做法見 [seo.md](./seo.md#結構化資料utilsstructureddatats)）；效能記錄 [perf-log/2026-10-10-e850f4c](./perf-log/2026-10-10-e850f4c.md)
 - [ ] 部署後用 Rich Results Test 驗證
 
 P1
