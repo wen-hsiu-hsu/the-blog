@@ -187,6 +187,12 @@ export default async () => {
                 name: 'Wen-Hsiu Hsu',
                 intro: '程式碼之外，還有生活的藝術\n前端工程師 / 攝影 / 生活紀錄',
                 avatar: '/avatar-pixel-v2-mini.jpg',
+                // JSON-LD Person 的 sameAs：作者在其他站的身分
+                sameAs: [
+                    'https://github.com/wen-hsiu-hsu',
+                    'https://www.threads.com/@hsiu.soy',
+                    'https://resume.hsiu.soy/',
+                ],
             },
             text: {
                 suggestPost: '更多文章',
@@ -252,7 +258,9 @@ export default async () => {
             plugins: [UnoCSS(), RssPlugin(rssOptions)],
         },
         async transformHead(context) {
-            return [...(await transformHead(context)), ...(await ogImageHead(context))];
+            const ogHead = await ogImageHead(context);
+            const image = ogHead.find(([, attrs]) => attrs.property === 'og:image')?.[1].content;
+            return [...(await transformHead(context, { image })), ...ogHead];
         },
     });
 };

@@ -1,8 +1,13 @@
 import { HeadConfig, TransformContext } from 'vitepress';
-import { format, formatISO } from 'date-fns';
-import { isNotFoundPage, toPageUrl } from './pagePath';
+import { formatISO } from 'date-fns';
+import { isNotFoundPage } from './pagePath';
+import { buildStructuredData } from './structuredData';
 
-export default async function transformHead(context: TransformContext) {
+// image：og-image 產圖成功時的圖片網址，放進 BlogPosting.image
+export default async function transformHead(
+    context: TransformContext,
+    options: { image?: string } = {},
+) {
     const { pageData, siteConfig, siteData } = context;
     const head: HeadConfig[] = [];
     const themeConfig = siteConfig.userConfig.themeConfig;
@@ -21,8 +26,6 @@ export default async function transformHead(context: TransformContext) {
     const publishedTime = formatISO(datePublishedTime);
     const lastUpdated = formatISO(dateLastUpdated);
 
-    // canonical 與 og:url 由 transformPageData 輸出（見 pageHead.ts），這裡只用於結構化資料
-    const siteUrl = toPageUrl(pageData.relativePath, themeConfig.website);
     const authorName = themeConfig.author.name ?? '';
     const category = pageData.frontmatter.category ?? '';
     const tags: string[] = pageData.frontmatter.tags ?? [];
@@ -53,47 +56,34 @@ export default async function transformHead(context: TransformContext) {
     // Open Graph end =================
 
     // Structured Data =================
-    if (isPost) {
-        head.push([
-            'script',
-            { type: 'application/ld+json' },
-            JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'Article',
-                mainEntityOfPage: {
-                    '@type': 'WebPage',
-                    '@id': siteUrl,
+    head.push([
+        'script',
+        { type: 'application/ld+json' },
+        // < 轉成 \u003c，避免內容裡的 </script> 提前結束標籤
+        JSON.stringify(
+            buildStructuredData(
+                {
+                    relativePath: pageData.relativePath,
+                    title,
+                    description,
+                    isPost,
+                    datePublished: publishedTime,
+                    dateModified: lastUpdated,
+                    category,
+                    tags,
+                    image: options.image,
                 },
-                author: {
-                    '@type': 'Person',
-                    name: authorName,
+                {
+                    hostname: themeConfig.website,
+                    siteTitle: siteData.title,
+                    siteDescription: siteData.description,
+                    lang: siteData.lang,
+                    author: themeConfig.author,
+                    sections: themeConfig.nav.filter(({ link }) => link.startsWith('/')),
                 },
-                headline: title,
-                // image: 'https://',
-                datePublished: format(datePublishedTime, 'yyyy-MM-dd'),
-                dateModified: format(dateLastUpdated, 'yyyy-MM-dd'),
-            }),
-        ]);
-    } else {
-        head.push([
-            'script',
-            { type: 'application/ld+json' },
-            JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'WebSite',
-                url: siteUrl,
-            }),
-        ]);
-    }
-    // TODO person
-    // {
-    //     "@context": "http://schema.org/",
-    //     "@type": "Person",
-    //     "name": "name",
-    //     "image": "photo url",
-    //     "url": "website url",
-    //     "jobTitle": "job title"
-    // }
+            ),
+        ).replace(/</g, '\\u003c'),
+    ]);
     // Structured Data end =================
 
     return head;
