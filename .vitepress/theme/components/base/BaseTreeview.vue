@@ -30,8 +30,7 @@
             <span class="flex-1 line-clamp-2 text-sm">{{ model.text }}</span>
         </a>
         <ul
-            v-show="isOpen"
-            v-if="isFolder"
+            v-if="isFolder && isOpen"
             class="!list-none !pl-3 border-l border-l-neutral-100 dark:border-l-neutral-800 !ml-1 !mt-1 !mb-1"
         >
             <BaseTreeview class="item" v-for="item in model.items" :model="item" :key="item.text" />
