@@ -37,6 +37,17 @@ Chrome 在 Claude Code 的 sandbox 內無法啟動，錯誤為
 `waiting for dynamic debugging port in chrome-err.log`。
 執行時必須關閉 sandbox（Bash 的 `dangerouslyDisableSandbox`）。
 
+### 必須用 arm64 的 Node（Apple Silicon）
+
+在 Apple Silicon 上用 x64 的 Node（例如 asdf 裝到 x86_64 版）啟動 Chrome，
+Chrome 會經過 Rosetta 轉譯，CPU 類指標會嚴重失真。2026-10-09 實測同一個 build：
+x64 Node 量到 TBT 10–21 秒、Performance 22–26 分；arm64 Node 量到 TBT 0 ms、54–56 分。
+Lighthouse CLI 會直接拒絕執行並顯示 `Launching Chrome on Mac Silicon (arm64) from an x64 Node installation`，
+但 `perf:compare` 走程式 API，不會檢查這件事。
+
+用 `node -p process.arch` 確認，結果要是 `arm64`。在此之前的記錄（`docs/perf-log/` 中 2026-10-09 的兩筆）
+是用 x64 Node 量的：傳輸量仍然準確，但時間類指標的絕對值不可信。
+
 ---
 
 ## 記錄效能變化（--record）

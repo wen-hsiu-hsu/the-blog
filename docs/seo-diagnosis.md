@@ -36,6 +36,7 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 | 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                                 |
 | 標籤與分類頁無法被索引                   | P2     | 未開始                                 |
 | URL 大小寫混用與底線                     | P2     | 未開始                                 |
+| 中文網頁字型拖慢 FCP／LCP                | P2     | 已查明來源，未開始修                   |
 | 第三方資源與圖片                         | P2     | 未開始                                 |
 | 全球華語讀者：簡體中文的觸及             | P2     | 未開始                                 |
 | AI 搜尋                                  | P2     | 未開始                                 |
@@ -283,18 +284,47 @@ TODO
 
 P2
 
+### 中文網頁字型拖慢 FCP／LCP
+
+效能
+
+證據
+
+本地 Lighthouse 實測（2026-10-09，`d9666ad`，arm64 Node）：首頁與文章頁的模擬 FCP 約 10 秒，但實際觀測到的 FCP 只有 1.3 秒。
+差距來自字型：`uno.config.ts` 的 `presetWebFonts` 載入 Google Fonts 的 Noto Serif TC 200／500／800 三個字重，
+build 後內嵌進 `style.css`，每個字重各 108 個 `unicode-range` 子集。每頁會下載 17–18 個子集、約 1.4 MB，
+而且全部都在 FCP 之前開始下載。Lighthouse（也就是 PageSpeed Insights）的模擬節流會把這些請求算進首次繪製的關鍵路徑，
+所以 FCP、LCP、Speed Index 都被拉長到約 10 秒；這是目前 Performance 分數（54–56）最主要的扣分來源。
+TBT 實測為 0 ms，先前量到的 10 秒以上是 x64 Node 的量測誤差（見 [performance-testing.md](./performance-testing.md)）。
+
+修法（待選）
+
+- 減少字重：確認 200 與 800 是否真的有用到，只留需要的字重，下載量約可減為三分之一。
+- 內文改用系統字型（`PingFang TC`、`Microsoft JhengHei`），Noto Serif TC 只用在標題。
+- 自行託管並用 `glyphhanger`／`subfont` 依全站實際用字做子集化。
+
+TODO
+
+- [ ] 決定字型策略並實作
+- [ ] 改完後用 `perf:compare` 記錄（須用 arm64 Node）
+
+P2
+
 ### 第三方資源與圖片
 
 效能
 
 證據
 
-同時載入 GA4（gtag）、Cloudflare Web Analytics、AdSense、Giscus；首頁有 tenor 動態 GIF；文章頁從 buymeacoffee CDN 載圖；顯示 26px 的 `avatar-pixel-v2-mini.jpg` 檔案 112 KB，`avatar-pixel-v2.jpg` 580 KB。
+同時載入 GA4（gtag）、Cloudflare Web Analytics、AdSense、Giscus；首頁有 tenor 動態 GIF；文章頁從 buymeacoffee CDN 載圖；顯示為 104 px（`size-26`）的 `avatar-pixel-v2-mini.jpg` 檔案 112 KB，`avatar-pixel-v2.jpg` 580 KB。
+
+本地 Lighthouse 實測（2026-10-09，`d9666ad`）：首頁圖片 1990 KB 中，tenor GIF 就佔了 1821 KB。這張 GIF 是 `Page.vue` 頭像翻轉卡（`BaseFlipCard`）的背面，
+雖然加了 `loading="lazy"`，但它和正面疊在同一個位置、位於首屏內，所以頁面一載入就會下載。
 
 修法
 
 - 兩套分析工具擇一（Cloudflare 的較輕量、無 cookie）。
-- 頭像輸出 WebP／AVIF 的實際顯示尺寸（2× 也只需約 60 px）；GIF 改成 `<video>` 或靜態圖。
+- 頭像輸出 WebP／AVIF 的實際顯示尺寸（2× 約 208 px）；GIF 改成 `<video>` 或靜態圖，或等使用者第一次翻轉卡片時才設定 `src`。
 - Giscus 改成捲動到附近才載入。
 - 若有歐洲讀者且使用 AdSense，需要 Consent Mode v2。
 
