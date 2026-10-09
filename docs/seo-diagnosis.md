@@ -36,7 +36,7 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 | 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                                 |
 | 標籤與分類頁無法被索引                   | P2     | 未開始                                 |
 | URL 大小寫混用與底線                     | P2     | 未開始                                 |
-| 中文網頁字型拖慢 FCP／LCP                | P2     | 已查明來源，未開始修                   |
+| 中文網頁字型                             | P2     | 已查明，決定維持現狀                   |
 | 第三方資源與圖片                         | P2     | 未開始                                 |
 | 全球華語讀者：簡體中文的觸及             | P2     | 未開始                                 |
 | AI 搜尋                                  | P2     | 未開始                                 |
@@ -284,29 +284,26 @@ TODO
 
 P2
 
-### 中文網頁字型拖慢 FCP／LCP
+### 中文網頁字型
 
 效能
 
 證據
 
-本地 Lighthouse 實測（2026-10-09，`d9666ad`，arm64 Node）：首頁與文章頁的模擬 FCP 約 10 秒，但實際觀測到的 FCP 只有 1.3 秒。
-差距來自字型：`uno.config.ts` 的 `presetWebFonts` 載入 Google Fonts 的 Noto Serif TC 200／500／800 三個字重，
-build 後內嵌進 `style.css`，每個字重各 108 個 `unicode-range` 子集。每頁會下載 17–18 個子集、約 1.4 MB，
-而且全部都在 FCP 之前開始下載。Lighthouse（也就是 PageSpeed Insights）的模擬節流會把這些請求算進首次繪製的關鍵路徑，
-所以 FCP、LCP、Speed Index 都被拉長到約 10 秒；這是目前 Performance 分數（54–56）最主要的扣分來源。
-TBT 實測為 0 ms，先前量到的 10 秒以上是 x64 Node 的量測誤差（見 [performance-testing.md](./performance-testing.md)）。
+`uno.config.ts` 的 `presetWebFonts` 載入 Google Fonts 的 Noto Serif TC 200／500／800 三個字重，
+build 後內嵌進 `style.css`，每個字重各 108 個 `unicode-range` 子集（也讓 `style.css` 未壓縮達 466 KB）。
+每頁會下載 17–18 個子集，約 1.4 MB，是全站傳輸量最大的一項。
 
-修法（待選）
+但字型**不是** FCP／LCP 的瓶頸。2026-10-09 曾以為它把模擬 FCP 拉長到約 10 秒，
+對照實驗推翻了這個推論：用 Lighthouse CLI 量 `vitepress preview`，擋掉 `fonts.gstatic.com` 後 FCP 反而是 12.3 秒（不擋為 9.8 秒）。
+那個 10 秒只出現在「Lighthouse CLI 量 `vitepress preview`」的組合，原因未查明；
+同一天用 `perf:compare`（arm64 Node）量同樣的 build，首頁 FCP 2.1 秒、LCP 3.5 秒、Performance 86
+（記錄：[perf-log/2026-10-09-0b42033](./perf-log/2026-10-09-0b42033.md)）。
+TBT 10 秒以上則是 x64 Node 的量測誤差（見 [performance-testing.md](./performance-testing.md)）。
 
-- 減少字重：確認 200 與 800 是否真的有用到，只留需要的字重，下載量約可減為三分之一。
-- 內文改用系統字型（`PingFang TC`、`Microsoft JhengHei`），Noto Serif TC 只用在標題。
-- 自行託管並用 `glyphhanger`／`subfont` 依全站實際用字做子集化。
+決定（2026-10-09）
 
-TODO
-
-- [ ] 決定字型策略並實作
-- [ ] 改完後用 `perf:compare` 記錄（須用 arm64 Node）
+三個字重都有用到，維持現狀，不減字重、不改系統字型、不自行子集化。
 
 P2
 

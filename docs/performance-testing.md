@@ -41,13 +41,19 @@ Chrome 在 Claude Code 的 sandbox 內無法啟動，錯誤為
 
 在 Apple Silicon 上用 x64 的 Node（例如 asdf 裝到 x86_64 版）啟動 Chrome，
 Chrome 會經過 Rosetta 轉譯，CPU 類指標會嚴重失真。2026-10-09 實測同一個 build：
-x64 Node 量到 TBT 10–21 秒、Performance 22–26 分；arm64 Node 量到 TBT 0 ms、54–56 分。
+x64 Node 量到 TBT 10–21 秒、Performance 22–26 分；arm64 Node 量到 TBT 0–53 ms、77–90 分（記錄：[perf-log/2026-10-09-0b42033](./perf-log/2026-10-09-0b42033.md)）。
 Lighthouse CLI 會直接拒絕執行並顯示 `Launching Chrome on Mac Silicon (arm64) from an x64 Node installation`，
 但程式 API 不會檢查，所以 `perf:compare` 自己在開始時檢查（`isRosettaNode()`，判斷方式與 Lighthouse CLI 相同），
 遇到 x64 Node 就報錯結束。這時改用 arm64 的 Node 直接執行腳本，例如
 `/opt/homebrew/bin/node scripts/perf-compare.js --record "..."`。
-用 `node -p process.arch` 確認，結果要是 `arm64`。在此之前的記錄（`docs/perf-log/` 中 2026-10-09 的兩筆）
+用 `node -p process.arch` 確認，結果要是 `arm64`。在此之前的記錄（`docs/perf-log/` 中 `9962888`、`d9666ad` 兩筆）
 是用 x64 Node 量的：傳輸量仍然準確，但時間類指標的絕對值不可信。
+
+### 不要拿 Lighthouse CLI 量 `vitepress preview` 的數字來比
+
+2026-10-09 用 Lighthouse CLI（arm64 Node）量 `npx vitepress preview` 的首頁，模擬 FCP 約 10 秒、分數 55；
+同一個 build 用 `perf:compare` 量是 FCP 2.1 秒、分數 86。兩者都有 brotli，原因未查明。
+要看哪些請求、哪個 script 耗時，可以用 CLI 的完整報告；指標數字一律以 `perf:compare` 為準。
 
 ---
 
