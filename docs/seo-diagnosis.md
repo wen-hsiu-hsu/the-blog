@@ -138,8 +138,11 @@ TODO
 - [x] 本地前後比較（`npm run perf:compare`，2026-10-09，記錄：[perf-log/2026-10-09-9962888](./perf-log/2026-10-09-9962888.md)）：
       HTML 傳輸量（brotli）減少 43–52 KB，但每頁的 page chunk 跟著變大：列表頁 0.5 KB → 73 KB、文章頁 1.5 KB → 22 KB（未壓縮）。
       首頁的 JS 增加 18 KB，預先抓取（prefetch）增加 45 KB，首頁總傳輸量反而多了約 18 KB；時間類指標大多在雜訊內（FCP、LCP 各僅 1 頁超出雜訊）
-- [ ] 縮小 page chunk：首頁 page chunk 的 73 KB 裡，`listSidebar`（側欄分類樹）佔 53 KB、`listPosts` 佔 6 KB。
-      側欄的展開 UI 決定保留（2026-10-09），所以文章連結仍要注入 page chunk；若之後要再減，得改成展開時才 fetch，或只顯示分類名稱與篇數
+- [x] 縮小 page chunk：首頁 page chunk 的 73 KB 裡，`listSidebar`（側欄分類樹）佔 53 KB、`listPosts` 佔 6 KB。
+      保留展開 UI，分類樹文章連結改成 data loader ＋ 第一次展開時動態 import（`a74fbd2`，記錄：[perf-log/2026-10-09-a74fbd2](./perf-log/2026-10-09-a74fbd2.md)）：
+      列表頁 page chunk 16.3 KB → 2.2 KB（brotli 中位數）；和上一筆相比，各頁 JS 或 prefetch 約減 15 KB，`/dev/` 總傳輸量減 30 KB。
+      首頁的 prefetch 仍比 base 多約 45 KB，推測來自列表上文章頁的 page chunk（`postNav`、`seriesPosts` 等），尚未查證
+      做法見 [how-this-blog-works.md](./how-this-blog-works.md) 的「例外：側欄分類樹用 data loader ＋ 動態 import」
 - [x] 列表頁側欄分類樹收合時不渲染文章連結（`BaseTreeview` 改 `v-if`）（`d9666ad`，記錄：[perf-log/2026-10-09-d9666ad](./perf-log/2026-10-09-d9666ad.md)）：
       和上一筆相比，列表頁 HTML 傳輸量 29.9 KB → 17.2 KB，總傳輸量約減 13–14 KB；JS 與 prefetch 不變，文章頁與 `pages/` 頁不受影響
 - [ ] （選做）`reading-time.data.ts` 把全部文章的閱讀時間打包進主 bundle，可改在 `transformPageData` 逐頁計算
