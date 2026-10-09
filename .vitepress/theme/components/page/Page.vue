@@ -118,8 +118,15 @@
                             <BaseIcon icon="mynaui/chevron-right" />
                         </a>
                     </div>
-                    <ul class="!p-0 !m-0 !list-none">
-                        <BaseTreeview v-for="groupItem in normalizeCategories" :model="groupItem" />
+                    <ul class="!p-0 !m-0 !list-none" @pointerenter="loadCategoryLinks">
+                        <BaseTreeview
+                            v-for="groupItem in normalizeCategories"
+                            :key="groupItem.text"
+                            :model="groupItem"
+                            :count="groupItem.count"
+                            :loading="!categoryLinks"
+                            @open="loadCategoryLinks"
+                        />
                     </ul>
                 </div>
             </div>
@@ -147,8 +154,9 @@
 
 <script lang="ts" setup>
 import { withBase, useData } from 'vitepress';
-import { PropType, computed, ref } from 'vue';
+import { PropType, computed, ref, shallowRef } from 'vue';
 import { usePostPageData } from '../../utils/usePostPageData';
+import type { CategoryLinks } from '../../postPageData';
 import BaseSidebar from './../base/BaseSidebar.vue';
 import BaseTreeview from './../base/BaseTreeview.vue';
 import BaseFlipCard from './../base/BaseFlipCard.vue';
@@ -195,20 +203,36 @@ const postData = usePostPageData();
 const sidebar = computed(() => postData.value.listSidebar);
 const postsTotal = computed(() => postData.value.listMeta?.postsTotal ?? 0);
 const tagsLength = computed(() => sidebar.value?.tagsTotal ?? 0);
-const categories = computed(() => sidebar.value?.categories ?? {});
+const categoryCounts = computed(() => sidebar.value?.categoryCounts ?? {});
+
+// 分類樹的文章連結不在 page data 裡，第一次展開（或滑鼠移到分類樹上）時才動態載入
+const categoryLinks = shallowRef<CategoryLinks | null>(null);
+let categoryLinksLoading: Promise<void> | null = null;
+function loadCategoryLinks() {
+    categoryLinksLoading ??= import('../../utils/sidebarCategories.data')
+        .then((mod) => {
+            categoryLinks.value = mod.data;
+        })
+        .catch((error) => {
+            // 失敗（例如部署後舊 chunk 已不存在）時允許下次重試
+            categoryLinksLoading = null;
+            console.error(error);
+        });
+}
 
 const normalizeCategories = computed(() => {
-    const _categories = categories.value;
-    const result: DefaultTheme.SidebarItem[] = [];
+    const result: (DefaultTheme.SidebarItem & { count: number })[] = [];
 
     // 遍歷所有分類
-    for (const [categoryName, articles] of Object.entries(_categories)) {
-        // 為每個分類創建一個側邊欄項目
-        const categoryItem: DefaultTheme.SidebarItem = {
+    for (const [categoryName, count] of Object.entries(categoryCounts.value)) {
+        // 為每個分類創建一個側邊欄項目；文章連結載入前 items 為空陣列
+        const categoryItem: DefaultTheme.SidebarItem & { count: number } = {
             text: categoryName,
             collapsed: false,
             items: [],
+            count,
         };
+        const articles = categoryLinks.value?.[categoryName];
 
         // 將分類下的每篇文章加入為子項目
         if (Array.isArray(articles)) {
@@ -239,7 +263,7 @@ const normalizeCategories = computed(() => {
         }
 
         // 只有當分類下有文章時才添加到結果中
-        if (categoryItem.items && categoryItem.items.length > 0) {
+        if (count > 0) {
             result.push(categoryItem);
         }
     }

@@ -84,17 +84,17 @@ articles/life/**/*.md
 `config.mts` 在 build 時呼叫一次 `getPosts()`，再透過 `transformPageData` 把**該頁需要的部分**注入各頁的 `pageData`。
 計算邏輯在 `.vitepress/theme/postPageData.ts` 的 `buildPostPageData()`，依頁面類型決定注入哪些欄位：
 
-| 頁面類型                                                   | 判斷方式                        | 注入欄位                                                     |
-| ---------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------ |
-| 文章頁                                                     | 路徑在 `getPosts()` 清單內      | `postNav`（上下篇）、`seriesPosts`（系列）或 `suggestPosts`  |
-| 列表頁（`/`、`/dev/`、`/life/` 與各自的 `page/N`）         | `frontmatter.home`              | `listPosts`（當頁 10 篇）、`listMeta`、`listSidebar`（側欄） |
-| 彙整頁（`pages/archives`、`pages/tags`、`pages/category`） | `relativePath` 以 `pages/` 開頭 | `allPosts`（全部文章的精簡欄位）                             |
+| 頁面類型                                                   | 判斷方式                        | 注入欄位                                                                   |
+| ---------------------------------------------------------- | ------------------------------- | -------------------------------------------------------------------------- |
+| 文章頁                                                     | 路徑在 `getPosts()` 清單內      | `postNav`（上下篇）、`seriesPosts`（系列）或 `suggestPosts`                |
+| 列表頁（`/`、`/dev/`、`/life/` 與各自的 `page/N`）         | `frontmatter.home`              | `listPosts`（當頁 10 篇）、`listMeta`、`listSidebar`（側欄，分類只帶篇數） |
+| 彙整頁（`pages/archives`、`pages/tags`、`pages/category`） | `relativePath` 以 `pages/` 開頭 | `allPosts`（全部文章的精簡欄位）                                           |
 
 元件透過 `utils/usePostPageData.ts` 的 `usePostPageData()` 讀取（即 `useData().page` 加上型別）。
 
 欄位依用途分三種形狀，都維持 `{ regularPath, frontMatter }` 結構：
 
-- `PostLink`：`title`、`date`、`pin`。上下篇、推薦、側欄分類樹用
+- `PostLink`：`title`、`date`、`pin`。上下篇、推薦、側欄分類樹（`sidebarCategories.data.ts`）用
 - `PostSummary`：再加 `category`、`tags`、`series`、`order`、`chapter`。系列目錄、彙整頁用
 - `PostListItem`：再加 `description`。列表頁的文章列用
 
@@ -103,6 +103,21 @@ articles/life/**/*.md
 也不要改用 `.data.ts`（data loader）：資料會被打包進 import 它的元件所在的 chunk，而 theme 元件都在
 `theme/index.ts` 靜態註冊，結果是進主 bundle、每頁照樣下載；而且 `createContentLoader` 需要重做一次
 `getPosts` 的排序與過濾。詳見 [seo-diagnosis.md](./seo-diagnosis.md)。
+
+### 例外：側欄分類樹用 data loader ＋ 動態 import
+
+列表頁側欄分類樹的文章連結（全部 333 篇，約 15 KB brotli）不放進 `listSidebar`：
+它會進每個列表頁的 page chunk（69 個），首頁又會 prefetch `/dev/`、`/life/`、`/page/N` 的 chunk，等於重複下載好幾份。
+做法是：
+
+- `listSidebar.categoryCounts` 只帶各分類篇數，收合狀態的標題列照常顯示
+- 文章連結由 `utils/sidebarCategories.data.ts`（data loader）產生，內容來自 `postPageData.ts` 的 `buildCategoryLinks()`，
+  與 `buildListSidebar()` 共用 `initCategory` 的分組邏輯
+- `Page.vue` 在滑鼠移到分類樹上，或第一次展開分類時，才 `import('../../utils/sidebarCategories.data')`。
+  Vite 會把它切成獨立且帶 hash 的 chunk，只下載一次，SPA 切頁後直接用快取。載入前展開會顯示 `theme.text.loading`
+
+data loader 只能這樣**動態** import。改成靜態 import 就會掉回上面說的問題：資料被打包進 theme chunk，每頁都要下載。
+改動後列表頁 page chunk 從約 16.3 KB 降到 2.2 KB（brotli 中位數）。
 
 > 注意：`getPosts()` 只在載入 config 時跑一次。`npm run dev` 時新增文章或改 frontmatter 的 `series`、`date` 等欄位，需重啟 dev server 才會反映在列表與上下篇。
 

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+    buildCategoryLinks,
     buildListSidebar,
     buildPostNav,
     buildPostPageData,
@@ -104,9 +105,17 @@ describe('buildListSidebar', () => {
         expect(sidebar.postsTotal).toBe(5);
         expect(sidebar.tagsTotal).toBe(2);
         expect(sidebar.topTags).toEqual(['x', 'y']);
-        expect(Object.keys(sidebar.categories)).toEqual(['A', 'B', 'S']);
-        expect(sidebar.categories.A.map((p) => p.regularPath)).toEqual(['/dev/e', '/dev/a']);
-        expect(sidebar.categories.A[0].frontMatter).not.toHaveProperty('tags');
+        expect(sidebar.categoryCounts).toEqual({ A: 2, B: 1, S: 2 });
+        expect(Object.keys(sidebar.categoryCounts)).toEqual(['A', 'B', 'S']);
+    });
+});
+
+describe('buildCategoryLinks', () => {
+    it('groups slim post links by category, in the same order as categoryCounts', () => {
+        const links = buildCategoryLinks(posts, UNCATEGORIZED);
+        expect(Object.keys(links)).toEqual(['A', 'B', 'S']);
+        expect(links.A.map((p) => p.regularPath)).toEqual(['/dev/e', '/dev/a']);
+        expect(links.A[0].frontMatter).not.toHaveProperty('tags');
     });
 });
 

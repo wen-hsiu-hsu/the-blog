@@ -186,6 +186,7 @@ export default async () => {
                 readMore: '查看更多',
                 uncategorized: '未分類',
                 category: '分類',
+                loading: '載入中…',
             },
             copyrightFrom: '2025',
         } as any,

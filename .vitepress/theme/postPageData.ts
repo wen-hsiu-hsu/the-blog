@@ -42,8 +42,11 @@ export type ListSidebar = {
     postsTotal: number;
     tagsTotal: number;
     topTags: string[];
-    categories: Record<string, PostLink[]>;
+    // 只帶篇數；各分類的文章連結由 utils/sidebarCategories.data.ts 在第一次展開時載入
+    categoryCounts: Record<string, number>;
 };
+
+export type CategoryLinks = Record<string, PostLink[]>;
 
 export type ListMeta = {
     postsTotal: number;
@@ -159,10 +162,21 @@ export function buildListSidebar(posts: Post[], uncategorizedLabel: string): Lis
         postsTotal: posts.length,
         tagsTotal: tagNames.length,
         topTags: tagNames.slice(0, SIDEBAR_TOP_TAGS),
-        categories: Object.fromEntries(
-            Object.entries(categories).map(([name, list]) => [name, list.map(toLink)]),
+        categoryCounts: Object.fromEntries(
+            Object.entries(categories).map(([name, list]) => [name, list.length]),
         ),
     };
+}
+
+/**
+ * 側欄分類樹各分類的文章連結。全部文章約 15 KB（brotli），放進每個列表頁的 page chunk
+ * 會連 prefetch 一起重複下載，所以改由 data loader 產生、Page.vue 第一次展開時動態 import。
+ */
+export function buildCategoryLinks(posts: Post[], uncategorizedLabel: string): CategoryLinks {
+    const categories = initCategory(posts, uncategorizedLabel);
+    return Object.fromEntries(
+        Object.entries(categories).map(([name, list]) => [name, list.map(toLink)]),
+    );
 }
 
 /**
