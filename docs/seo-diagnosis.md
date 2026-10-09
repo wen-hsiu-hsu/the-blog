@@ -122,6 +122,8 @@ TODO
 
 列表頁剩下的大小主要是側欄分類樹：SSR 會把全部 333 篇文章的連結渲染進 HTML（首頁約 340 個 `<a>`）。這是另一個問題，見下方 TODO。
 
+後續（`d9666ad`）：分類樹的子清單改用 `v-if`，收合時不渲染文章連結，首頁 HTML 未壓縮從 209 KB 降到 106 KB。
+
 TODO
 
 - [x] 記錄目前的 HTML 大小作為基準（見上表）
@@ -135,8 +137,10 @@ TODO
 - [x] 本地前後比較（`npm run perf:compare`，2026-10-09，記錄：[perf-log/2026-10-09-9962888](./perf-log/2026-10-09-9962888.md)）：
       HTML 傳輸量（brotli）減少 43–52 KB，但每頁的 page chunk 跟著變大：列表頁 0.5 KB → 73 KB、文章頁 1.5 KB → 22 KB（未壓縮）。
       首頁的 JS 增加 18 KB，預先抓取（prefetch）增加 45 KB，首頁總傳輸量反而多了約 18 KB；時間類指標大多在雜訊內（FCP、LCP 各僅 1 頁超出雜訊）
-- [ ] 縮小 page chunk：首頁 page chunk 的 73 KB 裡，`listSidebar`（側欄分類樹）佔 53 KB、`listPosts` 佔 6 KB。這跟上面側欄分類樹的選做項目是同一件事
-- [ ] （選做）列表頁側欄分類樹改成只列分類名稱與篇數，或預設收合不渲染文章連結，可再減少列表頁 HTML
+- [ ] 縮小 page chunk：首頁 page chunk 的 73 KB 裡，`listSidebar`（側欄分類樹）佔 53 KB、`listPosts` 佔 6 KB。
+      側欄的展開 UI 決定保留（2026-10-09），所以文章連結仍要注入 page chunk；若之後要再減，得改成展開時才 fetch，或只顯示分類名稱與篇數
+- [x] 列表頁側欄分類樹收合時不渲染文章連結（`BaseTreeview` 改 `v-if`）（`d9666ad`，記錄：[perf-log/2026-10-09-d9666ad](./perf-log/2026-10-09-d9666ad.md)）：
+      和上一筆相比，列表頁 HTML 傳輸量 29.9 KB → 17.2 KB，總傳輸量約減 13–14 KB；JS 與 prefetch 不變，文章頁與 `pages/` 頁不受影響
 - [ ] （選做）`reading-time.data.ts` 把全部文章的閱讀時間打包進主 bundle，可改在 `transformPageData` 逐頁計算
 
 P1
