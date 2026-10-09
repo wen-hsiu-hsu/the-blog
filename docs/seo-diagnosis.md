@@ -329,7 +329,7 @@ TODO
 
 - [ ] GA4 與 Cloudflare Web Analytics 擇一
 - [ ] 頭像輸出實際顯示尺寸的 WebP／AVIF
-- [x] 首頁 tenor GIF（1.8 MB）轉成 208 px 的 mp4（21 KB，`articles/public/avatar-back.mp4`），並改成第一次 hover 翻轉卡時才載入
+- [x] 首頁 tenor GIF（1.8 MB）轉成 208 px 的 mp4（21 KB，`articles/public/avatar-back.mp4`），並改成第一次 hover 翻轉卡時才載入（`2e4d25b`，記錄：[perf-log/2026-10-09-2e4d25b](./perf-log/2026-10-09-2e4d25b.md)：首頁與 `/dev/` 圖片傳輸量約減 1820 KB，總傳輸量減半）
 - [ ] Giscus 捲動到附近才載入
 - [ ] 確認是否有歐洲讀者；有的話 AdSense 加 Consent Mode v2
 - [ ] 依 CrUX 實測決定是否需要進一步優化
