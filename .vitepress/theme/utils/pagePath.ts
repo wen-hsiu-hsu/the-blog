@@ -10,6 +10,13 @@ export function toPageUrl(relativePath: string, hostname: string): string {
     return `${hostname.replace(/\/$/, '')}${toPagePath(relativePath)}`;
 }
 
+// OG 圖路徑：文章 dev/foo.md → /og/dev/foo.png；沒有專屬圖的頁面共用預設圖
+export const OG_DEFAULT_IMAGE_PATH = '/og/default.png';
+
+export function toOgImagePath(relativePath: string): string {
+    return `/og${toPagePath(relativePath)}.png`;
+}
+
 export function isNotFoundPage(relativePath: string): boolean {
     return relativePath === '404.md';
 }

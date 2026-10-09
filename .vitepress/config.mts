@@ -13,6 +13,7 @@ import {
     obsidianWikilinks,
     type BrokenWikilink,
 } from './plugins/obsidian-wikilinks';
+import { createOgImageHead } from './plugins/og-image';
 
 const hostname = 'https://hsiu.soy';
 const title = "Wen-Hsiu's Blog";
@@ -43,6 +44,13 @@ export default async () => {
     const brokenWikilinks: BrokenWikilink[] = [];
 
     const { posts, pageSize, seriesMap } = await getPosts();
+    const cacheDir = './node_modules/vitepress_cache';
+    const ogImageHead = createOgImageHead({
+        posts,
+        hostname,
+        avatarPath: path.join(srcDir, 'public/avatar-pixel-v2-mini.jpg'),
+        cacheDir: path.resolve(__dirname, '..', cacheDir, 'og'),
+    });
 
     return defineConfig({
         title,
@@ -51,7 +59,7 @@ export default async () => {
         lang,
         cleanUrls: true,
         base: '/',
-        cacheDir: './node_modules/vitepress_cache',
+        cacheDir,
         srcDir: `./${GLOBAL_CONFIG.srcDirName}`,
         lastUpdated: true,
         appearance: false,
@@ -243,6 +251,8 @@ export default async () => {
         vite: {
             plugins: [UnoCSS(), RssPlugin(rssOptions)],
         },
-        transformHead,
+        async transformHead(context) {
+            return [...(await transformHead(context)), ...(await ogImageHead(context))];
+        },
     });
 };
