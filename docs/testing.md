@@ -14,13 +14,14 @@ npm test
 
 ## 測試範圍
 
-| 測試檔                                   | 測試對象                                                                     |
-| ---------------------------------------- | ---------------------------------------------------------------------------- |
-| `.vitepress/theme/serverUtils.test.ts`   | 分頁計算、section 篩選、`convertDate()`、pin 排序                            |
-| `.vitepress/theme/postPageData.test.ts`  | 逐頁注入的文章資料：上下篇、推薦、列表分頁、側欄統計                         |
-| `.github/scripts/publish-posts.test.ts`  | `deriveSection()`：草稿發布時 section 推導邏輯                               |
-| `.github/scripts/html-tag-utils.test.ts` | `findInvalidHtmlTags()`：raw HTML 內未跳脫的 `<` 偵測                        |
-| `scripts/perf-utils.test.ts`             | `perf:compare` 的 cleanUrls 解析、中位數／雜訊判斷、報告與 perf-log 記錄格式 |
+| 測試檔                                    | 測試對象                                                                                |
+| ----------------------------------------- | --------------------------------------------------------------------------------------- |
+| `.vitepress/theme/serverUtils.test.ts`    | 分頁計算、section 篩選、`convertDate()`、pin 排序                                       |
+| `.vitepress/theme/postPageData.test.ts`   | 逐頁注入的文章資料：上下篇、推薦、列表分頁、側欄統計                                    |
+| `.vitepress/theme/utils/pageHead.test.ts` | `toPagePath()` 與 sitemap 一致的 URL 規則、canonical／og:url、分頁 title 與 description |
+| `.github/scripts/publish-posts.test.ts`   | `deriveSection()`：草稿發布時 section 推導邏輯                                          |
+| `.github/scripts/html-tag-utils.test.ts`  | `findInvalidHtmlTags()`：raw HTML 內未跳脫的 `<` 偵測                                   |
+| `scripts/perf-utils.test.ts`              | `perf:compare` 的 cleanUrls 解析、中位數／雜訊判斷、報告與 perf-log 記錄格式            |
 
 ---
 

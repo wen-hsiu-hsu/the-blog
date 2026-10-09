@@ -29,9 +29,9 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 | ---------------------------------------- | ------ | ------------------------------------------------------------- |
 | 建置失敗導致正式站停在舊版本             | P0     | 已修復，剩上線確認與失敗通知                                  |
 | 每頁內嵌 611 KB 文章資料                 | P0     | 已修復（`f77096f`、`a74fbd2`），剩 PageSpeed 量測與瀏覽器實測 |
-| 沒有 canonical；首頁 og:url 錯誤         | P1     | 未開始                                                        |
-| Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 未開始                                                        |
-| 社群分享卡與結構化資料不完整             | P1     | 未開始                                                        |
+| 沒有 canonical；首頁 og:url 錯誤         | P1     | 已完成（`574a6d5`）                                           |
+| Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 已完成（`574a6d5`）                                           |
+| 社群分享卡與結構化資料不完整             | P1     | 進行中（`og:site_name` 已補，`574a6d5`）                      |
 | CI 淺層 clone 讓「更新時間」失真         | P1     | 未開始                                                        |
 | 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                                                        |
 | 標籤與分類頁無法被索引                   | P2     | 未開始                                                        |
@@ -47,7 +47,7 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 
 1. ✅ 已修復（`eda6f8a`、`57ddd15`）P0**修好部署。**2 篇文章的 `<details>` 區塊內含 `` `Promise<Type>` `` 之類的泛型語法，Vue 把它當成未閉合的 HTML 標籤，整站 build 失敗。我在本機暫時修正這 2 處後 build 即成功（已還原，未 commit）。
 2. P0**把文章列表移出 `themeConfig`。**每一頁都夾帶 611 KB 的 JSON，文章頁 HTML 690 KB、首頁 980 KB，且會隨文章數線性成長。
-3. P1**補齊 head 基本盤：**canonical、og:image／twitter:card、修正首頁 `og:url`、改 title 模板（目前品牌名完全沒出現在 title）。
+3. ✅ 已完成 canonical／og:url／title（`574a6d5`），og:image 另案進行 P1**補齊 head 基本盤：**canonical、og:image／twitter:card、修正首頁 `og:url`、改 title 模板（目前品牌名完全沒出現在 title）。
 4. P1**CI 改用完整 git 歷史（`fetch-depth: 0`）**，否則 lastUpdated、`dateModified`、sitemap `lastmod` 很可能全部是部署當下的時間（推論）。
 5. P1**為內容加上「原創價值層」：**系列 hub 頁＋個人實作／比較／踩坑。98% 是公開課程筆記且以每日 1 篇的速度發布，是目前最大的競爭力與政策風險。
 
@@ -165,9 +165,11 @@ P1
 
 TODO
 
-- [ ] 修正 `transformHead.ts` 對根目錄 `index.md` 的 URL 計算
-- [ ] 用同一個 URL 輸出 `<link rel="canonical">` 與 og:url
-- [ ] 分頁頁面使用自我 canonical
+- [x] 修正 `transformHead.ts` 對根目錄 `index.md` 的 URL 計算（`574a6d5`，改用共用的 `utils/pagePath.ts`）
+- [x] 用同一個 URL 輸出 `<link rel="canonical">` 與 og:url（`574a6d5`，在 `transformPageData` 寫入 `frontmatter.head`，見 [seo.md](./seo.md)）
+- [x] 分頁頁面使用自我 canonical（`574a6d5`）
+- [x] 實作時另外發現：`/dev/`、`/life/` 的 og:url 少了結尾斜線，與 sitemap 不一致；404 頁也輸出了 og:url 和 `Article` JSON-LD。已一併修正（`574a6d5`）
+- 效能記錄：[perf-log](./perf-log/2026-10-10-574a6d5.md)（全部在雜訊內；文章頁 JS +0.2 KB 來自 `frontmatter.head`）
 
 P1
 
@@ -190,10 +192,11 @@ Google 建議 title 要具描述性、簡潔，避免「Home」這類泛用字�
 
 TODO
 
-- [ ] `titleTemplate` 改成 `':title | 持續！修鍊之路'`（或較短的品牌名）
-- [ ] 首頁 front matter 改成具描述性的標題
-- [ ] 分頁的 title 與 description 加「第 N 頁」
-- [ ] `pages/tags`、`archives`、`category` 的 description 改寫成中文描述
+- [x] `titleTemplate` 改成 `:title | Wen-Hsiu's Blog`（決定用英文品牌名，與 `config.title` 一致；`574a6d5`）
+- [x] 首頁 front matter 改成具描述性的標題：「Wen-Hsiu's Blog｜前端工程師的技術筆記與生活紀錄」，`titleTemplate: false`（`574a6d5`）
+- [x] 分頁的 title 與 description 加「第 N 頁」（`574a6d5`）；`/dev/`、`/life/` 也補了中文標題與 description
+- [x] `pages/tags`、`archives`、`category` 的 title 與 description 改寫成中文描述（`574a6d5`）
+- 效能記錄：[perf-log](./perf-log/2026-10-10-574a6d5.md)
 
 P1
 
@@ -218,7 +221,8 @@ P1
 
 TODO
 
-- [ ] 補 `og:site_name`、`twitter:card`
+- [x] 補 `og:site_name`（`574a6d5`）
+- [ ] 補 `twitter:card`（與 OG 圖一起做，用 `summary_large_image`）
 - [ ] build 時用 satori＋resvg 產生 1200×630 OG 圖，並輸出 `og:image`
 - [ ] JSON-LD `Article` 改為 `BlogPosting`，補 `image`、`description`、`author: { name, url, sameAs }`、`publisher`
 - [ ] `WebSite` 補 `name`；完成 `Person`（`sameAs` 連到 GitHub、Threads、履歷站）
@@ -486,7 +490,7 @@ TODO
 
 ### 第 2–3 週：head 與效能
 
-- canonical、修首頁 og:url、title 模板、分頁標題、工具頁描述
+- ~~canonical、修首頁 og:url、title 模板、分頁標題、工具頁描述~~（已完成，`574a6d5`）
 - ~~文章列表改用 `createContentLoader`~~ 已改用 `transformPageData` 逐頁注入（`f77096f`），剩上線後量 PageSpeed 分數
 - 自動產生 OG 圖、twitter:card、BlogPosting／Person／BreadcrumbList
 
@@ -511,7 +515,7 @@ TODO
 - [ ] `docs/how-this-blog-works.md`：靜態標籤頁、hub 頁路由
 - [ ] `docs/ci-cd.md`：fetch-depth、build 檢查、失敗通知
 - [ ] `rules/frontmatter.md`：若新增 OG 圖或封面欄位
-- [ ] 新增 `docs/seo.md`，並補進 CLAUDE.md 的文件表格
+- [x] 新增 `docs/seo.md`，並補進 CLAUDE.md 的文件表格（head 的 URL 與 title 規則）
 
 ## 參考資料
 
