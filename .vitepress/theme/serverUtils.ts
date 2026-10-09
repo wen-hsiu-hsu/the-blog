@@ -2,6 +2,7 @@ import { globby } from 'globby';
 import matter from 'gray-matter';
 import fs from 'fs-extra';
 import GLOBAL_CONFIG from './../global-config';
+import { toPagePath } from './utils/pagePath';
 
 const pageSize = 10; // 每頁顯示的文章數量
 
@@ -35,9 +36,7 @@ async function getPosts(options: GetPostsOptions = {}) {
             data.date = convertDate(data.date);
             return {
                 frontMatter: data,
-                regularPath: `/${item
-                    .replace('.md', '') // 如果 config.cleanUrls 為 true 則要去掉 .md，若為 false 則要改成 .html
-                    .replace(`${GLOBAL_CONFIG.srcDirName}/`, '')}`,
+                regularPath: toPagePath(item.replace(`${GLOBAL_CONFIG.srcDirName}/`, '')),
             };
         }),
     );

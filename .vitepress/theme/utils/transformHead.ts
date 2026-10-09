@@ -1,15 +1,19 @@
 import { HeadConfig, TransformContext } from 'vitepress';
 import { format, formatISO } from 'date-fns';
+import { isNotFoundPage, toPageUrl } from './pagePath';
 
 export default async function transformHead(context: TransformContext) {
     const { pageData, siteConfig, siteData } = context;
     const head: HeadConfig[] = [];
     const themeConfig = siteConfig.userConfig.themeConfig;
 
+    if (isNotFoundPage(pageData.relativePath)) return [];
+
     const isPost = !pageData.frontmatter.page;
 
-    const title = pageData.frontmatter.title ?? '';
-    const description = pageData.frontmatter.description ?? siteData.description ?? '';
+    // pageData.title／description 已在 transformPageData 加上分頁頁碼（見 pageHead.ts）
+    const title = pageData.title;
+    const description = pageData.description || siteData.description;
 
     const datePublishedTime = new Date(pageData.frontmatter.date ?? Date.now());
     const dateLastUpdated = new Date(pageData.lastUpdated ?? Date.now());
@@ -17,8 +21,8 @@ export default async function transformHead(context: TransformContext) {
     const publishedTime = formatISO(datePublishedTime);
     const lastUpdated = formatISO(dateLastUpdated);
 
-    const relativePath = pageData.relativePath.replace('/index.md', '').replace('.md', '');
-    const siteUrl = `${themeConfig.website}/${relativePath}`;
+    // canonical 與 og:url 由 transformPageData 輸出（見 pageHead.ts），這裡只用於結構化資料
+    const siteUrl = toPageUrl(pageData.relativePath, themeConfig.website);
     const authorName = themeConfig.author.name ?? '';
     const category = pageData.frontmatter.category ?? '';
     const tags: string[] = pageData.frontmatter.tags ?? [];
@@ -26,7 +30,7 @@ export default async function transformHead(context: TransformContext) {
     // Open Graph =================
     head.push(['meta', { property: 'og:title', content: title }]);
     head.push(['meta', { property: 'og:description', content: description }]);
-    head.push(['meta', { property: 'og:url', content: siteUrl }]);
+    head.push(['meta', { property: 'og:site_name', content: siteData.title }]);
     head.push(['meta', { property: 'og:locale', content: 'zh_TW' }]);
 
     if (isPost) {

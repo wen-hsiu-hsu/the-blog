@@ -1,6 +1,7 @@
 ---
 page: true
-title: 首頁
+title: Wen-Hsiu's Blog｜前端工程師的技術筆記與生活紀錄
+titleTemplate: false
 aside: false
 lastUpdated: false
 home: true

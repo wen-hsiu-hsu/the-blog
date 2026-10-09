@@ -1,6 +1,6 @@
 ---
 page: true
-title: 首頁
+title: 最新文章
 aside: false
 lastUpdated: false
 home: true

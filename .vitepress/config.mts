@@ -5,6 +5,7 @@ import GLOBAL_CONFIG from './global-config';
 import UnoCSS from 'unocss/vite';
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss';
 import transformHead from './theme/utils/transformHead';
+import { buildPageHead } from './theme/utils/pageHead';
 import fs from 'fs';
 import path from 'path';
 import {
@@ -45,7 +46,7 @@ export default async () => {
 
     return defineConfig({
         title,
-        titleTemplate: '網頁前端 | 生活紀錄 | 攝影',
+        titleTemplate: `:title | ${title}`,
         description,
         lang,
         cleanUrls: true,
@@ -194,13 +195,22 @@ export default async () => {
         // 文章列表不放 themeConfig（會內嵌進每頁 HTML），改為逐頁注入該頁需要的部分
         transformPageData(pageData, { siteConfig }) {
             const { text, suggestPostLength } = siteConfig.site.themeConfig;
-            return buildPostPageData(pageData, {
-                posts,
-                seriesMap,
-                pageSize,
-                uncategorizedLabel: text.uncategorized,
-                suggestPostLength: suggestPostLength ?? 5,
+            const pageHead = buildPageHead(pageData, {
+                hostname,
+                siteDescription: siteConfig.site.description,
             });
+            pageData.frontmatter.head = [...(pageData.frontmatter.head ?? []), ...pageHead.head];
+            return {
+                title: pageHead.title,
+                description: pageHead.description,
+                ...buildPostPageData(pageData, {
+                    posts,
+                    seriesMap,
+                    pageSize,
+                    uncategorizedLabel: text.uncategorized,
+                    suggestPostLength: suggestPostLength ?? 5,
+                }),
+            };
         },
         markdown: {
             config(md) {

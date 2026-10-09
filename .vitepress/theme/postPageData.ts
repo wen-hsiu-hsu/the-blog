@@ -1,4 +1,5 @@
 import { initCategory, initTags } from './functions';
+import { toPagePath } from './utils/pagePath';
 import { calcPagesTotal, type Post, type SeriesMap } from './serverUtils';
 
 // 依頁面類型計算該頁需要的文章資料，於 config 的 transformPageData 注入 pageData。
@@ -187,7 +188,7 @@ export function buildCategoryLinks(posts: Post[], uncategorizedLabel: string): C
  */
 export function buildPostPageData(page: PageInfo, options: BuildOptions): PostPageData {
     const { posts, seriesMap, pageSize, uncategorizedLabel, suggestPostLength } = options;
-    const path = `/${page.relativePath.replace(/\.md$/, '')}`;
+    const path = toPagePath(page.relativePath);
 
     const post = posts.find((p) => p.regularPath === path);
     if (post) {
