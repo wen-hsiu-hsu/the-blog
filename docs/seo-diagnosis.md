@@ -25,22 +25,22 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 
 每個問題章節最後都有一段「TODO」checklist，記錄待辦事項與處理進度；做完一項就勾選，並在後面註記 commit。原本的證據、影響、修法都保留，讓後續開發知道這項工作的前因。
 
-| 章節                                     | 優先級 | 狀態                         |
-| ---------------------------------------- | ------ | ---------------------------- |
-| 建置失敗導致正式站停在舊版本             | P0     | 已修復，剩上線確認與失敗通知 |
-| 每頁內嵌 611 KB 文章資料                 | P0     | 已修復，剩 PageSpeed 量測    |
-| 沒有 canonical；首頁 og:url 錯誤         | P1     | 未開始                       |
-| Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 未開始                       |
-| 社群分享卡與結構化資料不完整             | P1     | 未開始                       |
-| CI 淺層 clone 讓「更新時間」失真         | P1     | 未開始                       |
-| 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                       |
-| 標籤與分類頁無法被索引                   | P2     | 未開始                       |
-| URL 大小寫混用與底線                     | P2     | 未開始                       |
-| 第三方資源與圖片                         | P2     | 未開始                       |
-| 全球華語讀者：簡體中文的觸及             | P2     | 未開始                       |
-| AI 搜尋                                  | P2     | 未開始                       |
-| 零碎項目                                 | P3     | 未開始                       |
-| 文件同步                                 | —      | 未開始                       |
+| 章節                                     | 優先級 | 狀態                                   |
+| ---------------------------------------- | ------ | -------------------------------------- |
+| 建置失敗導致正式站停在舊版本             | P0     | 已修復，剩上線確認與失敗通知           |
+| 每頁內嵌 611 KB 文章資料                 | P0     | 已修復（`f77096f`），剩 PageSpeed 量測 |
+| 沒有 canonical；首頁 og:url 錯誤         | P1     | 未開始                                 |
+| Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 未開始                                 |
+| 社群分享卡與結構化資料不完整             | P1     | 未開始                                 |
+| CI 淺層 clone 讓「更新時間」失真         | P1     | 未開始                                 |
+| 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                                 |
+| 標籤與分類頁無法被索引                   | P2     | 未開始                                 |
+| URL 大小寫混用與底線                     | P2     | 未開始                                 |
+| 第三方資源與圖片                         | P2     | 未開始                                 |
+| 全球華語讀者：簡體中文的觸及             | P2     | 未開始                                 |
+| AI 搜尋                                  | P2     | 未開始                                 |
+| 零碎項目                                 | P3     | 未開始                                 |
+| 文件同步                                 | —      | 未開始                                 |
 
 ## 最優先的五件事
 
@@ -126,12 +126,16 @@ TODO
 
 - [x] 記錄目前的 HTML 大小作為基準（見上表）
 - [ ] 記錄 PageSpeed 分數作為基準（需在正式站量測）
-- [x] `getPosts` 維持唯一資料來源，`calcPagesTotal` 抽成共用、`initTags`／`initCategory` 改泛型供 server 與 client 共用
-- [x] ~~新增 `posts.data.ts`~~ 改用 `transformPageData` 逐頁注入（`postPageData.ts`，附單元測試）
-- [x] 上下篇／推薦／側欄只帶精簡欄位（`PostLink`：`title`、`date`、`pin`）
-- [x] 從 `themeConfig` 移除 `posts`、`devPosts`、`lifePosts`、`seriesMap` 與各分頁總數
+- [x] `getPosts` 維持唯一資料來源，`calcPagesTotal` 抽成共用、`initTags`／`initCategory` 改泛型供 server 與 client 共用（`f77096f`）
+- [x] ~~新增 `posts.data.ts`~~ 改用 `transformPageData` 逐頁注入（`postPageData.ts`，附單元測試）（`f77096f`）
+- [x] 上下篇／推薦／側欄只帶精簡欄位（`PostLink`：`title`、`date`、`pin`）（`f77096f`）
+- [x] 從 `themeConfig` 移除 `posts`、`devPosts`、`lifePosts`、`seriesMap` 與各分頁總數（`f77096f`）
 - [x] 量測改動後的 HTML 大小（見上表）
 - [ ] 上線後量測 PageSpeed 分數
+- [x] 本地前後比較（`npm run perf:compare`，2026-10-09，記錄：[perf-log/2026-10-09-9962888](./perf-log/2026-10-09-9962888.md)）：
+      HTML 傳輸量（brotli）減少 43–52 KB，但每頁的 page chunk 跟著變大：列表頁 0.5 KB → 73 KB、文章頁 1.5 KB → 22 KB（未壓縮）。
+      首頁的 JS 增加 18 KB，預先抓取（prefetch）增加 45 KB，首頁總傳輸量反而多了約 18 KB；時間類指標大多在雜訊內（FCP、LCP 各僅 1 頁超出雜訊）
+- [ ] 縮小 page chunk：首頁 page chunk 的 73 KB 裡，`listSidebar`（側欄分類樹）佔 53 KB、`listPosts` 佔 6 KB。這跟上面側欄分類樹的選做項目是同一件事
 - [ ] （選做）列表頁側欄分類樹改成只列分類名稱與篇數，或預設收合不渲染文章連結，可再減少列表頁 HTML
 - [ ] （選做）`reading-time.data.ts` 把全部文章的閱讀時間打包進主 bundle，可改在 `transformPageData` 逐頁計算
 
