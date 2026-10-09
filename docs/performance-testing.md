@@ -43,8 +43,9 @@ Chrome 在 Claude Code 的 sandbox 內無法啟動，錯誤為
 Chrome 會經過 Rosetta 轉譯，CPU 類指標會嚴重失真。2026-10-09 實測同一個 build：
 x64 Node 量到 TBT 10–21 秒、Performance 22–26 分；arm64 Node 量到 TBT 0 ms、54–56 分。
 Lighthouse CLI 會直接拒絕執行並顯示 `Launching Chrome on Mac Silicon (arm64) from an x64 Node installation`，
-但 `perf:compare` 走程式 API，不會檢查這件事。
-
+但程式 API 不會檢查，所以 `perf:compare` 自己在開始時檢查（`isRosettaNode()`，判斷方式與 Lighthouse CLI 相同），
+遇到 x64 Node 就報錯結束。這時改用 arm64 的 Node 直接執行腳本，例如
+`/opt/homebrew/bin/node scripts/perf-compare.js --record "..."`。
 用 `node -p process.arch` 確認，結果要是 `arm64`。在此之前的記錄（`docs/perf-log/` 中 2026-10-09 的兩筆）
 是用 x64 Node 量的：傳輸量仍然準確，但時間類指標的絕對值不可信。
 

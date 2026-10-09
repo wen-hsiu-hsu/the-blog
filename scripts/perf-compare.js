@@ -13,6 +13,7 @@ import {
     formatReport,
     githubRepoUrl,
     insertLogRow,
+    isRosettaNode,
     resolveStaticCandidates,
     summarizeChanges,
     summarizeLhr,
@@ -201,6 +202,21 @@ async function runLighthouse(port, url) {
 
 async function main() {
     const args = parseArgs(process.argv.slice(2));
+
+    // Lighthouse 程式 API 不會擋 Rosetta，量出來的時間類指標不可信（見 docs/performance-testing.md）
+    if (
+        isRosettaNode({
+            platform: process.platform,
+            arch: process.arch,
+            cpuModel: os.cpus()[0].model,
+        })
+    ) {
+        console.error(
+            `目前的 Node（${process.execPath}）是 x64 版，在 Apple Silicon 上會讓 Chrome 經過 Rosetta 轉譯，量測結果會失真。\n` +
+                '請改用 arm64 的 Node 執行，例如：/opt/homebrew/bin/node scripts/perf-compare.js <參數>',
+        );
+        process.exit(1);
+    }
 
     const baseRef = args.base ?? git('merge-base', 'HEAD', 'master');
     const baseSha = git('rev-parse', baseRef);

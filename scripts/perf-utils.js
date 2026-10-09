@@ -17,6 +17,14 @@ export function resolveStaticCandidates(rootDir, pathname) {
     return [target, `${target}.html`, path.join(target, 'index.html')];
 }
 
+/**
+ * Apple Silicon 上的 x64 Node 啟動 Chrome 時會經過 Rosetta 轉譯，CPU 類指標（TBT 等）嚴重失真。
+ * 判斷方式與 Lighthouse CLI 相同：darwin + x64 + CPU 型號含 Apple。
+ */
+export function isRosettaNode({ platform, arch, cpuModel }) {
+    return platform === 'darwin' && arch === 'x64' && cpuModel.includes('Apple');
+}
+
 export function median(values) {
     const sorted = values.filter((v) => typeof v === 'number').sort((a, b) => a - b);
     if (sorted.length === 0) return null;

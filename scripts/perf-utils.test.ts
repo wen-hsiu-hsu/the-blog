@@ -7,6 +7,7 @@ import {
     formatReport,
     githubRepoUrl,
     insertLogRow,
+    isRosettaNode,
     judgeDelta,
     median,
     resolveStaticCandidates,
@@ -266,5 +267,21 @@ describe('insertLogRow()', () => {
         expect(() =>
             insertLogRow('# 空', { date: '', title: '', file: '', ref: null, summary: '' }),
         ).toThrow();
+    });
+});
+
+describe('isRosettaNode()', () => {
+    const apple = 'Apple M2 Pro';
+
+    it('Apple Silicon 上的 x64 Node 視為 Rosetta', () => {
+        expect(isRosettaNode({ platform: 'darwin', arch: 'x64', cpuModel: apple })).toBe(true);
+    });
+
+    it('arm64 Node、Intel Mac、非 macOS 都不是', () => {
+        expect(isRosettaNode({ platform: 'darwin', arch: 'arm64', cpuModel: apple })).toBe(false);
+        expect(
+            isRosettaNode({ platform: 'darwin', arch: 'x64', cpuModel: 'Intel(R) Core(TM) i7' }),
+        ).toBe(false);
+        expect(isRosettaNode({ platform: 'linux', arch: 'x64', cpuModel: 'AMD EPYC' })).toBe(false);
     });
 });
