@@ -329,7 +329,7 @@ TODO
 
 - [ ] GA4 與 Cloudflare Web Analytics 擇一
 - [ ] 頭像輸出實際顯示尺寸的 WebP／AVIF
-- [ ] 首頁 tenor GIF 改成 `<video>` 或靜態圖
+- [x] 首頁 tenor GIF（1.8 MB）轉成 208 px 的 mp4（21 KB，`articles/public/avatar-back.mp4`），並改成第一次 hover 翻轉卡時才載入
 - [ ] Giscus 捲動到附近才載入
 - [ ] 確認是否有歐洲讀者；有的話 AdSense 加 Consent Mode v2
 - [ ] 依 CrUX 實測決定是否需要進一步優化

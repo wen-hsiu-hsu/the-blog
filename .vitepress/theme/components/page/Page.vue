@@ -4,7 +4,10 @@
         <BaseSidebar width="250" class="shrink-0">
             <div class="flex flex-col items-center mt-[5vh] pb-10">
                 <div class="relative group">
-                    <BaseFlipCard class="size-26 rounded-full">
+                    <BaseFlipCard
+                        class="size-26 rounded-full"
+                        @pointerenter="showAvatarBack = true"
+                    >
                         <template #front>
                             <img
                                 :src="theme.author.avatar"
@@ -14,10 +17,15 @@
                             />
                         </template>
                         <template #back>
-                            <img
-                                src="https://c.tenor.com/wfdSCMP3BVEAAAAC/tenor.gif"
-                                :alt="`${theme.author.name}'s Avatar Image`"
-                                loading="lazy"
+                            <!-- 背面與正面疊在首屏，lazy 擋不住下載；第一次翻轉時才載入影片 -->
+                            <video
+                                v-if="showAvatarBack"
+                                :src="withBase('/avatar-back.mp4')"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                aria-hidden="true"
                                 class="size-26 rounded-full object-cover"
                             />
                         </template>
@@ -139,7 +147,7 @@
 
 <script lang="ts" setup>
 import { withBase, useData } from 'vitepress';
-import { PropType, computed } from 'vue';
+import { PropType, computed, ref } from 'vue';
 import { usePostPageData } from '../../utils/usePostPageData';
 import BaseSidebar from './../base/BaseSidebar.vue';
 import BaseTreeview from './../base/BaseTreeview.vue';
@@ -181,6 +189,7 @@ const props = defineProps({
 });
 
 const { theme, frontmatter } = useData();
+const showAvatarBack = ref(false);
 const postData = usePostPageData();
 
 const sidebar = computed(() => postData.value.listSidebar);
