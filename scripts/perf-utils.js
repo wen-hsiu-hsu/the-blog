@@ -188,7 +188,7 @@ export function formatReport({
     return lines.join('\n');
 }
 
-/** 一行摘要：各指標在幾頁超出雜訊地改善或退步 */
+/** 一行摘要：各指標在幾頁超出雜訊地改善或退步，例如「總傳輸量 ✅2 ⚠️3（共 5 頁）」 */
 export function summarizeChanges(pages) {
     const measured = pages.filter((page) => page.base && page.head);
     const parts = [];
@@ -198,10 +198,10 @@ export function summarizeChanges(pages) {
         );
         const improved = verdicts.filter((v) => v === IMPROVED).length;
         const regressed = verdicts.filter((v) => v === REGRESSED).length;
-        if (improved) parts.push(`✅ ${metric.label} ${improved}/${measured.length} 頁`);
-        if (regressed) parts.push(`⚠️ ${metric.label} ${regressed}/${measured.length} 頁`);
+        const counts = [improved && `✅${improved}`, regressed && `⚠️${regressed}`].filter(Boolean);
+        if (counts.length) parts.push(`${metric.label} ${counts.join(' ')}`);
     }
-    return parts.length ? parts.join('；') : '無超出雜訊的變化';
+    return parts.length ? `${parts.join('；')}（共 ${measured.length} 頁）` : '無超出雜訊的變化';
 }
 
 /** git remote URL（ssh 或 https）轉成 GitHub 網頁網址，非 GitHub 回傳 null */

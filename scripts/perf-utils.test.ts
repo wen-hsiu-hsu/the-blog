@@ -177,7 +177,7 @@ describe('summarizeChanges()', () => {
             { path: '/', base: aggregate(50000, 2000), head: aggregate(20000, 2000) },
             { path: '/dev/', base: aggregate(50000, 2000), head: aggregate(50000, 2500) },
         ];
-        expect(summarizeChanges(pages)).toBe('⚠️ LCP 1/2 頁；✅ HTML 傳輸量 1/2 頁');
+        expect(summarizeChanges(pages)).toBe('LCP ⚠️1；HTML 傳輸量 ✅1（共 2 頁）');
     });
 
     it('沒有變化時說明，量測失敗的頁不計入分母', () => {
@@ -253,11 +253,11 @@ describe('insertLogRow()', () => {
             title: 'a | b',
             file: '2026-10-09-abc1234.md',
             ref: null,
-            summary: '✅ HTML 傳輸量 5/5 頁',
+            summary: 'HTML 傳輸量 ✅5（共 5 頁）',
         });
         const lines = result.split('\n');
         expect(lines[4]).toBe(
-            '| 2026-10-09 | [a \\| b](./2026-10-09-abc1234.md) | — | ✅ HTML 傳輸量 5/5 頁 |',
+            '| 2026-10-09 | [a \\| b](./2026-10-09-abc1234.md) | — | HTML 傳輸量 ✅5（共 5 頁） |',
         );
         expect(lines[5]).toBe('| old |');
     });
