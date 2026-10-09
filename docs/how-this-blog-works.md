@@ -116,6 +116,11 @@ articles/life/**/*.md
 - `Page.vue` 在滑鼠移到分類樹上，或第一次展開分類時，才 `import('../../utils/sidebarCategories.data')`。
   Vite 會把它切成獨立且帶 hash 的 chunk，只下載一次，SPA 切頁後直接用快取。載入前展開會顯示 `theme.text.loading`
 
+踩過的坑：
+
+- loader 的 `watch` 必須以 `.` 開頭（相對 loader 檔案解析）。寫成 `dev/**/*.md` 會以專案根目錄為準，一個檔案也比對不到，dev 時改文章不會更新分類樹
+- 動態 import 失敗（多半是部署後舊 chunk 已不存在）時，瀏覽器會快取這次失敗，同一個網址再 import 一次也一樣失敗。所以失敗時只顯示 `theme.text.loadFailed`，請使用者重新整理頁面，不做重試
+
 data loader 只能這樣**動態** import。改成靜態 import 就會掉回上面說的問題：資料被打包進 theme chunk，每頁都要下載。
 改動後列表頁 page chunk 從約 16.3 KB 降到 2.2 KB（brotli 中位數）。
 

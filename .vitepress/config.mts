@@ -187,6 +187,7 @@ export default async () => {
                 uncategorized: '未分類',
                 category: '分類',
                 loading: '載入中…',
+                loadFailed: '載入失敗，請重新整理頁面',
             },
             copyrightFrom: '2025',
         } as any,

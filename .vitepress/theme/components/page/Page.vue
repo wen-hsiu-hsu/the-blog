@@ -124,7 +124,7 @@
                             :key="groupItem.text"
                             :model="groupItem"
                             :count="groupItem.count"
-                            :loading="!categoryLinks"
+                            :placeholder="categoryPlaceholder"
                             @open="loadCategoryLinks"
                         />
                     </ul>
@@ -207,6 +207,7 @@ const categoryCounts = computed(() => sidebar.value?.categoryCounts ?? {});
 
 // 分類樹的文章連結不在 page data 裡，第一次展開（或滑鼠移到分類樹上）時才動態載入
 const categoryLinks = shallowRef<CategoryLinks | null>(null);
+const categoryLinksFailed = ref(false);
 let categoryLinksLoading: Promise<void> | null = null;
 function loadCategoryLinks() {
     categoryLinksLoading ??= import('../../utils/sidebarCategories.data')
@@ -214,11 +215,16 @@ function loadCategoryLinks() {
             categoryLinks.value = mod.data;
         })
         .catch((error) => {
-            // 失敗（例如部署後舊 chunk 已不存在）時允許下次重試
-            categoryLinksLoading = null;
+            // 失敗多半是部署後舊 chunk 已不存在。瀏覽器會快取失敗的 import()，重試無效，只能請使用者重新整理
+            categoryLinksFailed.value = true;
             console.error(error);
         });
 }
+// 文章連結還沒載入時，展開的分類顯示的文字
+const categoryPlaceholder = computed(() => {
+    if (categoryLinks.value) return undefined;
+    return categoryLinksFailed.value ? theme.value.text.loadFailed : theme.value.text.loading;
+});
 
 const normalizeCategories = computed(() => {
     const result: (DefaultTheme.SidebarItem & { count: number })[] = [];
