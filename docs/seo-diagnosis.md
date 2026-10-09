@@ -223,7 +223,7 @@ TODO
 
 - [x] 補 `og:site_name`（`574a6d5`）
 - [x] 補 `twitter:card`（與 OG 圖一起做，用 `summary_large_image`）
-- [x] build 時用 satori＋resvg 產生 1200×630 OG 圖，並輸出 `og:image`（做法見 [seo.md](./seo.md#og-分享圖vitepresspluginsog-image)）
+- [x] build 時用 satori＋resvg 產生 1200×630 OG 圖，並輸出 `og:image`（做法見 [seo.md](./seo.md#og-分享圖vitepresspluginsog-image)，效能記錄 [perf-log/2026-10-10-1144057](./perf-log/2026-10-10-1144057.md)）
 - [ ] JSON-LD `Article` 改為 `BlogPosting`，補 `image`、`description`、`author: { name, url, sameAs }`、`publisher`
 - [ ] `WebSite` 補 `name`；完成 `Person`（`sameAs` 連到 GitHub、Threads、履歷站）
 - [ ] 系列文章加 `BreadcrumbList`
