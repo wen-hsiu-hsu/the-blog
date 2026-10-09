@@ -81,15 +81,30 @@ articles/life/**/*.md
 
 ## Build 時資料流
 
-`config.mts` 在 build 時呼叫三次 `getPosts()`，把結果注入 `themeConfig`：
+`config.mts` 在 build 時呼叫一次 `getPosts()`，再透過 `transformPageData` 把**該頁需要的部分**注入各頁的 `pageData`。
+計算邏輯在 `.vitepress/theme/postPageData.ts` 的 `buildPostPageData()`，依頁面類型決定注入哪些欄位：
 
-```
-posts / page           → 所有文章，給首頁分頁用
-devPosts / devPage     → dev 文章，給 /dev/ 分頁用
-lifePosts / lifePage   → life 文章，給 /life/ 分頁用
-```
+| 頁面類型                                                   | 判斷方式                        | 注入欄位                                                     |
+| ---------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------ |
+| 文章頁                                                     | 路徑在 `getPosts()` 清單內      | `postNav`（上下篇）、`seriesPosts`（系列）或 `suggestPosts`  |
+| 列表頁（`/`、`/dev/`、`/life/` 與各自的 `page/N`）         | `frontmatter.home`              | `listPosts`（當頁 10 篇）、`listMeta`、`listSidebar`（側欄） |
+| 彙整頁（`pages/archives`、`pages/tags`、`pages/category`） | `relativePath` 以 `pages/` 開頭 | `allPosts`（全部文章的精簡欄位）                             |
 
-各 `.md` 頁面透過 `useData().theme` 取用這些資料。
+元件透過 `utils/usePostPageData.ts` 的 `usePostPageData()` 讀取（即 `useData().page` 加上型別）。
+
+欄位依用途分三種形狀，都維持 `{ regularPath, frontMatter }` 結構：
+
+- `PostLink`：`title`、`date`、`pin`。上下篇、推薦、側欄分類樹用
+- `PostSummary`：再加 `category`、`tags`、`series`、`order`、`chapter`。系列目錄、彙整頁用
+- `PostListItem`：再加 `description`。列表頁的文章列用
+
+**不要把文章清單放回 `themeConfig`。** VitePress 會把 `themeConfig` 序列化進每一頁 HTML 的
+`window.__VP_SITE_DATA__`，舊做法讓每頁都內嵌約 611 KB 的文章 JSON（文章頁 826 KB → 改後 55 KB）。
+也不要改用 `.data.ts`（data loader）：資料會被打包進 import 它的元件所在的 chunk，而 theme 元件都在
+`theme/index.ts` 靜態註冊，結果是進主 bundle、每頁照樣下載；而且 `createContentLoader` 需要重做一次
+`getPosts` 的排序與過濾。詳見 [seo-diagnosis.md](./seo-diagnosis.md)。
+
+> 注意：`getPosts()` 只在載入 config 時跑一次。`npm run dev` 時新增文章或改 frontmatter 的 `series`、`date` 等欄位，需重啟 dev server 才會反映在列表與上下篇。
 
 ---
 
@@ -205,6 +220,7 @@ articles/drafts/css-notes/.gitkeep
 | ------------------------------------------- | ------------------------------------ |
 | `.vitepress/config.mts`                     | VitePress 設定、build 時注入文章資料 |
 | `.vitepress/theme/serverUtils.ts`           | `getPosts()` 文章掃描與排序          |
+| `.vitepress/theme/postPageData.ts`          | 逐頁計算注入 `pageData` 的文章資料   |
 | `.vitepress/theme/components/page/Page.vue` | 文章列表 + 分頁元件                  |
 | `articles/dev/page/[page].paths.ts`         | 動態分頁路由產生                     |
 | `.github/scripts/publish-posts.js`          | 草稿自動發布腳本                     |

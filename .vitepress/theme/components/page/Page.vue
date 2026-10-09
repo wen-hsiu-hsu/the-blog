@@ -29,7 +29,7 @@
                 <ul class="!p-0 !list-none text-sm flex gap-2 items-center line-height-4">
                     <li class="flex items-center gap-2 !m-0">
                         <span>{{ theme.text.archive }}</span>
-                        <span>{{ theme.page.postsTotal }}</span>
+                        <span>{{ sidebar?.postsTotal ?? 0 }}</span>
                     </li>
                     <li class="flex items-center !m-0 translate-y-px">
                         <BaseIcon icon="mynaui/dots-vertical" size="size-4" />
@@ -83,7 +83,7 @@
                         </a>
                     </div>
                     <ul class="!p-0 !list-none text-sm flex flex-wrap gap-2 !mb-1">
-                        <li v-for="value in Object.keys(tags).slice(0, 9)" class="!mt-0 !text-xs">
+                        <li v-for="value in sidebar?.topTags ?? []" class="!mt-0 !text-xs">
                             <BaseTag
                                 :href="withBase(`/pages/tags.html?tag=${value}`)"
                                 :text="value"
@@ -140,7 +140,7 @@
 <script lang="ts" setup>
 import { withBase, useData } from 'vitepress';
 import { PropType, computed } from 'vue';
-import { initTags, initCategory } from '../../functions';
+import { usePostPageData } from '../../utils/usePostPageData';
 import BaseSidebar from './../base/BaseSidebar.vue';
 import BaseTreeview from './../base/BaseTreeview.vue';
 import BaseFlipCard from './../base/BaseFlipCard.vue';
@@ -181,16 +181,12 @@ const props = defineProps({
 });
 
 const { theme, frontmatter } = useData();
+const postData = usePostPageData();
 
-const postsTotal = computed(() => {
-    const s = frontmatter.value.section;
-    if (s === 'dev') return theme.value.devPage?.postsTotal ?? 0;
-    if (s === 'life') return theme.value.lifePage?.postsTotal ?? 0;
-    return theme.value.page.postsTotal;
-});
-const tags = computed(() => initTags(theme.value.posts));
-const tagsLength = computed(() => Object.keys(tags.value).length);
-const categories = computed(() => initCategory(theme.value.posts, theme.value.text.uncategorized));
+const sidebar = computed(() => postData.value.listSidebar);
+const postsTotal = computed(() => postData.value.listMeta?.postsTotal ?? 0);
+const tagsLength = computed(() => sidebar.value?.tagsTotal ?? 0);
+const categories = computed(() => sidebar.value?.categories ?? {});
 
 const normalizeCategories = computed(() => {
     const _categories = categories.value;

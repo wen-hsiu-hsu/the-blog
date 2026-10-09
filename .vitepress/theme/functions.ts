@@ -1,17 +1,13 @@
-type Post = {
+type PostLike = {
     frontMatter: {
-        date: string;
-        title: string;
-        category: string;
-        tags: string[];
-        description: string;
-        pin?: number;
+        date?: string;
+        category?: string;
+        tags?: string[];
     };
-    regularPath: string;
 };
 
-export function initTags(posts: Post[]): Record<string, Post[]> {
-    const data: Record<string, Post[]> = {};
+export function initTags<T extends PostLike>(posts: T[]): Record<string, T[]> {
+    const data: Record<string, T[]> = {};
     posts.forEach((post) => {
         post.frontMatter.tags?.forEach((tag) => {
             data[tag] = data[tag] || [];
@@ -24,8 +20,11 @@ export function initTags(posts: Post[]): Record<string, Post[]> {
     );
 }
 
-export function initCategory(posts: Post[], uncategorizedLabel?: string) {
-    const data: Record<string, Post[]> = {};
+export function initCategory<T extends PostLike>(
+    posts: T[],
+    uncategorizedLabel?: string,
+): Record<string, T[]> {
+    const data: Record<string, T[]> = {};
     for (let index = 0; index < posts.length; index++) {
         const element = posts[index];
         const category = element.frontMatter.category ?? uncategorizedLabel ?? 'uncategorized';
@@ -41,8 +40,8 @@ export function initCategory(posts: Post[], uncategorizedLabel?: string) {
     return data;
 }
 
-export function useYearSort(post: Post[]) {
-    const data: Post[][] = [];
+export function useYearSort<T extends PostLike>(post: T[]) {
+    const data: T[][] = [];
     let year = '0';
     let num = -1;
     for (let index = 0; index < post.length; index++) {

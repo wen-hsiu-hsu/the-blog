@@ -28,7 +28,7 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 | 章節                                     | 優先級 | 狀態                         |
 | ---------------------------------------- | ------ | ---------------------------- |
 | 建置失敗導致正式站停在舊版本             | P0     | 已修復，剩上線確認與失敗通知 |
-| 每頁內嵌 611 KB 文章資料                 | P0     | 未開始                       |
+| 每頁內嵌 611 KB 文章資料                 | P0     | 已修復，剩 PageSpeed 量測    |
 | 沒有 canonical；首頁 og:url 錯誤         | P1     | 未開始                       |
 | Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 未開始                       |
 | 社群分享卡與結構化資料不完整             | P1     | 未開始                       |
@@ -101,12 +101,39 @@ P0
 
 TODO
 
-- [ ] 記錄目前的 HTML 大小與 PageSpeed 分數作為基準
-- [ ] 把 `getPosts` 抽成共用邏輯
-- [ ] 新增 `posts.data.ts`（`createContentLoader`），只在需要列表的元件 import
-- [ ] 文章頁的上下篇／推薦改用精簡欄位（`title`、`url`、`date`、`series`、`order`）
-- [ ] 從 `themeConfig` 移除 `posts`、`devPosts`、`lifePosts`
-- [ ] 量測改動後的 HTML 大小與 PageSpeed 分數
+實際做法（2026-10-09）
+
+沒有採用上面的 data loader，改用 `transformPageData` 逐頁注入。原因有兩個：
+
+- data loader 的資料會被打包進 import 它的元件所在的 chunk。這個專案的 theme 元件都在 `theme/index.ts` 靜態註冊，資料會進主 bundle，每頁照樣下載（只是從 HTML 移到可快取的 JS），要再搭配 `defineAsyncComponent` 才能真正只在需要的頁面載入。
+- `createContentLoader` 要重做一次 `getPosts` 的 pin／日期排序與 section 過濾，違反 CLAUDE.md 的共用邏輯原則。
+
+做法：`config.mts` 只呼叫一次 `getPosts()`，`transformPageData` 呼叫 `.vitepress/theme/postPageData.ts` 的 `buildPostPageData()`，依頁面類型（文章頁、列表頁、`pages/` 彙整頁）只注入該頁需要的資料，元件改讀 `useData().page`。細節見 [how-this-blog-works.md](./how-this-blog-works.md#build-時資料流)。
+
+本機 build 實測（gzip 前／後）：
+
+| 頁面               | 改前           | 改後          |
+| ------------------ | -------------- | ------------- |
+| 文章頁             | 826 KB／195 KB | 55 KB／18 KB  |
+| 首頁               | 980 KB／216 KB | 209 KB／40 KB |
+| `pages/archives`   | 969 KB／211 KB | 198 KB／33 KB |
+| `__VP_SITE_DATA__` | 約 611 KB      | 6 KB          |
+| 全站 HTML 合計     | 356 MB         | 43 MB         |
+
+列表頁剩下的大小主要是側欄分類樹：SSR 會把全部 333 篇文章的連結渲染進 HTML（首頁約 340 個 `<a>`）。這是另一個問題，見下方 TODO。
+
+TODO
+
+- [x] 記錄目前的 HTML 大小作為基準（見上表）
+- [ ] 記錄 PageSpeed 分數作為基準（需在正式站量測）
+- [x] `getPosts` 維持唯一資料來源，`calcPagesTotal` 抽成共用、`initTags`／`initCategory` 改泛型供 server 與 client 共用
+- [x] ~~新增 `posts.data.ts`~~ 改用 `transformPageData` 逐頁注入（`postPageData.ts`，附單元測試）
+- [x] 上下篇／推薦／側欄只帶精簡欄位（`PostLink`：`title`、`date`、`pin`）
+- [x] 從 `themeConfig` 移除 `posts`、`devPosts`、`lifePosts`、`seriesMap` 與各分頁總數
+- [x] 量測改動後的 HTML 大小（見上表）
+- [ ] 上線後量測 PageSpeed 分數
+- [ ] （選做）列表頁側欄分類樹改成只列分類名稱與篇數，或預設收合不渲染文章連結，可再減少列表頁 HTML
+- [ ] （選做）`reading-time.data.ts` 把全部文章的閱讀時間打包進主 bundle，可改在 `transformPageData` 逐頁計算
 
 P1
 

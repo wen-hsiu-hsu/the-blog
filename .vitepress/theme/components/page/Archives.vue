@@ -21,10 +21,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useData, withBase } from 'vitepress';
+import { withBase } from 'vitepress';
 import { computed } from 'vue';
 import { useYearSort } from '../../functions';
+import { usePostPageData } from '../../utils/usePostPageData';
 
-const { theme } = useData();
-const data = computed(() => useYearSort(theme.value.posts));
+const postData = usePostPageData();
+const data = computed(() => useYearSort(postData.value.allPosts ?? []));
 </script>

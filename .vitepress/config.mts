@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 import { getPosts } from './theme/serverUtils';
+import { buildPostPageData } from './theme/postPageData';
 import GLOBAL_CONFIG from './global-config';
 import UnoCSS from 'unocss/vite';
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss';
@@ -40,17 +41,7 @@ export default async () => {
     const wikilinkMap = await buildWikilinkMap(srcDir);
     const brokenWikilinks: BrokenWikilink[] = [];
 
-    const { posts, postsTotal, pagesTotal, pageSize, seriesMap } = await getPosts();
-    const {
-        posts: devPosts,
-        postsTotal: devPostsTotal,
-        pagesTotal: devPagesTotal,
-    } = await getPosts({ section: 'dev' });
-    const {
-        posts: lifePosts,
-        postsTotal: lifePostsTotal,
-        pagesTotal: lifePagesTotal,
-    } = await getPosts({ section: 'life' });
+    const { posts, pageSize, seriesMap } = await getPosts();
 
     return defineConfig({
         title,
@@ -115,25 +106,6 @@ export default async () => {
                     dateStyle: 'full',
                     timeStyle: 'short',
                 },
-            },
-            posts,
-            seriesMap,
-            page: {
-                size: pageSize,
-                postsTotal,
-                pagesTotal,
-            },
-            devPosts,
-            devPage: {
-                size: pageSize,
-                postsTotal: devPostsTotal,
-                pagesTotal: devPagesTotal,
-            },
-            lifePosts,
-            lifePage: {
-                size: pageSize,
-                postsTotal: lifePostsTotal,
-                pagesTotal: lifePagesTotal,
             },
             website: 'https://hsiu.soy', //copyright link
             logo: '/avatar-pixel-v2-mini.jpg',
@@ -217,6 +189,17 @@ export default async () => {
             },
             copyrightFrom: '2025',
         } as any,
+        // 文章列表不放 themeConfig（會內嵌進每頁 HTML），改為逐頁注入該頁需要的部分
+        transformPageData(pageData, { siteConfig }) {
+            const { text, suggestPostLength } = siteConfig.site.themeConfig;
+            return buildPostPageData(pageData, {
+                posts,
+                seriesMap,
+                pageSize,
+                uncategorizedLabel: text.uncategorized,
+                suggestPostLength: suggestPostLength ?? 5,
+            });
+        },
         markdown: {
             config(md) {
                 md.use(obsidianWikilinks(wikilinkMap, brokenWikilinks));

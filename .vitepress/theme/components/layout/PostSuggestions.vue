@@ -153,18 +153,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useData } from 'vitepress';
-import { initCategory } from './../../functions';
+import { usePostPageData } from '../../utils/usePostPageData';
 
 const route = useRoute();
 const { frontmatter, theme } = useData();
+const postData = usePostPageData();
 
 const isSeriesPost = computed(() => !!frontmatter.value.series);
 
-const seriesPosts = computed(() => {
-    const series = frontmatter.value.series;
-    if (!series) return [];
-    return theme.value.seriesMap?.[series] ?? [];
-});
+const seriesPosts = computed(() => postData.value.seriesPosts ?? []);
 
 const isCurrentPost = (path: string) => path === route.path;
 
@@ -198,29 +195,5 @@ const groupedSeriesPosts = computed(() => {
 });
 
 // Regular suggestions (non-series)
-const currentCategory = computed(
-    () => frontmatter.value.category || theme.value.text.uncategorized,
-);
-
-const suggestPosts = computed(() => {
-    const allPosts = theme.value.posts.filter((item) => item.regularPath !== route.path);
-
-    const posts = initCategory(allPosts, theme.value.text.uncategorized);
-
-    const currentCategoryPosts = posts[currentCategory.value] ?? [];
-
-    const _suggestPosts = currentCategoryPosts.filter((item) => item.regularPath !== route.path);
-
-    const suggestPostsLength = theme.value.suggestPostLength ?? 5;
-    if (_suggestPosts.length > suggestPostsLength) {
-        return _suggestPosts.slice(0, suggestPostsLength);
-    }
-
-    const remainingCount = suggestPostsLength - _suggestPosts.length;
-
-    const otherCategoryPosts = allPosts.filter((post) => !currentCategoryPosts.includes(post));
-    const extraPosts = otherCategoryPosts.slice(0, remainingCount);
-
-    return [..._suggestPosts, ...extraPosts];
-});
+const suggestPosts = computed(() => postData.value.suggestPosts ?? []);
 </script>

@@ -30,13 +30,14 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useData, withBase } from 'vitepress';
+import { withBase } from 'vitepress';
 import { initTags } from '../../functions';
+import { usePostPageData } from '../../utils/usePostPageData';
 
 let url = location.href.split('?')[1];
 let params = new URLSearchParams(url);
-const { theme } = useData();
-const data = computed(() => initTags(theme.value.posts));
+const postData = usePostPageData();
+const data = computed(() => initTags(postData.value.allPosts ?? []));
 let selectTag = ref(params.get('tag') ? params.get('tag') : '');
 const toggleTag = (tag: string) => {
     selectTag.value = tag;

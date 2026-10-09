@@ -1,14 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { convertDate } from './serverUtils';
-
-const pageSize = 10;
-
-function calcPagesTotal(postsTotal: number): number {
-    if (postsTotal === 0) return 0;
-    return postsTotal % pageSize === 0
-        ? postsTotal / pageSize
-        : Math.floor(postsTotal / pageSize) + 1;
-}
+import { calcPagesTotal, convertDate } from './serverUtils';
 
 describe('pagesTotal calculation', () => {
     it('exact multiple: 20 posts → 2 pages', () => {

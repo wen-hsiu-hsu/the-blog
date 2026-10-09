@@ -11,12 +11,12 @@ interface GetPostsOptions {
     section?: Section;
 }
 
-type Post = {
+export type Post = {
     frontMatter: Record<string, any>;
     regularPath: string;
 };
 
-type SeriesMap = {
+export type SeriesMap = {
     [seriesSlug: string]: Post[];
 };
 
@@ -51,8 +51,7 @@ async function getPosts(options: GetPostsOptions = {}) {
         : allPosts;
 
     const postsTotal = posts.length;
-    const pagesTotal =
-        postsTotal % pageSize === 0 ? postsTotal / pageSize : Math.floor(postsTotal / pageSize) + 1;
+    const pagesTotal = calcPagesTotal(postsTotal, pageSize);
 
     return {
         posts,
@@ -61,6 +60,10 @@ async function getPosts(options: GetPostsOptions = {}) {
         pageSize,
         seriesMap,
     };
+}
+
+export function calcPagesTotal(postsTotal: number, size = pageSize) {
+    return postsTotal % size === 0 ? postsTotal / size : Math.floor(postsTotal / size) + 1;
 }
 
 export function convertDate(date = new Date().toString()) {

@@ -23,7 +23,11 @@
 import { useData, withBase } from 'vitepress';
 import { computed } from 'vue';
 import { initCategory } from '../../functions';
+import { usePostPageData } from '../../utils/usePostPageData';
 
 const { theme } = useData();
-const data = computed(() => initCategory(theme.value.posts, theme.value.text.uncategorized));
+const postData = usePostPageData();
+const data = computed(() =>
+    initCategory(postData.value.allPosts ?? [], theme.value.text.uncategorized),
+);
 </script>

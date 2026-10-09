@@ -36,9 +36,11 @@
 import { data as readingTimeData } from '../../utils/reading-time.data.ts';
 import { computed } from 'vue';
 import { useRoute, useData } from 'vitepress';
+import { usePostPageData } from '../../utils/usePostPageData';
 
 const route = useRoute();
-const { frontmatter, theme } = useData();
+const { frontmatter } = useData();
+const postData = usePostPageData();
 
 const currentPageReadingTime = computed(() => {
     return (
@@ -49,10 +51,7 @@ const currentPageReadingTime = computed(() => {
 
 const currentSeries = computed(() => frontmatter.value.series as string | undefined);
 
-const seriesPosts = computed(() => {
-    if (!currentSeries.value) return [];
-    return theme.value.seriesMap?.[currentSeries.value] ?? [];
-});
+const seriesPosts = computed(() => postData.value.seriesPosts ?? []);
 
 const seriesTitle = computed(() => {
     if (!currentSeries.value) return '';
