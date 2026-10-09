@@ -216,7 +216,7 @@ P1
 
 - build 時自動產生 OG 圖：用 satori＋resvg 把標題、系列名、頭像畫成 1200×630 PNG，不必每篇手動做圖。
 - `Article` 改為 `BlogPosting`，補 `image`、`description`、`author: { name, url, sameAs }`、`publisher`。
-- 系列文章加 `BreadcrumbList`（首頁 › Dev › 系列 › 文章）。
+- 文章加 `BreadcrumbList`（首頁 › Dev › 文章）。原本想放系列層，但系列沒有自己的頁面，沒有合法的 `item` URL，所以先略過（見 [seo.md](./seo.md#結構化資料utilsstructureddatats)）。
 - 部署後用 Rich Results Test 驗證。
 
 TODO
@@ -224,9 +224,9 @@ TODO
 - [x] 補 `og:site_name`（`574a6d5`）
 - [x] 補 `twitter:card`（與 OG 圖一起做，用 `summary_large_image`）
 - [x] build 時用 satori＋resvg 產生 1200×630 OG 圖，並輸出 `og:image`（做法見 [seo.md](./seo.md#og-分享圖vitepresspluginsog-image)，效能記錄 [perf-log/2026-10-10-1144057](./perf-log/2026-10-10-1144057.md)）
-- [ ] JSON-LD `Article` 改為 `BlogPosting`，補 `image`、`description`、`author: { name, url, sameAs }`、`publisher`
-- [ ] `WebSite` 補 `name`；完成 `Person`（`sameAs` 連到 GitHub、Threads、履歷站）
-- [ ] 系列文章加 `BreadcrumbList`
+- [x] JSON-LD `Article` 改為 `BlogPosting`，補 `image`、`description`、`author: { name, url, sameAs }`、`publisher`
+- [x] `WebSite` 補 `name`；完成 `Person`（`sameAs` 連到 GitHub、Threads、履歷站）
+- [x] 文章加 `BreadcrumbList`（不含系列層，做法見 [seo.md](./seo.md#結構化資料utilsstructureddatats)）
 - [ ] 部署後用 Rich Results Test 驗證
 
 P1

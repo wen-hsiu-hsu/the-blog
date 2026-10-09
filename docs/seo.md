@@ -4,13 +4,13 @@
 
 ## 分工
 
-| 內容                                                                                           | 位置                                                           | 理由                                                                                          |
-| ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `<link rel="canonical">`、`og:url`                                                             | `transformPageData` → `frontmatter.head`（`pageHead.ts`）      | VitePress 官方文件就是用這個方式加 canonical；`frontmatter.head` 在 client 端換頁時會跟著更新 |
-| 分頁的 title／description（加「第 N 頁」）                                                     | `transformPageData` 改 `pageData.title`／`description`         | VitePress 用 `pageData.title` 套 `titleTemplate` 並輸出 `<meta name="description">`           |
-| 其他 og 標籤（`og:title`、`og:description`、`og:type`、`og:site_name`、`article:*`）與 JSON-LD | `transformHead`（`transformHead.ts`）                          | 只在 build 時執行；官方文件也建議把 og:image 這類較耗時的標籤放這裡                           |
-| `og:image*`、`twitter:card`、產生 OG 圖                                                        | `transformHead` 呼叫 `plugins/og-image`（見下方「OG 分享圖」） | 產圖成功才輸出標籤                                                                            |
-| 站台共用（favicon、analytics）                                                                 | `config.mts` 的 `head`                                         | 每頁都一樣                                                                                    |
+| 內容                                                                                           | 位置                                                                | 理由                                                                                          |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `<link rel="canonical">`、`og:url`                                                             | `transformPageData` → `frontmatter.head`（`pageHead.ts`）           | VitePress 官方文件就是用這個方式加 canonical；`frontmatter.head` 在 client 端換頁時會跟著更新 |
+| 分頁的 title／description（加「第 N 頁」）                                                     | `transformPageData` 改 `pageData.title`／`description`              | VitePress 用 `pageData.title` 套 `titleTemplate` 並輸出 `<meta name="description">`           |
+| 其他 og 標籤（`og:title`、`og:description`、`og:type`、`og:site_name`、`article:*`）與 JSON-LD | `transformHead`（`transformHead.ts`；JSON-LD 見下方「結構化資料」） | 只在 build 時執行；官方文件也建議把 og:image 這類較耗時的標籤放這裡                           |
+| `og:image*`、`twitter:card`、產生 OG 圖                                                        | `transformHead` 呼叫 `plugins/og-image`（見下方「OG 分享圖」）      | 產圖成功才輸出標籤                                                                            |
+| 站台共用（favicon、analytics）                                                                 | `config.mts` 的 `head`                                              | 每頁都一樣                                                                                    |
 
 注意：`transformHead` 的輸出只寫進 SSR 產出的 HTML，client 端換頁時**不會**更新。爬蟲每頁都直接抓 HTML，所以不影響 SEO；但換頁後瀏覽器裡看到的 og 標籤會停在第一個頁面的值。需要換頁後也正確的標籤，請放 `frontmatter.head`。
 
@@ -64,6 +64,22 @@ build 時用 satori 0.33.5 把版面畫成 SVG，再用 @resvg/resvg-js 2.6.2 �
 - 標題保留 markdown 反引號（例如 `` `Object.prototype` ``），照原標題呈現。
 - `@resvg/resvg-js` 的 native binding 依執行 npm 的 Node 架構安裝。本機的 node_modules 是 x64（asdf 的 Node），所以 build 一律用 x64 Node。`perf:compare` 也透過 `npx vitepress build` 執行，同樣是 x64，不受影響。
 
-## 待辦
+## 結構化資料（`utils/structuredData.ts`）
 
-JSON-LD 的 `image`、`BlogPosting`／`Person`／`BreadcrumbList` 還沒做，進度見 [seo-diagnosis.md](./seo-diagnosis.md) 的「社群分享卡與結構化資料不完整」。
+每頁輸出一段 JSON-LD，內容是一個 `@graph`，由 `transformHead` 呼叫 `buildStructuredData()` 產生。404 頁不輸出。
+
+| 節點             | 哪些頁面          | 重點                                                                                                           |
+| ---------------- | ----------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Person`         | 每頁              | `@id` 固定為 `https://hsiu.soy/#person`；`sameAs` 來自 `themeConfig.author.sameAs`（GitHub、Threads、履歷站）  |
+| `WebSite`        | 每頁              | `url` 一律是首頁，不是當頁網址；`publisher` 參照 Person                                                        |
+| `BlogPosting`    | 文章（非 `page`） | `author`／`publisher` 用 `@id` 參照 Person，作者資料只寫一份；`articleSection` 用 category，`keywords` 用 tags |
+| `BreadcrumbList` | 文章              | 首頁 › Dev（或 Life）› 文章；中間層取自 `themeConfig.nav` 裡的站內連結，路徑對不到任何 nav 就不輸出            |
+
+設計決策：
+
+- **`image` 跟著 og-image 走**：`config.mts` 的 `transformHead` 先跑 `ogImageHead()`，從結果取出 `og:image` 再傳給 `transformHead`。產圖失敗時兩邊都不輸出，不會出現指向不存在圖片的 `image`。
+- **麵包屑不放系列層**：系列沒有自己的頁面（`/dev/<系列>/` 是 404）。Google 要求最後一層以外的每一層都要有可索引的 `item` URL；指向第一章語意不對，不放 URL 又會被判為無效。之後如果做了系列目錄頁，再在 `buildBreadcrumb()` 補上這層。
+- **日期用完整 ISO 8601**（含時區），和 `article:published_time`／`article:modified_time` 用同一個值。
+- **序列化時把 `<` 轉成 `\u003c`**，避免標題或描述裡的 `</script>` 提前結束標籤。VitePress 已經會移除 `pageData.title` 裡的 HTML 標籤（例如標題中的 `<li>` 會消失，og:title 也一樣），但 description 不會。
+
+部署後還要用 Rich Results Test 驗證，進度見 [seo-diagnosis.md](./seo-diagnosis.md) 的「社群分享卡與結構化資料不完整」。
