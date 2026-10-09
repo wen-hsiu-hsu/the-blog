@@ -14,11 +14,12 @@ npm test
 
 ## 測試範圍
 
-| 測試檔                                   | 測試對象                                              |
-| ---------------------------------------- | ----------------------------------------------------- |
-| `.vitepress/theme/serverUtils.test.ts`   | 分頁計算、section 篩選、`convertDate()`、pin 排序     |
-| `.github/scripts/publish-posts.test.ts`  | `deriveSection()`：草稿發布時 section 推導邏輯        |
-| `.github/scripts/html-tag-utils.test.ts` | `findInvalidHtmlTags()`：raw HTML 內未跳脫的 `<` 偵測 |
+| 測試檔                                   | 測試對象                                                     |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| `.vitepress/theme/serverUtils.test.ts`   | 分頁計算、section 篩選、`convertDate()`、pin 排序            |
+| `.github/scripts/publish-posts.test.ts`  | `deriveSection()`：草稿發布時 section 推導邏輯               |
+| `.github/scripts/html-tag-utils.test.ts` | `findInvalidHtmlTags()`：raw HTML 內未跳脫的 `<` 偵測        |
+| `scripts/perf-utils.test.ts`             | `perf:compare` 的 cleanUrls 解析、中位數／雜訊判斷、報告格式 |
 
 ---
 

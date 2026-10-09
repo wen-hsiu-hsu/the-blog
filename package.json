@@ -10,11 +10,13 @@
         "@types/node": "^22.13.17",
         "@unocss/preset-wind4": "66.1.0-beta.8",
         "@vitest/coverage-v8": "^4.1.4",
+        "chrome-launcher": "^1.2.2",
         "date-fns": "^4.1.0",
         "fs-extra": "^11.3.0",
         "globby": "^14.1.0",
         "gray-matter": "^4.0.3",
         "husky": "^9.1.7",
+        "lighthouse": "^13.5.0",
         "lint-staged": "^17.3.0",
         "markdown-it": "^14.1.1",
         "prettier": "^3.8.3",
@@ -35,7 +37,8 @@
         "validate:drafts": "node .github/scripts/validate-drafts.js",
         "new:series": "node scripts/new-series.js",
         "dev:with-drafts": "VITE_INCLUDE_DRAFTS=true vitepress dev",
-        "prepare": "husky"
+        "prepare": "husky",
+        "perf:compare": "node scripts/perf-compare.js"
     },
     "author": "",
     "license": "ISC",
