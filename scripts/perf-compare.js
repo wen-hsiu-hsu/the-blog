@@ -9,8 +9,12 @@ import * as chromeLauncher from 'chrome-launcher';
 import lighthouse from 'lighthouse';
 import {
     aggregateRuns,
+    formatLogMeta,
     formatReport,
+    githubRepoUrl,
+    insertLogRow,
     resolveStaticCandidates,
+    summarizeChanges,
     summarizeLhr,
 } from './perf-utils.js';
 
@@ -20,6 +24,8 @@ const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, '..');
 const HEAD_DIST = path.join(REPO_ROOT, '.vitepress/dist');
 const CACHE_DIR = path.join(REPO_ROOT, '.vitepress/cache/perf-compare');
+const LOG_DIR = path.join(REPO_ROOT, 'docs/perf-log');
+const LOG_INDEX = path.join(LOG_DIR, 'README.md');
 
 // 代表性頁面：首頁、section 列表、系列文章、彙整頁
 const DEFAULT_PAGES = [
@@ -48,17 +54,26 @@ const CONTENT_TYPES = {
 const COMPRESSIBLE = new Set(['.html', '.js', '.css', '.json', '.svg', '.xml', '.rss', '.txt']);
 
 function parseArgs(argv) {
-    const args = { base: null, runs: 3, pages: DEFAULT_PAGES, skipBuild: false };
+    const args = {
+        base: null,
+        runs: 3,
+        pages: DEFAULT_PAGES,
+        skipBuild: false,
+        record: null,
+        ref: null,
+    };
     for (let i = 0; i < argv.length; i++) {
         const arg = argv[i];
         if (arg === '--base') args.base = argv[++i];
         else if (arg === '--runs') args.runs = Number(argv[++i]);
         else if (arg === '--pages') args.pages = argv[++i].split(',').map((p) => p.trim());
         else if (arg === '--skip-build') args.skipBuild = true;
+        else if (arg === '--record') args.record = argv[++i];
+        else if (arg === '--ref') args.ref = argv[++i];
         else {
             console.error(`未知參數：${arg}`);
             console.error(
-                '用法：npm run perf:compare -- [--base <ref>] [--runs <n>] [--pages /,/dev/] [--skip-build]',
+                '用法：npm run perf:compare -- [--base <ref>] [--runs <n>] [--pages /,/dev/] [--skip-build] [--record <改動說明> [--ref <相關項目>]]',
             );
             process.exit(1);
         }
@@ -66,6 +81,21 @@ function parseArgs(argv) {
     if (!Number.isInteger(args.runs) || args.runs < 1) {
         console.error('--runs 必須是正整數');
         process.exit(1);
+    }
+    if (args.ref && !args.record) {
+        console.error('--ref 只能搭配 --record 使用');
+        process.exit(1);
+    }
+    if (args.record !== null) {
+        if (!args.record?.trim()) {
+            console.error('--record 需要改動說明');
+            process.exit(1);
+        }
+        // 長期記錄要可信：dist 必須是這次 build 的，且能估計雜訊
+        if (args.skipBuild || args.runs < 3) {
+            console.error('--record 不能搭配 --skip-build，且 --runs 至少 3');
+            process.exit(1);
+        }
     }
     return args;
 }
@@ -176,6 +206,17 @@ async function main() {
     const baseSha = git('rev-parse', baseRef);
     const headSha = git('rev-parse', 'HEAD');
     const dirty = git('status', '--porcelain') !== '';
+    if (args.record) {
+        // 記錄要能指向確切的改動，所以必須量已 commit 的狀態
+        if (dirty) {
+            console.error('--record 需要乾淨的工作目錄：先 commit 改動，記錄才能指向確切的 commit');
+            process.exit(1);
+        }
+        if (baseSha === headSha) {
+            console.error('--record：base 與 HEAD 相同，沒有可記錄的改動');
+            process.exit(1);
+        }
+    }
     const baseLabel = `${args.base ?? 'merge-base(HEAD, master)'} @ ${baseSha.slice(0, 7)}`;
     const headLabel = `目前工作目錄 @ ${headSha.slice(0, 7)}${dirty ? '（含未 commit 的變更）' : ''}`;
 
@@ -245,6 +286,59 @@ async function main() {
     console.log(`\n${report}`);
     console.log(
         `報告已存到 ${path.relative(REPO_ROOT, reportFile)}（同名 .json 為每次執行的原始數據）`,
+    );
+
+    if (args.record) {
+        recordLog({ args, baseSha, headSha, baseLabel, headLabel, pages });
+    }
+}
+
+/** 把報告寫進 docs/perf-log/ 並更新索引，供長期追蹤 */
+function recordLog({ args, baseSha, headSha, baseLabel, headLabel, pages }) {
+    const date = new Date().toLocaleDateString('sv-SE');
+    const file = `${date}-${headSha.slice(0, 7)}.md`;
+    const commits = git('log', '--format=%H%x09%s', `${baseSha}..${headSha}`)
+        .split('\n')
+        .filter(Boolean)
+        .map((line) => {
+            const [sha, ...subject] = line.split('\t');
+            return { sha, subject: subject.join('\t') };
+        });
+    const meta = formatLogMeta({
+        date,
+        branch: git('rev-parse', '--abbrev-ref', 'HEAD'),
+        ref: args.ref,
+        repoUrl: githubRepoUrl(git('remote', 'get-url', 'origin')),
+        baseSha,
+        headSha,
+        commits,
+    });
+    const summary = summarizeChanges(pages);
+    const report = formatReport({
+        title: args.record,
+        meta: [...meta, `- 摘要：${summary}`],
+        baseLabel,
+        headLabel,
+        runs: args.runs,
+        pages,
+    });
+
+    fs.outputFileSync(path.join(LOG_DIR, file), report);
+    fs.writeFileSync(
+        LOG_INDEX,
+        insertLogRow(fs.readFileSync(LOG_INDEX, 'utf8'), {
+            date,
+            title: args.record,
+            file,
+            ref: args.ref,
+            summary,
+        }),
+    );
+    execFileSync('npx', ['prettier', '--write', LOG_DIR], { cwd: REPO_ROOT, stdio: 'ignore' });
+
+    console.log(`\n已記錄到 docs/perf-log/${file}，並更新 docs/perf-log/README.md`);
+    console.log(
+        '下一步：commit docs/perf-log/，並在相關項目（TODO、issue、文件）加上這份記錄的連結',
     );
 }
 

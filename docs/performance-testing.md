@@ -13,14 +13,17 @@ npm run perf:compare                      # 預設：merge-base(HEAD, master) vs
 npm run perf:compare -- --skip-build      # head 直接用現有的 .vitepress/dist（剛 build 過時省 1 分鐘）
 npm run perf:compare -- --base origin/master --runs 5
 npm run perf:compare -- --pages /,/dev/,/pages/tags
+npm run perf:compare -- --record "側欄改為只列分類" --ref "docs/seo-diagnosis.md 側欄分類樹 TODO"
 ```
 
-| 參數           | 預設                       | 說明                                            |
-| -------------- | -------------------------- | ----------------------------------------------- |
-| `--base <ref>` | `merge-base(HEAD, master)` | 比較基準，任何 git ref 皆可                     |
-| `--runs <n>`   | `3`                        | 每頁每邊執行次數，取中位數；少於 3 無法估計雜訊 |
-| `--pages`      | 見 `DEFAULT_PAGES`         | 逗號分隔的路徑，採 cleanUrls 格式               |
-| `--skip-build` | 關                         | 不重新 build head                               |
+| 參數               | 預設                       | 說明                                               |
+| ------------------ | -------------------------- | -------------------------------------------------- |
+| `--base <ref>`     | `merge-base(HEAD, master)` | 比較基準，任何 git ref 皆可                        |
+| `--runs <n>`       | `3`                        | 每頁每邊執行次數，取中位數；少於 3 無法估計雜訊    |
+| `--pages`          | 見 `DEFAULT_PAGES`         | 逗號分隔的路徑，採 cleanUrls 格式                  |
+| `--skip-build`     | 關                         | 不重新 build head                                  |
+| `--record <說明>`  | 關                         | 把結果寫進 `docs/perf-log/` 長期追蹤，見下節       |
+| `--ref <相關項目>` | —                          | 搭配 `--record`：這次改動對應的 TODO、issue 或文件 |
 
 完整跑一次約 7–8 分鐘：兩次 build 各約 45 秒，Lighthouse 30 次每次約 10 秒。
 base 的 build 依 commit sha 快取在 `.vitepress/cache/perf-compare/builds/`，同一個 base 第二次起不必重新 build。
@@ -33,6 +36,28 @@ base 的 build 依 commit sha 快取在 `.vitepress/cache/perf-compare/builds/`�
 Chrome 在 Claude Code 的 sandbox 內無法啟動，錯誤為
 `waiting for dynamic debugging port in chrome-err.log`。
 執行時必須關閉 sandbox（Bash 的 `dangerouslyDisableSandbox`）。
+
+---
+
+## 記錄效能變化（--record）
+
+效能相關的改動都要留下記錄，用來長期追蹤效能改進。流程：
+
+1. 先 commit 改動。`--record` 要求工作目錄是乾淨的，這樣記錄才能指向確切的 commit。
+2. 執行 `npm run perf:compare -- --record "<改動說明>" --ref "<相關項目>"`。
+3. 腳本會寫出 `docs/perf-log/<日期>-<head sha>.md`（完整報告），並在 `docs/perf-log/README.md` 索引最上方加一列。
+4. commit `docs/perf-log/`（例如 `docs: record perf result for <改動>`），並回到相關項目加上這份記錄的連結。
+   例如在 `docs/seo-diagnosis.md` 的 TODO 後面加 `（量測：[perf-log](./perf-log/<檔名>)）`。
+
+每份記錄會寫進以下資訊：
+
+- 改動範圍：`base...head` 的 GitHub compare 連結，以及範圍內每個 commit 的連結與標題
+- 分支、日期、`--ref` 指定的相關項目
+- 摘要：哪些指標在幾頁超出雜訊地改善或退步，同時寫進索引
+- 每頁完整的指標表
+
+為了讓記錄可信，`--record` 不能搭配 `--skip-build`，`--runs` 至少要 3。
+直接在 master 上改時，merge-base 就是 HEAD，沒有可比較的範圍，要用 `--base HEAD~<n>` 指定改動前的 commit。
 
 ---
 

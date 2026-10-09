@@ -15,14 +15,15 @@
 以下文件描述專案架構與慣例，**不需要在對話開始時主動讀取**。
 遇到相關任務時再讀，避免浪費 token。
 
-| 檔案                          | 內容摘要                                                                             | 何時讀取                                                 |
-| ----------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------- |
-| `docs/how-this-blog-works.md` | 目錄結構、URL 規則、分頁機制、文章列表產生方式（getPosts）、草稿自動發布             | 修改文章路由、分頁邏輯、新增 section、需要了解整體架構時 |
-| `docs/ci-cd.md`               | GitHub Actions workflows、部署流程、Cloudflare Pages 設定、所需 Secrets、已知限制    | 修改 CI/CD、排查部署問題、設定新環境時                   |
-| `docs/testing.md`             | 測試工具（Vitest）、目前測試涵蓋範圍、如何新增測試                                   | 新增或修改測試、排查測試失敗時                           |
-| `docs/obsidian-wikilinks.md`  | Obsidian wikilink 支援說明、語法對照、publish 前檢查機制                             | 使用或修改 wikilink 功能時                               |
-| `docs/seo-diagnosis.md`       | SEO 與競爭力診斷報告（2026-10-08）：各問題的證據、修法與 TODO 進度追蹤               | 處理 SEO、head／結構化資料、效能、內容策略相關任務時     |
-| `docs/performance-testing.md` | `npm run perf:compare`：本地 Lighthouse 比較改動前後的 build、報告判讀、sandbox 限制 | 任何可能影響效能的改動完成後，用它驗證改善或退步         |
+| 檔案                          | 內容摘要                                                                                                  | 何時讀取                                                 |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `docs/how-this-blog-works.md` | 目錄結構、URL 規則、分頁機制、文章列表產生方式（getPosts）、草稿自動發布                                  | 修改文章路由、分頁邏輯、新增 section、需要了解整體架構時 |
+| `docs/ci-cd.md`               | GitHub Actions workflows、部署流程、Cloudflare Pages 設定、所需 Secrets、已知限制                         | 修改 CI/CD、排查部署問題、設定新環境時                   |
+| `docs/testing.md`             | 測試工具（Vitest）、目前測試涵蓋範圍、如何新增測試                                                        | 新增或修改測試、排查測試失敗時                           |
+| `docs/obsidian-wikilinks.md`  | Obsidian wikilink 支援說明、語法對照、publish 前檢查機制                                                  | 使用或修改 wikilink 功能時                               |
+| `docs/seo-diagnosis.md`       | SEO 與競爭力診斷報告（2026-10-08）：各問題的證據、修法與 TODO 進度追蹤                                    | 處理 SEO、head／結構化資料、效能、內容策略相關任務時     |
+| `docs/performance-testing.md` | `npm run perf:compare`：本地 Lighthouse 比較改動前後的 build、`--record` 記錄流程、報告判讀、sandbox 限制 | 任何可能影響效能的改動完成後，用它驗證改善或退步         |
+| `docs/perf-log/README.md`     | 歷次效能改動的量測記錄索引（新的在上），每筆指向 commit 範圍與相關項目                                    | 想知道某項優化的實際成效、或規劃下一個效能改動時         |
 
 ## 程式碼格式化
 
@@ -38,6 +39,19 @@ npm run format
 
 執行任務後，若產生了值得保留的知識（新的架構決策、踩過的坑、重要設定），
 應主動在 `docs/` 新增或更新對應文件，並將新檔案補入上方表格（填寫摘要與觸發時機）。
+
+## 效能改動流程（重要）
+
+任何可能影響效能的改動（頁面資料、bundle、圖片、字型、head 標籤、第三方 script），完成後必須：
+
+1. commit 改動
+2. 執行 `npm run perf:compare -- --record "<改動說明>" --ref "<相關項目>"`（需關閉 sandbox）
+3. commit `docs/perf-log/`，並在相關項目（如 `docs/seo-diagnosis.md` 的 TODO）加上記錄的連結
+
+細節見 `docs/performance-testing.md`。
+
+**原因**：效能優化常有副作用（例如 HTML 變小但 JS chunk 變大）。只靠推論很容易誤判，
+而沒有留下記錄的話，日後也追不到哪個改動帶來了什麼變化。
 
 ## 共用邏輯原則（重要）
 

@@ -109,6 +109,9 @@ function formatValue(kind, value) {
 // 傳輸量差距小於此值（如 hash 檔名長度變動）視為相同
 const BYTES_THRESHOLD = 100;
 
+const IMPROVED = '✅ 改善';
+const REGRESSED = '⚠️ 退步';
+
 /**
  * 判斷差值方向
  * 差值不大於兩邊多次執行的最大差距時視為雜訊；傳輸量另有最小門檻
@@ -121,7 +124,7 @@ export function judgeDelta(metric, base, head) {
     const noise = Math.max(base.spread ?? 0, head.spread ?? 0);
     if (Math.abs(delta) <= noise) return '≈ 雜訊內';
     const improved = metric.better === 'lower' ? delta < 0 : delta > 0;
-    return improved ? '✅ 改善' : '⚠️ 退步';
+    return improved ? IMPROVED : REGRESSED;
 }
 
 function formatDelta(metric, base, head) {
@@ -138,10 +141,18 @@ function formatDelta(metric, base, head) {
  * 產生 Markdown 報告
  * pages: [{ path, base: aggregate|null, head: aggregate|null, baseError?, headError? }]
  */
-export function formatReport({ baseLabel, headLabel, runs, pages }) {
+export function formatReport({
+    title = '效能比較報告',
+    meta = [],
+    baseLabel,
+    headLabel,
+    runs,
+    pages,
+}) {
     const lines = [
-        '# 效能比較報告',
+        `# ${title}`,
         '',
+        ...meta,
         `- base：${baseLabel}`,
         `- head：${headLabel}`,
         `- 每頁執行 ${runs} 次取中位數；Lighthouse 預設 mobile 設定（模擬節流，與 PageSpeed Insights 相同）`,
@@ -174,5 +185,66 @@ export function formatReport({ baseLabel, headLabel, runs, pages }) {
         lines.push('');
     }
 
+    return lines.join('\n');
+}
+
+/** 一行摘要：各指標在幾頁超出雜訊地改善或退步 */
+export function summarizeChanges(pages) {
+    const measured = pages.filter((page) => page.base && page.head);
+    const parts = [];
+    for (const metric of METRICS) {
+        const verdicts = measured.map((page) =>
+            judgeDelta(metric, page.base[metric.key], page.head[metric.key]),
+        );
+        const improved = verdicts.filter((v) => v === IMPROVED).length;
+        const regressed = verdicts.filter((v) => v === REGRESSED).length;
+        if (improved) parts.push(`✅ ${metric.label} ${improved}/${measured.length} 頁`);
+        if (regressed) parts.push(`⚠️ ${metric.label} ${regressed}/${measured.length} 頁`);
+    }
+    return parts.length ? parts.join('；') : '無超出雜訊的變化';
+}
+
+/** git remote URL（ssh 或 https）轉成 GitHub 網頁網址，非 GitHub 回傳 null */
+export function githubRepoUrl(remote) {
+    const match = remote.trim().match(/github\.com[:/](.+?)(?:\.git)?$/);
+    return match ? `https://github.com/${match[1]}` : null;
+}
+
+/**
+ * 效能記錄的 metadata：指向這次量測對應的改動（commit 範圍與相關項目）
+ * commits: [{ sha, subject }]，新到舊
+ */
+export function formatLogMeta({ date, branch, ref, repoUrl, baseSha, headSha, commits }) {
+    const short = (sha) => sha.slice(0, 7);
+    const commitLink = (sha) =>
+        repoUrl ? `[${short(sha)}](${repoUrl}/commit/${sha})` : `\`${short(sha)}\``;
+    const range = `${short(baseSha)}...${short(headSha)}`;
+    const rangeText = repoUrl
+        ? `[${range}](${repoUrl}/compare/${baseSha}...${headSha})`
+        : `\`${range}\``;
+
+    const lines = [
+        `- 日期：${date}`,
+        branch === 'HEAD' ? '- 分支：（detached HEAD）' : `- 分支：\`${branch}\``,
+        `- 改動範圍：${rangeText}（${commits.length} 個 commit）`,
+    ];
+    if (ref) lines.push(`- 相關項目：${ref}`);
+    lines.push('- commits：');
+    for (const { sha, subject } of commits) {
+        lines.push(`    - ${commitLink(sha)} ${subject}`);
+    }
+    return lines;
+}
+
+/** 在索引表格的分隔線後插入一列（新的在上） */
+export function insertLogRow(indexContent, { date, title, file, ref, summary }) {
+    const cell = (text) => (text ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
+    const row = `| ${date} | [${cell(title)}](./${file}) | ${cell(ref) || '—'} | ${cell(summary)} |`;
+    const lines = indexContent.split('\n');
+    const separator = lines.findIndex((line) => /^\|\s*-{3,}/.test(line));
+    if (separator === -1) {
+        throw new Error('找不到索引表格的分隔線');
+    }
+    lines.splice(separator + 1, 0, row);
     return lines.join('\n');
 }

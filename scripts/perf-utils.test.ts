@@ -3,11 +3,15 @@ import { describe, expect, it } from 'vitest';
 import {
     METRICS,
     aggregateRuns,
+    formatLogMeta,
     formatReport,
+    githubRepoUrl,
+    insertLogRow,
     judgeDelta,
     median,
     resolveStaticCandidates,
     spread,
+    summarizeChanges,
     summarizeLhr,
 } from './perf-utils.js';
 
@@ -155,5 +159,112 @@ describe('formatReport()', () => {
         });
         expect(report).toContain('無法估計雜訊');
         expect(report).toContain('量測失敗：base：boom');
+    });
+});
+
+describe('summarizeChanges()', () => {
+    const aggregate = (documentBytes: number, lcp: number) =>
+        aggregateRuns([
+            {
+                ...summarizeLhr({ categories: { performance: { score: 0.5 } }, audits: {} }),
+                documentBytes,
+                lcp,
+            },
+        ]);
+
+    it('列出超出雜訊的指標與頁數', () => {
+        const pages = [
+            { path: '/', base: aggregate(50000, 2000), head: aggregate(20000, 2000) },
+            { path: '/dev/', base: aggregate(50000, 2000), head: aggregate(50000, 2500) },
+        ];
+        expect(summarizeChanges(pages)).toBe('⚠️ LCP 1/2 頁；✅ HTML 傳輸量 1/2 頁');
+    });
+
+    it('沒有變化時說明，量測失敗的頁不計入分母', () => {
+        const pages = [
+            { path: '/', base: aggregate(1000, 1000), head: aggregate(1000, 1000) },
+            { path: '/x', base: null, head: null },
+        ];
+        expect(summarizeChanges(pages)).toBe('無超出雜訊的變化');
+    });
+});
+
+describe('githubRepoUrl()', () => {
+    it('支援 ssh 與 https remote', () => {
+        expect(githubRepoUrl('git@github.com:owner/repo.git')).toBe(
+            'https://github.com/owner/repo',
+        );
+        expect(githubRepoUrl('https://github.com/owner/repo.git\n')).toBe(
+            'https://github.com/owner/repo',
+        );
+        expect(githubRepoUrl('https://github.com/owner/repo')).toBe(
+            'https://github.com/owner/repo',
+        );
+    });
+
+    it('非 GitHub 回傳 null', () => {
+        expect(githubRepoUrl('git@gitlab.com:owner/repo.git')).toBeNull();
+    });
+});
+
+describe('formatLogMeta()', () => {
+    const base = {
+        date: '2026-10-09',
+        branch: 'perf/x',
+        baseSha: 'a'.repeat(40),
+        headSha: 'b'.repeat(40),
+        commits: [{ sha: 'b'.repeat(40), subject: 'perf: shrink html' }],
+    };
+
+    it('有 GitHub remote 時 commit 與範圍都是連結', () => {
+        const lines = formatLogMeta({
+            ...base,
+            repoUrl: 'https://github.com/o/r',
+            ref: 'docs/seo-diagnosis.md',
+        });
+        expect(lines).toContain(
+            `- 改動範圍：[aaaaaaa...bbbbbbb](https://github.com/o/r/compare/${base.baseSha}...${base.headSha})（1 個 commit）`,
+        );
+        expect(lines).toContain('- 相關項目：docs/seo-diagnosis.md');
+        expect(lines).toContain(
+            `    - [bbbbbbb](https://github.com/o/r/commit/${base.headSha}) perf: shrink html`,
+        );
+    });
+
+    it('沒有 remote 時改用純文字 sha，沒有 ref 時省略相關項目', () => {
+        const lines = formatLogMeta({ ...base, repoUrl: null, ref: null });
+        expect(lines).toContain('- 改動範圍：`aaaaaaa...bbbbbbb`（1 個 commit）');
+        expect(lines.some((line) => line.startsWith('- 相關項目'))).toBe(false);
+    });
+});
+
+describe('insertLogRow()', () => {
+    const index = [
+        '# 效能記錄',
+        '',
+        '| 日期 | 改動 | 相關項目 | 摘要 |',
+        '| --- | --- | --- | --- |',
+        '| old |',
+    ].join('\n');
+
+    it('新列插在分隔線後（新的在上），並跳脫表格中的 |', () => {
+        const result = insertLogRow(index, {
+            date: '2026-10-09',
+            title: 'a | b',
+            file: '2026-10-09-abc1234.md',
+            ref: null,
+            summary: '✅ HTML 傳輸量 5/5 頁',
+        });
+        const lines = result.split('\n');
+        expect(lines[4]).toBe(
+            '| 2026-10-09 | [a \\| b](./2026-10-09-abc1234.md) | — | ✅ HTML 傳輸量 5/5 頁 |',
+        );
+        expect(lines[5]).toBe('| old |');
+    });
+
+    it('找不到表格時拋錯', () => {
+        expect(() =>
+            insertLogRow('# 空', { date: '', title: '', file: '', ref: null, summary: '' }),
+        ).toThrow();
     });
 });
