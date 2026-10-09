@@ -25,23 +25,23 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 
 每個問題章節最後都有一段「TODO」checklist，記錄待辦事項與處理進度；做完一項就勾選，並在後面註記 commit。原本的證據、影響、修法都保留，讓後續開發知道這項工作的前因。
 
-| 章節                                     | 優先級 | 狀態                                   |
-| ---------------------------------------- | ------ | -------------------------------------- |
-| 建置失敗導致正式站停在舊版本             | P0     | 已修復，剩上線確認與失敗通知           |
-| 每頁內嵌 611 KB 文章資料                 | P0     | 已修復（`f77096f`），剩 PageSpeed 量測 |
-| 沒有 canonical；首頁 og:url 錯誤         | P1     | 未開始                                 |
-| Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 未開始                                 |
-| 社群分享卡與結構化資料不完整             | P1     | 未開始                                 |
-| CI 淺層 clone 讓「更新時間」失真         | P1     | 未開始                                 |
-| 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                                 |
-| 標籤與分類頁無法被索引                   | P2     | 未開始                                 |
-| URL 大小寫混用與底線                     | P2     | 未開始                                 |
-| 中文網頁字型                             | P2     | 已查明，決定維持現狀                   |
-| 第三方資源與圖片                         | P2     | 未開始                                 |
-| 全球華語讀者：簡體中文的觸及             | P2     | 未開始                                 |
-| AI 搜尋                                  | P2     | 未開始                                 |
-| 零碎項目                                 | P3     | 未開始                                 |
-| 文件同步                                 | —      | 未開始                                 |
+| 章節                                     | 優先級 | 狀態                                                          |
+| ---------------------------------------- | ------ | ------------------------------------------------------------- |
+| 建置失敗導致正式站停在舊版本             | P0     | 已修復，剩上線確認與失敗通知                                  |
+| 每頁內嵌 611 KB 文章資料                 | P0     | 已修復（`f77096f`、`a74fbd2`），剩 PageSpeed 量測與瀏覽器實測 |
+| 沒有 canonical；首頁 og:url 錯誤         | P1     | 未開始                                                        |
+| Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 未開始                                                        |
+| 社群分享卡與結構化資料不完整             | P1     | 未開始                                                        |
+| CI 淺層 clone 讓「更新時間」失真         | P1     | 未開始                                                        |
+| 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                                                        |
+| 標籤與分類頁無法被索引                   | P2     | 未開始                                                        |
+| URL 大小寫混用與底線                     | P2     | 未開始                                                        |
+| 中文網頁字型                             | P2     | 已查明，決定維持現狀                                          |
+| 第三方資源與圖片                         | P2     | 進行中（GIF 已處理，`2e4d25b`）                               |
+| 全球華語讀者：簡體中文的觸及             | P2     | 未開始                                                        |
+| AI 搜尋                                  | P2     | 未開始                                                        |
+| 零碎項目                                 | P3     | 未開始（新增 hydration mismatch）                             |
+| 文件同步                                 | —      | 進行中（文章資料流已完成）                                    |
 
 ## 最優先的五件事
 
@@ -145,6 +145,10 @@ TODO
       做法見 [how-this-blog-works.md](./how-this-blog-works.md) 的「例外：側欄分類樹用 data loader ＋ 動態 import」
 - [x] 列表頁側欄分類樹收合時不渲染文章連結（`BaseTreeview` 改 `v-if`）（`d9666ad`，記錄：[perf-log/2026-10-09-d9666ad](./perf-log/2026-10-09-d9666ad.md)）：
       和上一筆相比，列表頁 HTML 傳輸量 29.9 KB → 17.2 KB，總傳輸量約減 13–14 KB；JS 與 prefetch 不變，文章頁與 `pages/` 頁不受影響
+- [ ] 查證首頁 prefetch 仍比 base 多約 45 KB 的來源（`a74fbd2` 記錄的「其他傳輸量」）：推測是首頁列出的文章頁 page chunk
+      （每個約 3 KB brotli，含 `postNav`、`seriesPosts`／`suggestPosts`），確認後再決定要不要精簡 `seriesPosts` 的形狀
+- [ ] 瀏覽器實測 hydration 與 SPA 切頁：上下篇、系列目錄、`/pages/tags`、分頁。
+      已用 headless Chrome 驗過側欄分類樹展開與翻轉卡影片；其餘只驗過 SSR 輸出
 - [ ] （選做）`reading-time.data.ts` 把全部文章的閱讀時間打包進主 bundle，可改在 `transformPageData` 逐頁計算
 
 P1
@@ -364,6 +368,8 @@ TODO
 - [ ] VitePress 介面字串改中文（`skipToContentLabel`、`returnToTopLabel` 等）
 - [ ] 修正 description：10 篇少於 40 字、10 篇多於 160 字、2 篇重複
 - [ ] 站內建立完整作者頁，作為 `author.url`
+- [ ] 修正列表頁（`/`、`/dev/`）的 hydration mismatch：console 出現 `Hydration completed but contains mismatches.`。
+      master（`cb87c47`）就有，文章頁與 `/pages/tags` 沒有；原因未查（2026-10-09 發現）
 
 ## 內容策略與競爭力
 
@@ -481,7 +487,7 @@ TODO
 ### 第 2–3 週：head 與效能
 
 - canonical、修首頁 og:url、title 模板、分頁標題、工具頁描述
-- 文章列表改用 `createContentLoader`，量測前後 HTML 大小與 PageSpeed 分數
+- ~~文章列表改用 `createContentLoader`~~ 已改用 `transformPageData` 逐頁注入（`f77096f`），剩上線後量 PageSpeed 分數
 - 自動產生 OG 圖、twitter:card、BlogPosting／Person／BreadcrumbList
 
 ### 第 1–2 個月：內容
@@ -497,11 +503,12 @@ TODO
 - 依 CrUX 實測決定第三方腳本與圖片的進一步優化
 - 舊 URL 是否改小寫連字號
 
-依專案的 CLAUDE.md 慣例，實作上述架構變更時應同步更新文件：`docs/how-this-blog-works.md`（文章資料改用 data loader、標籤頁、hub 頁路由）、`docs/ci-cd.md`（fetch-depth、build 檢查、失敗通知）、`rules/frontmatter.md`（若新增 OG 圖或封面欄位），並可新增 `docs/seo.md` 記錄 head／結構化資料的設計決策。
+依專案的 CLAUDE.md 慣例，實作上述架構變更時應同步更新文件：`docs/how-this-blog-works.md`（文章資料流、標籤頁、hub 頁路由）、`docs/ci-cd.md`（fetch-depth、build 檢查、失敗通知）、`rules/frontmatter.md`（若新增 OG 圖或封面欄位），並可新增 `docs/seo.md` 記錄 head／結構化資料的設計決策。
 
 ### 文件同步 TODO
 
-- [ ] `docs/how-this-blog-works.md`：文章資料改用 data loader、靜態標籤頁、hub 頁路由
+- [x] `docs/how-this-blog-works.md`：文章資料流（「Build 時資料流」，`f77096f`、`a74fbd2`）
+- [ ] `docs/how-this-blog-works.md`：靜態標籤頁、hub 頁路由
 - [ ] `docs/ci-cd.md`：fetch-depth、build 檢查、失敗通知
 - [ ] `rules/frontmatter.md`：若新增 OG 圖或封面欄位
 - [ ] 新增 `docs/seo.md`，並補進 CLAUDE.md 的文件表格
