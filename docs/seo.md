@@ -37,6 +37,14 @@
 - 首頁：`title` 寫完整的描述性標題，並設 `titleTemplate: false`，避免品牌名重複。
 - 列表頁：`/dev/`、`/life/` 的 front matter 有中文 title 與 description；分頁（`*/page/[page].md`，`params.page > 1`）自動加「第 N 頁」。
 - 分頁的 description 若 front matter 沒寫，會先用站台 description 再加頁碼。
+- 列表頁第 1 頁由 `articles/{dev,life}/index.md` 產生，第 2 頁以後才由 `*/page/[page].md` 產生（`[page].paths.ts` 會濾掉第 1 頁）。改列表頁的 title／description 時，`index.md` 和 `[page].md` 兩邊都要改。
+- 列表頁的 H1 是 `components/page/SectionHero.vue` 的標題（首頁「Wen-Hsiu 的部落格」、`Dev：…`、`Life：…`），文字寫在元件的 `sectionMap`，不是 front matter。
+
+## Description 長度
+
+- 中文以 **60～80 字**為目標。Google 依像素寬度截斷（桌機約 920px），全形字大約 60～80 字就滿；夾雜英文時字數可以多一些。
+- SEO 檢查工具常見的「少於 120 字元」是以英文估算，不適用中文；寫到 120 個中文字反而會被截斷。
+- 不要寫出站上沒有的內容（例如 Life 沒有旅遊文就不寫「旅遊」），站上內容變多時再擴充。
 
 ## OG 分享圖（`.vitepress/plugins/og-image/`）
 

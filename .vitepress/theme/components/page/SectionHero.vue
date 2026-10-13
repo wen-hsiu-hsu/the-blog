@@ -6,7 +6,7 @@
     >
         <div class="flex items-center gap-3">
             <!-- <BaseIcon :icon="config.icon" size="size-4" :class="accentText" /> -->
-            <h2 class="!my-0 !py-0 !text-3xl font-bold leading-tight">{{ config.title }}</h2>
+            <h1 class="!my-0 !py-0 !text-3xl font-bold leading-tight">{{ config.title }}</h1>
         </div>
         <div class="flex items-center gap-3">
             <p class="!m-0 !p-0 text-neutral-500 dark:text-neutral-400">
@@ -33,22 +33,22 @@ const sectionMap: Record<
     { title: string; subtitle: string; icon: string; accent: string }
 > = {
     dev: {
-        title: 'Dev',
-        subtitle: '前端技術、踩坑紀錄與學習筆記',
+        title: 'Dev：前端技術與學習筆記',
+        subtitle: '技術分享、踩坑紀錄和筆記，不定期更新',
         icon: 'mynaui/terminal',
         accent: 'blue',
     },
     life: {
-        title: 'Life',
-        subtitle: '生活日常、電影、旅遊隨筆',
+        title: 'Life：生活日常、旅遊隨筆',
+        subtitle: '很少更新，讓我發發牢騷的地方',
         icon: 'mynaui/leaf',
         accent: 'life',
     },
 };
 
 const defaultConfig = {
-    title: '最新文章',
-    subtitle: '混合 Dev 和 Life 的所有最新內容',
+    title: 'Wen-Hsiu 的部落格',
+    subtitle: '學習筆記或日常生活記錄，這裡混合 Dev 和 Life 的最新內容',
     icon: 'mynaui/home',
     accent: 'neutral',
 };

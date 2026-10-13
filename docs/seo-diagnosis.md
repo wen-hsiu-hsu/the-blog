@@ -357,11 +357,17 @@ RSS
 
 無障礙
 
-9 張 markdown 圖片沒有 alt；`PostSupports.vue` 頭像沒有 alt；VitePress 介面字串仍是英文（Skip to content、Return to top），可用 `skipToContentLabel`、`returnToTopLabel` 等設定中文。
+9 張 markdown 圖片沒有 alt；`PostSupports.vue` 頭像沒有 alt；導覽列 logo 頭像的 alt 是空字串（已改成 `themeConfig.logo: { src, alt }`）；VitePress 介面字串仍是英文（Skip to content、Return to top），可用 `skipToContentLabel`、`returnToTopLabel` 等設定中文。
 
 描述
 
 10 篇 description 少於 40 字、10 篇多於 160 字，2 篇重複。
+
+首頁、`/dev/`、`/life/` 的 description 偏短（45／49／15 字），Life 還寫了站上沒有的「旅遊」。已改寫成 60～80 字左右，長度原則見 `docs/seo.md`「Description 長度」。
+
+H1（2026-10-13 補充）
+
+首頁、`/dev/`、`/life/` 與所有分頁原本沒有任何 H1：`SectionHero.vue` 的標題用的是 `<h2>`。原本「Use a single descriptive H1 ✓」只檢查了文章頁。已改成 `<h1>`，並把標題改成較具描述性的文字。
 
 關於頁
 
@@ -373,6 +379,9 @@ TODO
 - [ ] 9 張 markdown 圖片補 alt；`PostSupports.vue` 頭像補 alt
 - [ ] VitePress 介面字串改中文（`skipToContentLabel`、`returnToTopLabel` 等）
 - [ ] 修正 description：10 篇少於 40 字、10 篇多於 160 字、2 篇重複
+- [x] 首頁、`/dev/`、`/life/` 的 description 改寫成 60～80 字
+- [x] 列表頁（首頁、`/dev/`、`/life/`、分頁）補 H1：`SectionHero.vue` 的 h2 改 h1
+- [x] 導覽列 logo 補 alt
 - [ ] 站內建立完整作者頁，作為 `author.url`
 - [ ] 修正列表頁（`/`、`/dev/`）的 hydration mismatch：console 出現 `Hydration completed but contains mismatches.`。
       master（`cb87c47`）就有，文章頁與 `/pages/tags` 沒有；原因未查（2026-10-09 發現）
@@ -467,7 +476,7 @@ TODO
 | Implement valid Article structured data  | △    | 缺 image、description                                 |
 | Implement comprehensive author markup    | ✗    | 只有 name，無 url、sameAs                             |
 | Implement valid BreadcrumbList schema    | ✗    | 系列文章很適合加                                      |
-| Use a single descriptive H1              | ✓    | 輸出頁 H1 僅 1 個                                     |
+| Use a single descriptive H1              | ✓    | 文章頁原本就有；列表頁原本為 0 個，已補（見零碎項目） |
 | Create and submit an XML sitemap         | △    | 有；lastmod 可能失真                                  |
 | Show published and updated dates         | △    | 有顯示；更新時間可能失真                              |
 | Publish a robots.txt file                | ✓    | 有並指向 sitemap                                      |

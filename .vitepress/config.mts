@@ -18,7 +18,7 @@ import { createOgImageHead } from './plugins/og-image';
 const hostname = 'https://hsiu.soy';
 const title = "Wen-Hsiu's Blog";
 const description =
-    '前端工程師的個人部落格，主要撰寫技術、生活分享與個人筆記的文章。程式碼之外，還有生活的藝術';
+    '前端工程師許文修的部落格，整理 JavaScript、TypeScript、Web 效能與測試的系列筆記，也分享開發工具的踩坑紀錄，以及程式碼之外的生活與電影心得。';
 const lang = 'zh-TW';
 const rssFileName = 'feed.rss';
 
@@ -117,7 +117,10 @@ export default async () => {
                 },
             },
             website: 'https://hsiu.soy', //copyright link
-            logo: '/avatar-pixel-v2-mini.jpg',
+            logo: {
+                src: '/avatar-pixel-v2-mini.jpg',
+                alt: '許文修的頭',
+            },
             comment: {
                 repo: 'wen-hsiu-hsu/the-blog',
                 issueTerm: 'pathname',
