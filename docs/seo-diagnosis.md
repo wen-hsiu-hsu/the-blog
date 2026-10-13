@@ -32,7 +32,7 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 | 沒有 canonical；首頁 og:url 錯誤         | P1     | 已完成（`574a6d5`）                                           |
 | Title 模板沒有品牌名，首頁標題是「首頁」 | P1     | 已完成（`574a6d5`）                                           |
 | 社群分享卡與結構化資料不完整             | P1     | 進行中（`og:site_name` 已補，`574a6d5`）                      |
-| CI 淺層 clone 讓「更新時間」失真         | P1     | 未開始                                                        |
+| CI 淺層 clone 讓「更新時間」失真         | P1     | 已修改，待部署後驗證 sitemap lastmod                          |
 | 內容高度集中在課程筆記，原創性不足       | P1     | 未開始                                                        |
 | 標籤與分類頁無法被索引                   | P2     | 未開始                                                        |
 | URL 大小寫混用與底線                     | P2     | 未開始                                                        |
@@ -48,7 +48,7 @@ hsiu.soy · 持續！修鍊之路 · 2026-10-08
 1. ✅ 已修復（`eda6f8a`、`57ddd15`）P0**修好部署。**2 篇文章的 `<details>` 區塊內含 `` `Promise<Type>` `` 之類的泛型語法，Vue 把它當成未閉合的 HTML 標籤，整站 build 失敗。我在本機暫時修正這 2 處後 build 即成功（已還原，未 commit）。
 2. P0**把文章列表移出 `themeConfig`。**每一頁都夾帶 611 KB 的 JSON，文章頁 HTML 690 KB、首頁 980 KB，且會隨文章數線性成長。
 3. ✅ 已完成 canonical／og:url／title（`574a6d5`），og:image 另案進行 P1**補齊 head 基本盤：**canonical、og:image／twitter:card、修正首頁 `og:url`、改 title 模板（目前品牌名完全沒出現在 title）。
-4. P1**CI 改用完整 git 歷史（`fetch-depth: 0`）**，否則 lastUpdated、`dateModified`、sitemap `lastmod` 很可能全部是部署當下的時間（推論）。
+4. ✅ 已修改，待部署驗證 P1**CI 改用完整 git 歷史（`fetch-depth: 0`）**，否則 lastUpdated、`dateModified`、sitemap `lastmod` 很可能全部是部署當下的時間（已確認）。
 5. P1**為內容加上「原創價值層」：**系列 hub 頁＋個人實作／比較／踩坑。98% 是公開課程筆記且以每日 1 篇的速度發布，是目前最大的競爭力與政策風險。
 
 ## 技術 SEO
@@ -231,7 +231,7 @@ TODO
 
 P1
 
-### CI 淺層 clone 讓「更新時間」失真（推論）
+### CI 淺層 clone 讓「更新時間」失真
 
 證據
 
@@ -240,6 +240,8 @@ P1
 影響
 
 頁面上的「最後更新時間」、`article:modified_time`、JSON-LD `dateModified`、sitemap `lastmod` 可能全部是同一個時間。Google 會忽略不可信的 lastmod。這是依機制推論；可以打開線上 sitemap.xml 看 lastmod 是否全部相同來確認。
+
+> 已確認（2026-10-13）：線上 sitemap.xml 的 337 筆 lastmod 全部是 2026-10-13，即部署當天。
 
 修法
 
@@ -255,7 +257,7 @@ TODO
 
 > 補充（2026-10-08）：`auto-publish.yml` 已經設定 `fetch-depth: 0`，只有 `deploy.yml` 需要改。
 
-- [ ] `deploy.yml` 兩個 deploy job 的 `actions/checkout@v4` 加 `fetch-depth: 0`
+- [x] `deploy.yml` 兩個 deploy job 的 `actions/checkout@v4` 加 `fetch-depth: 0`
 - [ ] 部署後檢查線上 sitemap.xml 的 lastmod 是否不再全部相同
 - [ ] 驗證 Search Console、提交 sitemap、確認索引涵蓋率（其他章節「依數據決定」的項目都需要這份數據）
 
@@ -485,7 +487,7 @@ TODO
 ### 第 1 週：止血
 
 - ~~修正 2 篇文章的泛型語法並重新部署~~（已完成，`eda6f8a`）；在草稿驗證流程加入檢查（已加入 HTML 標籤驗證規則 `57ddd15`，build 檢查為選做）
-- deploy job 加 `fetch-depth: 0`
+- ~~deploy job 加 `fetch-depth: 0`~~（已完成）
 - 驗證 Search Console，提交 sitemap，確認索引涵蓋率
 
 ### 第 2–3 週：head 與效能
@@ -513,7 +515,7 @@ TODO
 
 - [x] `docs/how-this-blog-works.md`：文章資料流（「Build 時資料流」，`f77096f`、`a74fbd2`）
 - [ ] `docs/how-this-blog-works.md`：靜態標籤頁、hub 頁路由
-- [ ] `docs/ci-cd.md`：fetch-depth、build 檢查、失敗通知
+- [ ] `docs/ci-cd.md`：~~fetch-depth~~（已完成）、build 檢查、失敗通知
 - [ ] `rules/frontmatter.md`：若新增 OG 圖或封面欄位
 - [x] 新增 `docs/seo.md`，並補進 CLAUDE.md 的文件表格（head 的 URL 與 title 規則）
 

@@ -61,13 +61,13 @@ npm test                # Vitest 單元測試，邏輯與 deploy.yml 的 test jo
 
 - **依賴**：`needs: test`，測試失敗則自動 skip，不會部署
 - **條件**：只在 push 到 `master` 時執行（PR 不觸發）
-- 步驟：`npm install` → `npm run build` → wrangler 部署到 Cloudflare Pages
+- 步驟：`checkout fetch-depth: 0` → `npm install` → `npm run build` → wrangler 部署到 Cloudflare Pages
 
 #### deploy-after-publish job
 
 - **條件**：`workflow_run` 事件且 auto-publish 以 `success` 結束
 - **用途**：解決 `GITHUB_TOKEN` push 無法觸發其他 workflow 的限制（見下方說明）
-- 步驟：`checkout ref: master` → `npm install` → `npm run build` → wrangler 部署
+- 步驟：`checkout ref: master, fetch-depth: 0` → `npm install` → `npm run build` → wrangler 部署
 
 ```
 # 一般 push 到 master
@@ -149,3 +149,8 @@ CF Pages Dashboard > project > Settings > Builds & deployments > **Pause deploym
   在 Ubuntu runner 上 `npm ci` 會報錯（missing `@emnapi/core`、`@emnapi/runtime`）。
 - build 產出在 `.vitepress/dist`（VitePress 預設路徑）。
 - `deploy-after-publish` checkout 時需明確指定 `ref: master`，因為 `workflow_run` 事件預設 checkout 的是觸發 workflow 的 ref，不一定是最新的 master。
+- 會 build 的 job（`deploy`、`deploy-after-publish`、`auto-publish`）checkout 都要設 `fetch-depth: 0`。
+  VitePress 用 `git log` 取每個檔案的最後 commit 時間，作為頁面的 lastUpdated、`article:modified_time`、
+  JSON-LD `dateModified` 和 sitemap `lastmod`。`actions/checkout` 預設只抓 1 個 commit，
+  這時所有頁面都會拿到同一個時間（2026-10-13 線上 sitemap 的 337 筆 lastmod 全是部署當天），
+  Google 會忽略這種不可信的 lastmod。只跑 `npm test` 的 test job 不需要。
