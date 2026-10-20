@@ -13,12 +13,7 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - TypeQueries
-    - Keyof
-    - Typeof
-    - IndexedAccessTypes
-    - UnionTypes
-    - IntersectionTypes
-    - ClassStaticSide
+    - TypeOf
 ---
 
 # TypeScript 型別查詢：用 keyof、typeof 與索引存取型別從既有值反推型別

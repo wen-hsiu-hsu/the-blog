@@ -14,11 +14,7 @@ tags:
     - JavaScript
     - Vitest
     - UnhappyPath
-    - ErrorHandling
-    - UnitTesting
-    - TypeCoercion
     - DefaultParameters
-    - Refactoring
 ---
 
 # 邊界案例練習：讓 subtract 吃陣列、正確處理 undefined 與 null，再決定除以零該怎麼辦

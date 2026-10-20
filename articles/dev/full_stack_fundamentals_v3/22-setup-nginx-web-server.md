@@ -12,11 +12,7 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - Nginx
-    - WebServer
-    - ReverseProxy
-    - Apache
-    - NginxConfig
-    - SitesAvailable
+    - Proxy
 ---
 
 # Nginx 安裝與設定檔解析：為什麼需要反向代理，root、location、directive 結構全拆解

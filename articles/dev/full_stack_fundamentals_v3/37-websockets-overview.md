@@ -11,12 +11,10 @@ chapter: 'Realtime & Databases'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - WebSocket
     - Nginx
     - Express
+    - WebSocket
     - ProxyPass
-    - UpgradeHeader
-    - PersistentConnection
 ---
 
 # WebSocket 與 HTTP 連線方式的差異、Nginx 加 Upgrade 標頭、建立 Express 伺服器

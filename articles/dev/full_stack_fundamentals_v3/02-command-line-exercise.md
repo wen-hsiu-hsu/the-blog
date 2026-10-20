@@ -13,7 +13,6 @@ tags:
     - fullStackFundamentals
     - CLI
     - Terminal
-    - FileSystem
 ---
 
 # 命令列入門：為什麼要學它，以及基本檔案操作指令

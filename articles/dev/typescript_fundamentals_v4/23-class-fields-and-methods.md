@@ -12,12 +12,8 @@ tags:
     - frontendMasters
     - typescriptFundamentals
     - TypeScript
-    - Classes
-    - ClassFields
-    - StaticMembers
-    - ClassStaticSide
-    - ClassFieldInitializers
-    - StaticBlock
+    - Class
+    - OOP
 ---
 
 # TypeScript class 欄位、方法與靜態成員：從必須預先宣告到 static block 非同步初始化

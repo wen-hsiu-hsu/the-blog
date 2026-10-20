@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Recursion
-    - Iteration
-    - Factorial
     - BaseCase
-    - Readability
-    - ImperativeProgramming
 ---
 
 # 用遞迴計算階乘：比較 while 迴圈與遞迴寫法，哪個比較好讀？

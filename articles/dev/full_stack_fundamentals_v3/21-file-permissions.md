@@ -11,13 +11,9 @@ chapter: 'The Internet'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Linux
-    - Chmod
-    - FilePermissions
     - SSH
-    - SSHDaemon
-    - AuthLog
-    - RootLogin
+    - Linux
+    - FilePermissions
 ---
 
 # 用 chmod 644 修正 authorized_keys 權限並停用 root 登入：關閉伺服器最後一道安全破口

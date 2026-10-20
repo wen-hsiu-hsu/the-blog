@@ -12,14 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - HigherOrderFunction
     - Recursion
-    - BaseCase
-    - Map
-    - Concat
-    - TransformationFunction
-    - DeclarativeProgramming
 ---
 
 # 用遞迴實作 map：把轉換後的 head 接上 tail 的遞迴結果

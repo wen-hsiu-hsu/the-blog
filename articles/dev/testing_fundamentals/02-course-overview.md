@@ -13,11 +13,8 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - Mocking
+    - Mocks
     - TestCoverage
-    - TestRunner
-    - DOMTesting
-    - FlakyTests
 ---
 
 # 測試基礎：課程規劃總覽，從暖身測試逐步升溫到邊界案例，並認識 Mocking 陷阱與 Vitest 工具選擇

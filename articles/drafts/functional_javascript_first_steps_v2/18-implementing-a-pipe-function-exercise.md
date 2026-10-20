@@ -12,15 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - FunctionComposition
     - Pipe
-    - Recursion
-    - BaseCase
-    - SpreadOperator
-    - RestParameters
-    - IdentityFunction
-    - HigherOrderFunction
 ---
 
 # 實作 pipe 函數：用遞迴與展開運算子把多個函數由左到右串成管線

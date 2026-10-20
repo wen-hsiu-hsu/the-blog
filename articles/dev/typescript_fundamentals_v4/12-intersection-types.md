@@ -14,8 +14,6 @@ tags:
     - TypeScript
     - IntersectionTypes
     - UnionTypes
-    - ObjectAssign
-    - SpreadOperator
 ---
 
 # TypeScript 交集型別實戰：用 printEven 等函式驗證嚴格但通用的型別

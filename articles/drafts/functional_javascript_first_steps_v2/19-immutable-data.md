@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Immutability
     - Mutation
-    - State
-    - Map
-    - ImmutableDataStructure
-    - PersistentDataStructure
 ---
 
 # 不可變資料：用 map 取代原地修改，認識持久化資料結構

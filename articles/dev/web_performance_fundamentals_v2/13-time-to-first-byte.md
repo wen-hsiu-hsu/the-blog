@@ -11,7 +11,6 @@ chapter: 'Core Web Vitals & Others Performance Metrics'
 tags:
     - frontendMasters
     - webPerformanceFundamentals
-    - WaterfallChart
     - HTTP
 ---
 

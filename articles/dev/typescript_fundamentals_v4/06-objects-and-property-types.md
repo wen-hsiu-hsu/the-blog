@@ -12,12 +12,8 @@ tags:
     - frontendMasters
     - typescriptFundamentals
     - TypeScript
-    - ObjectTypes
-    - OptionalProperties
     - TypeGuards
     - Narrowing
-    - ExcessPropertyChecking
-    - SpreadOperator
 ---
 
 # TypeScript 物件型別、選擇性屬性與型別窄化：以 printCar 函式為例解析

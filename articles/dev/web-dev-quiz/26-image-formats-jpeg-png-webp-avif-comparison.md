@@ -11,7 +11,6 @@ tags:
     - frontendMasters
     - advancedWebDevelopmentQuiz
     - WebP
-    - AVIF
     - Performance
 ---
 

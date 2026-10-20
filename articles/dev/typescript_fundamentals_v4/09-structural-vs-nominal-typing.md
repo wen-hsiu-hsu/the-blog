@@ -14,10 +14,6 @@ tags:
     - TypeScript
     - StructuralTyping
     - NominalTyping
-    - TypeSystem
-    - TypeEquivalence
-    - DuckTyping
-    - InstanceofOperator
 ---
 
 # TypeScript 結構型別 vs 名義型別：printCar 為什麼不管物件從哪裡來

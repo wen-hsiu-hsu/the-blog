@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Immutability
-    - Immer
     - ImmutableDataStructure
-    - PersistentDataStructure
-    - HigherOrderFunction
-    - ImmutableJS
 ---
 
 # 用 Immer 處理不可變資料：在 produce 裡照常 push，原陣列不變

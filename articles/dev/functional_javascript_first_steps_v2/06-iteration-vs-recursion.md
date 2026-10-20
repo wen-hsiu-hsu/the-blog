@@ -12,12 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Recursion
     - Iteration
-    - State
-    - StackOverflow
-    - BaseCase
 ---
 
 # 迭代 vs 遞迴：用遞迴取代 for 迴圈，看懂 base case 與無狀態

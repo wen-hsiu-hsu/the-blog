@@ -12,12 +12,7 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - Docker
-    - Dockerfile
-    - AlpineLinux
-    - DockerBuild
-    - NonRootUser
-    - LayerCaching
-    - PortMapping
+    - Container
 ---
 
 # 寫第一個 Dockerfile：Alpine 基礎映像、node 使用者權限、COPY 快取順序、多實例部署

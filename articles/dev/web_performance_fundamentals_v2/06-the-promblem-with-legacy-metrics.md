@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - CoreWebVitals
-    - DOMContentLoaded
 ---
 
 # 傳統指標的局限與 Core Web Vitals 的誕生

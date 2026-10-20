@@ -11,14 +11,8 @@ chapter: 'Continuous Integration & Deployment'
 tags:
     - frontendMasters
     - fullStackFundamentals
+    - Bash
     - CICD
-    - Cron
-    - Crontab
-    - BashScript
-    - Shebang
-    - Syslog
-    - Logger
-    - CrontabGuru
 ---
 
 # 用 cron 打造假 CI/CD：bash script 自動 git pull，crontab.guru 排程

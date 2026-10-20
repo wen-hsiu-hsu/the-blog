@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - HTTP
-    - Caching
 ---
 
 # 改善回訪使用者體驗：瀏覽器快取策略

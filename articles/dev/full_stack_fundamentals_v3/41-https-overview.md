@@ -13,10 +13,7 @@ tags:
     - fullStackFundamentals
     - HTTP
     - HTTPS
-    - HTTPHeader
-    - StatusCode
-    - Encryption
-    - ManInTheMiddleAttack
+    - Security
 ---
 
 # HTTP 請求與回應結構完整拆解：常見標頭、狀態碼分類，以及為什麼一定要改用 HTTPS 加密連線傳輸

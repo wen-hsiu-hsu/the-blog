@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - FCP
-    - ResourceHints
 ---
 
 # 改善 FCP：資源預載（Preconnect 與 Preload）

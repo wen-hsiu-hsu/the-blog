@@ -12,10 +12,8 @@ tags:
     - frontendMasters
     - typescriptFundamentals
     - TypeScript
-    - ArrayTypes
     - Tuples
     - ReadonlyModifier
-    - LiteralTypes
 ---
 
 # TypeScript 陣列型別與 tuple：固定長度結構、readonly 保護與型別安全的落差

@@ -14,7 +14,6 @@ tags:
     - TypeScript
     - VoidType
     - UnitType
-    - LiteralTypes
 ---
 
 # TypeScript void 型別：為什麼回呼參數要用 void 而不是 undefined

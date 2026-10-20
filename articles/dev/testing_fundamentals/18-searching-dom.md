@@ -15,10 +15,6 @@ tags:
     - Vitest
     - TestingLibrary
     - Accessibility
-    - ByLabelText
-    - ByAltText
-    - ByPlaceholderText
-    - AsyncQueries
 ---
 
 # Testing Library 查詢方法全貌：get、getAll、find 的差異與無障礙友善選擇器

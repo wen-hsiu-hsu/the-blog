@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - CLI
-    - Terminal
 ---
 
 # 命令列練習解答：從基礎導覽指令到 man page 的使用習慣

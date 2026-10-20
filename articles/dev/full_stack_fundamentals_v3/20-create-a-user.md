@@ -11,13 +11,9 @@ chapter: 'The Internet'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Linux
-    - Root
-    - Sudo
-    - AddUser
-    - Usermod
     - SSH
-    - AuthorizedKeys
+    - Linux
+    - Sudo
 ---
 
 # 別再用 root 登入伺服器：建立新使用者、加進 sudo 群組取得權限，並手動設定 SSH 金鑰讓新帳號能登入

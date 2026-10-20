@@ -13,12 +13,9 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - TestingLibrary
     - React
+    - TestingLibrary
     - DOMTesting
-    - DataTestId
-    - JestDom
-    - TestingPlayground
 ---
 
 # Accident Counter 實戰：用 data-testid 與 jest-dom matcher 測試真實元件

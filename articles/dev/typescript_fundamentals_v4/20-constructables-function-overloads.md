@@ -14,7 +14,6 @@ tags:
     - TypeScript
     - ConstructSignature
     - FunctionOverloads
-    - CallSignature
 ---
 
 # TypeScript construct signature 與函式多載：用 new 與多個函式頭綁定參數關聯

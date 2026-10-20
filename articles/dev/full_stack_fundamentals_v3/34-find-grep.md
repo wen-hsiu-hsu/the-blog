@@ -11,11 +11,7 @@ chapter: 'Continuous Integration & Deployment'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Find
-    - Grep
-    - Zgrep
     - Sudo
-    - Ps
     - Pipe
 ---
 

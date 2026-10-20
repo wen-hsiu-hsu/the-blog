@@ -11,10 +11,9 @@ chapter: 'Realtime & Databases'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - HTTP2
     - Nginx
-    - Multiplexing
-    - NetworkInspector
+    - HTTP
+    - Performance
 ---
 
 # 在 Nginx 開啟 HTTP/2：一個關鍵字換來 Multiplexing，用 Network 面板驗證協定

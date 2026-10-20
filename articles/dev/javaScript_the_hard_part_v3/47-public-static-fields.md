@@ -11,7 +11,6 @@ chapter: 'Classes & Prototypes (OOP)'
 tags:
     - JavaScript
     - OOP
-    - Prototype
     - Class
     - frontendMasters
     - javaScriptTheHardPartsV3

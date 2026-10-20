@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - RealUserMonitoring
-    - DevTools
 ---
 
 # 設定效能目標：認識你的真實使用者

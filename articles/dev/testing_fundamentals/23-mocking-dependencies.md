@@ -13,14 +13,8 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - TestDoubles
     - Mocks
-    - SpyOn
-    - StubEnv
-    - ViMock
-    - Automock
     - DependencyInjection
-    - DefaultParameters
 ---
 
 # vi.mock 整個模組 vs 依賴注入：重構一個難測的 log 函式，擺脫 vi.stubEnv 權宜之計

@@ -14,7 +14,6 @@ tags:
     - deepJavaScriptFoundationsV3
     - Polyfill
     - NaN
-    - NegativeZero
 ---
 
 # `Object.is()` Polyfill 解題解析

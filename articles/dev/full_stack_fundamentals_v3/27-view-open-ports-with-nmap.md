@@ -13,10 +13,6 @@ tags:
     - fullStackFundamentals
     - Security
     - Port
-    - Nmap
-    - VPN
-    - PortCollision
-    - WellKnownPorts
 ---
 
 # 什麼是連接埠（Port）：常見服務對應的埠號，用 nmap 掃描伺服器找出不該開放的 3000 埠

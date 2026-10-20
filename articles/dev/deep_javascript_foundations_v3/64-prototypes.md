@@ -14,7 +14,6 @@ tags:
     - deepJavaScriptFoundationsV3
     - PrototypeChain
     - OOP
-    - ClassSyntax
 ---
 
 # 原型系統：連結而非複製

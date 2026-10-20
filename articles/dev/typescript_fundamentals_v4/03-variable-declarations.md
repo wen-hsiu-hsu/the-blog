@@ -14,10 +14,6 @@ tags:
     - TypeScript
     - TypeInference
     - LiteralTypes
-    - ImplicitAny
-    - TypeAnnotations
-    - TypeCasting
-    - AsConst
 ---
 
 # TypeScript 變數宣告與型別推斷：let/const 差異、字面值型別與 implicit any

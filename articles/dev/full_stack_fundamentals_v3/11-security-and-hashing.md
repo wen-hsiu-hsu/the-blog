@@ -11,14 +11,9 @@ chapter: 'Operating Systems'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Security
     - SSH
+    - Security
     - Hashing
-    - MD5
-    - OpenSSL
-    - PasswordManager
-    - DictionaryAttack
-    - RainbowTable
 ---
 
 # 為什麼伺服器不能用密碼登入：SSH 金鑰、雜湊與 MD5 彩虹表攻擊

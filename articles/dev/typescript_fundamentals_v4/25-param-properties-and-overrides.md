@@ -14,7 +14,6 @@ tags:
     - TypeScript
     - ParamProperties
     - OverrideKeyword
-    - NoImplicitOverride
 ---
 
 # TypeScript 參數屬性與 override：精簡建構子寫法，並用編譯期檢查抓出拼字錯誤與重構遺漏

@@ -13,10 +13,7 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - AccessModifiers
-    - PrivateFields
-    - TypeGuards
     - ReadonlyModifier
-    - PrivateFieldPresenceCheck
 ---
 
 # TypeScript 存取修飾詞：private/protected 誠實制度、真正私有的 # 欄位與 readonly

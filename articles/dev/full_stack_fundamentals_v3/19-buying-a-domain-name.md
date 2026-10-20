@@ -11,15 +11,9 @@ chapter: 'The Internet'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - DomainName
-    - Namecheap
-    - DigitalOcean
+    - DNS
     - Nameserver
     - ARecord
-    - TLD
-    - EmailForwarding
-    - DomainPrivacy
-    - TwoFactorAuthentication
 ---
 
 # 實際購買網域名稱：用 Namecheap 買下網域，設定 DigitalOcean 名稱伺服器與 A 記錄

@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - HTTP
-    - NetworkPanel
 ---
 
 # 改善 TTFB：HTTP 協議演進

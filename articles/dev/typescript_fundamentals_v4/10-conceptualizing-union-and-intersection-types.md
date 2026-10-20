@@ -14,7 +14,6 @@ tags:
     - TypeScript
     - UnionTypes
     - IntersectionTypes
-    - LiteralTypes
 ---
 
 # TypeScript 聯集與交集型別：用集合思維理解 | 與 & 的差異

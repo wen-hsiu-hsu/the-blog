@@ -14,10 +14,7 @@ tags:
     - JavaScript
     - Vitest
     - UnhappyPath
-    - ErrorHandling
     - TypeCoercion
-    - Assertions
-    - UnitTesting
 ---
 
 # 測試無效輸入：從字串解析、NaN 判斷到 toThrow，練習堵住程式碼裡容易被忽略的邏輯漏洞與盲點

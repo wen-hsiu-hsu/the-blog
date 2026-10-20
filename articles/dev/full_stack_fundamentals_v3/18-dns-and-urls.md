@@ -13,12 +13,7 @@ tags:
     - fullStackFundamentals
     - DNS
     - Nameserver
-    - Nslookup
-    - Dig
-    - URL
     - TLD
-    - ICANN
-    - Cybersquatting
 ---
 
 # DNS 是怎麼把網域轉成 IP 的：nslookup、dig 實測，以及 URL 結構與網域搶註爭議

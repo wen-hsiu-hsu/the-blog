@@ -13,7 +13,6 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - TypeAnnotations
-    - ExplicitReturnTypes
 ---
 
 # TypeScript 函式回傳型別最佳實踐：明確標註讓型別錯誤集中在宣告處，而非散落到所有呼叫端

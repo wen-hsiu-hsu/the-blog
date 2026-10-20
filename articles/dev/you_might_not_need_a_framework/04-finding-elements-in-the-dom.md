@@ -13,7 +13,6 @@ tags:
     - frontendMasters
     - youMightNotNeedAFramework
     - DOM
-    - WebAPI
 ---
 
 # 選取 DOM 元素：方法、回傳型別與操作能力

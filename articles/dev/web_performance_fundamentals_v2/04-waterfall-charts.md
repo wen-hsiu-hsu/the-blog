@@ -12,8 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - WaterfallChart
-    - DevTools
-    - NetworkPanel
 ---
 
 # 如何閱讀瀑布圖（Waterfall Chart）

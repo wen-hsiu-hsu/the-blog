@@ -11,13 +11,8 @@ chapter: 'Realtime & Databases'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Database
     - SQL
-    - RelationalDatabase
-    - PrimaryKey
-    - ForeignKey
-    - JOIN
-    - NoSQL
+    - Database
 ---
 
 # 關聯式資料庫概觀：為什麼不能只把資料存成一個檔案，用資料表、主鍵、外鍵、JOIN 串接多張表查詢資料

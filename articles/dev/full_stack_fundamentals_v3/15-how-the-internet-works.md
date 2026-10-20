@@ -11,16 +11,8 @@ chapter: 'The Internet'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Internet
     - Networking
-    - IPAddress
-    - ISP
-    - Router
-    - LoadBalancer
     - Backbone
-    - DataCenter
-    - IPv4
-    - IPv6
 ---
 
 # 網路是怎麼運作的：從網路卡、路由器、ISP 骨幹到伺服器的請求路徑，兼談 IP 位址與 IPv4、IPv6 差異

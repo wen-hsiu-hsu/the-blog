@@ -14,10 +14,6 @@ tags:
     - JavaScript
     - Playwright
     - EndToEndTesting
-    - BrowserAutomation
-    - Locators
-    - ToBeVisible
-    - Actionability
 ---
 
 # Playwright 測 Accident Counter：locator 是惰性的，光呼叫不等於有驗證

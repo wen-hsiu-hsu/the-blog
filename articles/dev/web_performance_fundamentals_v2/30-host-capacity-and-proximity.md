@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - HTTP
-    - NetworkPanel
 ---
 
 # 改善 TTFB：伺服器容量、地理位置與 CDN

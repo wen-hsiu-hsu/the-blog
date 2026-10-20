@@ -14,7 +14,6 @@ tags:
     - JavaScript
     - Vitest
     - TestRunner
-    - AsyncJavaScript
     - Assertions
 ---
 

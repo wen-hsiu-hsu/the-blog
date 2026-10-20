@@ -12,14 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Immutability
     - Mutation
-    - SpreadOperator
-    - Concat
-    - Slice
-    - ShallowCopy
-    - MethodChaining
 ---
 
 # 不改原陣列的 push、pop 與 update：展開運算子、slice、map

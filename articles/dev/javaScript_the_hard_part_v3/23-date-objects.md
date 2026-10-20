@@ -10,7 +10,6 @@ order: 23
 chapter: 'Type Coercion & Metaprogramming'
 tags:
     - JavaScript
-    - Date
     - frontendMasters
     - javaScriptTheHardPartsV3
 ---

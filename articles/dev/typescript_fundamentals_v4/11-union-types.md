@@ -13,12 +13,7 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - UnionTypes
-    - TypeAlias
-    - Tuples
     - TypeGuards
-    - Narrowing
-    - DiscriminatedUnions
-    - LiteralTypes
 ---
 
 # TypeScript 聯集型別實戰：型別別名、控制流程回傳值、tuple 屬性限制、instanceof 窄化與判別聯集

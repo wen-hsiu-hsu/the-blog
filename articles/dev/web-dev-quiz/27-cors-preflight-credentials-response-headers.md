@@ -10,7 +10,6 @@ section: dev
 tags:
     - advancedWebDevelopmentQuiz
     - frontendMasters
-    - CORS
     - HTTP
 ---
 

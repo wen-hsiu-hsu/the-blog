@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Recursion
-    - BaseCase
-    - SVG
     - PureFunction
-    - TemplateLiteral
-    - DeclarativeProgramming
 ---
 
 # 遞迴畫圖練習：用 SVG 與模板字串畫出層層交替的菱形圖案

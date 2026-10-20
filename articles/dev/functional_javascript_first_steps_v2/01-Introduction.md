@@ -14,7 +14,6 @@ tags:
     - JavaScript
     - FunctionalProgramming
     - PureFunction
-    - ProgrammingParadigm
 ---
 
 # 函數式程式設計入門：純函數為核心，用 JavaScript 跨出 Functional Programming 第一步

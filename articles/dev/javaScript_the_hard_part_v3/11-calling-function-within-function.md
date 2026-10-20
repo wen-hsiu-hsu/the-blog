@@ -12,7 +12,6 @@ tags:
     - JavaScript
     - Closure
     - Scope
-    - ExecutionContext
     - frontendMasters
     - javaScriptTheHardPartsV3
 ---

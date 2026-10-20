@@ -11,13 +11,8 @@ chapter: 'Server'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Server
     - VPS
-    - DigitalOcean
-    - Droplet
-    - CloudComputing
     - Ubuntu
-    - DevOps
 ---
 
 # 實際購買一台 VPS：DigitalOcean Droplet 建立流程，地區與 Ubuntu LTS 作業系統怎麼選

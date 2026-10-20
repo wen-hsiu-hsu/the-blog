@@ -12,14 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Recursion
     - Performance
-    - CallStack
-    - StackOverflow
-    - TailCallOptimization
-    - TailRecursion
-    - Fibonacci
 ---
 
 # 遞迴的效能問題：call stack 如何拖慢遞迴，以及尾呼叫最佳化

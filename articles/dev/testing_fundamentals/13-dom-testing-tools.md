@@ -13,9 +13,9 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - DOMTesting
     - JSDOM
     - HappyDOM
+    - DOMTesting
 ---
 
 # DOM 測試工具：Node 裡沒有瀏覽器，用 JSDOM 或 HappyDOM 假裝有一個真瀏覽器

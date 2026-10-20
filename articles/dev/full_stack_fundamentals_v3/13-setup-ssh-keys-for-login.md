@@ -11,12 +11,8 @@ chapter: 'Operating Systems'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Security
     - SSH
-    - PublicKeyCryptography
-    - AsymmetricEncryption
-    - Passphrase
-    - DigitalOcean
+    - Security
 ---
 
 # 實作 SSH 金鑰登入：公鑰私鑰原理、ssh-keygen 產生金鑰，到連上 DigitalOcean 伺服器

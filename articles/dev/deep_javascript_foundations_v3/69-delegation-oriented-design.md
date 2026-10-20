@@ -14,7 +14,6 @@ tags:
     - deepJavaScriptFoundationsV3
     - PrototypeChain
     - OOP
-    - ThisKeyword
 ---
 
 # 委派導向設計：從父子繼承到平行協作

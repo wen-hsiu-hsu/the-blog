@@ -13,9 +13,6 @@ tags:
     - fullStackFundamentals
     - Nginx
     - Redirection
-    - Gzip
-    - Compression
-    - Hashing
 ---
 
 # Nginx 路徑重導向與 Gzip 壓縮：壓縮等級為什麼設 6 不設 9，圖片、音訊檔案為什麼壓不動

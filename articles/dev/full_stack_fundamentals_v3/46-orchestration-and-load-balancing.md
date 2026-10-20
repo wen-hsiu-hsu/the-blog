@@ -11,14 +11,8 @@ chapter: 'Containers'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Orchestration
-    - Kubernetes
-    - LoadBalancing
     - Nginx
-    - RoundRobin
-    - Htop
-    - LeastConnections
-    - SchedulingAlgorithm
+    - LoadBalancing
 ---
 
 # 容器協調與負載平衡概觀：Kubernetes 是做什麼的，Nginx upstream 怎麼分配流量

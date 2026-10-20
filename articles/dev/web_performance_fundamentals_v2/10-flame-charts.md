@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - FlameChart
-    - DevTools
 ---
 
 # 如何閱讀火焰圖（Flame Chart）

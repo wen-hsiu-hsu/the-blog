@@ -15,11 +15,6 @@ tags:
     - Vitest
     - TestDoubles
     - Mocks
-    - Spies
-    - Sinon
-    - Chai
-    - Jasmine
-    - TestIsolation
 ---
 
 # Test Double 概觀：mock 與 spy 是什麼，以及 restore、reset、clear 的差異

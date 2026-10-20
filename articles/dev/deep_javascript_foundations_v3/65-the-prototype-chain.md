@@ -14,8 +14,6 @@ tags:
     - deepJavaScriptFoundationsV3
     - PrototypeChain
     - OOP
-    - ClassSyntax
-    - ThisKeyword
 ---
 
 # 原型鏈：物件之間的連結機制

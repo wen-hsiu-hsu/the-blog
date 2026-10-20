@@ -12,12 +12,8 @@ tags:
     - frontendMasters
     - typescriptFundamentals
     - TypeScript
-    - TypeQueries
-    - Keyof
-    - DeclareModule
     - OpenInterfaces
-    - NeverType
-    - TypeRegistryPattern
+    - TypeQueries
 ---
 
 # TypeScript 型別註冊表模式：結合 keyof 與模組宣告打造可擴充的資料層

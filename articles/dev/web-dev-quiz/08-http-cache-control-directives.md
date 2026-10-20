@@ -9,7 +9,6 @@ category: Advanced Web Dev Quiz
 section: dev
 tags:
     - HTTP
-    - Cache
     - frontendMasters
     - advancedWebDevelopmentQuiz
 ---

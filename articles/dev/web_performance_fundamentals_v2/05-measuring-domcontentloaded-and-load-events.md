@@ -11,7 +11,6 @@ chapter: 'Importance of Web Performance'
 tags:
     - frontendMasters
     - webPerformanceFundamentals
-    - DOMContentLoaded
     - EventListener
 ---
 

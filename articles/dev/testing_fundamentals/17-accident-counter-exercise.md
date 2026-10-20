@@ -16,13 +16,6 @@ tags:
     - React
     - TestingLibrary
     - UserEvent
-    - Act
-    - DOMTesting
-    - TestGranularity
-    - InitialCountProp
-    - ArrangeActAssert
-    - TestDebugging
-    - ScopedQueries
 ---
 
 # Accident Counter 練習：用 act() 等待重新渲染，以 initialCount 測不同起始狀態

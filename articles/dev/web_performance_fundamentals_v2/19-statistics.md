@@ -11,7 +11,6 @@ chapter: 'Testing & Tools'
 tags:
     - frontendMasters
     - webPerformanceFundamentals
-    - Statistics
 ---
 
 # 解讀效能資料：百分位數與 Lab vs Field Data 的正確用法

@@ -11,8 +11,6 @@ chapter: 'Testing & Tools'
 tags:
     - frontendMasters
     - webPerformanceFundamentals
-    - DevTools
-    - Lighthouse
 ---
 
 # 效能測試工具：Chrome Lighthouse

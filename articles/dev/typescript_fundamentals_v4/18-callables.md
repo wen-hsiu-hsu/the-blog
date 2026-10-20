@@ -14,8 +14,6 @@ tags:
     - TypeScript
     - CallSignature
     - Interface
-    - TypeAlias
-    - OpenInterfaces
 ---
 
 # TypeScript callable 型別：用 call signature 替函式與回呼定義型別

@@ -11,12 +11,8 @@ chapter: 'Continuous Integration & Deployment'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Logging
     - POSIX
-    - StandardStreams
-    - Pipe
     - Redirection
-    - Tail
 ---
 
 # 讀 log 檔的正確工具：cat、tail -f 怎麼選，以及 POSIX 標準串流與重導向符號全解析

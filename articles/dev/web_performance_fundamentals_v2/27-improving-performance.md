@@ -11,7 +11,6 @@ chapter: 'Improving Time to First Byte'
 tags:
     - frontendMasters
     - webPerformanceFundamentals
-    - WebPerformance
 ---
 
 # 改善效能的核心思維

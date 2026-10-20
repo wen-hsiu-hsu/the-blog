@@ -13,7 +13,7 @@ tags:
     - frontendMasters
     - deepJavaScriptFoundationsV3
     - ThisKeyword
-    - class
+    - Class
 ---
 
 # 自動綁定方法的代價：一個不應該存在的 hack

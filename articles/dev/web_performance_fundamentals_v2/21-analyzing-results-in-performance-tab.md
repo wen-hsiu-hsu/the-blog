@@ -11,7 +11,6 @@ chapter: 'Testing & Tools'
 tags:
     - frontendMasters
     - webPerformanceFundamentals
-    - DevTools
     - WaterfallChart
     - FlameChart
 ---

@@ -12,11 +12,8 @@ tags:
     - frontendMasters
     - typescriptFundamentals
     - TypeScript
-    - FunctionTypes
     - TypeAnnotations
     - TypeInference
-    - AnyType
-    - ESLint
 ---
 
 # TypeScript 函式參數與回傳型別：型別標註如何把錯誤攔在定義處，而非呼叫端

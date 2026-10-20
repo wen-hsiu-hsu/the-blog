@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - FunctionComposition
-    - PureFunction
     - Closure
-    - PartialApplication
-    - ArrowFunction
-    - LambdaCalculus
 ---
 
 # 函數合成：用 hypeUp 範例看懂函數管線與由內而外的執行順序

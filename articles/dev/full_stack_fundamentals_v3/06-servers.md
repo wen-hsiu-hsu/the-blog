@@ -11,10 +11,9 @@ chapter: 'Server'
 tags:
     - frontendMasters
     - fullStackFundamentals
+    - Node.js
     - Server
-    - NodeJs
     - CloudComputing
-    - VPS
 ---
 
 # 伺服器到底是什麼：從概念定義到寫一個最陽春的 Node.js Server

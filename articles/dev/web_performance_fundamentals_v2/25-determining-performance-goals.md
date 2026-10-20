@@ -11,7 +11,6 @@ chapter: 'Setting Performance Goals'
 tags:
     - frontendMasters
     - webPerformanceFundamentals
-    - CoreWebVitals
     - SEO
     - UserExperience
 ---

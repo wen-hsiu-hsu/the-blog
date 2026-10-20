@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - CoreWebVitals
-    - BrowserCompatibility
 ---
 
 # 效能指標的瀏覽器支援：Blink、WebKit 與 Gecko

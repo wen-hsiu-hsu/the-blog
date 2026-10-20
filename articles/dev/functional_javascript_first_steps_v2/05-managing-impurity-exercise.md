@@ -12,12 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - PureFunction
     - SideEffect
-    - Determinism
-    - DOM
-    - SVG
 ---
 
 # 隔離不純：把副作用推到程式最外層，用 SVG 渲染練習拆出純函數

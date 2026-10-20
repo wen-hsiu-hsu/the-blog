@@ -11,13 +11,9 @@ chapter: 'Security'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Security
-    - AuthLog
-    - Firewall
     - SSH
-    - Rootkit
-    - PortScanning
-    - BruteForce
+    - Security
+    - Firewall
 ---
 
 # 伺服器被入侵之後能做什麼：偷走 GitHub 帳號、清空紀錄，為什麼唯一解法是砍掉重練，SSH 金鑰與防火牆缺一不可

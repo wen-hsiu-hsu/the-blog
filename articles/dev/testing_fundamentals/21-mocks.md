@@ -13,13 +13,8 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - TestDoubles
     - Mocks
-    - MockFn
-    - MockImplementation
     - DependencyInjection
-    - MockCalls
-    - ItOnly
 ---
 
 # Mock 函式實戰：vi.fn() 記錄呼叫細節、mock Math.random 的風險與依賴注入

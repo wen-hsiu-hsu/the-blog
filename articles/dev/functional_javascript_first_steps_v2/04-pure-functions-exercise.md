@@ -12,11 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - PureFunction
     - SideEffect
-    - Determinism
-    - Mutability
 ---
 
 # 純函數練習：判斷 12 個函數純不純，看懂副作用與可變陣列陷阱

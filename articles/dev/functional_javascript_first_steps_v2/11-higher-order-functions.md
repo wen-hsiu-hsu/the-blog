@@ -12,15 +12,7 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - HigherOrderFunction
-    - FirstClassFunction
-    - Callback
-    - Filter
-    - Map
-    - Reduce
-    - PredicateFunction
-    - Reducer
 ---
 
 # 高階函數與一級函數：用三明治看懂 filter、map、reduce 的差別

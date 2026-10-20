@@ -14,11 +14,6 @@ tags:
     - JavaScript
     - Playwright
     - EndToEndTesting
-    - MockServiceWorker
-    - ServiceWorker
-    - NetworkInterception
-    - HAR
-    - VisualRegressionTesting
 ---
 
 # Mock Service Worker 入門：在網路邊界攔截請求，搭配 Playwright 錄製重播 HAR

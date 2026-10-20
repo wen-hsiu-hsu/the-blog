@@ -12,9 +12,8 @@ tags:
     - frontendMasters
     - typescriptFundamentals
     - TypeScript
-    - RecursiveTypes
+    - Recursion
     - TypeAlias
-    - UnionTypes
 ---
 
 # TypeScript 遞迴型別：用 NestedNumbers 描述無限巢狀的數字陣列

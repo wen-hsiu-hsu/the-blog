@@ -13,8 +13,6 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - ThisType
-    - NoImplicitThis
-    - DOMEvents
 ---
 
 # TypeScript this 型別：用第一個參數標註 this，搭配 bind/call/apply 呼叫

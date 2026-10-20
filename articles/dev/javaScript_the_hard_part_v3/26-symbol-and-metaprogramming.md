@@ -11,7 +11,6 @@ chapter: Type Coercion & Metaprogramming
 tags:
     - JavaScript
     - Symbol
-    - TypeCoercion
     - Metaprogramming
     - frontendMasters
     - javaScriptTheHardPartsV3

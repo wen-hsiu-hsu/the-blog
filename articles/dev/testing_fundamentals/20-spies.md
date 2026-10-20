@@ -15,9 +15,6 @@ tags:
     - Vitest
     - TestDoubles
     - Spies
-    - SpyOn
-    - ToHaveBeenCalled
-    - SideEffects
 ---
 
 # Spy 實戰：用 vi.spyOn 監看 console.log，驗證回傳值抓不到的副作用有沒有發生

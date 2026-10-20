@@ -12,9 +12,8 @@ tags:
     - frontendMasters
     - testingFundamentals
     - JavaScript
-    - TestDrivenDevelopment
     - Vitest
-    - TestRunner
+    - TestDrivenDevelopment
 ---
 
 # 測試基礎入門：為什麼寫測試、何時開始測試，以及世界上最簡單的測試

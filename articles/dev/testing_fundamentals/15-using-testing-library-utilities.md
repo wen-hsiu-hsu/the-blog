@@ -13,9 +13,6 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - DOMTesting
-    - Accessibility
-    - ArrangeActAssert
     - TestingLibrary
     - UserEvent
 ---

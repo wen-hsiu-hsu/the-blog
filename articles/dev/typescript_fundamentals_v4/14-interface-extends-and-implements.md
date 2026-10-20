@@ -13,9 +13,7 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - Interface
-    - TypeAlias
     - Subtyping
-    - HeritageClauses
 ---
 
 # TypeScript interface：extends 建立繼承鏈，implements 定義類別必須遵守的契約

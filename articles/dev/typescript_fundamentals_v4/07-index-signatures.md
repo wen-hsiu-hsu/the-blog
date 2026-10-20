@@ -13,10 +13,7 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - IndexSignatures
-    - ObjectTypes
     - UnionTypes
-    - LiteralTypes
-    - NoUncheckedIndexedAccess
 ---
 
 # TypeScript 索引簽名：用字典結構描述電話簿，兼顧已知欄位與任意鍵

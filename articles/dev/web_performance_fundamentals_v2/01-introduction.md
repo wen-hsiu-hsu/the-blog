@@ -9,11 +9,8 @@ seriesTitle: 'Web Performance Fundamentals'
 order: 1
 chapter: 'Introduction'
 tags:
-    - JavaScript
     - frontendMasters
     - webPerformanceFundamentals
-    - WebPerformance
-    - DevTools
 ---
 
 # 網頁效能是什麼？課程架構與範例應用總覽

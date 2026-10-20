@@ -14,7 +14,6 @@ tags:
     - youMightNotNeedAFramework
     - Router
     - HistoryAPI
-    - EventListener
 ---
 
 # 實作客戶端 Router：攔截連結、歷史紀錄與深度連結

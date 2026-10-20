@@ -13,7 +13,6 @@ tags:
     - webPerformanceFundamentals
     - CoreWebVitals
     - LCP
-    - ImageOptimization
 ---
 
 # Core Web Vitals 與 LCP（最大內容繪製）

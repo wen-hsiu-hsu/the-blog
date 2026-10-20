@@ -11,13 +11,8 @@ chapter: 'Operating Systems'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - OperatingSystem
     - Unix
     - Linux
-    - Ubuntu
-    - Kernel
-    - POSIX
-    - BSD
 ---
 
 # 作業系統怎麼選：Windows 與 Unix 的差異、Solaris／Linux／BSD 三大分支，以及三個組成部分

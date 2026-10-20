@@ -14,10 +14,6 @@ tags:
     - TypeScript
     - TypeGuards
     - Narrowing
-    - PrivateFieldPresenceCheck
-    - TypePredicate
-    - AssertionFunctions
-    - SwitchTrue
 ---
 
 # TypeScript 型別守衛全解析：內建守衛、自訂 is 語法、asserts 與 switch (true)

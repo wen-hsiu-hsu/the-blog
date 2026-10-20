@@ -9,7 +9,6 @@ category: Advanced Web Dev Quiz
 section: dev
 tags:
     - Security
-    - Cookie
     - HTTP
     - frontendMasters
     - advancedWebDevelopmentQuiz

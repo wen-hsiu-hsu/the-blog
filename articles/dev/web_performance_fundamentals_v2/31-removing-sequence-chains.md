@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - webPerformanceFundamentals
     - FCP
-    - WaterfallChart
 ---
 
 # 改善 FCP：移除依賴鏈

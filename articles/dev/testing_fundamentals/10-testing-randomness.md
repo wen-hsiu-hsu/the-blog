@@ -13,9 +13,8 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - Assertions
-    - DeepEquality
     - AsymmetricMatchers
+    - DeepEquality
 ---
 
 # 測試裡的隨機值：用 expect.any 與 stringMatching 驗證帶有隨機 UUID 的物件

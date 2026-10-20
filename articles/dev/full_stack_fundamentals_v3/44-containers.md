@@ -11,13 +11,9 @@ chapter: 'Containers'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Container
     - Docker
-    - Microservices
-    - Monolith
+    - Container
     - Virtualization
-    - ZeroDowntime
-    - CloudComputing
 ---
 
 # 容器化概觀：微服務 vs. 單體架構的取捨，容器與虛擬化的差異，為什麼這門課選用 Docker 管理容器

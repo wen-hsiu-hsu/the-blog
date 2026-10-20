@@ -12,15 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - HigherOrderFunction
     - Recursion
-    - BaseCase
-    - Reduce
-    - Reducer
-    - Accumulator
-    - TernaryOperator
-    - State
 ---
 
 # 遞迴版 reduce 與 reducer 函數：用累加器寫出 sum 與 max

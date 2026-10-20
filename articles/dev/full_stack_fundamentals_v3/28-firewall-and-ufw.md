@@ -13,11 +13,6 @@ tags:
     - fullStackFundamentals
     - Security
     - Firewall
-    - UFW
-    - Port
-    - DDoS
-    - AmplificationAttack
-    - IPTables
 ---
 
 # 用 UFW 設定防火牆：關閉不該開放的 3000 埠，以及 deny 與 reject 的關鍵差異

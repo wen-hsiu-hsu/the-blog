@@ -13,9 +13,6 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - BeforeEach
-    - AsyncAwait
-    - DoneCallback
 ---
 
 # beforeEach 與非同步測試：善用 hook 減少重複，但也別為了不重複犧牲測試的清楚易讀性

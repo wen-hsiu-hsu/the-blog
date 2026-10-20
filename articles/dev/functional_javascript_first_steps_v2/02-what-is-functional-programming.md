@@ -14,8 +14,6 @@ tags:
     - JavaScript
     - FunctionalProgramming
     - ProgrammingParadigm
-    - DeclarativeProgramming
-    - ImperativeProgramming
 ---
 
 # 函數式程式設計（FP）是什麼？從程式設計典範比較命令式、宣告式與物件導向，看懂 FP 為何只需要純函數

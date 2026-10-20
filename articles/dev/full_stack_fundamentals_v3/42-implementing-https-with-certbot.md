@@ -12,13 +12,9 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - HTTPS
-    - Certbot
     - Nginx
-    - SSL
+    - Security
     - UFW
-    - CertificateAuthority
-    - Snap
-    - PEM
 ---
 
 # 用 Certbot 免費幫網站裝上 HTTPS：snap 安裝、自動改寫 Nginx 設定、開放 443 埠

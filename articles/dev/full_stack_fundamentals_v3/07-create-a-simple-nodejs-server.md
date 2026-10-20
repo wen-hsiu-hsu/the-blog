@@ -11,13 +11,9 @@ chapter: 'Server'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - NodeJs
-    - Server
+    - Node.js
     - HTTP
-    - FileSystem
-    - Streams
-    - Homebrew
-    - NVM
+    - Server
 ---
 
 # 從零把 Node.js 伺服器跑起來：Homebrew、NVM 與最陽春的 HTML 檔案

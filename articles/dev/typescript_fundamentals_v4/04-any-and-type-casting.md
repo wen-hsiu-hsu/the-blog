@@ -13,10 +13,7 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - TypeCasting
-    - TopType
-    - LiteralTypes
     - AnyType
-    - UnknownType
 ---
 
 # TypeScript 型別轉換再探：相容性邊界、雙重轉型逃生口與 any/unknown 選擇

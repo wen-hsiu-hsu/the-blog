@@ -12,11 +12,8 @@ tags:
     - frontendMasters
     - testingFundamentals
     - JavaScript
-    - TestCoverage
-    - UnitTesting
-    - TypeCoercion
     - UnhappyPath
-    - ErrorHandling
+    - TypeCoercion
 ---
 
 # 測試指南：把程式碼拆成可測函式、看清程式碼覆蓋率的盲點，並認識所謂的 unhappy path 情境

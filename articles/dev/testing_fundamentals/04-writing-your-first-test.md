@@ -14,8 +14,6 @@ tags:
     - JavaScript
     - Vitest
     - TestDrivenDevelopment
-    - TestRunner
-    - PendingTests
     - UnitTesting
 ---
 

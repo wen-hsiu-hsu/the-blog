@@ -12,11 +12,9 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - Git
-    - GitHub
     - SSH
-    - SSHConfig
     - Hashing
-    - SHA1
+    - SSHConfig
 ---
 
 # Git 也是靠雜湊運作的：在伺服器上建一把 GitHub 專用金鑰，改用本機開發後 push、pull 就好

@@ -12,13 +12,6 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - CICD
-    - ContinuousIntegration
-    - ContinuousDelivery
-    - ContinuousDeployment
-    - Testing
-    - Pipeline
-    - Spinnaker
-    - GitBisect
 ---
 
 # CI/CD 是什麼：連續整合、連續交付與連續部署三個名詞的差異，為什麼測試才是核心而非推得更快

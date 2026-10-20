@@ -12,15 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - HigherOrderFunction
     - Recursion
-    - BaseCase
-    - Filter
-    - Concat
-    - PredicateFunction
-    - TernaryOperator
-    - SpreadOperator
 ---
 
 # 用遞迴實作 filter：靠 head、tail、concat 寫出函數式高階函數

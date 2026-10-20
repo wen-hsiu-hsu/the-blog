@@ -13,8 +13,7 @@ tags:
     - testingFundamentals
     - JavaScript
     - Vitest
-    - Assertions
-    - ReferentialEquality
+    - EqualityComparison
     - DeepEquality
 ---
 

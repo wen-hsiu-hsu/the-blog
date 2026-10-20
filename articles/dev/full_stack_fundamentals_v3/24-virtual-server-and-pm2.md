@@ -14,9 +14,6 @@ tags:
     - Nginx
     - VirtualServer
     - ProxyPass
-    - PM2
-    - ProcessManager
-    - NodeJs
 ---
 
 # 寫出 Nginx 虛擬伺服器設定檔，用 nginx -t 驗證，並用 PM2 讓 Node 應用程式永遠活著

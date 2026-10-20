@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - SQLite
-    - Database
-    - WebSocket
     - SQL
-    - PreparedStatement
-    - SIGINT
-    - InMemoryDatabase
-    - GracefulShutdown
+    - Database
 ---
 
 # SQLite 實作訪客紀錄：記憶體資料庫、建表、Prepared Statement、關閉連線的順序

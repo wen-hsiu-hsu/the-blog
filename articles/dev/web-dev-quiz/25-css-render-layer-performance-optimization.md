@@ -9,6 +9,7 @@ category: Advanced Web Dev Quiz
 section: dev
 tags:
     - frontendMasters
+    - advancedWebDevelopmentQuiz
     - CSS
     - Performance
 ---

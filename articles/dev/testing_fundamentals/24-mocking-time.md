@@ -14,12 +14,7 @@ tags:
     - JavaScript
     - Vitest
     - TestDoubles
-    - FakeTimers
-    - AdvanceTimersByTime
-    - AdvanceTimersToNextTimer
-    - SetSystemTime
     - DependencyInjection
-    - ModuleMocking
 ---
 
 # 用假時鐘測試時間：vi.useFakeTimers、advanceTimersByTime、setSystemTime

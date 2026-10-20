@@ -13,7 +13,6 @@ tags:
     - frontendMasters
     - youMightNotNeedAFramework
     - DOM
-    - WebAPI
     - Performance
 ---
 

@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Closure
     - PartialApplication
-    - HigherOrderFunction
-    - ArrowFunction
-    - PureFunction
-    - SVG
 ---
 
 # 用閉包做部分應用：把 diamondPattern 拆成鎖定顏色或寬度的函數

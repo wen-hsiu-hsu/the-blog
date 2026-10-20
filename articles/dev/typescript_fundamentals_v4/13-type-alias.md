@@ -13,8 +13,6 @@ tags:
     - typescriptFundamentals
     - TypeScript
     - TypeAlias
-    - IntersectionTypes
-    - UnionTypes
     - Subtyping
 ---
 

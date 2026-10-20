@@ -12,11 +12,6 @@ tags:
     - frontendMasters
     - typescriptFundamentals
     - TypeScript
-    - TSC
-    - Tsconfig
-    - DeclarationFiles
-    - Downleveling
-    - ModuleFormat
 ---
 
 # TypeScript 編譯實戰：tsconfig target/module 設定與宣告檔產生原理

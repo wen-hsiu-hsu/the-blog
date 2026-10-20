@@ -14,7 +14,6 @@ tags:
     - TypeScript
     - JavaScript
     - TypeSystem
-    - TypeAnnotations
     - DuckTyping
 ---
 

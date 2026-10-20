@@ -14,8 +14,6 @@ tags:
     - TypeScript
     - Generics
     - TypeParameters
-    - TypeInference
-    - TypeCasting
 ---
 
 # TypeScript 泛型最佳實踐：型別參數要用兩次以上，否則只是方便轉型，makeTuple 示範雙型別參數推斷

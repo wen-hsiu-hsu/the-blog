@@ -12,7 +12,6 @@ tags:
     - JavaScript
     - OOP
     - Class
-    - Prototype
     - frontendMasters
     - javaScriptTheHardPartsV3
 ---

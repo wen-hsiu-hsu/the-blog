@@ -14,7 +14,6 @@ tags:
     - TypeScript
     - Generics
     - TypeParameters
-    - TypeInference
 ---
 
 # TypeScript 泛型入門：從 listToDict 到 wrapInArray 看型別參數如何取代 any

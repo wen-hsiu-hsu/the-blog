@@ -13,7 +13,6 @@ tags:
     - frontendMasters
     - youMightNotNeedAFramework
     - DOM
-    - PWA
 ---
 
 # DOM 與 HTML 原始碼的差異：瀏覽器如何解析與補全結構

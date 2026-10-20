@@ -14,10 +14,7 @@ tags:
     - JavaScript
     - Vitest
     - AsymmetricMatchers
-    - DeepEquality
     - DependencyInjection
-    - ObjectContaining
-    - ArrangeActAssert
 ---
 
 # 不對稱 matcher 練習：從逐一比對、objectContaining 到依賴注入，馴服帶有隨機值的物件

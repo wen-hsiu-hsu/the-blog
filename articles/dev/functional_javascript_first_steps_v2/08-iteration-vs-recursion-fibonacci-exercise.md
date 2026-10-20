@@ -12,13 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Recursion
     - Iteration
-    - ImperativeProgramming
-    - Fibonacci
-    - BaseCase
-    - State
 ---
 
 # 費波那契數列練習：用 for 迴圈與遞迴各寫一次 Fibonacci

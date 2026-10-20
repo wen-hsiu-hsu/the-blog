@@ -13,10 +13,6 @@ tags:
     - fullStackFundamentals
     - Nginx
     - LoadBalancing
-    - Upstream
-    - AccessLog
-    - LogFormat
-    - ProxyPass
 ---
 
 # 實作 Nginx 負載平衡：upstream 放在 nginx.conf、自訂 log format 驗證流量分配

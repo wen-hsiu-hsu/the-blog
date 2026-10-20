@@ -12,10 +12,6 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - WebSocket
-    - PM2
-    - Onmessage
-    - Protocol
-    - Deployment
 ---
 
 # 前端建立 WebSocket 連線：wss/ws 協定判斷、onmessage 接收訊息、部署到正式伺服器

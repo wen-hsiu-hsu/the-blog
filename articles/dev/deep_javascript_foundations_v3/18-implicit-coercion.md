@@ -12,6 +12,7 @@ tags:
     - JavaScript
     - frontendMasters
     - deepJavaScriptFoundationsV3
+    - TypeCoercion
 ---
 
 # 隱式轉型即抽象：選擇顯式還是隱式的判斷框架

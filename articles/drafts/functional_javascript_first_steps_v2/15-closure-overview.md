@@ -12,12 +12,8 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - Closure
-    - Scope
     - PartialApplication
-    - Currying
-    - HigherOrderFunction
 ---
 
 # 閉包（Closure）：從 makeAdjectifier 看懂部分應用與柯里化

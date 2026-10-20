@@ -12,7 +12,6 @@ tags:
     - JavaScript
     - frontendMasters
     - youMightNotNeedAFramework
-    - WebAPI
     - Performance
 ---
 

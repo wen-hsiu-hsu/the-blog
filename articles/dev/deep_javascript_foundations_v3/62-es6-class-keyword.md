@@ -13,7 +13,7 @@ tags:
     - frontendMasters
     - deepJavaScriptFoundationsV3
     - ThisKeyword
-    - class
+    - Class
 ---
 
 # ES6 `class` 語法：繼承、`super` 與 `this` 綁定的陷阱

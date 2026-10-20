@@ -14,8 +14,6 @@ tags:
     - JavaScript
     - Playwright
     - EndToEndTesting
-    - BrowserAutomation
-    - UIMode
 ---
 
 # Playwright 入門：啟動真瀏覽器模擬使用者操作整個網站，跑端對端測試補足單元測試看不到的地方

@@ -11,8 +11,6 @@ chapter: 'Introduction'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - FullStackEngineer
-    - TechStack
 ---
 
 # 什麼是 Full Stack 工程師：現代運算的三大支柱

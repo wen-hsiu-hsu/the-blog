@@ -11,12 +11,8 @@ chapter: 'Application Setup'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - NodeJs
-    - NodeSource
-    - Chown
-    - Git
-    - Npm
     - Nginx
+    - Node.js
     - ProxyPass
 ---
 

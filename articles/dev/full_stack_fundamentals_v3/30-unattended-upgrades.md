@@ -12,10 +12,6 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - Security
-    - UnattendedUpgrades
-    - Apt
-    - LTS
-    - DpkgReconfigure
 ---
 
 # unattended-upgrades 安裝教學：Ubuntu 伺服器自動套用 LTS 更新，多數資安事件只是懶得補洞

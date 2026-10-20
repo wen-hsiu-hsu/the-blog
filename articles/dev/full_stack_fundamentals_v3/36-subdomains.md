@@ -11,13 +11,9 @@ chapter: 'Continuous Integration & Deployment'
 tags:
     - frontendMasters
     - fullStackFundamentals
-    - Subdomain
     - Nginx
-    - ARecord
-    - ServerName
-    - NginxConf
-    - VirtualServer
     - ProxyPass
+    - VirtualServer
 ---
 
 # 建立子網域：新增 A 記錄、寫 Nginx 虛擬伺服器區塊指定 server_name，串接不同應用程式

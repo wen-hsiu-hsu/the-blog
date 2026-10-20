@@ -12,10 +12,7 @@ tags:
     - frontendMasters
     - fullStackFundamentals
     - Security
-    - Chmod
     - FilePermissions
-    - LeastPrivilege
-    - Octal
 ---
 
 # chmod 數字背後的數學：read、write、execute 怎麼變成 4、2、1，以及最小權限原則

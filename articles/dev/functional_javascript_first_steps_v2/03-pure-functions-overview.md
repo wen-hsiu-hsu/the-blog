@@ -12,7 +12,6 @@ tags:
     - frontendMasters
     - functionalJavaScriptFirstSteps
     - JavaScript
-    - FunctionalProgramming
     - PureFunction
     - SideEffect
 ---

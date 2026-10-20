@@ -14,15 +14,8 @@ tags:
     - JavaScript
     - Vitest
     - React
-    - TestDoubles
     - Spies
-    - SpyOn
-    - ToHaveBeenCalled
-    - UserEvent
-    - Act
     - DependencyInjection
-    - ItOnly
-    - TestDrivenDevelopment
 ---
 
 # Alert Spy 練習：用 vi.spyOn(window, 'alert') 抓出忘記清空欄位的 bug

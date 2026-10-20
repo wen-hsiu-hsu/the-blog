@@ -16,7 +16,6 @@ tags:
     - HappyDOM
     - DOMTesting
     - ArrangeActAssert
-    - TestFiltering
 ---
 
 # 測試按鈕：用 happy-dom 驗證元素標籤、文字內容與點擊後的文字變化，這套測試手法跟框架無關
